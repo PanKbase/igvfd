@@ -110,6 +110,7 @@
             "enum": [
                 "community",
                 "ENCODE",
+		"PanKbase",
                 "IGVF"
             ],
             "submissionExample": {
@@ -123,6 +124,7 @@
             "type": "string",
             "enum": [
                 "community",
+		"PanKbase",
                 "IGVF"
             ],
             "submissionExample": {

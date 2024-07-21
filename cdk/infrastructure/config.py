@@ -384,7 +384,7 @@ config: Dict[str, Any] = {
 
 @dataclass
 class Common:
-    organization_name: str = 'igvf-dacc'
+    organization_name: str = 'PanKbase'
     project_name: str = 'igvfd'
     default_region: str = 'us-west-2'
     aws_cdk_version: str = '2.114.1'

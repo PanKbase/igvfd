@@ -1,13 +1,14 @@
 [
     {
-        "email": "shengchd@stanford.edu",
-        "first_name": "Shengcheng",
-        "last_name": "Dong",
-        "lab": "/labs/j-michael-cherry/",
+        "email": "parulbioinf@gmail.com",
+        "first_name": "Parul",
+        "last_name": "Kudtarkar",
+        "lab": "/labs/kyle-gaulton/",
         "viewing_groups": [
-            "IGVF"
+            "IGVF",
+	    "PanKbase"
         ],
-        "job_title": "Data Wrangler",
+        "job_title": "Engineer",
         "groups": [
             "verified",
             "admin"

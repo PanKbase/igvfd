@@ -18,7 +18,7 @@ def igvf_email_verification(context, request):
         try:
             user = request.embed(f'/users/{email}', as_user=True)
             viewing_groups = user.get('viewing_groups', [])
-            is_igvf_viewer = 'IGVF' in viewing_groups
+            is_igvf_viewer = 'PanKbase' in viewing_groups
         except KeyError:
             is_igvf_viewer = False
         return {

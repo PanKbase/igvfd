@@ -215,7 +215,7 @@
                 "linkTo": "Donor"
             },
             "submissionExample": {
-                "appscript": "[\"igvf:donor_of_HepG2\", \"/IGVFDO2837BRET\"]",
+                "appscript": "[\"pankbase:donor_of_HepG2\", \"/PKBDO2837BRET\"]",
                 "igvf_utils": "igvf:donor_of_HepG2, IGVFDO2837BRET"
             }
         },
