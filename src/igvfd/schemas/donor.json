@@ -62,7 +62,7 @@
             }
         },
         "sex": {
-            "title": "Sex",
+            "title": "Reported Sex",
             "description": "Sex of the donor.",
             "type": "string",
             "default": "unspecified",

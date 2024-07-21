@@ -38,7 +38,7 @@ def test_stacks_ci_initialize_ci_stack():
                                     {
                                         'Ref': 'AWS::Partition'
                                     },
-                                    ':logs:us-west-2:109189702753:log-group:/aws/codebuild/',
+                                    ':logs:us-west-2:654654139991:log-group:/aws/codebuild/',
                                     {
                                         'Ref': 'ContinuousIntegrationigvfdContinuousIntegration1CD8EFED'
                                     },

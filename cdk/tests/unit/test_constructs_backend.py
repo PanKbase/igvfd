@@ -957,7 +957,7 @@ def test_constructs_backend_backend_construct_define_domain_name(
             write_to_opensearch_named='Opensearch',
         )
     )
-    assert backend.domain_name == 'igvfd-some-branch.my.test.domain.org'
+    assert backend.domain_name == 'pankbase-some-branch.my.test.domain.org'
     old_config = {
         k: v
         for k, v in asdict(config).items()
@@ -1010,7 +1010,7 @@ def test_constructs_backend_get_url_prefix():
         tags=[],
     )
     url_prefix = get_url_prefix(config_without_prefix)
-    assert url_prefix == 'igvfd-some-branch'
+    assert url_prefix == 'pankbase-some-branch'
     config_with_prefix = Config(
         name='abc',
         branch='some-branch',

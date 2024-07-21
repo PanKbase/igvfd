@@ -87,7 +87,7 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
             'DBSubnetGroupName': {'Ref': 'PostgresSubnetGroup68192ADF'},
             'EnablePerformanceInsights': True,
             'Engine': 'postgres',
-            'EngineVersion': '14.3',
+            'EngineVersion': '14.9',
             'MasterUsername': {
                 'Fn::Join': [
                     '',

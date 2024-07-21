@@ -1,6 +1,38 @@
 ## Changelog for *`human_donor.json`*
 
 ### Minor changes since schema version 13
+* add RRID: pattern `^RRID:[A-Z]{4}\d{8}$`
+ 
+### Schema version 14
+
+*Update schema to include new require fields and additional properties**:
+* Add `"rrid"`, `"living_donor"`, `"bmi"`, `"diabetes_status"`, and `"diabetes_status_description"` to the require fields list.
+  * Add new fields:
+    * `bmi`: A `number` field.
+    * `diabetes_status`: An `array` field of `strings` link to `PhenotypeTerm`.
+    * `diabetes_status_description`: A `string` field with an `enum` of `"diabetic"`, `"non-diabetic"`, `"unspecified"`.
+    * `hba1c`: A `number` field.
+    * `diabetes_status_hba1c`: A `string` field with an `enum` of `"diabetic"`, `"non-diabetic"`, `"unspecified"`.
+    * `living_donor`: A `boolean` field.
+    * `pancreas_tissue_available`: A `boolean` field.
+    * `center_donor_id`: A `string` field.
+    * `biological_sex`: A `string` field with an `enum` of `"male"`, `"female"`, `"unspecified"`.
+    * `donation_type`: A `string` field with an `enum` of `"DCD"`, `"NDD"`, `"MAID"`.
+    * `cause_of_death`: A `string` field.
+    * `c_peptide`: A `number` field.
+    * `aab_gada`: A `boolean` field.
+    * `aab_gada_value`: A `number` field.
+    * `aab_ia2`: A `boolean` field.
+    * `aab_ia2_value`: A `number` field.
+    * `aab_znt8`: A `boolean` field.
+    * `aab_znt8_value`: A `number` field.
+    * `hla_typing`: An `array` field representing HLA typing.
+    * `other_tissues_available`: An `array` field linked to `SampleTerm`.
+    * `hospital_stay`: A `number` field.
+  * Change `ethnicities` field title from `"Ethnicity"` to `"Self Reported Ethnicity"`.
+  * Update `schema_version` from `"13"` to `"14"`.
+  
+### Minor changes since schema version 13
 
 * Update calculation of `summary`.
 * Extend `collections` enum list to include `Vista`.

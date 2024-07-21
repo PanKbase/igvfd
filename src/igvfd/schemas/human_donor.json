@@ -7,6 +7,11 @@
     "required": [
         "award",
         "lab",
+        "rrid",
+        "living_donor",
+        "bmi",
+        "diabetes_status",
+        "diabetes_status_description",
         "taxa"
     ],
     "identifyingProperties": [
@@ -52,7 +57,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "13"
+            "default": "14"
         },
         "related_donors": {
             "title": "Related Donors",
@@ -106,7 +111,7 @@
             }
         },
         "ethnicities": {
-            "title": "Ethnicity",
+            "title": "Self Reported Ethnicity",
             "description": "Ethnicity of the donor.",
             "comment": "We use http://bioportal.bioontology.org/ontologies/HANCESTRO as a template for the enum list of ethnicities.",
             "type": "array",
@@ -147,6 +152,274 @@
                 "igvf_utils": "Japanese, European"
             }
         },
+        "genetic_ethnicities": {
+            "title": "Genetic Predicted Ancestry",
+            "description": "Inferred ancestry of the donor from genetic analysis",
+            "comment": "We use http://bioportal.bioontology.org/ontologies/HANCESTRO as a template for the enum list of ethnicities.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "type": "string",
+                "enum": [
+                    "African American",
+                    "African Caribbean",
+                    "Arab",
+                    "Asian",
+                    "Black",
+                    "Black African",
+                    "Chinese",
+                    "Colombian",
+                    "Dai Chinese",
+                    "Esan",
+                    "Eskimo",
+                    "European",
+                    "Gambian",
+                    "Han Chinese",
+                    "Hispanic",
+                    "Indian",
+                    "Japanese",
+                    "Kinh Vietnamese",
+                    "Luhya",
+                    "Maasai",
+                    "Mende",
+                    "Native Hawaiian",
+                    "Pacific Islander",
+                    "Puerto Rican",
+                    "Yoruba"
+                ]
+            },
+            "submissionExample": {
+                "appscript": "[\"Japanese\", \"European\"]",
+                "igvf_utils": "Japanese, European"
+            }
+        },
+        "living_donor": {
+            "title": "Living Donor",
+            "description": "Living Donor",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
+        },
+        "rrid": {
+            "title": "RRID",
+            "description": "Research Unique Identifier. PanKbase will only take donors with RRID",
+            "type": "string",
+	    "pattern": "^RRID:[A-Z]{4}\\d{8}$",
+            "submissionExample": {
+                "appscript": "RRID:SAMN19776455",
+                "igvf_utils": "RRID:SAMN19776455"
+            }
+        },
+        "pancreas_tissue_available": {
+            "title": "Pancreas Tissue Available",
+            "description": "Pancreas tissue is available for research or analysis",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": true,
+                "igvf_utils": true
+            }
+        },
+        "center_donor_id": {
+            "title": "Center Donor ID",
+            "description": "Donor center ID identifier for cross-referencing",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "SAMN19776455",
+                "igvf_utils": "SAMN19776455"
+            }
+        },
+        "biological_sex": {
+            "title": "Biological Sex",
+            "description": "Inferred biological sex derived from genomic data",
+            "type": "string",
+            "default": "unspecified",
+            "enum": [
+                "male",
+                "female",
+                "unspecified"
+            ],
+            "submissionExample": {
+                "appscript": "unspecified",
+                "igvf_utils": "unspecified"
+            }
+        },
+        "bmi": {
+            "title": "BMI",
+            "description": "Body mass index (Kg/m2)",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 21.03,
+                "igvf_utils": 21.03
+            }
+        },
+        "diabetes_status": {
+            "title": "Diabetes Status",
+            "description": "Diabetes status T1D,T2D,MODY, etc. MONDO ontology term",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Disease Term",
+                "comment": "See phenotype_term.json for available identifiers.",
+                "type": "string",
+                "linkTo": "PhenotypeTerm"
+            },
+            "submissionExample": {
+                "appscript": ["/phenotype-terms/MONDO_0010894/", "/phenotype-terms/MONDO_0009100/"],
+                "igvf_utils": "/phenotype-terms/MONDO_0010894/, /phenotype-terms/MONDO_0009100/"
+            }
+        },
+        "diabetes_status_description": {
+            "title": "Description of diabetes status",
+            "description": "Description of diabetes status",
+            "type": "string",
+            "enum": [
+                "diabetic",
+                "non-diabetic",
+                "unspecified"
+            ],
+            "submissionExample": {
+                "appscript": "Non-diabetic",
+                "igvf_utils": "Non-diabetic"
+            }
+        },
+        "hba1c": {
+            "title": "HbA1C (percentage)",
+            "description": "The percentage measurement of HbA1c, which reflects the average blood glucose levels over the past 2-3 months.  If not available, 'NA'",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 5.5,
+                "igvf_utils": 5.5
+            }
+        },
+        "diabetes_status_hba1c": {
+            "title": "Diabetes Status, HbA1C Adjusted",
+            "description": "A categorization of diabetes status based on adjusted HbA1C levels, considering factors such as age, race, or other clinical conditions that might influence HbA1C measurements",
+            "type": "string",
+            "enum": [
+                "diabetic",
+                "non-diabetic",
+                "unspecified"
+            ],
+            "submissionExample": {
+                "appscript": "unspecified",
+                "igvf_utils": "unspecified"
+            }
+        },
+        "donation_type": {
+            "title": "Donation Type",
+            "description": "The type of organ donation, categorized as DCD, NDD, or MAID",
+            "type": "string",
+            "enum": [
+                "DCD",
+                "NDD",
+                "MAID"
+            ],
+            "submissionExample": {
+                "appscript": "DCD",
+                "igvf_utils": "DCD"
+            }
+        },
+        "cause_of_death": {
+            "title": "Cause of Death",
+            "description": "The primary medical condition or event that led to the patient’s death",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "unspecified",
+                "igvf_utils": "unspecified"
+            }
+        },
+        "c_peptide": {
+            "title": "C-Peptide (ng/ml)",
+            "description": "The concentration of C-Peptide in the blood, a marker used to assess insulin production and pancreatic function",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 1.8,
+                "igvf_utils": 1.8
+            }
+        },
+        "aab_gada": {
+            "title": "AAB_GADA",
+            "description": "The presence of Autoantibodies against GADA",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
+        },
+        "aab_gada_value": {
+            "title": "AAB GADA value (unit/ml)",
+            "description": "AAB GADA value (unit/ml)",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 203,
+                "igvf_utils": 203
+            }
+        },
+        "aab_ia2": {
+            "title": "AAB_IA2",
+            "description": "The presence of Autoantibodies against IA2",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
+        },
+        "aab_ia2_value": {
+            "title": "AAB IA2 value (unit/ml)",
+            "description": "AAB IA2 value (unit/ml)",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 0,
+                "igvf_utils": 0
+            }
+        },
+        "aab_znt8": {
+            "title": "AAB_ZNT8",
+            "description": "The presence of Autoantibodies against ZNT8",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
+        },
+        "aab_znt8_value": {
+            "title": "AAB ZNT8 value (unit/ml)",
+            "description": "AAB ZNT8 value (unit/ml)",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 0,
+                "igvf_utils": 0
+            }
+        },
+        "hla_typing": {
+            "title": "HLA typing",
+            "description": "Series of comma-separated values describing HLA types as: class, locus, allele1, allele2, method",
+            "comment": "example: 'A,1,11:01,24:02,NGS', 'B,1,15:01,40:01,NGS', 'C,1,03:03,03:04,NGS'",
+            "type": "array",
+            "minItems": 1,
+	    "uniqueItems": true
+        },
+        "other_tissues_available": {
+            "title": "Other Tissues Available",
+            "description": "Tissues obtained from the donor",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Sample Term",
+                "comment": "See sample_term.json for available identifiers.",
+                "type": "string",
+                "linkTo": "SampleTerm"
+            },
+            "submissionExample": {
+                "appscript": "[\"/sample-terms/UBERON_0001388/\"]",
+                "igvf_utils": "/sample-terms/UBERON_0001388/"
+            }
+        },
         "taxa": {
             "enum": [
                 "Homo sapiens"
@@ -154,6 +427,15 @@
             "submissionExample": {
                 "appscript": "Homo sapiens",
                 "igvf_utils": "Homo sapiens"
+            }
+        },
+        "hospital_stay": {
+            "title": "Hospital Stay (days)",
+            "description": "The total number of days the patient was hospitalized",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 1.5,
+                "igvf_utils": 1.5
             }
         },
         "human_donor_identifiers": {
@@ -176,6 +458,7 @@
         "taxa",
         "ethnicities",
         "human_donor_identifiers",
+        "diabetes_status",
         "phenotypic_features.feature.term_name",
         "submitted_by.title"
     ],

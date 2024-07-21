@@ -10,7 +10,7 @@ def test_config_exists():
 def test_config_common_dataclass():
     from infrastructure.config import Common
     common = Common()
-    assert common.organization_name == 'igvf-dacc'
+    assert common.organization_name == 'PanKbase-DB'
     assert common.project_name == 'igvfd'
 
 
@@ -30,7 +30,7 @@ def test_config_config_dataclass():
             ('xyz', '321'),
         ]
     )
-    assert config.common.organization_name == 'igvf-dacc'
+    assert config.common.organization_name == 'PanKbase-DB'
     assert config.common.project_name == 'igvfd'
     assert config.postgres == {}
     assert config.opensearch == {}
@@ -59,7 +59,7 @@ def test_config_pipeline_config_dataclass():
             ('xyz', '321'),
         ]
     )
-    assert config.common.organization_name == 'igvf-dacc'
+    assert config.common.organization_name == 'PanKbase-DB'
     assert config.common.project_name == 'igvfd'
     assert config.existing_resources_class == igvf_dev.Resources
     assert config.account_and_region == igvf_dev.US_WEST_2
@@ -78,7 +78,7 @@ def test_config_build_config_from_name():
         'demo',
         branch='my-branch',
     )
-    assert config.common.organization_name == 'igvf-dacc'
+    assert config.common.organization_name == 'PanKbase-DB'
     assert config.common.project_name == 'igvfd'
     postgres_instance_props = config.postgres['instances'][0]['props']
     assert (
@@ -105,7 +105,7 @@ def test_config_build_config_from_name():
             ('some', 'override')
         ]
     )
-    assert config.common.organization_name == 'igvf-dacc'
+    assert config.common.organization_name == 'PanKbase-DB'
     assert config.common.project_name == 'igvfd'
     assert config.tags == [
         ('some', 'override')
@@ -139,7 +139,7 @@ def test_config_build_pipeline_config_from_name():
         branch='my-branch',
         pipeline='my-pipeline',
     )
-    assert config.common.organization_name == 'igvf-dacc'
+    assert config.common.organization_name == 'PanKbase-DB'
     assert config.common.project_name == 'igvfd'
     assert ('time-to-live-hours', '60') in config.tags
     assert config.branch == 'my-branch'
@@ -149,7 +149,7 @@ def test_config_build_pipeline_config_from_name():
         'dev',
         branch='my-branch',
     )
-    assert config.common.organization_name == 'igvf-dacc'
+    assert config.common.organization_name == 'PanKbase-DB'
     assert config.common.project_name == 'igvfd'
     assert config.pipeline == 'ContinuousDeploymentPipelineStack'
     assert config.name == 'dev'
