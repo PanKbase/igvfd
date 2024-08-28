@@ -1,6 +1,9 @@
 ## Changelog for *`human_donor.json`*
 
-### Minor changes since schema version 13
+### Minor changes since schema version 14
+* add desired field tiers are required, desired and optional. Audits accordingly
+* update description to clarify that certain fields are marked as 'required', others as 'desired', and all remaining fields are considered optional. 
+### Minor changes since schema version 14
 * add RRID: pattern `^RRID:[A-Z]{4}\d{8}$`
  
 ### Schema version 14

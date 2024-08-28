@@ -2,7 +2,7 @@
     "title": "Human Donor",
     "$id": "/profiles/human_donor.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A human donor of any biosample, including cell lines. Submission of any sample originating from a human donor requires submission of information about the relevant donor. For example, submission of the donor of K562 is a prerequisite for submission of any K562 cell line samples.",
+    "description": "A human donor of any biosample, including cell lines. Submission of any sample originating from a human donor requires submission of information about the relevant donor. For example, submission of the donor of K562 is a prerequisite for submission of any K562 cell line samples. The following fields are **required**: `award`, `lab`, `rrid`, `living_donor`, `bmi`, `diabetes_status`, `diabetes_status_description`, and `taxa`. These fields must be included for the schema to be valid. Additionally, the following fields are **desired**: `center_donor_id`, `ethnicities`, `hba1c`, `diabetes_status_hba1c`, `glucose_loweing_theraphy`, `hospital_stay`, `donation_type`, and `cause_of_death`. While these fields are not mandatory, their inclusion is highly recommended for a more comprehensive data submission.",
     "type": "object",
     "required": [
         "award",
@@ -13,6 +13,16 @@
         "diabetes_status",
         "diabetes_status_description",
         "taxa"
+    ],
+    "desired": [
+	"center_donor_id",
+	"ethnicities",
+	"hba1c",
+	"diabetes_status_hba1c",
+	"glucose_loweing_theraphy",
+	"hospital_stay",
+        "donation_type",
+        "cause_of_death"
     ],
     "identifyingProperties": [
         "uuid",
@@ -436,6 +446,20 @@
             "submissionExample": {
                 "appscript": 1.5,
                 "igvf_utils": 1.5
+            }
+        },
+        "glucose_loweing_theraphy": {
+            "title": "Glucose Loweing Theraphy",
+            "description": "Details the type of therapy or medication regimen the patient is on to manage blood glucose levels, including oral medications, insulin, or other treatments.",
+            "type": "array",
+	    "enum": [
+		"oral medications",
+		"insulin",
+		"other treatment"
+	    ],
+            "submissionExample": {
+                "appscript": ["insulin"],
+                "igvf_utils": ["insulin"]
             }
         },
         "human_donor_identifiers": {
