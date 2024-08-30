@@ -256,9 +256,27 @@
                 "igvf_utils": "unspecified"
             }
         },
+        "age": {
+            "title": "Age (years)",
+            "description": "Age in years",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 21.03,
+                "igvf_utils": 21.03
+            }
+        },
         "bmi": {
             "title": "BMI",
             "description": "Body mass index (Kg/m2)",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 21.03,
+                "igvf_utils": 21.03
+            }
+        },
+        "diabetes_duration": {
+            "title": "Diabetes Duration (years)",
+            "description": "Diabetes Duration in years",
             "type": "number",
             "submissionExample": {
                 "appscript": 21.03,
@@ -455,6 +473,7 @@
 	    "enum": [
 		"oral medications",
 		"insulin",
+		"unspecified",
 		"other treatment"
 	    ],
             "submissionExample": {
