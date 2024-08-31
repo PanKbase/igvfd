@@ -13,6 +13,18 @@ def human_donor():
             'sex': {
                 'title': 'Sex'
             },
+            'diabetes_status_description': {
+                'title': 'Diabetes Status'
+            },
+            'aab_gada': {
+                'title': 'AAB GADA POSITIVE'
+            },
+            'aab_ia2': {
+                'title': 'AAB IA2 POSITIVE'
+            },
+            'aab_znt8': {
+                'title': 'AAB ZNT8 POSITIVE'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -24,12 +36,6 @@ def human_donor():
             },
             'status': {
                 'title': 'Status'
-            },
-            'virtual': {
-                'title': 'Virtual'
-            },
-            'type': {
-                'title': 'Object Type',
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error'
@@ -50,16 +56,18 @@ def human_donor():
                 'facet_fields': [
                     'ethnicities',
                     'sex',
-                    'virtual',
+                    'diabetes_status_description',
+                    'aab_gada',
+                    'aab_ia2',
+                    'aab_znt8',
+                    'collections',
                 ]
             },
             {
                 'title': 'Provenance',
                 'facet_fields': [
-                    'collections',
                     'lab.title',
                     'award.component',
-                    'type',
                 ]
             },
             {
@@ -85,9 +93,6 @@ def human_donor():
             },
             'aliases': {
                 'title': 'Aliases'
-            },
-            'taxa': {
-                'title': 'Taxa'
             },
             'sex': {
                 'title': 'Sex'
@@ -116,8 +121,5 @@ def human_donor():
             'phenotypic_features': {
                 'title': 'Phenotypic Features'
             },
-            'virtual': {
-                'title': 'Virtual'
-            }
         }
     }

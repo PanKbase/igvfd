@@ -62,18 +62,17 @@
             }
         },
         "sex": {
-            "title": "Reported Sex",
-            "description": "Sex of the donor.",
+            "title": "Sex",
+            "description": "Self-Reported sex of the donor.",
             "type": "string",
-            "default": "unspecified",
             "enum": [
                 "male",
                 "female",
-                "unspecified"
+                "other"
             ],
             "submissionExample": {
-                "appscript": "unspecified",
-                "igvf_utils": "unspecified"
+                "appscript": "female",
+                "igvf_utils": "female"
             }
         },
         "phenotypic_features": {

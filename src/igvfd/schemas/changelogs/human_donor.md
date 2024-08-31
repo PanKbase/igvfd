@@ -1,5 +1,8 @@
 ## Changelog for *`human_donor.json`*
-
+### Minor changes since schema version 14
+* change desired field to tier 2 and add tier 3 which are optional tiers are tier 1, tier 2, tier 3. Audits accordingly
+* add family_history_of_diabetes (boolean), family_history_of_diabetes_relationship (array string) 
+* add enum to donnation type and glucose lowering therapy
 ### Minor changes since schema version 14
 * add desired field tiers are required, desired and optional. Audits accordingly
 * update description to clarify that certain fields are marked as 'required', others as 'desired', and all remaining fields are considered optional. 
