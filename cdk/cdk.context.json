@@ -44,8 +44,8 @@
     "Id": "/hostedzone/Z00919183NFQUZOQASARP",
     "Name": "demo.pankbase.org."
   },
-  "vpc-provider:account=920073238245:filter.vpc-id=vpc-0223751116a32c207:region=us-west-2:returnAsymmetricSubnets=true": {
-    "vpcId": "vpc-0223751116a32c207",
+  "vpc-provider:account=565393070554:filter.vpc-id=vpc-012e2f9fcc348d584:region=us-west-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-012e2f9fcc348d584",
     "vpcCidrBlock": "10.5.0.0/16",
     "availabilityZones": [],
     "subnetGroups": [
@@ -54,22 +54,22 @@
         "type": "Isolated",
         "subnets": [
           {
-            "subnetId": "subnet-0103f198167914f39",
+            "subnetId": "subnet-02afeec29507c4746",
             "cidr": "10.5.48.0/20",
             "availabilityZone": "us-west-2a",
-            "routeTableId": "rtb-0cee837c81b8c27d6"
+            "routeTableId": "rtb-0fca06e1a195e256c"
           },
           {
-            "subnetId": "subnet-02af46ba85da230fe",
+            "subnetId": "subnet-0fb0c200cd177e95c",
             "cidr": "10.5.64.0/20",
             "availabilityZone": "us-west-2b",
-            "routeTableId": "rtb-085dfa6566e7da996"
+            "routeTableId": "rtb-0ec7baea70b6a9cb3"
           },
           {
-            "subnetId": "subnet-0459edb9b478d7a4f",
+            "subnetId": "subnet-0783b3bebe2175412",
             "cidr": "10.5.80.0/20",
             "availabilityZone": "us-west-2c",
-            "routeTableId": "rtb-08142cfc5b02bc918"
+            "routeTableId": "rtb-0a807dd54eb254dd6"
           }
         ]
       },
@@ -78,30 +78,30 @@
         "type": "Public",
         "subnets": [
           {
-            "subnetId": "subnet-02e701573954e62da",
+            "subnetId": "subnet-09f9999e7003ffc02",
             "cidr": "10.5.0.0/20",
             "availabilityZone": "us-west-2a",
-            "routeTableId": "rtb-0350a70764c34a379"
+            "routeTableId": "rtb-015e51cf89c2a696e"
           },
           {
-            "subnetId": "subnet-0a82f3a29b133f3b5",
+            "subnetId": "subnet-043d2535509794f7b",
             "cidr": "10.5.16.0/20",
             "availabilityZone": "us-west-2b",
-            "routeTableId": "rtb-0184d2073f7f6bd61"
+            "routeTableId": "rtb-09551427701b780b1"
           },
           {
-            "subnetId": "subnet-067abd19828402b2d",
+            "subnetId": "subnet-0769172eba6a3667a",
             "cidr": "10.5.32.0/20",
             "availabilityZone": "us-west-2c",
-            "routeTableId": "rtb-0e585c9b48220543b"
+            "routeTableId": "rtb-0012afb0ee7d0e647"
           }
         ]
       }
     ]
   },
-  "hosted-zone:account=920073238245:domainName=staging.igvf.org:region=us-west-2": {
-    "Id": "/hostedzone/Z001434133NHQYXB24MMS",
-    "Name": "staging.igvf.org."
+  "hosted-zone:account=565393070554:domainName=staging.pankbase.org:region=us-west-2": {
+    "Id": "/hostedzone/Z07816901RWFMG8AFABMP",
+    "Name": "staging.pankbase.org."
   },
   "vpc-provider:account=920073238245:filter.vpc-id=vpc-0048042cde3da83e3:region=us-west-2:returnAsymmetricSubnets=true": {
     "vpcId": "vpc-0048042cde3da83e3",
@@ -162,8 +162,8 @@
     "Id": "/hostedzone/Z00132283PG6TJ10U0SN7",
     "Name": "sandbox.igvf.org."
   },
-  "vpc-provider:account=035226225042:filter.vpc-id=vpc-0d874b77b42510f1b:region=us-west-2:returnAsymmetricSubnets=true": {
-    "vpcId": "vpc-0d874b77b42510f1b",
+  "vpc-provider:account=495599754696:filter.vpc-id=vpc-0de5a343c73c9082d:region=us-west-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0de5a343c73c9082d",
     "vpcCidrBlock": "10.7.0.0/16",
     "availabilityZones": [],
     "subnetGroups": [
@@ -172,22 +172,22 @@
         "type": "Public",
         "subnets": [
           {
-            "subnetId": "subnet-0985df0105adde183",
+            "subnetId": "subnet-05f61185481f1fb50",
             "cidr": "10.7.0.0/20",
             "availabilityZone": "us-west-2a",
-            "routeTableId": "rtb-0d58542d7e0d3e0ad"
+            "routeTableId": "rtb-0b2dd7eb1146bfabe"
           },
           {
-            "subnetId": "subnet-0b1658a82a9cedace",
+            "subnetId": "subnet-02ba7823b3e31fec8",
             "cidr": "10.7.16.0/20",
             "availabilityZone": "us-west-2b",
-            "routeTableId": "rtb-0594ff90b359b1084"
+            "routeTableId": "rtb-02fdbbbf5b7f76bed"
           },
           {
-            "subnetId": "subnet-0f59bda9d619e63ed",
+            "subnetId": "subnet-0f6512c064d46549d",
             "cidr": "10.7.32.0/20",
             "availabilityZone": "us-west-2c",
-            "routeTableId": "rtb-0704b73d5f1f15ba6"
+            "routeTableId": "rtb-05baa4e3dd71c7b06"
           }
         ]
       },
@@ -196,30 +196,30 @@
         "type": "Isolated",
         "subnets": [
           {
-            "subnetId": "subnet-0ece567bd3137b7c0",
+            "subnetId": "subnet-0aeb229745f78d68b",
             "cidr": "10.7.48.0/20",
             "availabilityZone": "us-west-2a",
-            "routeTableId": "rtb-043858dfbb718a9d3"
+            "routeTableId": "rtb-06aad2b41dff9dbce"
           },
           {
-            "subnetId": "subnet-0624b3c47684a781b",
+            "subnetId": "subnet-053241f17075cfb5d",
             "cidr": "10.7.64.0/20",
             "availabilityZone": "us-west-2b",
-            "routeTableId": "rtb-0d34128348a972fec"
+            "routeTableId": "rtb-031f4503c3cb626e9"
           },
           {
-            "subnetId": "subnet-077e25fa031e8704b",
+            "subnetId": "subnet-033b6c1522ac51d03",
             "cidr": "10.7.80.0/20",
             "availabilityZone": "us-west-2c",
-            "routeTableId": "rtb-0e5ab0a21bee1428b"
+            "routeTableId": "rtb-0c8e04fce58480ecd"
           }
         ]
       }
     ]
   },
-  "hosted-zone:account=035226225042:domainName=data.igvf.org:region=us-west-2": {
-    "Id": "/hostedzone/Z05697883BK6NSVEQKECD",
-    "Name": "data.igvf.org."
+  "hosted-zone:account=495599754696:domainName=data.pankbase.org:region=us-west-2": {
+    "Id": "/hostedzone/Z10196943GADQKBPW4M2F",
+    "Name": "data.pankbase.org."
   },
   "acknowledged-issue-numbers": [
     25356
