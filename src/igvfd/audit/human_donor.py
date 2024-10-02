@@ -26,6 +26,7 @@ def audit_desired_fields(value, system):
         "glucose_loweing_theraphy",
         "hospital_stay",
         "donation_type",
+        "diabetes_status",
         "cause_of_death"
     ]
     missing_fields = [field for field in desired_fields if field not in value]
