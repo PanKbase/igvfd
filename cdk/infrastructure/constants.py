@@ -1,3 +1,3 @@
-DEV_DATABASE_IDENTIFIER = 'igvfd-dev-deploydevelopme-postgrespostgresfromsnap-kvennmzadzpr'
+DEV_DATABASE_IDENTIFIER = 'igvfd-dev-deploydevelopme-postgrespostgresfromsnap-im70ozbtsyr8'
 
-PROD_DATABASE_IDENTIFIER = 'igvfd-main-productiondeploystage-postgres97b73533-ikxchjbjh9yk'
+PROD_DATABASE_IDENTIFIER = 'prod-db'
