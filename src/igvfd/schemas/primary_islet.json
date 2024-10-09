@@ -1,0 +1,334 @@
+{
+    "title": "Primary Islet",
+    "$id": "/profiles/primary_islet.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "A biosample that is directly harvested from a donor as islet cells.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "sources",
+        "donors",
+        "sample_terms",
+        "isolation_center",
+        "cold_ischaemia_time"
+    ],
+    "desired": [
+        "rrid",
+        "organ_source",
+        "prep_viability",
+        "warm_ischaemia_duration",
+        "purity",
+        "hand_picked",
+        "pre_shipment_culture_time",
+        "islet_function_available"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "sample.json#/properties"
+        },
+        {
+            "$ref": "biosample.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/product_info"
+        },
+        {
+            "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/taxa"
+        },
+        {
+            "$ref": "mixins.json#/publication_identifiers"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "biosample.json#/dependentSchemas",
+            "shared_dependencies.json#/accession_status"
+        ]
+    },
+    "properties": {
+        "schema_version": {
+            "default": "19"
+        },
+        "rrid": {
+            "title": "RRID",
+            "description": "RRID for biosample",
+            "comment": "optional bc all sources do not have biosample RRIDs, but would be nice to require",
+            "type": "string",
+            "pattern": "^RRID:[A-Z]{4}\\d{8}$",
+            "submissionExample": {
+                "appscript": "RRID:SAMN0000000",
+                "igvf_utils": "RRID:SAMN0000000"
+            }
+        },
+        "pmi": {
+            "title": "Post-mortem Interval (hours)",
+            "description": "The amount of time elapsed since death.",
+            "comment": "Post-mortem interval should be reported, if known.",
+            "type": "integer",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "ccf_id": {
+            "title": "Common Coordinate Framework Identifier",
+            "description": "HubMap Common Coordinate Framework unique identifier corresponding to the organ, biological structure, and spatial location of the tissue specimen.",
+            "comment": "This identifier will be later linked to: https://portal.hubmapconsortium.org/ccf-eui",
+            "type": "string",
+            "format": "uuid",
+            "submissionExample": {
+                "appscript": "78d06f07-f1cb-4d21-b578-b01c7388804f",
+                "igvf_utils": "78d06f07-f1cb-4d21-b578-b01c7388804f"
+            }
+        },
+        "preservation_method": {
+            "title": "Preservation Method",
+            "description": "The method by which the tissue was preserved: cryopreservation (slow-freeze) or flash-freezing.",
+            "comment": "Indicate the tissue preservation_method if known and may be/become an experimental variable to track.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": ["cryopreservation", "flash-freezing", "0", "UW", "Flushing:UW", "Storage:HTK", "HTK", "Flushing:Servator-B", "Flush-solution:UW-and-HTK", "-", "SPS", "SPS-1", "SPS-1:UW", "Fresh:HTK", "BTL", "Storage_Viaspan_SPS-1", "UW-Belzer-Cold", "HTK-for-Heart", "Viaspan_SPS-1", "initial-flush:UW", "storage-solution:HTK"]
+            },
+            "submissionExample": {
+                "appscript": "flash-freezing",
+                "igvf_utils": "flash-freezing"
+            }
+        },
+        "isolation_center": {
+            "title": "Isolation Center",
+            "description": "Facility or location where the pancreas was isolated",
+            "type": "string",
+            "enum": ["Network for Pancreatic Organ Donors with Diabetes(nPOD)", "Integrated Islet Distribution Program (IIDP)", "Islet Cell Resource Centers (ICR)", "Islet Isolation Core at the University of Alberta (Edmonton)", "ECIT Islet for Basic Research Program", "Human Pancreas Analysis Program (HPAP)", "University of Pennsylvania (Upenn)"],
+            "submissionExample": {
+                "appscript": "Network for Pancreatic Organ Donors with Diabetes(nPOD)",
+                "igvf_utils": "Network for Pancreatic Organ Donors with Diabetes(nPOD)"
+            }
+        },
+        "cold_ischaemia_time": {
+            "title": "Cold Ischaemia Time (hours)",
+            "description": "Duration in hours that the pancreas was kept at a low temperature after removal from the donor, before the transplant or further processing",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 12.47,
+                "igvf_utils": 12.47
+            }
+        },
+        "organ_source": {
+            "title": "Organ Source",
+            "description": "Type of donor from which the pancreas was obtained.",
+            "type": "string",
+            "enum": ["deceased", "living", "other classifications", "unknown"],
+            "submissionExample": {
+                "appscript": "other classifications",
+                "igvf_utils": "other classifications"
+            }
+        },
+        "prep_viability": {
+            "title": "Prep Viability (percentage)",
+            "description": "Percentage of viable cells in the pancreas preparation",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 85,
+                "igvf_utils": 85
+            }
+        },
+        "warm_ischaemia_duration": {
+            "title": "Warm Ischaemia Duration / Down Time (hours)",
+            "description": "Duration in hours that the pancreas was without blood supply at body temperature before being cooled or transplanted",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 0.22,
+                "igvf_utils": 0.22
+            }
+        },
+        "purity": {
+            "title": "Purity (Percentage)",
+            "description": "Percentage of the pancreas preparation that consists of the target cells or tissue type",
+            "type": "array",
+            "items": {
+                "title": "Purity (Percentage)",
+                "type": "string"
+            },
+            "submissionExample": {
+                "appscript": ["12.47"],
+                "igvf_utils": ["12.47"]
+            }
+        },
+        "hand_picked": {
+            "title": "Hand Picked",
+            "description": "Whether the pancreas or its components were manually selected or processed",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
+        },
+        "pre_shipment_culture_time": {
+            "title": "Pre-Shipment Culture Time (hours)",
+            "description": "Number of hours the pancreas or isolated islets were cultured before being shipped",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 0.22,
+                "igvf_utils": 0.22
+            }
+        },
+        "islet_function_available": {
+            "title": "Islet Function Available",
+            "description": "Whether functional assays or data are available for the isolated pancreatic islets",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
+        },
+        "digest_time": {
+            "title": "Digest Time (hours)",
+            "description": "Time taken to enzymatically digest the pancreas tissue during the isolation process",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 0.22,
+                "igvf_utils": 0.22
+            }
+        },
+        "percentage_trapped": {
+            "title": "Percentage Trapped (percentage)",
+            "description": "percentage of islets that are trapped or non-functional after the isolation process",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 0.22,
+                "igvf_utils": 0.22
+            }
+        },
+        "islet_yield": {
+            "title": "Islet Yield (IEQ)",
+            "description": "total number of Islet Equivalents (IEQ) obtained from the pancreas",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 66408,
+                "igvf_utils": 66408
+            }
+        },
+        "pancreas_weight": {
+            "title": "IEQ/Pancreas Weight (grams)",
+            "description": "ratio of Islet Equivalents to the weight of the pancreas in grams",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 995.2,
+                "igvf_utils": 995.2
+            }
+        },
+        "post_shipment_islet_viability": {
+            "title": "Post-Shipment islet viability (%)",
+            "description": "percentage of viable islet cells remaining after the islets have been shipped",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 0.22,
+                "igvf_utils": 0.22
+            }
+        },
+        "facs_purification": {
+            "title": "FACS Purification",
+            "description": "Links to the protocol(s) for conducting the assay on Protocols.io.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Protocol",
+                "type": "string",
+                "pattern": "^https://www\\.protocols\\.io/(\\S+)$"
+            },
+            "submissionExample": {
+                "appscript": "[\"https://www.protocols.io/link/to/protocol\",\"https://www.protocols.io/link/to/protocol2\"]",
+                "igvf_utils": "https://www.protocols.io/link/to/protocol,https://www.protocols.io/link/to/protocol2"
+            }
+        },
+        "islet_morphology": {
+            "title": "Islet Morphology",
+            "description": "Indicates whether the morphology of the islets has been assessed",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
+        },
+        "islet_histology": {
+            "title": "Islet Histology",
+            "description": "Indicates whether the histology of the islets has been assessed",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
+        },
+        "date_obtained": {
+            "title": "Date Harvested",
+            "submissionExample": {
+                "appscript": "2023-10-02",
+                "igvf_utils": "2023-10-02"
+            }
+        },
+        "part_of": {
+            "linkTo": [
+                "PrimaryCell",
+                "Tissue",
+                "WholeOrganism"
+            ],
+            "type": "string",
+            "submissionExample": {
+                "appscript": "TSTSM02881437 or john-doe:tissue01",
+                "igvf_utils": "TSTSM02881437 or john-doe:tissue01"
+            }
+        },
+        "pooled_from": {
+            "items": {
+                "title": "Primary Cell Pooled From",
+                "linkTo": "PrimaryCell",
+                "type": "string"
+            },
+            "submissionExample": {
+                "appscript": "TSTSM02881434 or john-doe:tissue02",
+                "igvf_utils": "TSTSM02881434 or john-doe:tissue02"
+            }
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "description",
+        "summary",
+        "submitted_by.title",
+        "taxa"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "dbxrefs",
+        "institutional_certificates.certificate_identifier"
+    ],
+    "changelog": "/profiles/changelogs/primary_islet.md"
+}

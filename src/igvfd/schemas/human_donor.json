@@ -6,21 +6,21 @@
     "type": "object",
     "required": [
         "award",
+        "center_donor_id",
         "lab",
-        "rrid",
+        "age",
         "living_donor",
-        "bmi",
-        "diabetes_status",
-        "diabetes_status_description",
         "taxa"
     ],
     "desired": [
-	"center_donor_id",
-	"ethnicities",
-	"hba1c",
-	"diabetes_status_hba1c",
-	"glucose_loweing_theraphy",
-	"hospital_stay",
+        "rrid",
+        "bmi",
+        "diabetes_status_description",
+        "ethnicities",
+        "hba1c",
+        "diabetes_status_hba1c",
+        "glucose_loweing_theraphy",
+        "hospital_stay",
         "donation_type",
         "cause_of_death"
     ],
@@ -67,13 +67,12 @@
     },
     "properties": {
         "schema_version": {
-            "default": "14"
+            "default": "16"
         },
         "related_donors": {
             "title": "Related Donors",
             "description": "Familial relations of this donor also in PanKbase .",
             "type": "array",
-            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Related Donor",
@@ -126,7 +125,6 @@
             "comment": "We use http://bioportal.bioontology.org/ontologies/HANCESTRO as a template for the enum list of ethnicities.",
             "type": "array",
             "uniqueItems": true,
-            "minItems": 1,
             "items": {
                 "type": "string",
                 "enum": [
@@ -136,6 +134,7 @@
                     "Asian",
                     "Black",
                     "Black African",
+                    "Caucasian",
                     "Chinese",
                     "Colombian",
                     "Dai Chinese",
@@ -164,44 +163,108 @@
         },
         "genetic_ethnicities": {
             "title": "Predicted Genetic Ancestry",
-            "description": "Inferred ancestry of the donor from genetic analysis",
+            "description": "Inferred ancestry of the donor from genetic analysis, including optional percentage values for each ethnicity.",
             "comment": "We use http://bioportal.bioontology.org/ontologies/HANCESTRO as a template for the enum list of ethnicities.",
             "type": "array",
             "uniqueItems": true,
-            "minItems": 1,
             "items": {
-                "type": "string",
-                "enum": [
-                    "African American",
-                    "African Caribbean",
-                    "Arab",
-                    "Asian",
-                    "Black",
-                    "Black African",
-                    "Chinese",
-                    "Colombian",
-                    "Dai Chinese",
-                    "Esan",
-                    "Eskimo",
-                    "European",
-                    "Gambian",
-                    "Han Chinese",
-                    "Hispanic",
-                    "Indian",
-                    "Japanese",
-                    "Kinh Vietnamese",
-                    "Luhya",
-                    "Maasai",
-                    "Mende",
-                    "Native Hawaiian",
-                    "Pacific Islander",
-                    "Puerto Rican",
-                    "Yoruba"
-                ]
+                "type": "object",
+                "properties": {
+                    "ethnicity": {
+                        "type": "string",
+                        "enum": [
+                           "African-American",
+                           "African-Caribbean",
+                           "Admixed-American",
+                           "African",
+                           "Arab",
+                           "Asian",
+                           "Black",
+                           "Black-African",
+                           "Caucasian",
+                           "Chinese",
+                           "Colombian",
+                           "Dai-Chinese",
+                           "East-Asian",
+                           "Esan",
+                           "Eskimo",
+                           "European",
+                           "Gambian",
+                           "Han-Chinese",
+                           "Hispanic",
+                           "Indian",
+                           "Japanese",
+                           "Kinh-Vietnamese",
+                           "Luhya",
+                           "Maasai",
+                           "Mende",
+                           "Native-Hawaiian",
+                           "Pacific-Islander",
+                           "Puerto-Rican",
+                           "South-Asian",
+                           "Yoruba"
+                         ]
+                    },
+                    "percentage": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 100,
+                        "description": "Optional percentage of the genetic ancestry for the specified ethnicity."
+                       }
+                    },
+                    "required": ["ethnicity"]
             },
             "submissionExample": {
-                "appscript": "[\"Japanese\", \"European\"]",
-                "igvf_utils": "Japanese, European"
+                "appscript": "[{\"ethnicity\": \"Japanese\", \"percentage\": 60}, {\"ethnicity\": \"European\", \"percentage\": 40}]",
+                "igvf_utils": "Japanese (60%), European (40%)"
+            }
+        },
+        "data_available": {
+            "title": "Data Available",
+            "description": "A list of datasets available for the donor, each with tissue and a corresponding link to access the dataset.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "dataset": {
+                        "type": "string",
+                        "enum": [
+                            "BCRseq",
+                            "CITEseq",
+                            "Flow_cytometry",
+                            "histology",
+                            "scMultiome",
+                            "TCRseq",
+                            "scRNAseq",
+                            "RNAseq",
+                            "snATACseq",
+                            "ATAC-seq",
+                            "CyTof",
+                            "mass_spec",
+                            "imaging_mass_spec",
+                            "CODEX",
+                            "WGBS"
+                        ]
+                    },
+                    "dataset_tissue": {
+                        "type": "string",
+                        "enum": [
+                            "Pancreas",
+                            "Islet",
+                            "Spleen",
+                            "Lymph",
+                            "Blood",
+                            "Thymus"
+                        ],
+                        "description": "Dataset Tissue"
+                    },
+                    "dataset_link": {
+                        "type": "string",
+                        "description": "Dataset Link which is optional"
+                    }
+                    },
+                "required": ["dataset", "dataset_tissue"]
             }
         },
         "living_donor": {
@@ -216,17 +279,17 @@
         "family_history_of_diabetes": {
             "title": "Family History of Diabetes",
             "description": "Family History of Diabetes",
-            "type": "boolean",
+            "type": "string",
+            "enum": ["true", "false", "NA", "unknown"],
             "submissionExample": {
-                "appscript": false,
-                "igvf_utils": false
+                "appscript": "false",
+                "igvf_utils": "false"
             }
         },
         "family_history_of_diabetes_relationship": {
             "title": "Family History of Diabetes Relationship",
             "type": "array",
             "description": "Family History of Diabetes Relationship.",
-            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Family History of Diabetes Relationship",
@@ -238,7 +301,7 @@
             "title": "RRID",
             "description": "Research Unique Identifier. PanKbase will only take donors with RRID",
             "type": "string",
-	    "pattern": "^RRID:[A-Z]{4}\\d{8}$",
+            "pattern": "^RRID:[A-Z]{4}\\d{8}$",
             "submissionExample": {
                 "appscript": "RRID:SAMN19776455",
                 "igvf_utils": "RRID:SAMN19776455"
@@ -296,18 +359,18 @@
         "diabetes_duration": {
             "title": "Diabetes Duration (years)",
             "description": "Diabetes Duration in years",
-            "type": "number",
+            "type": "string",
             "submissionExample": {
-                "appscript": 21.03,
-                "igvf_utils": 21.03
+                "appscript": "21.03-22",
+                "igvf_utils": "21.03-22"
             }
         },
         "diabetes_status": {
             "title": "Diabetes Status",
             "description": "Diabetes status T1D,T2D,MODY, etc. MONDO ontology term",
             "type": "array",
-            "minItems": 1,
             "uniqueItems": true,
+            "default": [],
             "items": {
                 "title": "Diabetes Status",
                 "comment": "See phenotype_term.json for available identifiers.",
@@ -327,15 +390,17 @@
                 "type 1 diabetes",
                 "type 2 diabetes",
                 "gestational diabetes",
-		"maturity onset diabetes of the young (MODY)",
-		"neonatal diabetes",
-		"wolfram syndrome",
-		"alström syndrome",
-		"latent autoimmune diabetes in adults (LADA)",
-		"type 3c diabetes",
-		"steroid-induced diabetes",
-		"cystic fibrosis diabetes",
-                "non-diabetic"
+                "maturity onset diabetes of the young (MODY)",
+                "monogenic diabetes",
+                "neonatal diabetes",
+                "wolfram syndrome",
+                "alström syndrome",
+                "latent autoimmune diabetes in adults (LADA)",
+                "type 3c diabetes",
+                "steroid-induced diabetes",
+                "cystic fibrosis diabetes",
+                "non-diabetic",
+                "diabetes unspecified"
             ],
             "submissionExample": {
                 "appscript": "non-diabetic",
@@ -359,14 +424,14 @@
                 "type 1 diabetes",
                 "type 2 diabetes",
                 "gestational diabetes",
-		"maturity onset diabetes of the young (MODY)",
-		"neonatal diabetes",
-		"wolfram syndrome",
-		"alström syndrome",
-		"latent autoimmune diabetes in adults (LADA)",
-		"type 3c diabetes",
-		"steroid-induced diabetes",
-		"cystic fibrosis diabetes",
+                "maturity onset diabetes of the young (MODY)",
+                "neonatal diabetes",
+                "wolfram syndrome",
+                "alström syndrome",
+                "latent autoimmune diabetes in adults (LADA)",
+                "type 3c diabetes",
+                "steroid-induced diabetes",
+                "cystic fibrosis diabetes",
                 "non-diabetic"
             ],
             "submissionExample": {
@@ -425,6 +490,24 @@
                 "igvf_utils": 203
             }
         },
+        "aab_iaa": {
+            "title": "AAB_IAA_POSITIVE",
+            "description": "The presence of Autoantibodies against IAA",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
+        },
+        "aab_iaa_value": {
+            "title": "AAB IAA value (unit/ml)",
+            "description": "AAB IAA value (unit/ml)",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 203,
+                "igvf_utils": 203
+            }
+        },
         "aab_ia2": {
             "title": "AAB_IA2_POSITIVE",
             "description": "The presence of Autoantibodies against IA2",
@@ -466,14 +549,18 @@
             "description": "Series of comma-separated values describing HLA types as: class, locus, allele1, allele2, method",
             "comment": "example: 'A,1,11:01,24:02,NGS', 'B,1,15:01,40:01,NGS', 'C,1,03:03,03:04,NGS'",
             "type": "array",
-            "minItems": 1,
-	    "uniqueItems": true
+            "uniqueItems": true,
+            "items": {
+                "title": "HLA typing",
+                "description": "Series of comma-separated values describing HLA types as: class, locus, allele1, allele2, method",
+                "type": "string"
+            }
         },
         "other_tissues_available": {
             "title": "Other Tissues Available",
             "description": "Tissues obtained from the donor",
             "type": "array",
-            "minItems": 1,
+            "default": [],
             "uniqueItems": true,
             "items": {
                 "title": "Sample Term",
@@ -509,25 +596,26 @@
             "description": "Details the type of therapy or medication regimen the patient is on to manage blood glucose levels, including oral medications, insulin, or other treatments.",
             "type": "array",
             "uniqueItems": true,
-            "minItems": 1,
             "items": {
                 "type": "string",
                 "enum": [
-                         "oral medications",
-                         "insulin",
-                         "other treatment",
+                         "Oral medications",
+                         "Insulin",
+                         "Other treatment",
                          "Metformin",
                          "Glipizide",
                          "Glimeperide",
                          "Ozempic",
                          "Pills of unknown name",
-                         "Metformin, Lantus, Trulicity",
+                         "Lantus",
+                         "Trulicity",
                          "Oral meds",
                          "Unknown pills",
                          "Glyxambi",
                          "Unknown medication",
                          "Unknown",
-                         "No treatment"
+                         "No treatment",
+                         "NA"
                         ]
                       },
             "submissionExample": {
@@ -539,7 +627,6 @@
             "title": "Human Donor Identifiers",
             "type": "array",
             "description": "Identifiers of this human donor.",
-            "minItems": 1,
             "uniqueItems": true,
             "permission": "admin_only",
             "items": {
@@ -555,7 +642,7 @@
         "taxa",
         "ethnicities",
         "human_donor_identifiers",
-        "diabetes_status",
+        "diabetes_status_description",
         "phenotypic_features.feature.term_name",
         "submitted_by.title"
     ],

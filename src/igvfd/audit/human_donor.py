@@ -19,13 +19,16 @@ def audit_desired_fields(value, system):
     """
     description = get_audit_description(audit_desired_fields)
     desired_fields = [
-        "center_donor_id",
+        "rrid",
+        "bmi",
+        "diabetes_status_description",
         "ethnicities",
         "hba1c",
         "diabetes_status_hba1c",
         "glucose_loweing_theraphy",
         "hospital_stay",
         "donation_type",
+        "diabetes_status",
         "cause_of_death"
     ]
     missing_fields = [field for field in desired_fields if field not in value]
@@ -46,7 +49,7 @@ def audit_optional_fields(value, system):
     }
     """
     description = get_audit_description(audit_optional_fields)
-    optional_fields = ["dbxrefs", "sex", "phenotypic_features", "virtual", "family_history_of_diabetes", "family_history_of_diabetes_relationship", "genetic_ethnicities", "biological_sex", "age", "diabetes_duration", "c_peptide", "aab_gada", "aab_gada_value", "aab_ia2", "aab_ia2_value", "aab_znt8", "aab_znt8_value", "hla_typing", "other_tissues_available", "publication_identifiers", "collections", "pancreas_tissue_available", "documents", "url"]
+    optional_fields = ["dbxrefs", "sex", "phenotypic_features", "virtual", "family_history_of_diabetes", "family_history_of_diabetes_relationship", "genetic_ethnicities", "biological_sex", "diabetes_duration", "c_peptide", "aab_gada", "aab_gada_value", "aab_ia2", "aab_ia2_value", "aab_znt8", "aab_znt8_value", "hla_typing", "other_tissues_available", "publication_identifiers", "collections", "pancreas_tissue_available", "documents", "url"]
     missing_fields = [field for field in optional_fields if field not in value]
 
     if missing_fields:

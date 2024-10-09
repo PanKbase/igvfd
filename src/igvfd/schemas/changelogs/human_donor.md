@@ -1,4 +1,10 @@
 ## Changelog for *`human_donor.json`*
+### Schema version 15
+* change diabetes_status from required to optional tier 3
+* change family_history_of_diabetes to boolean to string
+* change 'diabetes_duration' from number to string for range
+* add glucose lowering therapy 
+
 ### Minor changes since schema version 14
 * change desired field to tier 2 and add tier 3 which are optional tiers are tier 1, tier 2, tier 3. Audits accordingly
 * add family_history_of_diabetes (boolean), family_history_of_diabetes_relationship (array string) 
