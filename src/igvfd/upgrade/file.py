@@ -305,3 +305,72 @@ def tabular_file_10_11_signal_file_8_9(value, system):
     if value.get('content_type') == 'fold over change control':
         value['content_type'] = 'fold change over control'
     return
+<<<<<<< HEAD
+=======
+
+
+@upgrade_step('tabular_file', '11', '12')
+def tabular_file_11_12(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1948
+    notes = value.get('notes', '')
+    if value.get('content_type') == 'SNP effect matrix':
+        value['content_type'] = 'variant effects'
+        notes += f'This object\'s content_type was SNP effect matrix, and changed to variants effects via upgrade.'
+    return
+
+
+@upgrade_step('matrix_file', '6', '7')
+def matrix_file_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1950
+    if 'dimension1' in value:
+        value['principal_dimension'] = value['dimension1']
+        del value['dimension1']
+    if 'dimension2' in value:
+        value['secondary_dimensions'] = [value['dimension2']]
+        del value['dimension2']
+
+
+@upgrade_step('tabular_file', '12', '13')
+def tabular_file_12_13(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2011
+    notes = value.get('notes', '')
+    if value.get('file_format') == 'txt':
+        value['file_format'] = 'tsv'
+        notes += f'This object\'s file_format was txt, and changed to tsv via upgrade.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('reference_file', '14', '15')
+def reference_file_14_15(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2040
+    notes = value.get('notes', '')
+    if 'external_id' in value:
+        external_id = value['external_id']
+        notes += f' This file previously had {external_id} submitted as external_id, but the property external_id has been now removed.'
+        del value['external_id']
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('alignment_file', '10', '11')
+def alignment_file_10_11(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2113
+    notes = value.get('notes', '')
+    if value['file_format'] == 'bai':
+        value['file_format'] = 'bam'
+        notes += f' This file\'s file_format was .bai, but has been upgraded to .bam.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('genome_browser_annotation_file', '8', '9')
+def genome_browser_annotation_file_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2113
+    notes = value.get('notes', '')
+    if value['file_format'] == 'tabix':
+        value['file_format'] = 'bigBed'
+        notes += f' This file\'s file_format was .tabix, but has been upgraded to .bigBed.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+>>>>>>> 9ed349d4 (IGVF-2113-index-file (#1206))

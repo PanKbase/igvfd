@@ -74,3 +74,57 @@ def test_audit_file_format_specifications(testapp, matrix_file, experimental_pro
         audit['category'] != 'inconsistent document type'
         for audit in res.json['audit'].get('ERROR', {})
     )
+<<<<<<< HEAD
+=======
+
+
+def test_audit_external_identifiers(testapp, model_file):
+    testapp.patch_json(
+        model_file['@id'],
+        {
+            'externally_hosted': True,
+            'external_host_url': 'http://test_url'
+        }
+    )
+    res = testapp.get(model_file['@id'] + '@@audit')
+    assert any(
+        audit['category'] == 'missing dbxrefs'
+        for audit in res.json['audit'].get('WARNING', {})
+    )
+    testapp.patch_json(
+        model_file['@id'],
+        {
+            'dbxrefs': ['Kipoi:test']
+        }
+    )
+    res = testapp.get(model_file['@id'] + '@@audit')
+    assert all(
+        audit['category'] != 'missing dbxrefs'
+        for audit in res.json['audit'].get('WARNING', {})
+    )
+
+
+def test_audit_external_reference_files(testapp, reference_file):
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'external': True
+        }
+    )
+    res = testapp.get(reference_file['@id'] + '@@audit')
+    assert any(
+        audit['category'] == 'missing dbxrefs'
+        for audit in res.json['audit'].get('WARNING', {})
+    )
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'dbxrefs': ['ENCODE:ENCFF743WOO']
+        }
+    )
+    res = testapp.get(reference_file['@id'] + '@@audit')
+    assert all(
+        audit['category'] != 'missing dbxrefs'
+        for audit in res.json['audit'].get('WARNING', {})
+    )
+>>>>>>> 9ed349d4 (IGVF-2113-index-file (#1206))

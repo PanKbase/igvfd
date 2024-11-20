@@ -5,6 +5,7 @@ import igvfd.audit.construct_library_set
 import igvfd.audit.formatter
 import igvfd.audit.human_donor
 import igvfd.audit.in_vitro_system
+import igvfd.audit.index_file
 import igvfd.audit.matrix_file
 import igvfd.audit.file_set
 import igvfd.audit.analysis_set
@@ -28,6 +29,7 @@ AUDIT_MODULES_TO_PROCESS = [
     igvfd.audit.formatter,
     igvfd.audit.human_donor,
     igvfd.audit.in_vitro_system,
+    igvfd.audit.index_file,
     igvfd.audit.matrix_file,
     igvfd.audit.file_set,
     igvfd.audit.analysis_set,

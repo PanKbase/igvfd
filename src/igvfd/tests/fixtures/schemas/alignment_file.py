@@ -136,3 +136,13 @@ def alignment_file_v9(alignment_file):
         'anvil_source_url': 'http://abc.123',
     })
     return item
+
+
+@pytest.fixture
+def alignment_file_v10(alignment_file):
+    item = alignment_file.copy()
+    item.update({
+        'schema_version': '10',
+        'file_format': 'bai'
+    })
+    return item
