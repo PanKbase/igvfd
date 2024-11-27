@@ -74,8 +74,8 @@
             "uniqueItems": true,
             "items": {
                 "title": "Library Construction Platform",
-                "type": "string"
-                "linkTo": "PlatformTerm",
+                "type": "string",
+                "linkTo": "PlatformTerm"
             },
             "submissionExample": {
                 "appscript": "/platform-terms/EFO_0008567/ or igvf:illumina-hiseq-x",
