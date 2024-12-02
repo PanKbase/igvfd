@@ -191,7 +191,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
-                            'snapshot_source_db_identifier': PROD_DATABASE_IDENTIFIER,
+                            'snapshot_arn': 'arn:aws:rds:us-west-2:495599754696:snapshot:pankbase-production-snapshot-13-08',
                             'allocated_storage': 10,
                             'max_allocated_storage': 20,
                             'instance_type': InstanceType.of(
@@ -256,7 +256,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
-                            'snapshot_source_db_identifier': PROD_DATABASE_IDENTIFIER,
+                            'snapshot_arn': 'arn:aws:rds:us-west-2:495599754696:snapshot:pankbase-production-snapshot-13-08',
                             'allocated_storage': 10,
                             'max_allocated_storage': 20,
                             'instance_type': InstanceType.of(
