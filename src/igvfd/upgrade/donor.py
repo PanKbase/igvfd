@@ -195,6 +195,20 @@ def human_donor_14_15(value, system):
     # Ensure Diabetes Status defaults to an empty array if not present
     if 'diabetes_status' not in value or not isinstance(value['diabetes_status'], list):
         value['diabetes_status'] = []
-
-
+@upgrade_step('human_donor', '15', '16')
+def human_donor_15_16(value, system):
+    # Update genetic_ethnicities to include percentage
+    if 'genetic_ethnicities' in value:
+        updated_ethnicities = []
+        for ethnicity in value['genetic_ethnicities']:
+            # If ethnicity is a string, convert it to an object with 100% as the default percentage
+            if isinstance(ethnicity, str):
+                updated_ethnicities.append({
+                    "ethnicity": ethnicity,
+                    "percentage": 100
+                })
+            else:
+                # In case of unexpected data types, retain as is (or handle as needed)
+                updated_ethnicities.append(ethnicity)
+        value['genetic_ethnicities'] = updated_ethnicities
         

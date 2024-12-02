@@ -33,6 +33,7 @@ ORDER = [
     'tissue',
     'in_vitro_system',
     'primary_cell',
+    'primary_islet',
     'technical_sample',
     'whole_organism',
     'multiplexed_sample',

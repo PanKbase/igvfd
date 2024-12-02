@@ -84,6 +84,7 @@
         "part_of": {
             "linkTo": [
                 "PrimaryCell",
+                "PrimaryIslet",
                 "Tissue",
                 "WholeOrganism"
             ],

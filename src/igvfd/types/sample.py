@@ -351,6 +351,11 @@ class Biosample(Sample):
                 summary_terms = f'{term_name} cell'
             else:
                 summary_terms = term_name
+        elif biosample_type == 'primary_islet':
+            if 'cell' not in term_name:
+                summary_terms = f'{term_name} cell'
+            else:
+                summary_terms = term_name
         elif biosample_type == 'in_vitro_system':
             if len(classifications) == 1:
                 summary_terms = f'{term_name} {classifications[0]}'
@@ -381,12 +386,12 @@ class Biosample(Sample):
 
         # embryonic is prepended to the start of the summary
         if (embryonic and
-                biosample_type in ['primary_cell', 'tissue']):
+                biosample_type in ['primary_cell', 'primary_islet', 'tissue']):
             summary_terms = f'embryonic {summary_terms}'
 
         # virtual is prepended to the start of the summary
         if (virtual and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue']):
             summary_terms = f'virtual {summary_terms}'
 
         # time post change and targeted term are appended to the end of the summary
@@ -402,7 +407,7 @@ class Biosample(Sample):
 
         # cellular sub pool is appended to the end of the summary in parentheses
         if (cellular_sub_pool and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue']):
             summary_terms += f' (cellular sub pool: {cellular_sub_pool})'
 
         # a comma is added before sex or taxa if sex is unspecified
@@ -410,7 +415,7 @@ class Biosample(Sample):
 
         # sex is appended to the end of the summary
         if (sex and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
             if sex != 'unspecified':
                 if sex == 'mixed':
                     sex = 'mixed sex'
@@ -418,7 +423,7 @@ class Biosample(Sample):
 
         # taxa of the donor(s) is appended to the end of the summary
         if (donors and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
             if not taxa or taxa == 'Mus musculus':
                 taxa_set = set()
                 strains_set = set()
@@ -443,12 +448,12 @@ class Biosample(Sample):
 
         # sorted from detail is appended to the end of the summary
         if (sorted_from_detail and
-                biosample_type in ['primary_cell', 'in_vitro_system']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system']):
             summary_terms += f' (sorting details: {sorted_from_detail})'
 
         # biomarker summaries are appended to the end of the summary
         if (biomarkers and
-                biosample_type in ['primary_cell', 'in_vitro_system']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system']):
             biomarker_summaries = []
             for biomarker in biomarkers:
                 biomarker_object = request.embed(biomarker)
@@ -465,14 +470,14 @@ class Biosample(Sample):
 
         # disease terms are appended to the end of the summary
         if (disease_terms and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
             phenotype_term_names = sorted([request.embed(disease_term).get('term_name')
                                           for disease_term in disease_terms])
             summary_terms += f' associated with {", ".join(phenotype_term_names)},'
 
         # treatment summaries are appended to the end of the summary
         if (treatments and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
             treatment_objects = [request.embed(treatment) for treatment in treatments]
             depleted_treatment_summaries = sorted([treatment.get('summary')[13:]
                                                   for treatment in treatment_objects if treatment.get('depletion')])
@@ -485,7 +490,7 @@ class Biosample(Sample):
 
         # construct library set overview is appended to the end of the summary
         if (construct_library_sets and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
             verb = 'modified with'
             library_types = set()
             for CLS in construct_library_sets:
@@ -582,6 +587,38 @@ class PrimaryCell(Biosample):
     def classifications(self):
         return [self.item_type.replace('_', ' ')]
 
+@collection(
+    name='primary-islet',
+    unique_key='accession',
+    properties={
+        'title': 'Primary Islet',
+        'description': 'Listing of primary islet',
+    }
+)
+class PrimaryIslet(Biosample):
+    item_type = 'primary_islet'
+    schema = load_schema('igvfd:schemas/primary_islet.json')
+    embedded_with_frame = Biosample.embedded_with_frame
+    audit_inherit = Biosample.audit_inherit
+    set_status_up = Biosample.set_status_up + []
+    set_status_down = Biosample.set_status_down + []
+
+    @calculated_property(
+        schema={
+            'title': 'Classifications',
+            'description': 'The general category of this type of sample.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Classification',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def classifications(self):
+        return [self.item_type.replace('_', ' ')]
 
 @collection(
     name='in-vitro-systems',

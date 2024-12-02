@@ -62,6 +62,7 @@ TOP_HITS_ITEM_TYPES = [
     'Publication',
     'InVitroSystem',
     'PrimaryCell',
+    'PrimaryIslet',
     'Tissue',
     'WholeOrganism',
     'TechnicalSample',

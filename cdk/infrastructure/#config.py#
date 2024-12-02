@@ -128,6 +128,8 @@ config: Dict[str, Any] = {
                         'on': True,
                         'props': {
                             'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
+                            'snapshot_arn': 'arn:aws:rds:us-west-2:654654139991:snapshot:prod-oct-21-2024',
+>>>>>>> dev
                             'allocated_storage': 10,
                             'max_allocated_storage': 20,
                             'instance_type': InstanceType.of(
