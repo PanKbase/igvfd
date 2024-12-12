@@ -120,6 +120,12 @@
                 }
             ]
         },
+        "s3_uri": {
+            "comment": "File location on s3",
+            "title": "s3 uri",
+            "type": "string",
+            "format": "uri"
+        },
         "external_id": {
             "comment": "Only external files should have an external ID.",
             "if": {

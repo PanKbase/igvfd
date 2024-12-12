@@ -152,6 +152,12 @@
                 "igvf_utils": "h5ad"
             }
         },
+        "s3_uri": {
+            "comment": "File location on s3",
+            "title": "s3 uri",
+            "type": "string",
+            "format": "uri"
+        },
         "dbxrefs": {
             "comment": "This file type currently does not support any external resource submission."
         }

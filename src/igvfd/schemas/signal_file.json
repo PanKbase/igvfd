@@ -86,6 +86,12 @@
                 "igvf_utils": "bigWig"
             }
         },
+        "s3_uri": {
+            "comment": "File location on s3",
+            "title": "s3 uri",
+            "type": "string",
+            "format": "uri"
+        },
         "strand_specificity": {
             "title": "Strand Specificity",
             "description": "The strandedness of the signal file: plus, minus, or unstranded.",

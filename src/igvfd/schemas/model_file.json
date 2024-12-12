@@ -113,6 +113,12 @@
                 "igvf_utils": "tar"
             }
         },
+        "s3_uri": {
+            "title": "s3 uri",
+            "comment": "File location on s3",
+            "type": "string",
+            "format": "uri"
+        },
         "upload_status": {
             "enum": [
                 "pending",

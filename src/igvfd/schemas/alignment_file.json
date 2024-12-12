@@ -76,6 +76,12 @@
                 "igvf_utils": "alignments"
             }
         },
+        "s3_uri": {
+            "comment": "File location on s3",
+            "title": "s3 uri",
+            "type": "string",
+            "format": "uri"
+        },
         "file_format": {
             "enum": [
                 "bam"

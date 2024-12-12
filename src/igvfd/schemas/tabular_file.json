@@ -145,6 +145,12 @@
                 "igvf_utils": "tsv"
             }
         },
+        "s3_uri": {
+            "title": "s3 uri",
+            "comment": "File location on s3",
+            "type": "string",
+            "format": "uri"
+        },
         "assembly": {
             "description": "Genome assembly applicable for the tabular data."
         },

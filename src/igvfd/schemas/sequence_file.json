@@ -137,6 +137,12 @@
                 "igvf_utils": "fastq"
             }
         },
+        "s3_uri": {
+            "title": "s3 uri",
+            "comment": "File location on s3",
+            "type": "string",
+            "format": "uri"
+        },
         "dbxrefs": {
             "comment": "Supported external resources include: Sequence Read Archive (SRA).",
             "items": {

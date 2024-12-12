@@ -583,8 +583,8 @@
             }
         },
         "hospital_stay": {
-            "title": "Hospital Stay (days)",
-            "description": "The total number of days the patient was hospitalized",
+            "title": "Hospital Stay (hours)",
+            "description": "The total number of hours the patient was hospitalized",
             "type": "number",
             "submissionExample": {
                 "appscript": 1.5,
