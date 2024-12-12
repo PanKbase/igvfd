@@ -86,7 +86,7 @@
                 "igvf_utils": "bigWig"
             }
         },
-        "s3_uri": {
+        "file_url": {
             "comment": "File location on s3",
             "title": "s3 uri",
             "type": "string",

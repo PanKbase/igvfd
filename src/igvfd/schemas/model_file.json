@@ -113,7 +113,7 @@
                 "igvf_utils": "tar"
             }
         },
-        "s3_uri": {
+        "file_url": {
             "title": "s3 uri",
             "comment": "File location on s3",
             "type": "string",

@@ -82,7 +82,7 @@
             },
             "comment": "This file type should not be gzipped as jpg and png are already compressed file formats."
         },
-        "s3_uri": {
+        "file_url": {
             "title": "s3 uri",
             "comment": "File location on s3",
             "type": "string",

@@ -145,7 +145,7 @@
                 "igvf_utils": "tsv"
             }
         },
-        "s3_uri": {
+        "file_url": {
             "title": "s3 uri",
             "comment": "File location on s3",
             "type": "string",
