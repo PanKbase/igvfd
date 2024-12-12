@@ -47,7 +47,7 @@ X_REQUEST_URL = 'X-Request-Url'
 X_STATS = 'X-Stats'
 X_CSRF_TOKEN = 'X-CSRF-Token'
 X_IF_MATCH_USER = 'X-If-Match-User'
-
+AUTHORIZATION = 'Authorization'
 ACCESS_CONTROL_REQUEST_METHOD = 'Access-Control-Request-Method'
 ACCESS_CONTROL_REQUEST_HEADERS = 'Access-Control-Request-Headers'
 
@@ -73,6 +73,7 @@ ALLOWED_HEADERS = [
     ACCEPT,
     X_CSRF_TOKEN,
     X_IF_MATCH_USER,
+    AUTHORIZATION,
 ]
 
 ALLOWED_EXPOSE_HEADERS = [
