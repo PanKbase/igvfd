@@ -230,6 +230,11 @@
                     "dataset": {
                         "type": "string",
                         "enum": [
+                            "Genotyping",
+                            "Function",
+                            "Imaging",
+                            "Morphology",
+                            "HLA_typing",
                             "BCRseq",
                             "CITEseq",
                             "Flow_cytometry",
@@ -251,10 +256,11 @@
                         "type": "string",
                         "enum": [
                             "Pancreas",
+                            "-",
                             "Islet",
                             "Spleen",
                             "Lymph",
-                            "Blood",
+                            "Peripheral_blood",
                             "Thymus"
                         ],
                         "description": "Dataset Tissue"
