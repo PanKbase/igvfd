@@ -242,6 +242,7 @@
                             "scMultiome",
                             "TCRseq",
                             "scRNAseq",
+                            "snATAC-seq",
                             "RNAseq",
                             "snATACseq",
                             "ATAC-seq",
