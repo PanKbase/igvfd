@@ -545,6 +545,10 @@ PHASE1_PIPELINES = {
         remove_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi', 'nucleic_acid_delivery',
                     'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
+    'primary_islet': [
+        remove_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi', 'nucleic_acid_delivery', 'originated_from',
+                    'time_post_library_delivery', 'time_post_library_delivery_units'),
+    ],
     'whole_organism': [
         remove_keys('construct_library_sets', 'moi', 'nucleic_acid_delivery',
                     'time_post_library_delivery', 'time_post_library_delivery_units'),
@@ -607,6 +611,10 @@ PHASE2_PIPELINES = {
     ],
     'primary_cell': [
         skip_rows_missing_all_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi',
+                                   'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units'),
+    ],
+    'primary_islet': [
+        skip_rows_missing_all_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi', 'originated_from',
                                    'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'whole_organism': [
