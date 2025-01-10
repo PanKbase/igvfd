@@ -91,7 +91,7 @@
             "if": {
                 "properties": {
                     "upload_status": {
-                        "const": "validated"
+                        "const": "pending"
                     }
                 }
             },
@@ -363,7 +363,7 @@
             "title": "Upload Status",
             "description": "The upload/validation status of the file.",
             "type": "string",
-            "default": "pending",
+            "default": "validated",
             "permission": "admin_only",
             "enum": [
                 "pending",
