@@ -305,10 +305,6 @@ def tabular_file_10_11_signal_file_8_9(value, system):
     if value.get('content_type') == 'fold over change control':
         value['content_type'] = 'fold change over control'
     return
-<<<<<<< HEAD
-=======
-
-
 @upgrade_step('tabular_file', '11', '12')
 def tabular_file_11_12(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1948
@@ -373,4 +369,3 @@ def genome_browser_annotation_file_8_9(value, system):
         notes += f' This file\'s file_format was .tabix, but has been upgraded to .bigBed.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
->>>>>>> 9ed349d4 (IGVF-2113-index-file (#1206))

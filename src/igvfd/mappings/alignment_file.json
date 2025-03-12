@@ -1,11 +1,8 @@
 {
-<<<<<<< HEAD
     "hash": "110c373a006dc6d44333447c4854c64c",
     "index_name": "alignment_file_110c373a",
-=======
     "hash": "12428c46f270cbe2fdf3b7b7867a2c68",
     "index_name": "alignment_file_12428c46",
->>>>>>> 9ed349d4 (IGVF-2113-index-file (#1206))
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [

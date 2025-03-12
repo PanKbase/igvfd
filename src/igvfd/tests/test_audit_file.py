@@ -74,10 +74,6 @@ def test_audit_file_format_specifications(testapp, matrix_file, experimental_pro
         audit['category'] != 'inconsistent document type'
         for audit in res.json['audit'].get('ERROR', {})
     )
-<<<<<<< HEAD
-=======
-
-
 def test_audit_external_identifiers(testapp, model_file):
     testapp.patch_json(
         model_file['@id'],
@@ -127,4 +123,3 @@ def test_audit_external_reference_files(testapp, reference_file):
         audit['category'] != 'missing dbxrefs'
         for audit in res.json['audit'].get('WARNING', {})
     )
->>>>>>> 9ed349d4 (IGVF-2113-index-file (#1206))
