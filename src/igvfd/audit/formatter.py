@@ -20,7 +20,7 @@ def space_in_words(objects_string):
     return add_space
 
 
-def get_audit_message(audit_function, index=0):
+def get_audit_description(audit_function, index=0):
     """Retrieves an audit description from the docstring of an audit function.
     By default retrieves the first description."""
     docstring = audit_function.__doc__

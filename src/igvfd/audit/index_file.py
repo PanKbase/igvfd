@@ -5,7 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_message,
+    get_audit_description,
     space_in_words
 )
 
@@ -21,7 +21,7 @@ def audit_index_files_derived_from(value, system):
         }
     ]
     '''
-    audit_message_tbi = get_audit_message(audit_index_files_derived_from)
+    audit_message_tbi = get_audit_description(audit_index_files_derived_from)
     object_type = space_in_words(value['@type'][0]).capitalize()
     # For tbi files, check that the indexed file is of an expected file_format.
     # No need to check bai files, since Alignment Files can only be bams.
