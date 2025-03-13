@@ -69,9 +69,7 @@ def audit_file_format_specifications(value, system):
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has `file_format_specification` {audit_link(path_to_text(document), document)} '
                 f'with `document_type` {doc_type}.'
             )
-<<<<<<< HEAD
             yield AuditFailure('inconsistent document type', f'{detail} {description}', level='ERROR')
-=======
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
@@ -118,4 +116,3 @@ def audit_external_reference_files(value, system):
                 f'but does not have identifier(s) from an external resource listed in `dbxrefs`.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
->>>>>>> 9ed349d4 (IGVF-2113-index-file (#1206))
