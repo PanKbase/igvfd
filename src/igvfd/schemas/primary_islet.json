@@ -16,6 +16,7 @@
     "desired": [
         "rrid",
         "organ_source",
+        "resource",
         "prep_viability",
         "warm_ischaemia_duration",
         "purity",
@@ -125,6 +126,16 @@
         "isolation_center": {
             "title": "Isolation Center",
             "description": "Facility or location where the pancreas was isolated",
+            "type": "string",
+            "enum": ["Network for Pancreatic Organ Donors with Diabetes(nPOD)", "Integrated Islet Distribution Program (IIDP)", "Islet Cell Resource Centers (ICR)", "Islet Isolation Core at the University of Alberta (Edmonton)", "ECIT Islet for Basic Research Program", "Human Pancreas Analysis Program (HPAP)", "University of Pennsylvania (Upenn)", "Wisconsin - University of Wisconsin-Madison", "Miami - University of Miami Sylvester Comprehensive Cancer Center", "UIC - University of Illinois Chicago", "Prodo"],
+            "submissionExample": {
+                "appscript": "Network for Pancreatic Organ Donors with Diabetes(nPOD)",
+                "igvf_utils": "Network for Pancreatic Organ Donors with Diabetes(nPOD)"
+            }
+        },
+        "resource": {
+            "title": "Resource",
+            "description": "Facility or location where the pancreas procured",
             "type": "string",
             "enum": ["Network for Pancreatic Organ Donors with Diabetes(nPOD)", "Integrated Islet Distribution Program (IIDP)", "Islet Cell Resource Centers (ICR)", "Islet Isolation Core at the University of Alberta (Edmonton)", "ECIT Islet for Basic Research Program", "Human Pancreas Analysis Program (HPAP)", "University of Pennsylvania (Upenn)", "Wisconsin - University of Wisconsin-Madison", "Miami - University of Miami Sylvester Comprehensive Cancer Center", "UIC - University of Illinois Chicago", "Prodo"],
             "submissionExample": {
