@@ -474,7 +474,7 @@
             "enum": [
                 "GRCh38",
                 "GRCm39",
-                "GENCODE 39",
+                "GENCODE 39"
             ],
             "submissionExample": {
                 "appscript": "GRCh38",
