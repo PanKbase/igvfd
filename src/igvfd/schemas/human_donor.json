@@ -345,6 +345,36 @@
                 "igvf_utils": "female"
             }
         },
+        "t1d_stage": {
+            "title": "T1D stage",
+            "description": "T1D stage",
+            "type": "string",
+            "enum": [
+                "Stage 1: Two or more autoantibodies, normal glucose metabolism",
+                "Stage 2: Two or more autoantibodies, dysglycemia (e.g. HbA1c ≥ 5.7%)",
+		"Stage 3: Two or more autoantibodies, symptomatic (e.g. diagnosed, on insulin, high HbA1c)",
+		"No stage / at risk",
+		"no sufficient information to derive"
+            ],
+            "submissionExample": {
+                "appscript": "No stage / at risk",
+                "igvf_utils": "No stage / at risk"
+            }
+        },
+        "derived_diabetes_status": {
+            "title": "Derived diabetes status",
+            "description": "Derived diabetes status.Diabetes is diagnosed at an A1C of greater than or equal to 6.5%. https://diabetes.org/about-diabetes/diagnosis#:~:text=and%20cardiovascular%20disease.-,Symptoms,of%20140",
+            "type": "string",
+            "enum": [
+                "Normal",
+		"Prediabetes",
+		"Diabetes"
+            ],
+            "submissionExample": {
+                "appscript": "Normal",
+                "igvf_utils": "Normal"
+            }
+        },
         "age": {
             "title": "Age (years)",
             "description": "Age in years",
