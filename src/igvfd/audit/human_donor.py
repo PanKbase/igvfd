@@ -9,7 +9,61 @@ from .formatter import (
 )
 
 @audit_checker('HumanDonor', frame='object')
-def audit_desired_fields(value, system):
+def audit_tier0_fields(value, system):
+    """
+    {
+        "audit_description": "Checks if Tier 0 fields are present and issues an error if any are missing.",
+        "audit_category": "missing Tier 0 field",
+        "audit_level": "ERROR"
+    }
+    """
+    description = get_audit_description(audit_tier0_fields)
+    critical_fields = [
+        "age",
+        "award",
+        "center_donor_id",
+        "lab",
+        "living_donor",
+        "taxa"
+    ]
+    missing_fields = [field for field in critical_fields if field not in value]
+
+    if missing_fields:
+        for field in missing_fields:
+            detail = (
+                f'Human donor {audit_link(path_to_text(value["@id"]), value["@id"])} is missing tier 0 field `{field}`.'
+            )
+            yield AuditFailure('missing tier 0 field', f'{detail}', level='ERROR')
+
+
+@audit_checker('HumanDonor', frame='object')
+def audit_tier1_fields(value, system):
+    """
+    {
+        "audit_description": "Checks if Tier 1 fields are present and issues an error if any are missing.",
+        "audit_category": "missing Tier 1 field",
+        "audit_level": "ERROR"
+    }
+    """
+    description = get_audit_description(audit_tier1_fields)
+    required_fields = [
+        "sex",
+        "bmi",
+        "diabetes_status",
+        "diabetes_status_description"
+    ]
+    missing_fields = [field for field in required_fields if field not in value]
+
+    if missing_fields:
+        for field in missing_fields:
+            detail = (
+                f'Human donor {audit_link(path_to_text(value["@id"]), value["@id"])} is missing tier 1 field `{field}`.'
+            )
+            yield AuditFailure('missing tier 1 field', f'{detail}', level='ERROR')
+
+
+@audit_checker('HumanDonor', frame='object')
+def audit_tier2_fields(value, system):
     """
     {
         "audit_description": "Checks if Tier 2 fields are present and issues a warning if any are missing.",
@@ -17,18 +71,15 @@ def audit_desired_fields(value, system):
         "audit_level": "WARNING"
     }
     """
-    description = get_audit_description(audit_desired_fields)
+    description = get_audit_description(audit_tier2_fields)
     desired_fields = [
         "rrid",
-        "bmi",
-        "diabetes_status_description",
         "ethnicities",
         "hba1c",
         "diabetes_status_hba1c",
-        "glucose_loweing_theraphy",
+        "glucose_lowering_therapy",  # Fixed typo from original
         "hospital_stay",
         "donation_type",
-        "diabetes_status",
         "cause_of_death"
     ]
     missing_fields = [field for field in desired_fields if field not in value]
@@ -39,8 +90,10 @@ def audit_desired_fields(value, system):
                 f'Human donor {audit_link(path_to_text(value["@id"]), value["@id"])} is missing tier 2 field `{field}`.'
             )
             yield AuditFailure('missing tier 2 field', f'{detail}', level='WARNING')
+
+
 @audit_checker('HumanDonor', frame='object')
-def audit_optional_fields(value, system):
+def audit_tier3_fields(value, system):
     """
     {
         "audit_description": "Checks if Tier 3 fields are present and issues a warning if any are missing.",
@@ -49,7 +102,37 @@ def audit_optional_fields(value, system):
     }
     """
     description = get_audit_description(audit_optional_fields)
-    optional_fields = ["dbxrefs", "sex", "phenotypic_features", "virtual", "family_history_of_diabetes", "family_history_of_diabetes_relationship", "genetic_ethnicities", "biological_sex", "diabetes_duration", "c_peptide", "aab_gada", "aab_gada_value", "aab_ia2", "aab_ia2_value", "aab_znt8", "aab_znt8_value", "hla_typing", "other_tissues_available", "publication_identifiers", "collections", "pancreas_tissue_available", "documents", "url"]
+    optional_fields = [
+        "dbxrefs", 
+        "phenotypic_features", 
+        "virtual", 
+        "family_history_of_diabetes", 
+        "family_history_of_diabetes_relationship", 
+        "genetic_ethnicities", 
+        "biological_sex", 
+        "diabetes_duration", 
+        "c_peptide", 
+        "aab_gada", 
+        "aab_gada_value", 
+        "aab_ia2", 
+        "aab_ia2_value", 
+        "aab_iaa",
+        "aab_iaa_value",
+        "aab_znt8", 
+        "aab_znt8_value", 
+        "hla_typing", 
+        "other_tissues_available", 
+        "publication_identifiers", 
+        "collections", 
+        "pancreas_tissue_available", 
+        "documents", 
+        "url",
+        "data_available",
+        "accession",
+        "aliases",
+        "related_donors"
+        # Note: "human_donor_identifiers" is listed as admin-only and should not be submitted
+    ]
     missing_fields = [field for field in optional_fields if field not in value]
 
     if missing_fields:
@@ -58,6 +141,8 @@ def audit_optional_fields(value, system):
                 f'Human donor {audit_link(path_to_text(value["@id"]), value["@id"])} is missing tier 3 field `{field}`.'
             )
             yield AuditFailure('missing tier 3 field', f'{detail}', level='WARNING')
+
+
 @audit_checker('AnalysisSet', frame='object')
 def audit_related_donors(value, system):
     '''
