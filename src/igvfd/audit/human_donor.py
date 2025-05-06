@@ -40,9 +40,9 @@ def audit_tier0_fields(value, system):
 def audit_tier1_fields(value, system):
     """
     {
-        "audit_description": "Checks if Tier 1 fields are present and issues an error if any are missing.",
+        "audit_description": "Checks if Tier 1 fields are present and issues an warning if any are missing.",
         "audit_category": "missing Tier 1 field",
-        "audit_level": "ERROR"
+        "audit_level": "WARNING"
     }
     """
     description = get_audit_description(audit_tier1_fields)
@@ -59,7 +59,7 @@ def audit_tier1_fields(value, system):
             detail = (
                 f'Human donor {audit_link(path_to_text(value["@id"]), value["@id"])} is missing tier 1 field `{field}`.'
             )
-            yield AuditFailure('missing tier 1 field', f'{detail}', level='ERROR')
+            yield AuditFailure('missing tier 1 field', f'{detail}', level='WARNING')
 
 
 @audit_checker('HumanDonor', frame='object')
