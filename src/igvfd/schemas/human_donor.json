@@ -441,29 +441,6 @@
                 "igvf_utils": 5.5
             }
         },
-        "diabetes_status_hba1c": {
-            "title": "Diabetes Status, HbA1C Adjusted",
-            "description": "A categorization of diabetes status based on adjusted HbA1C levels, considering factors such as age, race, or other clinical conditions that might influence HbA1C measurements",
-            "type": "string",
-            "enum": [
-                "type 1 diabetes",
-                "type 2 diabetes",
-                "gestational diabetes",
-                "maturity onset diabetes of the young (MODY)",
-                "neonatal diabetes",
-                "wolfram syndrome",
-                "alström syndrome",
-                "latent autoimmune diabetes in adults (LADA)",
-                "type 3c diabetes",
-                "steroid-induced diabetes",
-                "cystic fibrosis diabetes",
-                "non-diabetic"
-            ],
-            "submissionExample": {
-                "appscript": "non-diabetic",
-                "igvf_utils": "non-diabetic"
-            }
-        },
         "donation_type": {
             "title": "Donation Type",
             "description": "The type of organ donation, categorized as DCD, NDD, or MAID",

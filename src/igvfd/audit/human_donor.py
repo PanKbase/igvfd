@@ -76,8 +76,7 @@ def audit_tier2_fields(value, system):
         "rrid",
         "ethnicities",
         "hba1c",
-        "diabetes_status_hba1c",
-        "glucose_lowering_therapy",  # Fixed typo from original
+        "glucose_loweing_theraphy",
         "hospital_stay",
         "donation_type",
         "cause_of_death"
@@ -127,11 +126,12 @@ def audit_tier3_fields(value, system):
         "pancreas_tissue_available", 
         "documents", 
         "url",
+        "t1d_stage",
+        "derived_diabetes_status",
         "data_available",
         "accession",
         "aliases",
         "related_donors"
-        # Note: "human_donor_identifiers" is listed as admin-only and should not be submitted
     ]
     missing_fields = [field for field in optional_fields if field not in value]
 
