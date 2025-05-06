@@ -49,7 +49,6 @@ def audit_tier1_fields(value, system):
     required_fields = [
         "sex",
         "bmi",
-        "diabetes_status",
         "diabetes_status_description"
     ]
     missing_fields = [field for field in required_fields if field not in value]
@@ -102,7 +101,8 @@ def audit_tier3_fields(value, system):
     """
     description = get_audit_description(audit_tier3_fields)
     optional_fields = [
-        "dbxrefs", 
+        "dbxrefs",
+        "diabetes_status",
         "phenotypic_features", 
         "virtual", 
         "family_history_of_diabetes", 
