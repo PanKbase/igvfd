@@ -101,7 +101,7 @@ def audit_tier3_fields(value, system):
         "audit_level": "WARNING"
     }
     """
-    description = get_audit_description(audit_optional_fields)
+    description = get_audit_description(audit_tier3_fields)
     optional_fields = [
         "dbxrefs", 
         "phenotypic_features", 
