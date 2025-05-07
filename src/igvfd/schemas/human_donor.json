@@ -338,9 +338,10 @@
             "description": "T1D stage",
             "type": "string",
             "enum": [
+                "At-risk: Single or transient autoantibody, normal glucose",
                 "Stage 1: Two or more autoantibodies, normal glucose metabolism",
                 "Stage 2: Two or more autoantibodies, dysglycemia (e.g. HbA1c ≥ 5.7%)",
-		"Stage 3: Two or more autoantibodies, HbA1c ≥ 6.5% or T1D diagnosed",
+		"Stage 3: One or more autoantibodies and diagnostic hyperglycemia or T1D diagnosis",
 		"No stage",
 		"no sufficient information to derive"
             ],
