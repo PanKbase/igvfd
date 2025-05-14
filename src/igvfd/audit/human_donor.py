@@ -108,7 +108,7 @@ def audit_tier3_fields(value, system):
         "family_history_of_diabetes", 
         "family_history_of_diabetes_relationship", 
         "genetic_ethnicities", 
-        "biological_sex", 
+        "genetic_sex", 
         "diabetes_duration", 
         "c_peptide", 
         "aab_gada", 

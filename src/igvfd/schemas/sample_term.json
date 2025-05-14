@@ -44,7 +44,7 @@
             "description": "An ontology identifier describing a biological sample",
             "permission": "admin_only",
             "type": "string",
-            "pattern": "^(UBERON|EFO|CL|CLO|NTR):[0-9]{2,8}$"
+            "pattern": "^(UBERON|EFO|CL|CLO|NTR|CVCL):([0-9]{2,8}|[A-Z][A-Z0-9]{1,7})$"
         },
         "dbxrefs": {
             "@type": "@id",

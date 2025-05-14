@@ -19,11 +19,8 @@ def analysis_set():
             'samples.sample_terms.term_name': {
                 'title': 'Sample Term'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'status': {
                 'title': 'Status'
@@ -66,7 +63,6 @@ def analysis_set():
                 'title': 'Provenance',
                 'facet_fields': [
                     'collections',
-                    'lab.title',
                     'award.component',
                     'type',
                 ],
@@ -92,9 +88,6 @@ def analysis_set():
             'uuid': {
                 'title': 'UUID'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'status': {
                 'title': 'Status'
             },
@@ -104,9 +97,6 @@ def analysis_set():
             'donors': {
                 'title': 'Donors'
             },
-            'lab': {
-                'title': 'Lab'
-            },
             'award': {
                 'title': 'Award'
             },
@@ -115,6 +105,9 @@ def analysis_set():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'description': {
+                'title': 'Description'
             },
             'donors.taxa': {
                 'title': 'Taxa'

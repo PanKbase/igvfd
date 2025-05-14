@@ -5,6 +5,7 @@ from snovault import (
     load_schema,
 )
 from snovault.util import Path
+from pyramid.view import view_config
 from .base import (
     Item,
 )
@@ -57,6 +58,34 @@ class HumanDonor(Donor):
     set_status_up = Donor.set_status_up + []
     set_status_down = Donor.set_status_down + []
 
+    def update(self, properties, sheets=None):
+        # Migrate 'biological_sex' field to 'genetic_sex' before validation
+        # This allows backward compatibility with clients that still send 'biological_sex'
+        if 'biological_sex' in properties:
+            properties['genetic_sex'] = properties['biological_sex']
+            del properties['biological_sex']
+        super().update(properties, sheets)
+
+
+def transform_biological_sex_to_genetic_sex(context, request):
+    """Validator to transform 'biological_sex' to 'genetic_sex' before validation."""
+    if hasattr(request, 'json_body') and request.json_body:
+        if 'biological_sex' in request.json_body:
+            request.json_body['genetic_sex'] = request.json_body['biological_sex']
+            del request.json_body['biological_sex']
+
+
+@view_config(
+    context=HumanDonor.Collection,
+    permission='add',
+    request_method='POST',
+    validators=[transform_biological_sex_to_genetic_sex]
+)
+def human_donor_add(context, request):
+    """Custom add view for HumanDonor that transforms biological_sex to genetic_sex."""
+    from snovault.crud_views import collection_add
+    return collection_add(context, request)
+
     @calculated_property(
         schema={
             'title': 'Summary',
@@ -80,6 +109,26 @@ class HumanDonor(Donor):
             return summary_phrase
         else:
             return self.uuid
+
+
+def transform_biological_sex_to_genetic_sex(context, request):
+    """Validator to transform 'biological_sex' to 'genetic_sex' before validation."""
+    if hasattr(request, 'json_body') and request.json_body:
+        if 'biological_sex' in request.json_body:
+            request.json_body['genetic_sex'] = request.json_body['biological_sex']
+            del request.json_body['biological_sex']
+
+
+@view_config(
+    context=HumanDonor.Collection,
+    permission='add',
+    request_method='POST',
+    validators=[transform_biological_sex_to_genetic_sex]
+)
+def human_donor_add(context, request):
+    """Custom add view for HumanDonor that transforms biological_sex to genetic_sex."""
+    from snovault.crud_views import collection_add
+    return collection_add(context, request)
 
 
 @collection(

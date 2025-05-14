@@ -1,6 +1,6 @@
 {
-    "hash": "78a17aa5575f9b3d577d5e67ed1cca89",
-    "index_name": "reference_file_78a17aa5",
+    "hash": "47a278ffa1d8f65a16f6ab5deb771922",
+    "index_name": "reference_file_47a278ff",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -466,7 +466,6 @@
                                 "type": "keyword"
                             },
                             "title": {
-                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {

@@ -89,7 +89,8 @@
                                         "gtf",
                                         "tsv",
                                         "txt",
-                                        "vcf"
+                                        "vcf",
+                                        "html"
                                     ]
                                 }
                             }
@@ -120,6 +121,7 @@
                 "MPRA sequence designs",
                 "peaks",
                 "QC metrics",
+                "meta data table",
                 "protein to protein interaction score",
                 "sample sort parameters",
                 "sequence barcodes",
@@ -139,7 +141,8 @@
                 "gtf",
                 "tsv",
                 "txt",
-                "vcf"
+                "vcf",
+                "html"
             ],
             "submissionExample": {
                 "appscript": "tsv",
@@ -169,7 +172,8 @@
     "exact_searchable_fields": [
         "@type",
         "dbxrefs",
-        "file_format"
+        "file_format",
+        "file_url"
     ],
     "changelog": "/profiles/changelogs/tabular_file.md"
 }

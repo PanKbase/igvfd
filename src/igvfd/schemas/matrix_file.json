@@ -109,6 +109,7 @@
             "type": "string",
             "enum": [
                 "cell",
+                "sample",
                 "fragment",
                 "gene",
                 "time",
@@ -172,7 +173,8 @@
     "exact_searchable_fields": [
         "@type",
         "dbxrefs",
-        "file_format"
+        "file_format",
+        "file_url"
     ],
     "changelog": "/profiles/changelogs/matrix_file.md"
 }

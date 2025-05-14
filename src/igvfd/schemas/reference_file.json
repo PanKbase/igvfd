@@ -303,7 +303,6 @@
     "fuzzy_searchable_fields": [
         "content_type",
         "description",
-        "submitted_by.title",
         "submitted_file_name",
         "summary"
     ],

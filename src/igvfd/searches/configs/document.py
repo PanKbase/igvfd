@@ -13,11 +13,8 @@ def document():
             'characterization_method': {
                 'title': 'Characterization Method'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award',
+                'title': 'Funding',
             },
             'status': {
                 'title': 'Status'
@@ -46,7 +43,6 @@ def document():
             {
                 'title': 'Provenance',
                 'facet_fields': [
-                    'lab.title',
                     'award.component',
                 ]
             },
@@ -68,17 +64,11 @@ def document():
             'description': {
                 'title': 'Description'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'award': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'document_type': {
                 'title': 'Document Type'
-            },
-            'lab': {
-                'title': 'Lab'
             },
             'status': {
                 'title': 'Status'

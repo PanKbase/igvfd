@@ -5,7 +5,6 @@
     "description": "A biosample that is directly harvested from a donor as islet cells.",
     "type": "object",
     "required": [
-        "award",
         "lab",
         "sources",
         "donors",
@@ -20,6 +19,7 @@
         "prep_viability",
         "warm_ischaemia_duration",
         "purity",
+        "purity_assay",
         "hand_picked",
         "pre_shipment_culture_time",
         "islet_function_available"
@@ -127,7 +127,7 @@
             "title": "Isolation Center",
             "description": "Facility or location where the pancreas was isolated",
             "type": "string",
-            "enum": ["Network for Pancreatic Organ Donors with Diabetes(nPOD)", "Integrated Islet Distribution Program (IIDP)", "Islet Cell Resource Centers (ICR)", "Islet Isolation Core at the University of Alberta (Edmonton)", "ECIT Islet for Basic Research Program", "Human Pancreas Analysis Program (HPAP)", "University of Pennsylvania (Upenn)", "Wisconsin - University of Wisconsin-Madison", "Miami - University of Miami Sylvester Comprehensive Cancer Center", "UIC - University of Illinois Chicago", "Prodo"],
+            "enum": ["Network for Pancreatic Organ Donors with Diabetes(nPOD)", "Integrated Islet Distribution Program (IIDP)", "Islet Cell Resource Centers (ICR)", "Islet Isolation Core at the University of Alberta (Edmonton)", "ECIT Islet for Basic Research Program", "Human Pancreas Analysis Program (HPAP)", "University of Pennsylvania (Upenn)", "Wisconsin - University of Wisconsin-Madison", "Miami - University of Miami Sylvester Comprehensive Cancer Center", "UIC - University of Illinois Chicago", "Prodo", "ADI – Alberta Diabetes Institute", "Columbia – Columbia University", "Emory – Emory University", "Imagine-Pharma – Imagine Pharma", "Loyola – Loyola University Chicago", "MGH – Massachusetts General Hospital", "Minnesota – University of Minnesota", "Nationwide – Nationwide Children’s Hospital", "Northwestern – Northwestern University", "Pitt – University of Pittsburgh", "SC-ICRC – Southern California Islet Cell Resources Center", "UArizona – University of Arizona", "UCSF – University of California, San Francisco", "VCU – Virginia Commonwealth University", "WashU – Washington University in St. Louis"],
             "submissionExample": {
                 "appscript": "Network for Pancreatic Organ Donors with Diabetes(nPOD)",
                 "igvf_utils": "Network for Pancreatic Organ Donors with Diabetes(nPOD)"
@@ -191,6 +191,15 @@
             "submissionExample": {
                 "appscript": ["12.47"],
                 "igvf_utils": ["12.47"]
+            }
+        },
+        "purity_assay": {
+            "title": "Assay used to measure purity",
+            "description": "Assay used to measure percentage of the pancreas preparation that consists of the target cells or tissue type (Dithizone(DTZ) etc.)",
+            "type": "array",
+            "items": {
+                "title": "Assay used to measure purity",
+                "type": "string"
             }
         },
         "hand_picked": {

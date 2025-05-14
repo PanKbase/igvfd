@@ -10,8 +10,8 @@ def human_donor():
             'ethnicities': {
                 'title': 'Ethnicities'
             },
-            'sex': {
-                'title': 'Sex'
+            'gender': {
+                'title': 'Gender'
             },
             'diabetes_status_description': {
                 'title': 'Diabetes Status'
@@ -25,14 +25,14 @@ def human_donor():
             'aab_znt8': {
                 'title': 'AAB ZNT8 POSITIVE'
             },
+            'aab_iaa': {
+                'title': 'AAB IAA POSITIVE'
+            },
             'collections': {
                 'title': 'Collections'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'status': {
                 'title': 'Status'
@@ -55,10 +55,11 @@ def human_donor():
                 'title': 'Donor',
                 'facet_fields': [
                     'ethnicities',
-                    'sex',
+                    'gender',
                     'diabetes_status_description',
                     'aab_gada',
                     'aab_ia2',
+                    'aab_iaa',
                     'aab_znt8',
                     'collections',
                 ]
@@ -66,7 +67,6 @@ def human_donor():
             {
                 'title': 'Provenance',
                 'facet_fields': [
-                    'lab.title',
                     'award.component',
                 ]
             },
@@ -91,23 +91,17 @@ def human_donor():
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
-            'sex': {
-                'title': 'Sex'
+            'gender': {
+                'title': 'Gender'
             },
             'award': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'ethnicities': {
                 'title': 'Ethnicities'
             },
             'human_donor_identifiers': {
                 'title': 'Human Donor Identifiers'
-            },
-            'lab': {
-                'title': 'Lab'
             },
             'status': {
                 'title': 'Status'

@@ -8,7 +8,7 @@ def file():
     return {
         'facets': {
             'award.component': {
-                'title': 'Award',
+                'title': 'Funding',
             },
             'collections': {
                 'title': 'Collections'
@@ -18,9 +18,6 @@ def file():
             },
             'file_format': {
                 'title': 'File Format'
-            },
-            'lab.title': {
-                'title': 'Lab'
             },
             'status': {
                 'title': 'Status'
@@ -56,7 +53,6 @@ def file():
                 'title': 'Provenance',
                 'facet_fields': [
                     'collections',
-                    'lab.title',
                     'award.component',
                     'type',
                 ],

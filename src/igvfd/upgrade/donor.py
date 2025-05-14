@@ -212,3 +212,104 @@ def human_donor_15_16(value, system):
                 updated_ethnicities.append(ethnicity)
         value['genetic_ethnicities'] = updated_ethnicities
         
+@upgrade_step('human_donor', '16', '17')
+def human_donor_16_17(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-XXXX
+    # Update multiple enum values for improved terminology and consistency
+    
+    # Update T1D stage enum values to include "level" terminology
+    if 't1d_stage' in value:
+        t1d_stage_mapping = {
+            "At-risk: Single or transient autoantibody, normal glucose": 
+                "At-risk: Single or transient autoantibody, normal glucose level",
+            "Stage 1: Two or more autoantibodies, normal glucose metabolism": 
+                "Stage 1: Two or more autoantibodies, normal glucose metabolism level",
+            "Stage 2: Two or more autoantibodies, dysglycemia (e.g. HbA1c ≥ 5.7%)": 
+                "Stage 2: Two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)"
+        }
+        
+        current_stage = value['t1d_stage']
+        if current_stage in t1d_stage_mapping:
+            value['t1d_stage'] = t1d_stage_mapping[current_stage]
+    
+    # Update diabetes_status_description enum values
+    if 'diabetes_status_description' in value:
+        diabetes_status_mapping = {
+            "alström syndrome": "Alström syndrome",
+            "cystic fibrosis diabetes": "cystic fibrosis-related diabetes",
+            "non-diabetic": "control without diabetes"
+        }
+        
+        current_status = value['diabetes_status_description']
+        if current_status in diabetes_status_mapping:
+            value['diabetes_status_description'] = diabetes_status_mapping[current_status]
+
+    # Update ethnicities enum values
+    if 'ethnicities' in value and isinstance(value['ethnicities'], list):
+        ethnicities_mapping = {
+            "Caucasian": "White"
+        }
+        updated_ethnicities = []
+        for ethnicity in value['ethnicities']:
+            if ethnicity in ethnicities_mapping:
+                updated_ethnicities.append(ethnicities_mapping[ethnicity])
+            else:
+                updated_ethnicities.append(ethnicity)
+        value['ethnicities'] = updated_ethnicities
+    
+    # Update donation_type enum values from abbreviations to full descriptions
+    if 'donation_type' in value:
+        donation_type_mapping = {
+            "DCD": "Donation after Circulatory Death",
+            "DBD": "Donation after Brain Death", 
+            "NDD": "Natural Death Donation",
+            "MAD": "Medical Assistance in Dying"
+        }
+        
+        current_type = value['donation_type']
+        if current_type in donation_type_mapping:
+            value['donation_type'] = donation_type_mapping[current_type]
+
+
+@upgrade_step('human_donor', '17', '18')
+def human_donor_17_18(value, system):
+    # Migrate glucose_loweing_theraphy to other_theraphy
+    if 'glucose_loweing_theraphy' in value:
+        glucose_therapy = value['glucose_loweing_theraphy']
+        
+        # Initialize other_theraphy if it doesn't exist
+        if 'other_theraphy' not in value:
+            value['other_theraphy'] = []
+        
+        # Ensure other_theraphy is a list
+        if not isinstance(value['other_theraphy'], list):
+            value['other_theraphy'] = []
+        
+        # Ensure glucose_loweing_theraphy is a list
+        if not isinstance(glucose_therapy, list):
+            glucose_therapy = [glucose_therapy] if glucose_therapy else []
+        
+        # Merge glucose therapy data into other_theraphy
+        for therapy in glucose_therapy:
+            if therapy and therapy not in value['other_theraphy']:
+                value['other_theraphy'].append(therapy)
+        
+        # Remove the old field
+        del value['glucose_loweing_theraphy']
+
+
+@upgrade_step('human_donor', '18', '19')
+@upgrade_step('rodent_donor', '12', '13')
+def donor_sex_to_gender(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-XXXX
+    # Rename 'sex' field to 'gender'
+    if 'sex' in value:
+        value['gender'] = value['sex']
+        del value['sex']
+
+@upgrade_step('human_donor', '19', '20')
+def human_donor_19_20(value, system):
+    # Migrate 'biological_sex' field to 'genetic_sex'
+    if 'biological_sex' in value:
+        value['genetic_sex'] = value['biological_sex']
+        del value['biological_sex']

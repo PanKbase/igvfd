@@ -1,6 +1,6 @@
 {
-    "hash": "e74a44cb3b28985c687ca30772e6852b",
-    "index_name": "configuration_file_e74a44cb",
+    "hash": "deb90b6e015b57886d224b1d781dad73",
+    "index_name": "configuration_file_deb90b6e",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -276,6 +276,10 @@
                         },
                         "store": true,
                         "type": "long"
+                    },
+                    "file_url": {
+                        "copy_to": "_exact",
+                        "type": "keyword"
                     },
                     "gene_list_for": {
                         "type": "keyword"

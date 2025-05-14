@@ -1,6 +1,6 @@
 {
-    "hash": "24ef0c52bb75d12a0c3c2dcc9f5d432f",
-    "index_name": "model_file_24ef0c52",
+    "hash": "0ea34fb44824b37a245190a28b8b6e07",
+    "index_name": "model_file_0ea34fb4",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -288,6 +288,10 @@
                         },
                         "store": true,
                         "type": "long"
+                    },
+                    "file_url": {
+                        "copy_to": "_exact",
+                        "type": "keyword"
                     },
                     "gene_list_for": {
                         "type": "keyword"

@@ -13,11 +13,8 @@ def donor():
             'collections': {
                 'title': 'Collections'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'status': {
                 'title': 'Status'
@@ -79,9 +76,6 @@ def donor():
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'taxa': {
                 'title': 'Taxa'
             },
@@ -89,7 +83,7 @@ def donor():
                 'title': 'Sex'
             },
             'award': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'ethnicities': {
                 'title': 'Ethnicities'

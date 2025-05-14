@@ -47,7 +47,7 @@ def auth0_igvf_user_token(auth0_access_token):
 @pytest.fixture(scope='session')
 def auth0_igvf_user_profile(auth0_access_token):
     user_url = 'https://{domain}/userinfo?access_token={access_token}' \
-        .format(domain='t2depi.auth0.com.auth0.com', access_token=auth0_access_token)
+        .format(domain='t2depi.auth0.com', access_token=auth0_access_token)
     user_info = requests.get(user_url).json()
     return user_info
 

@@ -199,7 +199,8 @@ class Biosample(Sample):
         Path('disease_terms', include=['@id', 'term_name']),
         Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('modifications', include=['@id', 'modality', 'summary', 'status']),
-        Path('institutional_certificates', include=['@id', 'certificate_identifier'])
+        Path('institutional_certificates', include=['@id', 'certificate_identifier']),
+        Path('donors', include=['@id', 'accession', 'gender', 'age', 'taxa', 'summary'])
     ]
 
     audit_inherit = Sample.audit_inherit + [
@@ -223,7 +224,7 @@ class Biosample(Sample):
     @calculated_property(
         define=True,
         schema={
-            'title': 'Sex',
+            'title': 'Gender',
             'type': 'string',
             'enum': [
                 'female',
@@ -235,15 +236,15 @@ class Biosample(Sample):
         }
     )
     def sex(self, request, donors=None):
-        sexes = set()
+        genders = set()
         if donors:
             for d in donors:
                 donor_object = request.embed(d, '@@object')
-                if donor_object.get('sex'):
-                    sexes.add(donor_object.get('sex'))
-        if len(sexes) == 1:
-            return list(sexes).pop()
-        elif len(sexes) > 1:
+                if donor_object.get('gender'):
+                    genders.add(donor_object.get('gender'))
+        if len(genders) == 1:
+            return list(genders).pop()
+        elif len(genders) > 1:
             return 'mixed'
 
     @calculated_property(
@@ -356,6 +357,14 @@ class Biosample(Sample):
                 summary_terms = f'{term_name} cell'
             else:
                 summary_terms = term_name
+        elif biosample_type == 'human_beta_cell_line':
+            try:
+                if 'cell' not in term_name:
+                    summary_terms = f'{term_name} cell line'
+                else:
+                    summary_terms = term_name.replace('cell', 'cell line')
+            except Exception:
+                summary_terms = 'human beta cell line'
         elif biosample_type == 'in_vitro_system':
             if len(classifications) == 1:
                 summary_terms = f'{term_name} {classifications[0]}'
@@ -386,12 +395,12 @@ class Biosample(Sample):
 
         # embryonic is prepended to the start of the summary
         if (embryonic and
-                biosample_type in ['primary_cell', 'primary_islet', 'tissue']):
+                biosample_type in ['primary_cell', 'primary_islet', 'tissue', 'human_beta_cell_line']):
             summary_terms = f'embryonic {summary_terms}'
 
         # virtual is prepended to the start of the summary
         if (virtual and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'human_beta_cell_line']):
             summary_terms = f'virtual {summary_terms}'
 
         # time post change and targeted term are appended to the end of the summary
@@ -407,7 +416,7 @@ class Biosample(Sample):
 
         # cellular sub pool is appended to the end of the summary in parentheses
         if (cellular_sub_pool and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'human_beta_cell_line']):
             summary_terms += f' (cellular sub pool: {cellular_sub_pool})'
 
         # a comma is added before sex or taxa if sex is unspecified
@@ -477,7 +486,7 @@ class Biosample(Sample):
 
         # treatment summaries are appended to the end of the summary
         if (treatments and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism', 'human_beta_cell_line']):
             treatment_objects = [request.embed(treatment) for treatment in treatments]
             depleted_treatment_summaries = sorted([treatment.get('summary')[13:]
                                                   for treatment in treatment_objects if treatment.get('depletion')])
@@ -516,8 +525,8 @@ class Biosample(Sample):
                     summary_terms += f' {verb} multiple libraries,'
 
         # growth media is appended to the end of the summary
-        if (growth_medium and biosample_type in ['in_vitro_system']):
-            summary_terms += f' grown in {growth_medium}'
+        #if (growth_medium and biosample_type in ['in_vitro_system']):
+        #    summary_terms += f' grown in {growth_medium}'
 
         return summary_terms.strip(',')
 
@@ -691,6 +700,40 @@ class Tissue(Biosample):
     def classifications(self):
         return [self.item_type.replace('_', ' ')]
 
+
+@collection(
+    name='human-beta-cell-line',
+    unique_key='accession',
+    properties={
+        'title': 'Human Beta Cell Lines',
+        'description': 'Listing of human beta cell lines',
+    }
+)
+class HumanBetaCellLines(Biosample):
+    item_type = 'human_beta_cell_line'
+    schema = load_schema('igvfd:schemas/human_beta_cell_line.json')
+    embedded_with_frame = Biosample.embedded_with_frame
+    audit_inherit = Biosample.audit_inherit
+    set_status_up = Biosample.set_status_up + []
+    set_status_down = Biosample.set_status_down + []
+
+
+    @calculated_property(
+        schema={
+            'title': 'Classifications',
+            'description': 'The general category of this type of sample.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Classification',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def classifications(self):
+        return [self.item_type.replace('_', ' ')]
 
 @collection(
     name='technical-samples',

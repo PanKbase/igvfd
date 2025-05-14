@@ -25,6 +25,7 @@ TOP_HITS_ITEM_TYPES = [
     'Biomarker',
     'Document',
     'HumanDonor',
+    'HumanBetaCellLines',
     'RodentDonor',
     'AlignmentFile',
     'ConfigurationFile',

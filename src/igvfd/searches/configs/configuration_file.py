@@ -16,11 +16,8 @@ def configuration_file():
             'collections': {
                 'title': 'Collections'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award',
+                'title': 'Funding',
             },
             'upload_status': {
                 'title': 'Upload Status'
@@ -56,7 +53,6 @@ def configuration_file():
                 'title': 'Provenance',
                 'facet_fields': [
                     'collections',
-                    'lab.title',
                     'award.component',
                     'type',
                 ],
@@ -88,9 +84,6 @@ def configuration_file():
             },
             'file_format': {
                 'title': 'File Format'
-            },
-            'lab': {
-                'title': 'Lab'
             },
             'status': {
                 'title': 'Status'

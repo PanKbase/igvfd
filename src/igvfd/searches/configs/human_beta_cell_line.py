@@ -2,9 +2,9 @@ from snovault.elasticsearch.searches.configs import search_config
 
 
 @search_config(
-    name='Tissue'
+    name='HumanBetaCellLines'
 )
-def tissue():
+def human_beta_cell_line():
     return {
         'facets': {
             'sample_terms.term_name': {
@@ -49,6 +49,15 @@ def tissue():
             'biomarkers.classification': {
                 'title': 'Biomarkers Classification'
             },
+            'sample_name.raw': {
+                'title': 'Sample Name'
+            },
+            'growth_medium.raw': {
+                'title': 'Growth Medium'
+            },
+            'authentication.raw': {
+                'title': 'Authentication'
+            },
             'type': {
                 'title': 'Object Type'
             },
@@ -67,16 +76,24 @@ def tissue():
         },
         'facet_groups': [
             {
-                'title': 'Sample',
+                'title': 'Cell Line',
                 'facet_fields': [
                     'sample_terms.term_name',
+                    'sample_name.raw',
+                    'classifications',
+                    'growth_medium.raw',
+                    'authentication.raw',
                     'disease_terms.term_name',
                     'treatments.treatment_term_name',
-                    'taxa',
-                    'gender',
-                    'classifications',
                     'biomarkers.classification',
                     'virtual',
+                ]
+            },
+            {
+                'title': 'Sample',
+                'facet_fields': [
+                    'taxa',
+                    'gender',
                     'file_sets.assay_term.term_name',
                 ]
             },
@@ -111,6 +128,9 @@ def tissue():
             'sample_terms': {
                 'title': 'Sample Terms'
             },
+            'sample_name': {
+                'title': 'Sample Name'
+            },
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
             },
@@ -120,8 +140,17 @@ def tissue():
             'donors': {
                 'title': 'Donors'
             },
+            'growth_medium': {
+                'title': 'Growth Medium'
+            },
             'date_obtained': {
                 'title': 'Date Obtained'
+            },
+            'date_harvested': {
+                'title': 'Date Harvested'
+            },
+            'authentication': {
+                'title': 'Authentication'
             },
             'taxa': {
                 'title': 'Taxa'

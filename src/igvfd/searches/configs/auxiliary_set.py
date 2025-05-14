@@ -11,10 +11,7 @@ def auxiliary_set():
                 'title': 'Status'
             },
             'award.component': {
-                'title': 'Award'
-            },
-            'lab.title': {
-                'title': 'Lab'
+                'title': 'Funding'
             },
             'file_set_type': {
                 'title': 'File Set Type'
@@ -56,7 +53,6 @@ def auxiliary_set():
                 'title': 'Provenance',
                 'facet_fields': [
                     'collections',
-                    'lab.title',
                     'award.component',
                     'type',
                 ],
@@ -79,14 +75,8 @@ def auxiliary_set():
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'status': {
                 'title': 'Status'
-            },
-            'lab': {
-                'title': 'Lab'
             },
             'file_set_type': {
                 'title': 'File Set Type'

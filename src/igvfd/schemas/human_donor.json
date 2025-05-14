@@ -1,11 +1,10 @@
 {
-    "title": "Human Donor",
+    "title": "Human Organ Donor",
     "$id": "/profiles/human_donor.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A human donor of any biosample, including cell lines. Submission of any sample originating from a human donor requires submission of information about the relevant donor. For example, submission of the donor of K562 is a prerequisite for submission of any K562 cell line samples. The schema has a tiered structure for field requirements:Tier 0 fields are strictly required: age, award, center_donor_id, lab, living_donor, and taxa. Tier 1 fields are required: gender, bmi, diabetes_status, and diabetes_status_description. Tier 2 fields are desired but not mandatory: rrid, ethnicities, hba1c, diabetes_status_hba1c, glucose_lowering_therapy, hospital_stay, donation_type, and cause_of_death. Tier 3 fields are optional but valuable for comprehensive data: these include autoantibody results, genetic information, tissue availability, and other metadata. The inclusion of as many fields as possible is recommended for the most complete biological context.",
+    "description": "A human donor of any biosample, including cell lines. Submission of any sample originating from a human donor requires submission of information about the relevant donor. For example, submission of the donor of K562 is a prerequisite for submission of any K562 cell line samples. The schema has a tiered structure for field requirements:Tier 0 fields are strictly required: age,  center_donor_id, lab, living_donor, and taxa. Tier 1 fields are required: gender, bmi, diabetes_status, and diabetes_status_description. Tier 2 fields are desired but not mandatory: rrid, ethnicities, hba1c, diabetes_status_hba1c,  hospital_stay, award,donation_type, and cause_of_death. Tier 3 fields are optional but valuable for comprehensive data: these include autoantibody results, genetic information, tissue availability, and other metadata. The inclusion of as many fields as possible is recommended for the most complete biological context.",
     "type": "object",
     "required": [
-        "award",
         "center_donor_id",
         "lab",
         "age",
@@ -15,8 +14,7 @@
     "identifyingProperties": [
         "uuid",
         "accession",
-        "alternate_accessions",
-        "aliases"
+        "alternate_accessions"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -42,6 +40,9 @@
             "$ref": "mixins.json#/publication_identifiers"
         },
         {
+            "$ref": "mixins.json#/publication_data"
+        },
+        {
             "$ref": "mixins.json#/taxa"
         },
         {
@@ -55,7 +56,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "16"
+            "default": "20"
         },
         "related_donors": {
             "title": "Related Donors",
@@ -122,7 +123,7 @@
                     "Asian",
                     "Black",
                     "Black African",
-                    "Caucasian",
+                    "White",
                     "Chinese",
                     "Colombian",
                     "Dai Chinese",
@@ -139,6 +140,7 @@
                     "Maasai",
                     "Mende",
                     "Native Hawaiian",
+                    "Native American",
                     "Pacific Islander",
                     "Puerto Rican",
                     "Yoruba"
@@ -169,7 +171,7 @@
                            "Asian",
                            "Black",
                            "Black-African",
-                           "Caucasian",
+                           "White",
                            "Chinese",
                            "Colombian",
                            "Dai-Chinese",
@@ -187,6 +189,7 @@
                            "Maasai",
                            "Mende",
                            "Native-Hawaiian",
+                           "Native-American",
                            "Pacific-Islander",
                            "Puerto-Rican",
                            "South-Asian",
@@ -241,9 +244,9 @@
                             "WGBS"
                         ]
                     },
-                    "dataset_tissue": {
-                        "type": "string",
-                        "enum": [
+        "dataset_tissue": {
+             "type": "string",
+             "enum": [
                             "Pancreas",
                             "-",
                             "Islet",
@@ -254,12 +257,12 @@
                         ],
                         "description": "Dataset Tissue"
                     },
-                    "dataset_link": {
-                        "type": "string",
-                        "description": "Dataset Link which is optional"
+           "dataset_link": {
+                "type": "string",
+                "description": "Dataset Link which is optional"
                     }
                     },
-                "required": ["dataset", "dataset_tissue"]
+            "required": ["dataset", "dataset_tissue"]
             }
         },
         "living_donor": {
@@ -292,6 +295,17 @@
                 "type": "string"
             }
         },
+        "other_disease_states": {
+            "title": "Other Disease States",
+            "type": "array",
+            "description": "Other Disease States",
+            "uniqueItems": true,
+            "items": {
+                "title": "Other Disease States",
+                "description": "Other Disease States",
+                "type": "string"
+            }
+        },
         "rrid": {
             "title": "RRID",
             "description": "Research Unique Identifier. PanKbase will only take donors with RRID",
@@ -320,7 +334,7 @@
                 "igvf_utils": "SAMN19776455"
             }
         },
-        "biological_sex": {
+        "genetic_sex": {
             "title": "Genetic Sex",
             "description": "Inferred biological sex derived from genomic data",
             "type": "string",
@@ -338,10 +352,11 @@
             "description": "T1D stage",
             "type": "string",
             "enum": [
-                "At-risk: Single or transient autoantibody, normal glucose",
-                "Stage 1: Two or more autoantibodies, normal glucose metabolism",
-                "Stage 2: Two or more autoantibodies, dysglycemia (e.g. HbA1c ≥ 5.7%)",
+                "At-risk: Single or transient autoantibody, normal glucose level",
+                "Stage 1: Two or more autoantibodies, normal glucose metabolism level",
+                "Stage 2: Two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)",
 		"Stage 3: One or more autoantibodies and diagnostic hyperglycemia or T1D diagnosis",
+		"Conflicting diabetes evidence",
 		"No stage",
 		"no sufficient information to derive"
             ],
@@ -420,17 +435,17 @@
                 "monogenic diabetes",
                 "neonatal diabetes",
                 "wolfram syndrome",
-                "alström syndrome",
+                "Alström syndrome",
                 "latent autoimmune diabetes in adults (LADA)",
                 "type 3c diabetes",
                 "steroid-induced diabetes",
-                "cystic fibrosis diabetes",
-                "non-diabetic",
+                "cystic fibrosis-related diabetes",
+                "control without diabetes",
                 "diabetes unspecified"
             ],
             "submissionExample": {
-                "appscript": "non-diabetic",
-                "igvf_utils": "non-diabetic"
+                "appscript": "control without diabetes",
+                "igvf_utils": "control without diabetes"
             }
         },
         "hba1c": {
@@ -447,14 +462,14 @@
             "description": "The type of organ donation, categorized as DCD, NDD, or MAID",
             "type": "string",
             "enum": [
-                "DCD",
-                "DBD",
-                "NDD",
-                "MAID"
+                "Donation after Circulatory Death",
+                "Donation after Brain Death",
+                "Natural Death Donation",
+                "Medical Assistance in Dying"
             ],
             "submissionExample": {
-                "appscript": "DCD",
-                "igvf_utils": "DCD"
+                "appscript": "Donation after Circulatory Death",
+                "igvf_utils": "Donation after Circulatory Death"
             }
         },
         "cause_of_death": {
@@ -477,7 +492,7 @@
         },
         "aab_gada": {
             "title": "AAB GADA POSITIVE",
-            "description": "The presence of Autoantibodies against GADA",
+            "description": "The presence of autoantibodies against GADA",
             "type": "boolean",
             "submissionExample": {
                 "appscript": false,
@@ -504,7 +519,7 @@
         },
         "aab_iaa": {
             "title": "AAB IAA POSITIVE",
-            "description": "The presence of Autoantibodies against IAA",
+            "description": "The presence of autoantibodies against IAA",
             "type": "boolean",
             "submissionExample": {
                 "appscript": false,
@@ -531,7 +546,7 @@
         },
         "aab_ia2": {
             "title": "AAB IA2 POSITIVE",
-            "description": "The presence of Autoantibodies against IA2",
+            "description": "The presence of autoantibodies against IA2",
             "type": "boolean",
             "submissionExample": {
                 "appscript": false,
@@ -558,7 +573,7 @@
         },
         "aab_znt8": {
             "title": "AAB ZNT8 POSITIVE",
-            "description": "The presence of Autoantibodies against ZNT8",
+            "description": "The presence of autoantibodies against ZNT8",
             "type": "boolean",
             "submissionExample": {
                 "appscript": false,
@@ -585,8 +600,8 @@
         },
         "hla_typing": {
             "title": "HLA typing",
-            "description": "Series of comma-separated values describing HLA types as: class, locus, allele1, allele2, method",
-            "comment": "example: 'A,1,11:01,24:02,NGS', 'B,1,15:01,40:01,NGS', 'C,1,03:03,03:04,NGS'",
+            "description": "Series of comma-separated values describing HLA types as: locus, allele1, allele2, method",
+            "comment": "example: 'A,02:01-02:17,NGS', 'B,40:02-44:02,NGS', 'C,03-07,RT-PCR'",
             "type": "array",
             "uniqueItems": true,
             "items": {
@@ -632,7 +647,7 @@
         },
         "other_theraphy": {
             "title": "Other Therapy",
-            "description": "Details the type of therapy or medication regimen the patient is on other than to manage blood glucose levels.",
+            "description": "Details the type of therapy or medication regimen the patient is on.",
             "type": "array",
             "uniqueItems": true,
             "items": {

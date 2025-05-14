@@ -8,10 +8,7 @@ def construct_library_set():
     return {
         'facets': {
             'award.component': {
-                'title': 'Award'
-            },
-            'lab.title': {
-                'title': 'Lab'
+                'title': 'Funding'
             },
             'file_set_type': {
                 'title': 'File Set Type'
@@ -60,7 +57,6 @@ def construct_library_set():
                 'title': 'Provenance',
                 'facet_fields': [
                     'collections',
-                    'lab.title',
                     'award.component',
                     'type',
                 ],
@@ -80,14 +76,8 @@ def construct_library_set():
             'accession': {
                 'title': 'Accession'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'status': {
                 'title': 'Status'
-            },
-            'lab': {
-                'title': 'Lab'
             },
             'file_set_type': {
                 'title': 'File Set Type'

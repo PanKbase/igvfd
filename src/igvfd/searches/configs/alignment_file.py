@@ -16,11 +16,8 @@ def alignment_file():
             'collections': {
                 'title': 'Collections'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award',
+                'title': 'Funding',
             },
             'upload_status': {
                 'title': 'Upload Status'
@@ -53,7 +50,6 @@ def alignment_file():
                 'title': 'Provenance',
                 'facet_fields': [
                     'collections',
-                    'lab.title',
                     'award.component',
                     'type',
                 ],
@@ -85,9 +81,6 @@ def alignment_file():
             },
             'file_format': {
                 'title': 'File Format'
-            },
-            'lab': {
-                'title': 'Lab'
             },
             'status': {
                 'title': 'Status'

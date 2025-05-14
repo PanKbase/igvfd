@@ -8,7 +8,7 @@
         "award",
         "lab",
         "taxa",
-        "sex"
+        "gender"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -54,16 +54,16 @@
                 "title": "External Identifier",
                 "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF donors.",
                 "type": "string",
-                "pattern": "(^GEO:SAMN\\d+$)|(^PANC-DB:HPAP-\\d+$)|(^ENCODE:ENCDO\\d{3}[A-Z]{3}$)"
+                "pattern": "(^GEO:SAMN\\d+$)|(^PANC-DB:HPAP-\\d+$)|(^ENCODE:ENCDO\\d{3}[A-Z]{3}$)|(^IIDP:SAMN\\d+$)|(^Prodo:[A-Z]*-?\\d+-\\d+[A-Z0-9]*$)"
             },
             "submissionExample": {
                 "appscript": "[\"GEO:SAMN31998833\", \"GEO:SAMN31998834\"]",
                 "igvf_utils": "GEO:SAMN31998833, GEO:SAMN31998834"
             }
         },
-        "sex": {
+        "gender": {
             "title": "Gender",
-            "description": "Self-Reported gender of the donor.",
+            "description": "Gender of the donor.",
             "type": "string",
             "enum": [
                 "male",

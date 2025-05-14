@@ -13,11 +13,8 @@ def crispr_modification():
             'modality': {
                 'title': 'Modality'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'status': {
                 'title': 'Status'
@@ -50,7 +47,6 @@ def crispr_modification():
             {
                 'title': 'Provenance',
                 'facet_fields': [
-                    'lab.title',
                     'award.component',
                 ]
             },
@@ -86,9 +82,6 @@ def crispr_modification():
             },
             'product_id': {
                 'title': 'Product ID'
-            },
-            'lab': {
-                'title': 'Lab'
             },
             'cas_species': {
                 'title': 'Cas Species'

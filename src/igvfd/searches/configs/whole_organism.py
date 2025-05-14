@@ -10,8 +10,8 @@ def whole_organism():
             'taxa': {
                 'title': 'Taxa'
             },
-            'sex': {
-                'title': 'Sex'
+            'gender': {
+                'title': 'Gender'
             },
             'classifications': {
                 'title': 'Classifications',
@@ -30,9 +30,6 @@ def whole_organism():
             },
             'disease_terms.term_name': {
                 'title': 'Disease Terms'
-            },
-            'lab.title': {
-                'title': 'Lab'
             },
             'award.component': {
                 'title': 'Award'
@@ -67,7 +64,7 @@ def whole_organism():
                 'title': 'Sample',
                 'facet_fields': [
                     'taxa',
-                    'sex',
+                    'gender',
                     'classifications',
                     'treatments.treatment_type',
                     'biomarkers.classification',
@@ -124,9 +121,6 @@ def whole_organism():
             },
             'award': {
                 'title': 'Award'
-            },
-            'lab': {
-                'title': 'Lab'
             },
             'status': {
                 'title': 'Status'
