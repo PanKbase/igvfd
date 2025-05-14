@@ -5,7 +5,6 @@
     "description": "A biosample that is directly harvested from a donor as cells, such as fibroblasts or immune cells.",
     "type": "object",
     "required": [
-        "award",
         "lab",
         "sources",
         "donors",

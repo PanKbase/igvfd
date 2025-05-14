@@ -5,7 +5,6 @@
     "description": "A biosample that is directly harvested from a donor as islet cells.",
     "type": "object",
     "required": [
-        "award",
         "lab",
         "sources",
         "donors",
