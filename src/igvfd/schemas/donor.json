@@ -62,8 +62,8 @@
             }
         },
         "sex": {
-            "title": "Sex",
-            "description": "Self-Reported sex of the donor.",
+            "title": "Gender",
+            "description": "Self-Reported gender of the donor.",
             "type": "string",
             "enum": [
                 "male",

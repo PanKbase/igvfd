@@ -2,7 +2,7 @@
     "title": "Human Donor",
     "$id": "/profiles/human_donor.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A human donor of any biosample, including cell lines. Submission of any sample originating from a human donor requires submission of information about the relevant donor. For example, submission of the donor of K562 is a prerequisite for submission of any K562 cell line samples. The schema has a tiered structure for field requirements:Tier 0 fields are strictly required: age, award, center_donor_id, lab, living_donor, and taxa. Tier 1 fields are required: sex, bmi, diabetes_status, and diabetes_status_description. Tier 2 fields are desired but not mandatory: rrid, ethnicities, hba1c, diabetes_status_hba1c, glucose_lowering_therapy, hospital_stay, donation_type, and cause_of_death. Tier 3 fields are optional but valuable for comprehensive data: these include autoantibody results, genetic information, tissue availability, and other metadata. The inclusion of as many fields as possible is recommended for the most complete biological context.",
+    "description": "A human donor of any biosample, including cell lines. Submission of any sample originating from a human donor requires submission of information about the relevant donor. For example, submission of the donor of K562 is a prerequisite for submission of any K562 cell line samples. The schema has a tiered structure for field requirements:Tier 0 fields are strictly required: age, award, center_donor_id, lab, living_donor, and taxa. Tier 1 fields are required: gender, bmi, diabetes_status, and diabetes_status_description. Tier 2 fields are desired but not mandatory: rrid, ethnicities, hba1c, diabetes_status_hba1c, glucose_lowering_therapy, hospital_stay, donation_type, and cause_of_death. Tier 3 fields are optional but valuable for comprehensive data: these include autoantibody results, genetic information, tissue availability, and other metadata. The inclusion of as many fields as possible is recommended for the most complete biological context.",
     "type": "object",
     "required": [
         "award",
@@ -476,7 +476,7 @@
             }
         },
         "aab_gada": {
-            "title": "AAB_GADA_POSITIVE",
+            "title": "AAB GADA POSITIVE",
             "description": "The presence of Autoantibodies against GADA",
             "type": "boolean",
             "submissionExample": {
@@ -503,7 +503,7 @@
             }
         },
         "aab_iaa": {
-            "title": "AAB_IAA_POSITIVE",
+            "title": "AAB IAA POSITIVE",
             "description": "The presence of Autoantibodies against IAA",
             "type": "boolean",
             "submissionExample": {
@@ -530,7 +530,7 @@
             }
         },
         "aab_ia2": {
-            "title": "AAB_IA2_POSITIVE",
+            "title": "AAB IA2 POSITIVE",
             "description": "The presence of Autoantibodies against IA2",
             "type": "boolean",
             "submissionExample": {
@@ -557,7 +557,7 @@
             }
         },
         "aab_znt8": {
-            "title": "AAB_ZNT8_POSITIVE",
+            "title": "AAB ZNT8 POSITIVE",
             "description": "The presence of Autoantibodies against ZNT8",
             "type": "boolean",
             "submissionExample": {
@@ -631,7 +631,7 @@
             }
         },
         "other_theraphy": {
-            "title": "Other Theraphy",
+            "title": "Other Therapy",
             "description": "Details the type of therapy or medication regimen the patient is on other than to manage blood glucose levels.",
             "type": "array",
             "uniqueItems": true,
