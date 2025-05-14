@@ -484,6 +484,15 @@
                 "igvf_utils": false
             }
         },
+        "aab_gada_assay": {
+            "title": "AAB GADA assay",
+            "description": "Assays used to measure autoantibodies against GADA",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string"
+                      }
+        },
         "aab_gada_value": {
             "title": "AAB GADA value (unit/ml)",
             "description": "AAB GADA value (unit/ml)",
@@ -501,6 +510,15 @@
                 "appscript": false,
                 "igvf_utils": false
             }
+        },
+        "aab_iaa_assay": {
+            "title": "AAB IAA assay",
+            "description": "Assays used to measure autoantibodies against IAA",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string"
+                      }
         },
         "aab_iaa_value": {
             "title": "AAB IAA value (unit/ml)",
@@ -520,6 +538,15 @@
                 "igvf_utils": false
             }
         },
+        "aab_ia2_assay": {
+            "title": "AAB IA2 assay",
+            "description": "Assays used to measure autoantibodies against IA2",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string"
+                      }
+        },
         "aab_ia2_value": {
             "title": "AAB IA2 value (unit/ml)",
             "description": "AAB IA2 value (unit/ml)",
@@ -537,6 +564,15 @@
                 "appscript": false,
                 "igvf_utils": false
             }
+        },
+        "aab_znt8_assay": {
+            "title": "AAB ZNT8 assay",
+            "description": "Assays used to measure autoantibodies against ZNT8",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string"
+                      }
         },
         "aab_znt8_value": {
             "title": "AAB ZNT8 value (unit/ml)",
@@ -594,37 +630,14 @@
                 "igvf_utils": 1.5
             }
         },
-        "glucose_loweing_theraphy": {
-            "title": "Glucose Lowering Theraphy",
-            "description": "Details the type of therapy or medication regimen the patient is on to manage blood glucose levels, including oral medications, insulin, or other treatments.",
+        "other_theraphy": {
+            "title": "Other Theraphy",
+            "description": "Details the type of therapy or medication regimen the patient is on other than to manage blood glucose levels.",
             "type": "array",
             "uniqueItems": true,
             "items": {
-                "type": "string",
-                "enum": [
-                         "Oral medications",
-                         "Insulin",
-                         "Other treatment",
-                         "Metformin",
-                         "Glipizide",
-                         "Glimeperide",
-                         "Ozempic",
-                         "Pills of unknown name",
-                         "Lantus",
-                         "Trulicity",
-                         "Oral meds",
-                         "Unknown pills",
-                         "Glyxambi",
-                         "Unknown medication",
-                         "Unknown",
-                         "No treatment",
-                         "NA"
-                        ]
-                      },
-            "submissionExample": {
-                "appscript": ["insulin"],
-                "igvf_utils": ["insulin"]
-            }
+                "type": "string"
+                      }
         },
         "human_donor_identifiers": {
             "title": "Human Donor Identifiers",
