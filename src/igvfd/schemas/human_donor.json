@@ -2,10 +2,9 @@
     "title": "Human Donor",
     "$id": "/profiles/human_donor.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A human donor of any biosample, including cell lines. Submission of any sample originating from a human donor requires submission of information about the relevant donor. For example, submission of the donor of K562 is a prerequisite for submission of any K562 cell line samples. The schema has a tiered structure for field requirements:Tier 0 fields are strictly required: age, award, center_donor_id, lab, living_donor, and taxa. Tier 1 fields are required: gender, bmi, diabetes_status, and diabetes_status_description. Tier 2 fields are desired but not mandatory: rrid, ethnicities, hba1c, diabetes_status_hba1c, glucose_lowering_therapy, hospital_stay, donation_type, and cause_of_death. Tier 3 fields are optional but valuable for comprehensive data: these include autoantibody results, genetic information, tissue availability, and other metadata. The inclusion of as many fields as possible is recommended for the most complete biological context.",
+    "description": "A human donor of any biosample, including cell lines. Submission of any sample originating from a human donor requires submission of information about the relevant donor. For example, submission of the donor of K562 is a prerequisite for submission of any K562 cell line samples. The schema has a tiered structure for field requirements:Tier 0 fields are strictly required: age,  center_donor_id, lab, living_donor, and taxa. Tier 1 fields are required: gender, bmi, diabetes_status, and diabetes_status_description. Tier 2 fields are desired but not mandatory: rrid, ethnicities, hba1c, diabetes_status_hba1c, glucose_lowering_therapy, hospital_stay, award,donation_type, and cause_of_death. Tier 3 fields are optional but valuable for comprehensive data: these include autoantibody results, genetic information, tissue availability, and other metadata. The inclusion of as many fields as possible is recommended for the most complete biological context.",
     "type": "object",
     "required": [
-        "award",
         "center_donor_id",
         "lab",
         "age",
