@@ -19,6 +19,7 @@
         "prep_viability",
         "warm_ischaemia_duration",
         "purity",
+        "purity_assay",
         "hand_picked",
         "pre_shipment_culture_time",
         "islet_function_available"
@@ -190,6 +191,15 @@
             "submissionExample": {
                 "appscript": ["12.47"],
                 "igvf_utils": ["12.47"]
+            }
+        },
+        "purity_assay": {
+            "title": "Assay used to measure purity",
+            "description": "Assay used to measure percentage of the pancreas preparation that consists of the target cells or tissue type (Dithizone(DTZ) etc.)",
+            "type": "array",
+            "items": {
+                "title": "Assay used to measure purity",
+                "type": "string"
             }
         },
         "hand_picked": {
