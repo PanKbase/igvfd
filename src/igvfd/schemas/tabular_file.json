@@ -89,7 +89,8 @@
                                         "gtf",
                                         "tsv",
                                         "txt",
-                                        "vcf"
+                                        "vcf",
+                                        "html"
                                     ]
                                 }
                             }
