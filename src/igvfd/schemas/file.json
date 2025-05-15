@@ -157,7 +157,8 @@
                             "bigBed",
                             "bigWig",
                             "bigInteract",
-                            "vcf"
+                            "vcf",
+                            "html"
                         ]
                     }
                 }
