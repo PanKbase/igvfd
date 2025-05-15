@@ -140,7 +140,8 @@
                 "gtf",
                 "tsv",
                 "txt",
-                "vcf"
+                "vcf",
+                "html"
             ],
             "submissionExample": {
                 "appscript": "tsv",
