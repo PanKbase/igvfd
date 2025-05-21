@@ -232,7 +232,7 @@ def multitype_report_download(context, request):
 
     # Stream response using chunked encoding.
     request.response.content_type = 'text/tsv'
-    request.response.content_disposition = 'attachment;filename="igvf_{}_report_{}_{}_{}_{}h_{}m.tsv"'.format(
+    request.response.content_disposition = 'attachment;filename="pankbase_{}_report_{}_{}_{}_{}h_{}m.tsv"'.format(
         report_type,
         downloadtime.year,
         downloadtime.month,
