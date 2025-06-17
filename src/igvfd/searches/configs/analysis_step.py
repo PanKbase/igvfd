@@ -56,9 +56,6 @@ def analysis_step():
             'uuid': {
                 'title': 'UUID'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'status': {
                 'title': 'Status'
             },

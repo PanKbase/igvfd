@@ -133,9 +133,6 @@ def measurement_set():
             'uuid': {
                 'title': 'UUID'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'status': {
                 'title': 'Status'
             },

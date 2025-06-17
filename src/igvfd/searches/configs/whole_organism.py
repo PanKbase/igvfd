@@ -31,9 +31,6 @@ def whole_organism():
             'disease_terms.term_name': {
                 'title': 'Disease Terms'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
                 'title': 'Award'
             },
@@ -124,9 +121,6 @@ def whole_organism():
             },
             'award': {
                 'title': 'Award'
-            },
-            'lab': {
-                'title': 'Lab'
             },
             'status': {
                 'title': 'Status'

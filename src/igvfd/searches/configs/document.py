@@ -68,9 +68,6 @@ def document():
             'description': {
                 'title': 'Description'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'award': {
                 'title': 'Award'
             },

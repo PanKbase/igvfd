@@ -79,9 +79,6 @@ def auxiliary_set():
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'status': {
                 'title': 'Status'
             },

@@ -87,9 +87,6 @@ def curated_set():
             'uuid': {
                 'title': 'UUID'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'description': {
                 'title': 'Description'
             },

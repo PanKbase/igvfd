@@ -58,9 +58,6 @@ def institutional_certificate():
             'uuid': {
                 'title': 'UUID'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'status': {
                 'title': 'Status'
             },

@@ -91,9 +91,6 @@ def human_genomic_variant():
             },
             'rsid': {
                 'title': 'RS Identifier'
-            },
-            'aliases': {
-                'title': 'Aliases'
             }
         }
     }

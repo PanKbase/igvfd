@@ -87,9 +87,6 @@ def rodent_donor():
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'taxa': {
                 'title': 'Taxa'
             },

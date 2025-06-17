@@ -10,9 +10,6 @@ def workflow():
             'collections': {
                 'title': 'Collections',
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
                 'title': 'Award'
             },
@@ -62,17 +59,11 @@ def workflow():
             'uuid': {
                 'title': 'UUID'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'status': {
                 'title': 'Status'
             },
             'name': {
                 'title': 'Name'
-            },
-            'lab': {
-                'title': 'Lab'
             },
             'award': {
                 'title': 'Award'

@@ -80,9 +80,6 @@ def construct_library_set():
             'accession': {
                 'title': 'Accession'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'status': {
                 'title': 'Status'
             },

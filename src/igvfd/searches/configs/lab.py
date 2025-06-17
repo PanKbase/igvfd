@@ -36,9 +36,6 @@ def lab():
             'title': {
                 'title': 'Title'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'awards': {
                 'title': 'Awards'
             },

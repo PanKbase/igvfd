@@ -91,9 +91,6 @@ def human_donor():
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
             },
-            'aliases': {
-                'title': 'Aliases'
-            },
             'sex': {
                 'title': 'Sex'
             },
