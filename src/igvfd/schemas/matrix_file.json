@@ -109,6 +109,7 @@
             "type": "string",
             "enum": [
                 "cell",
+                "sample",
                 "fragment",
                 "gene",
                 "time",
