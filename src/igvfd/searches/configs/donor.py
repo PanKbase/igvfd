@@ -13,11 +13,8 @@ def donor():
             'collections': {
                 'title': 'Collections'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'status': {
                 'title': 'Status'
@@ -86,7 +83,7 @@ def donor():
                 'title': 'Sex'
             },
             'award': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'ethnicities': {
                 'title': 'Ethnicities'

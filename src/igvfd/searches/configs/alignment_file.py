@@ -17,7 +17,7 @@ def alignment_file():
                 'title': 'Collections'
             },
             'award.component': {
-                'title': 'Award',
+                'title': 'Funding',
             },
             'upload_status': {
                 'title': 'Upload Status'

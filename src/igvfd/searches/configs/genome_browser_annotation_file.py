@@ -19,11 +19,8 @@ def genome_browser_annotation_file():
             'collections': {
                 'title': 'Collections'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award',
+                'title': 'Funding',
             },
             'upload_status': {
                 'title': 'Upload Status'
@@ -65,7 +62,6 @@ def genome_browser_annotation_file():
                 'title': 'Provenance',
                 'facet_fields': [
                     'collections',
-                    'lab.title',
                     'award.component',
                     'type',
                 ],

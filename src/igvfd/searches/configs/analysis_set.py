@@ -19,11 +19,8 @@ def analysis_set():
             'samples.sample_terms.term_name': {
                 'title': 'Sample Term'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'status': {
                 'title': 'Status'
@@ -66,7 +63,6 @@ def analysis_set():
                 'title': 'Provenance',
                 'facet_fields': [
                     'collections',
-                    'lab.title',
                     'award.component',
                     'type',
                 ],
@@ -100,9 +96,6 @@ def analysis_set():
             },
             'donors': {
                 'title': 'Donors'
-            },
-            'lab': {
-                'title': 'Lab'
             },
             'award': {
                 'title': 'Award'

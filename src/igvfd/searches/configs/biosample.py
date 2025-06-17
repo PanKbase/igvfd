@@ -13,11 +13,8 @@ def biosample():
             'collections': {
                 'title': 'Collections',
             },
-            'lab.title': {
-                'title': 'Lab',
-            },
             'award.component': {
-                'title': 'Award',
+                'title': 'Funding',
             },
             'status': {
                 'title': 'Status'
@@ -57,7 +54,6 @@ def biosample():
                 'title': 'Provenance',
                 'facet_fields': [
                     'collections',
-                    'lab.title',
                     'award.component',
                     'type',
                 ]

@@ -28,11 +28,8 @@ def human_donor():
             'collections': {
                 'title': 'Collections'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'status': {
                 'title': 'Status'
@@ -66,7 +63,6 @@ def human_donor():
             {
                 'title': 'Provenance',
                 'facet_fields': [
-                    'lab.title',
                     'award.component',
                 ]
             },
@@ -95,16 +91,13 @@ def human_donor():
                 'title': 'Sex'
             },
             'award': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'ethnicities': {
                 'title': 'Ethnicities'
             },
             'human_donor_identifiers': {
                 'title': 'Human Donor Identifiers'
-            },
-            'lab': {
-                'title': 'Lab'
             },
             'status': {
                 'title': 'Status'

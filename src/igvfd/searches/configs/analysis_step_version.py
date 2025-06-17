@@ -10,11 +10,8 @@ def analysis_step_version():
             'collections': {
                 'title': 'Collections',
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'status': {
                 'title': 'Status'
@@ -25,7 +22,6 @@ def analysis_step_version():
                 'title': 'Provenance',
                 'facet_fields': [
                     'collections',
-                    'lab.title',
                     'award.component',
                 ],
             },
@@ -42,12 +38,6 @@ def analysis_step_version():
             },
             'status': {
                 'title': 'Status'
-            },
-            'lab': {
-                'title': 'Lab'
-            },
-            'award': {
-                'title': 'Award'
             },
             'title': {
                 'title': 'Title'

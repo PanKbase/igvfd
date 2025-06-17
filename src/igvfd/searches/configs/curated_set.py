@@ -7,11 +7,8 @@ from snovault.elasticsearch.searches.configs import search_config
 def curated_set():
     return {
         'facets': {
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'taxa': {
                 'title': 'Taxa'
@@ -61,7 +58,6 @@ def curated_set():
                 'title': 'Provenance',
                 'facet_fields': [
                     'collections',
-                    'lab.title',
                     'award.component',
                     'type',
                 ],
