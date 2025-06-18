@@ -255,7 +255,7 @@ def human_donor_16_17(value, system):
                 updated_ethnicities.append(ethnicities_mapping[ethnicity])
             else:
                 updated_ethnicities.append(ethnicity)
-        value['ethnicities_status_description'] = ethnicities_status_mapping[current_status]
+        value['ethnicities'] = updated_ethnicities
     
     # Update donation_type enum values from abbreviations to full descriptions
     if 'donation_type' in value:
