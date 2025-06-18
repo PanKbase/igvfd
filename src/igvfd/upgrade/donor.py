@@ -212,3 +212,56 @@ def human_donor_15_16(value, system):
                 updated_ethnicities.append(ethnicity)
         value['genetic_ethnicities'] = updated_ethnicities
         
+@upgrade_step('human_donor', '16', '17')
+def human_donor_16_17(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-XXXX
+    # Update multiple enum values for improved terminology and consistency
+    
+    # Update T1D stage enum values to include "level" terminology
+    if 't1d_stage' in value:
+        t1d_stage_mapping = {
+            "At-risk: Single or transient autoantibody, normal glucose": 
+                "At-risk: Single or transient autoantibody, normal glucose level",
+            "Stage 1: Two or more autoantibodies, normal glucose metabolism": 
+                "Stage 1: Two or more autoantibodies, normal glucose metabolism level",
+            "Stage 2: Two or more autoantibodies, dysglycemia (e.g. HbA1c ≥ 5.7%)": 
+                "Stage 2: Two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)"
+        }
+        
+        current_stage = value['t1d_stage']
+        if current_stage in t1d_stage_mapping:
+            value['t1d_stage'] = t1d_stage_mapping[current_stage]
+    
+    # Update diabetes_status_description enum values
+    if 'diabetes_status_description' in value:
+        diabetes_status_mapping = {
+            "alström syndrome": "Alström syndrome",
+            "cystic fibrosis diabetes": "cystic fibrosis-related diabetes",
+            "non-diabetic": "control without diabetes"
+        }
+        
+        current_status = value['diabetes_status_description']
+        if current_status in diabetes_status_mapping:
+            value['diabetes_status_description'] = diabetes_status_mapping[current_status]
+    # Update ethnicities enum values
+    if 'ethnicities' in value:
+        ethnicities_mapping = {
+            "Caucasian": "White"
+        }
+        
+        current_status = value['ethnicities']
+        if current_status in ethnicities_mapping:
+            value['ethnicities_status_description'] = ethnicities_status_mapping[current_status]
+    
+    # Update donation_type enum values from abbreviations to full descriptions
+    if 'donation_type' in value:
+        donation_type_mapping = {
+            "DCD": "Donation after Circulatory Death",
+            "DBD": "Donation after Brain Death", 
+            "NDD": "Natural Death Donation",
+            "MAD": "Medical Assistance in Dying"
+        }
+        
+        current_type = value['donation_type']
+        if current_type in donation_type_mapping:
+            value['donation_type'] = donation_type_mapping[current_type]

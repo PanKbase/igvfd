@@ -54,7 +54,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "16"
+            "default": "17"
         },
         "related_donors": {
             "title": "Related Donors",
@@ -121,7 +121,7 @@
                     "Asian",
                     "Black",
                     "Black African",
-                    "Caucasian",
+                    "White",
                     "Chinese",
                     "Colombian",
                     "Dai Chinese",
@@ -168,7 +168,7 @@
                            "Asian",
                            "Black",
                            "Black-African",
-                           "Caucasian",
+                           "White",
                            "Chinese",
                            "Colombian",
                            "Dai-Chinese",
@@ -337,9 +337,9 @@
             "description": "T1D stage",
             "type": "string",
             "enum": [
-                "At-risk: Single or transient autoantibody, normal glucose",
-                "Stage 1: Two or more autoantibodies, normal glucose metabolism",
-                "Stage 2: Two or more autoantibodies, dysglycemia (e.g. HbA1c ≥ 5.7%)",
+                "At-risk: Single or transient autoantibody, normal glucose level",
+                "Stage 1: Two or more autoantibodies, normal glucose metabolism level",
+                "Stage 2: Two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)",
 		"Stage 3: One or more autoantibodies and diagnostic hyperglycemia or T1D diagnosis",
 		"No stage",
 		"no sufficient information to derive"
@@ -419,17 +419,17 @@
                 "monogenic diabetes",
                 "neonatal diabetes",
                 "wolfram syndrome",
-                "alström syndrome",
+                "Alström syndrome",
                 "latent autoimmune diabetes in adults (LADA)",
                 "type 3c diabetes",
                 "steroid-induced diabetes",
-                "cystic fibrosis diabetes",
-                "non-diabetic",
+                "cystic fibrosis-related diabetes",
+                "control without diabetes",
                 "diabetes unspecified"
             ],
             "submissionExample": {
-                "appscript": "non-diabetic",
-                "igvf_utils": "non-diabetic"
+                "appscript": "control without diabetes",
+                "igvf_utils": "control without diabetes"
             }
         },
         "hba1c": {
@@ -446,14 +446,14 @@
             "description": "The type of organ donation, categorized as DCD, NDD, or MAID",
             "type": "string",
             "enum": [
-                "DCD",
-                "DBD",
-                "NDD",
-                "MAID"
+                "Donation after Circulatory Death",
+                "Donation after Brain Death",
+                "Natural Death Donation",
+                "Medical Assistance in Dying"
             ],
             "submissionExample": {
-                "appscript": "DCD",
-                "igvf_utils": "DCD"
+                "appscript": "Donation after Circulatory Death",
+                "igvf_utils": "Donation after Circulatory Death"
             }
         },
         "cause_of_death": {
@@ -476,7 +476,7 @@
         },
         "aab_gada": {
             "title": "AAB GADA POSITIVE",
-            "description": "The presence of Autoantibodies against GADA",
+            "description": "The presence of autoantibodies against GADA",
             "type": "boolean",
             "submissionExample": {
                 "appscript": false,
@@ -503,7 +503,7 @@
         },
         "aab_iaa": {
             "title": "AAB IAA POSITIVE",
-            "description": "The presence of Autoantibodies against IAA",
+            "description": "The presence of autoantibodies against IAA",
             "type": "boolean",
             "submissionExample": {
                 "appscript": false,
@@ -530,7 +530,7 @@
         },
         "aab_ia2": {
             "title": "AAB IA2 POSITIVE",
-            "description": "The presence of Autoantibodies against IA2",
+            "description": "The presence of autoantibodies against IA2",
             "type": "boolean",
             "submissionExample": {
                 "appscript": false,
@@ -557,7 +557,7 @@
         },
         "aab_znt8": {
             "title": "AAB ZNT8 POSITIVE",
-            "description": "The presence of Autoantibodies against ZNT8",
+            "description": "The presence of autoantibodies against ZNT8",
             "type": "boolean",
             "submissionExample": {
                 "appscript": false,
