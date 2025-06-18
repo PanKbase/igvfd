@@ -243,15 +243,19 @@ def human_donor_16_17(value, system):
         current_status = value['diabetes_status_description']
         if current_status in diabetes_status_mapping:
             value['diabetes_status_description'] = diabetes_status_mapping[current_status]
+
     # Update ethnicities enum values
-    if 'ethnicities' in value:
+    if 'ethnicities' in value and isinstance(value['ethnicities'], list):
         ethnicities_mapping = {
             "Caucasian": "White"
         }
-        
-        current_status = value['ethnicities']
-        if current_status in ethnicities_mapping:
-            value['ethnicities_status_description'] = ethnicities_status_mapping[current_status]
+        updated_ethnicities = []
+        for ethnicity in value['ethnicities']:
+            if ethnicity in ethnicities_mapping:
+                updated_ethnicities.append(ethnicities_mapping[ethnicity])
+            else:
+                updated_ethnicities.append(ethnicity)
+        value['ethnicities_status_description'] = ethnicities_status_mapping[current_status]
     
     # Update donation_type enum values from abbreviations to full descriptions
     if 'donation_type' in value:
