@@ -25,6 +25,9 @@ def human_donor():
             'aab_znt8': {
                 'title': 'AAB ZNT8 POSITIVE'
             },
+            'aab_iaa': {
+                'title': 'AAB IAA POSITIVE'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -56,6 +59,7 @@ def human_donor():
                     'diabetes_status_description',
                     'aab_gada',
                     'aab_ia2',
+                    'aab_iaa',
                     'aab_znt8',
                     'collections',
                 ]

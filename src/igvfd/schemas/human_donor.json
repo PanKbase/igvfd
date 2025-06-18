@@ -14,8 +14,7 @@
     "identifyingProperties": [
         "uuid",
         "accession",
-        "alternate_accessions",
-        "aliases"
+        "alternate_accessions"
     ],
     "additionalProperties": false,
     "mixinProperties": [
