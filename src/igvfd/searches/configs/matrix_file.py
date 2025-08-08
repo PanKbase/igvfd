@@ -22,11 +22,8 @@ def matrix_file():
             'collections': {
                 'title': 'Collections'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'upload_status': {
                 'title': 'Upload Status'

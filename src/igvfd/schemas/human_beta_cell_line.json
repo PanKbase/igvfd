@@ -1,0 +1,263 @@
+{
+    "title": "Human Beta Cell Line",
+    "$id": "/profiles/human_beta_cell_line.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "A human beta cell line biosample derived from pancreatic beta cells, specifically designed for diabetes and pancreatic function research.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "sources",
+        "donors",
+        "sample_terms",
+        "sample_name",
+        "classifications",
+        "description"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "sample.json#/properties"
+        },
+        {
+            "$ref": "biosample.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/product_info"
+        },
+        {
+            "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/taxa"
+        },
+        {
+            "$ref": "mixins.json#/publication_identifiers"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "biosample.json#/dependentSchemas",
+            "shared_dependencies.json#/accession_status"
+        ],
+        "passage_number": {
+            "comment": "A cell line biosample with passage_number requires growth_medium.",
+            "required": [
+                "growth_medium"
+            ]
+        }
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "sample_name": {
+            "title": "Sample Name",
+            "description": "Text-based term identifying the cell line (e.g. EndoC-Bh1, EndoC-Bh2, EndoC-Bh3).",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "EndoC-Bh1",
+                "igvf_utils": "EndoC-Bh1"
+            }
+        },
+        "classifications": {
+            "title": "Classifications",
+            "description": "Type of cell (cell line only option, used for compatibility with other schemas).",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Classification",
+                "type": "string",
+                "enum": [
+                    "cell line"
+                ]
+            },
+            "submissionExample": {
+                "appscript": "[\"cell line\"]",
+                "igvf_utils": "cell line"
+            }
+        },
+        "passage_number": {
+            "title": "Passage Number",
+            "description": "Number of passages from source.",
+            "type": "integer",
+            "minimum": 0,
+            "submissionExample": {
+                "appscript": 15,
+                "igvf_utils": 15
+            }
+        },
+        "growth_medium": {
+            "title": "Growth Medium",
+            "description": "Growth media used in the in vitro system to culture cell line biosample.",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "CMRL-1066 medium supplemented with 10% FBS and 1% penicillin/streptomycin",
+                "igvf_utils": "CMRL-1066 medium supplemented with 10% FBS and 1% penicillin/streptomycin"
+            }
+        },
+        "date_harvested": {
+            "title": "Date Harvested",
+            "description": "Date sample was harvested for assay.",
+            "type": "string",
+            "format": "date",
+            "submissionExample": {
+                "appscript": "2023-10-15",
+                "igvf_utils": "2023-10-15"
+            }
+        },
+        "authentication": {
+            "title": "Authentication",
+            "description": "Method for authentication performed on cell line biosample.",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "STR profiling",
+                "igvf_utils": "STR profiling"
+            }
+        },
+        "file_sets": {
+            "title": "File Sets",
+            "description": "File sets linked to this cell line biosample.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "File Set",
+                "type": "string",
+                "linkTo": "FileSet"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:fileset01\", \"/file-sets/IGVFDS123456/\"]",
+                "igvf_utils": "john-doe:fileset01, /file-sets/IGVFDS123456/"
+            }
+        },
+        "parts": {
+            "title": "Parts",
+            "description": "Parts this sample has been divided into.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Part",
+                "type": "string",
+                "linkTo": "HumanBetaCellLine"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:beta_cell_line_part01\", \"TSTSM02881437\"]",
+                "igvf_utils": "john-doe:beta_cell_line_part01, TSTSM02881437"
+            }
+        },
+        "pooled_in": {
+            "title": "Pooled In",
+            "description": "Samples in which this sample is pooled.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Pooled In Sample",
+                "type": "string",
+                "linkTo": "Sample"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:pooled_sample01\", \"TSTSM02881438\"]",
+                "igvf_utils": "john-doe:pooled_sample01, TSTSM02881438"
+            }
+        },
+        "demultiplexed_to": {
+            "title": "Demultiplexed To",
+            "description": "Parts into which this sample was demultiplexed.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Demultiplexed Sample",
+                "type": "string",
+                "linkTo": "Sample"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:demux_sample01\", \"TSTSM02881439\"]",
+                "igvf_utils": "john-doe:demux_sample01, TSTSM02881439"
+            }
+        },
+        "multiplexed_in": {
+            "title": "Multiplexed In",
+            "description": "Multiplexed samples this sample is part of.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Multiplexed Sample",
+                "type": "string",
+                "linkTo": "Sample"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:multiplex_sample01\", \"TSTSM02881440\"]",
+                "igvf_utils": "john-doe:multiplex_sample01, TSTSM02881440"
+            }
+        },
+        "sorted_fractions": {
+            "title": "Sorted Fractions",
+            "description": "Fractions into which this sample has been sorted.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Sorted Fraction",
+                "type": "string",
+                "linkTo": "Sample"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:sorted_fraction01\", \"TSTSM02881441\"]",
+                "igvf_utils": "john-doe:sorted_fraction01, TSTSM02881441"
+            }
+        },
+        "taxa": {
+            "enum": [
+                "Homo sapiens"
+            ],
+            "submissionExample": {
+                "appscript": "Homo sapiens",
+                "igvf_utils": "Homo sapiens"
+            }
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "description",
+        "summary",
+        "sample_name",
+        "growth_medium",
+        "authentication",
+        "submitted_by.title",
+        "taxa"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "dbxrefs",
+        "institutional_certificates.certificate_identifier",
+        "classifications"
+    ],
+    "changelog": "/profiles/changelogs/human_beta_cell_line.md"
+}

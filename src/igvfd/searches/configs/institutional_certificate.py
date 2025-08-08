@@ -7,11 +7,8 @@ from snovault.elasticsearch.searches.configs import search_config
 def institutional_certificate():
     return {
         'facets': {
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'status': {
                 'title': 'Status'
@@ -33,7 +30,6 @@ def institutional_certificate():
             {
                 'title': 'Provenance',
                 'facet_fields': [
-                    'lab.title',
                     'award.component',
                 ],
             },
@@ -61,11 +57,8 @@ def institutional_certificate():
             'status': {
                 'title': 'Status'
             },
-            'lab': {
-                'title': 'Lab'
-            },
             'award': {
-                'title': 'Award'
+                'title': 'Funding'
             },
             'summary': {
                 'title': 'Summary'

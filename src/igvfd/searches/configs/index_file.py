@@ -40,9 +40,6 @@ def index_file():
             'collections': {
                 'title': 'Collections'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'award.component': {
                 'title': 'Award',
             },
@@ -102,7 +99,6 @@ def index_file():
                 'title': 'Provenance',
                 'facet_fields': [
                     'collections',
-                    'lab.title',
                     'award.component',
                     'type',
                 ],

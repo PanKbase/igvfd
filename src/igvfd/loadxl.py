@@ -34,6 +34,7 @@ ORDER = [
     'in_vitro_system',
     'primary_cell',
     'primary_islet',
+    'human_beta_cell_line',
     'technical_sample',
     'whole_organism',
     'multiplexed_sample',

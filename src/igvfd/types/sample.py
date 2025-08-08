@@ -356,6 +356,11 @@ class Biosample(Sample):
                 summary_terms = f'{term_name} cell'
             else:
                 summary_terms = term_name
+        elif biosample_type == 'human_beta_cell_line':
+            if 'cell' not in term_name:
+                summary_terms = f'{term_name} cell line'
+            else:
+                summary_terms = term_name.replace('cell', 'cell line')
         elif biosample_type == 'in_vitro_system':
             if len(classifications) == 1:
                 summary_terms = f'{term_name} {classifications[0]}'
@@ -386,12 +391,12 @@ class Biosample(Sample):
 
         # embryonic is prepended to the start of the summary
         if (embryonic and
-                biosample_type in ['primary_cell', 'primary_islet', 'tissue']):
+                biosample_type in ['primary_cell', 'primary_islet', 'tissue', 'human_beta_cell_line']):
             summary_terms = f'embryonic {summary_terms}'
 
         # virtual is prepended to the start of the summary
         if (virtual and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'human_beta_cell_line']):
             summary_terms = f'virtual {summary_terms}'
 
         # time post change and targeted term are appended to the end of the summary
@@ -407,7 +412,7 @@ class Biosample(Sample):
 
         # cellular sub pool is appended to the end of the summary in parentheses
         if (cellular_sub_pool and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'human_beta_cell_line']):
             summary_terms += f' (cellular sub pool: {cellular_sub_pool})'
 
         # a comma is added before sex or taxa if sex is unspecified
@@ -415,7 +420,7 @@ class Biosample(Sample):
 
         # sex is appended to the end of the summary
         if (sex and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism', 'human_beta_cell_line']):
             if sex != 'unspecified':
                 if sex == 'mixed':
                     sex = 'mixed sex'
@@ -423,7 +428,7 @@ class Biosample(Sample):
 
         # taxa of the donor(s) is appended to the end of the summary
         if (donors and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism', 'human_beta_cell_line']):
             if not taxa or taxa == 'Mus musculus':
                 taxa_set = set()
                 strains_set = set()
@@ -442,18 +447,18 @@ class Biosample(Sample):
 
         # age is appended to the end of the summary
         if (age != 'unknown' and
-                biosample_type in ['primary_cell', 'tissue', 'whole_organism']):
+                biosample_type in ['primary_cell', 'tissue', 'whole_organism', 'human_beta_cell_line']):
             age = concat_numeric_and_units(age, age_units)
             summary_terms += f' ({age})'
 
         # sorted from detail is appended to the end of the summary
         if (sorted_from_detail and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'human_beta_cell_line']):
             summary_terms += f' (sorting details: {sorted_from_detail})'
 
         # biomarker summaries are appended to the end of the summary
         if (biomarkers and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'human_beta_cell_line']):
             biomarker_summaries = []
             for biomarker in biomarkers:
                 biomarker_object = request.embed(biomarker)
@@ -470,14 +475,14 @@ class Biosample(Sample):
 
         # disease terms are appended to the end of the summary
         if (disease_terms and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism', 'human_beta_cell_line']):
             phenotype_term_names = sorted([request.embed(disease_term).get('term_name')
                                           for disease_term in disease_terms])
             summary_terms += f' associated with {", ".join(phenotype_term_names)},'
 
         # treatment summaries are appended to the end of the summary
         if (treatments and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism', 'human_beta_cell_line']):
             treatment_objects = [request.embed(treatment) for treatment in treatments]
             depleted_treatment_summaries = sorted([treatment.get('summary')[13:]
                                                   for treatment in treatment_objects if treatment.get('depletion')])
@@ -490,7 +495,7 @@ class Biosample(Sample):
 
         # construct library set overview is appended to the end of the summary
         if (construct_library_sets and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism', 'human_beta_cell_line']):
             verb = 'modified with'
             library_types = set()
             for CLS in construct_library_sets:
@@ -516,7 +521,7 @@ class Biosample(Sample):
                     summary_terms += f' {verb} multiple libraries,'
 
         # growth media is appended to the end of the summary
-        if (growth_medium and biosample_type in ['in_vitro_system']):
+        if (growth_medium and biosample_type in ['in_vitro_system', 'human_beta_cell_line']):
             summary_terms += f' grown in {growth_medium}'
 
         return summary_terms.strip(',')
@@ -690,6 +695,103 @@ class Tissue(Biosample):
     )
     def classifications(self):
         return [self.item_type.replace('_', ' ')]
+
+
+@collection(
+    name='human-beta-cell-lines',
+    unique_key='accession',
+    properties={
+        'title': 'Human Beta Cell Lines',
+        'description': 'Listing of human beta cell lines',
+    }
+)
+class HumanBetaCellLine(Biosample):
+    item_type = 'human_beta_cell_line'
+    schema = load_schema('igvfd:schemas/human_beta_cell_line.json')
+    embedded_with_frame = Biosample.embedded_with_frame
+    audit_inherit = Biosample.audit_inherit
+    set_status_up = Biosample.set_status_up + []
+    set_status_down = Biosample.set_status_down + []
+
+    @calculated_property(schema={
+        'title': 'Parts',
+        'type': 'array',
+        'description': 'The parts into which this sample has been divided.',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Part',
+            'type': ['string', 'object'],
+            'linkFrom': 'HumanBetaCellLine.part_of',
+        },
+        'notSubmittable': True,
+    })
+    def parts(self, request, parts):
+        return paths_filtered_by_status(request, parts)
+
+    @calculated_property(schema={
+        'title': 'Pooled In',
+        'type': 'array',
+        'description': 'The pooled samples in which this sample is included.',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Pooled In Sample',
+            'type': ['string', 'object'],
+            'linkFrom': 'Sample.pooled_from',
+        },
+        'notSubmittable': True,
+    })
+    def pooled_in(self, request, pooled_in):
+        return paths_filtered_by_status(request, pooled_in)
+
+    @calculated_property(schema={
+        'title': 'Demultiplexed To',
+        'type': 'array',
+        'description': 'The parts into which this sample has been demultiplexed.',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Demultiplexed Sample',
+            'type': ['string', 'object'],
+            'linkFrom': 'Sample.demultiplexed_from',
+        },
+        'notSubmittable': True,
+    })
+    def demultiplexed_to(self, request, demultiplexed_to):
+        return paths_filtered_by_status(request, demultiplexed_to)
+
+    @calculated_property(schema={
+        'title': 'Multiplexed In',
+        'type': 'array', 
+        'description': 'The multiplexed samples this sample is part of.',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Multiplexed Sample',
+            'type': ['string', 'object'],
+            'linkFrom': 'Sample.multiplexed_from',
+        },
+        'notSubmittable': True,
+    })
+    def multiplexed_in(self, request, multiplexed_in):
+        return paths_filtered_by_status(request, multiplexed_in)
+
+    @calculated_property(schema={
+        'title': 'Sorted Fractions',
+        'type': 'array',
+        'description': 'The fractions into which this sample has been sorted.',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Sorted Fraction',
+            'type': ['string', 'object'],
+            'linkFrom': 'Sample.sorted_from',
+        },
+        'notSubmittable': True,
+    })
+    def sorted_fractions(self, request, sorted_fractions):
+        return paths_filtered_by_status(request, sorted_fractions)
 
 
 @collection(

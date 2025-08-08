@@ -48,6 +48,7 @@ def audit_biosample_taxa_check(value, system):
 
 @audit_checker('Tissue', frame='object')
 @audit_checker('PrimaryCell', frame='object')
+@audit_checker('HumanBetaCellLine', frame='object')
 @audit_checker('WholeOrganism', frame='object')
 def audit_biosample_age(value, system):
     '''
