@@ -49,16 +49,16 @@ def human_beta_cell_line():
             'biomarkers.classification': {
                 'title': 'Biomarkers Classification'
             },
-            'sample_name': {
+            'sample_name.raw': {
                 'title': 'Sample Name'
             },
             'passage_number': {
                 'title': 'Passage Number'
             },
-            'growth_medium': {
+            'growth_medium.raw': {
                 'title': 'Growth Medium'
             },
-            'authentication': {
+            'authentication.raw': {
                 'title': 'Authentication'
             },
             'type': {
@@ -82,11 +82,11 @@ def human_beta_cell_line():
                 'title': 'Cell Line',
                 'facet_fields': [
                     'sample_terms.term_name',
-                    'sample_name',
+                    'sample_name.raw',
                     'classifications',
                     'passage_number',
-                    'growth_medium',
-                    'authentication',
+                    'growth_medium.raw',
+                    'authentication.raw',
                     'disease_terms.term_name',
                     'treatments.treatment_term_name',
                     'biomarkers.classification',

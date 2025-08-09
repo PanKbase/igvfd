@@ -159,7 +159,12 @@
                     },
                     "authentication": {
                         "copy_to": "_fuzzy",
-                        "type": "text"
+                        "type": "text",
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        }
                     },
                     "award": {
                         "properties": {
@@ -264,7 +269,12 @@
                     },
                     "growth_medium": {
                         "copy_to": "_fuzzy",
-                        "type": "text"
+                        "type": "text",
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        }
                     },
                     "institutional_certificates": {
                         "type": "keyword"
@@ -363,7 +373,12 @@
                     },
                     "sample_name": {
                         "copy_to": "_fuzzy",
-                        "type": "text"
+                        "type": "text",
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        }
                     },
                     "sample_terms": {
                         "type": "keyword"
