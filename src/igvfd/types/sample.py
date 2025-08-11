@@ -357,10 +357,13 @@ class Biosample(Sample):
             else:
                 summary_terms = term_name
         elif biosample_type == 'human_beta_cell_line':
-            if 'cell' not in term_name:
-                summary_terms = f'{term_name} cell line'
-            else:
-                summary_terms = term_name.replace('cell', 'cell line')
+            try:
+                if 'cell' not in term_name:
+                    summary_terms = f'{term_name} cell line'
+                else:
+                    summary_terms = term_name.replace('cell', 'cell line')
+            except Exception:
+                summary_terms = 'human beta cell line'
         elif biosample_type == 'in_vitro_system':
             if len(classifications) == 1:
                 summary_terms = f'{term_name} {classifications[0]}'
@@ -712,86 +715,6 @@ class HumanBetaCellLine(Biosample):
     audit_inherit = Biosample.audit_inherit
     set_status_up = Biosample.set_status_up + []
     set_status_down = Biosample.set_status_down + []
-
-    @calculated_property(schema={
-        'title': 'Parts',
-        'type': 'array',
-        'description': 'The parts into which this sample has been divided.',
-        'minItems': 1,
-        'uniqueItems': True,
-        'items': {
-            'title': 'Part',
-            'type': ['string', 'object'],
-            'linkFrom': 'Biosample.part_of',
-        },
-        'notSubmittable': True,
-    })
-    def parts(self, request, parts):
-        return paths_filtered_by_status(request, parts)
-
-    @calculated_property(schema={
-        'title': 'Pooled In',
-        'type': 'array',
-        'description': 'The pooled samples in which this sample is included.',
-        'minItems': 1,
-        'uniqueItems': True,
-        'items': {
-            'title': 'Pooled In Sample',
-            'type': ['string', 'object'],
-            'linkFrom': 'Sample.pooled_from',
-        },
-        'notSubmittable': True,
-    })
-    def pooled_in(self, request, pooled_in):
-        return paths_filtered_by_status(request, pooled_in)
-
-    @calculated_property(schema={
-        'title': 'Demultiplexed To',
-        'type': 'array',
-        'description': 'The parts into which this sample has been demultiplexed.',
-        'minItems': 1,
-        'uniqueItems': True,
-        'items': {
-            'title': 'Demultiplexed Sample',
-            'type': ['string', 'object'],
-            'linkFrom': 'Sample.demultiplexed_from',
-        },
-        'notSubmittable': True,
-    })
-    def demultiplexed_to(self, request, demultiplexed_to):
-        return paths_filtered_by_status(request, demultiplexed_to)
-
-    @calculated_property(schema={
-        'title': 'Multiplexed In',
-        'type': 'array', 
-        'description': 'The multiplexed samples this sample is part of.',
-        'minItems': 1,
-        'uniqueItems': True,
-        'items': {
-            'title': 'Multiplexed Sample',
-            'type': ['string', 'object'],
-            'linkFrom': 'Sample.multiplexed_from',
-        },
-        'notSubmittable': True,
-    })
-    def multiplexed_in(self, request, multiplexed_in):
-        return paths_filtered_by_status(request, multiplexed_in)
-
-    @calculated_property(schema={
-        'title': 'Sorted Fractions',
-        'type': 'array',
-        'description': 'The fractions into which this sample has been sorted.',
-        'minItems': 1,
-        'uniqueItems': True,
-        'items': {
-            'title': 'Sorted Fraction',
-            'type': ['string', 'object'],
-            'linkFrom': 'Sample.sorted_from',
-        },
-        'notSubmittable': True,
-    })
-    def sorted_fractions(self, request, sorted_fractions):
-        return paths_filtered_by_status(request, sorted_fractions)
 
 
 @collection(
