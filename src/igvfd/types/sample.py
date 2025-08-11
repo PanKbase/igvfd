@@ -199,7 +199,8 @@ class Biosample(Sample):
         Path('disease_terms', include=['@id', 'term_name']),
         Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('modifications', include=['@id', 'modality', 'summary', 'status']),
-        Path('institutional_certificates', include=['@id', 'certificate_identifier'])
+        Path('institutional_certificates', include=['@id', 'certificate_identifier']),
+        Path('donors', include=['@id', 'accession', 'sex', 'age', 'taxa', 'summary'])
     ]
 
     audit_inherit = Sample.audit_inherit + [
@@ -711,10 +712,7 @@ class Tissue(Biosample):
 class HumanBetaCellLine(Biosample):
     item_type = 'human_beta_cell_line'
     schema = load_schema('igvfd:schemas/human_beta_cell_line.json')
-    embedded_with_frame = Biosample.embedded_with_frame + [
-        Path('donors', include=['@id', 'accession', 'sample_name', 'sex', 'age', 'taxa', 'summary']),
-        Path('sources', include=['@id', 'title', 'name'])
-    ]
+    embedded_with_frame = Biosample.embedded_with_frame
     audit_inherit = Biosample.audit_inherit
     set_status_up = Biosample.set_status_up + []
     set_status_down = Biosample.set_status_down + []
