@@ -7,8 +7,7 @@
   "required": [
     "award",
     "lab",
-    "sample_name",
-    "sample_terms",
+    "sample_name"
   ],
   "identifyingProperties": [
     "accession",
