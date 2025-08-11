@@ -722,7 +722,7 @@ class HumanBetaCellLine(Biosample):
         'items': {
             'title': 'Part',
             'type': ['string', 'object'],
-            'linkFrom': 'HumanBetaCellLine.part_of',
+            'linkFrom': 'Biosample.part_of',
         },
         'notSubmittable': True,
     })
