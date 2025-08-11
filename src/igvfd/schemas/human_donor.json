@@ -239,9 +239,20 @@
                             "WGBS"
                         ]
                     },
-                    "dataset_tissue": {
-                        "type": "string",
-                        "enum": [
+        "publication_data": {
+            "title": "Publication Data",
+            "description": "list of papers where data from that donor has been reported",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "title": "Publication Data",
+                "description": "list of papers where data from that donor has been reported",
+                "type": "string",
+                "pattern": "^(PMID:[0-9]+|doi:10\\.[0-9]{4}[\\d\\s\\S:\\.\\/]+|PMCID:PMC[0-9]+|[0-9]{4}\\.[0-9]{4})$",
+                    },
+        "dataset_tissue": {
+             "type": "string",
+             "enum": [
                             "Pancreas",
                             "-",
                             "Islet",
@@ -252,12 +263,12 @@
                         ],
                         "description": "Dataset Tissue"
                     },
-                    "dataset_link": {
-                        "type": "string",
-                        "description": "Dataset Link which is optional"
+           "dataset_link": {
+                "type": "string",
+                "description": "Dataset Link which is optional"
                     }
                     },
-                "required": ["dataset", "dataset_tissue"]
+            "required": ["dataset", "dataset_tissue"]
             }
         },
         "living_donor": {

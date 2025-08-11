@@ -6,13 +6,9 @@
   "type": "object",
   "required": [
     "award",
-    "classifications",
-    "description",
-    "donors",
     "lab",
     "sample_name",
     "sample_terms",
-    "sources"
   ],
   "identifyingProperties": [
     "accession",
