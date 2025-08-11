@@ -711,7 +711,10 @@ class Tissue(Biosample):
 class HumanBetaCellLine(Biosample):
     item_type = 'human_beta_cell_line'
     schema = load_schema('igvfd:schemas/human_beta_cell_line.json')
-    embedded_with_frame = Biosample.embedded_with_frame
+    embedded_with_frame = Biosample.embedded_with_frame + [
+        Path('donors', include=['@id', 'accession', 'sample_name', 'sex', 'age', 'taxa', 'summary']),
+        Path('sources', include=['@id', 'title', 'name'])
+    ]
     audit_inherit = Biosample.audit_inherit
     set_status_up = Biosample.set_status_up + []
     set_status_down = Biosample.set_status_down + []
