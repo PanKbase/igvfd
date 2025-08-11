@@ -40,6 +40,9 @@
             "$ref": "mixins.json#/publication_identifiers"
         },
         {
+            "$ref": "mixins.json#/publication_data"
+        },
+        {
             "$ref": "mixins.json#/taxa"
         },
         {
