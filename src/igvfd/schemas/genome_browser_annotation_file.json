@@ -121,7 +121,8 @@
     "exact_searchable_fields": [
         "@type",
         "dbxrefs",
-        "file_format"
+        "file_format",
+        "file_url"
     ],
     "changelog": "/profiles/changelogs/genome_browser_annotation_file.md"
 }

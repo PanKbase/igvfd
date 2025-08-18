@@ -147,7 +147,8 @@
         "@type",
         "dbxrefs",
         "file_format",
-        "file_set.accession"
+        "file_set.accession",
+        "file_url"
     ],
     "changelog": "/profiles/changelogs/index_file.md"
 }
