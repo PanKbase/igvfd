@@ -140,6 +140,7 @@
                     "Maasai",
                     "Mende",
                     "Native Hawaiian",
+                    "Native American",
                     "Pacific Islander",
                     "Puerto Rican",
                     "Yoruba"
@@ -188,6 +189,7 @@
                            "Maasai",
                            "Mende",
                            "Native-Hawaiian",
+                           "Native-American",
                            "Pacific-Islander",
                            "Puerto-Rican",
                            "South-Asian",
@@ -290,6 +292,17 @@
             "items": {
                 "title": "Family History of Diabetes Relationship",
                 "description": "Family History of Diabetes Relationship",
+                "type": "string"
+            }
+        },
+        "other_disease_states": {
+            "title": "Other Disease States",
+            "type": "array",
+            "description": "Other Disease States",
+            "uniqueItems": true,
+            "items": {
+                "title": "Other Disease States",
+                "description": "Other Disease States",
                 "type": "string"
             }
         },
