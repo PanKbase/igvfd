@@ -59,10 +59,18 @@
       ]
     },
     "sorted_from": {
-      "comment": "Specification of sorted_from requires sorted_from_detail.",
-      "required": [
-        "sorted_from_detail"
-      ]
+      "if": {
+        "properties": {
+          "sorted_from": {
+            "type": "string"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "sorted_from_detail"
+        ]
+      }
     },
     "sorted_from_detail": {
       "comment": "Specification of sorted_from_detail requires sorted_from.",

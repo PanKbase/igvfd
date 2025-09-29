@@ -718,6 +718,23 @@ class HumanBetaCellLine(Biosample):
     set_status_down = Biosample.set_status_down + []
 
 
+    @calculated_property(
+        schema={
+            'title': 'Classifications',
+            'description': 'The general category of this type of sample.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Classification',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def classifications(self):
+        return [self.item_type.replace('_', ' ')]
+
 @collection(
     name='technical-samples',
     unique_key='accession',
