@@ -54,7 +54,7 @@
                 "title": "External Identifier",
                 "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF donors.",
                 "type": "string",
-                "pattern": "(^GEO:SAMN\\d+$)|(^PANC-DB:HPAP-\\d+$)|(^ENCODE:ENCDO\\d{3}[A-Z]{3}$)|(^IIDP:SAMN\\d+$)|(^Prodo:\\d{5}-\\d{2}$)|(^Prodo:HP-\\d{5}-\\d{2}T2D$|^Prodo:HP-\\d{5}-\\d{2}$)"
+                "pattern": "(^GEO:SAMN\\d+$)|(^PANC-DB:HPAP-\\d+$)|(^ENCODE:ENCDO\\d{3}[A-Z]{3}$)|(^IIDP:SAMN\\d+$)|(^Prodo:[A-Z]*-?\d+-\d+[A-Z0-9]*$))"
             },
             "submissionExample": {
                 "appscript": "[\"GEO:SAMN31998833\", \"GEO:SAMN31998834\"]",
