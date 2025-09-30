@@ -702,7 +702,7 @@ class Tissue(Biosample):
 
 
 @collection(
-    name='human-beta-cell-lines',
+    name='human-beta-cell-line',
     unique_key='accession',
     properties={
         'title': 'Human Beta Cell Lines',
