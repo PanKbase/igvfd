@@ -303,7 +303,6 @@
     "fuzzy_searchable_fields": [
         "content_type",
         "description",
-        "submitted_by.title",
         "submitted_file_name",
         "summary"
     ],
@@ -311,8 +310,7 @@
         "@type",
         "dbxrefs",
         "external_id",
-        "file_format",
-        "file_url"
+        "file_format"
     ],
     "changelog": "/profiles/changelogs/reference_file.md"
 }
