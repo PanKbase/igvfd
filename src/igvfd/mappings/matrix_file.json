@@ -1,6 +1,6 @@
 {
-    "hash": "cccdc08052eef463f9f821d6ca7f67b2",
-    "index_name": "matrix_file_cccdc080",
+    "hash": "bc7298e24fb0221249f7d272a7a6a252",
+    "index_name": "matrix_file_bc7298e2",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -285,6 +285,10 @@
                         },
                         "store": true,
                         "type": "long"
+                    },
+                    "file_url": {
+                        "copy_to": "_exact",
+                        "type": "keyword"
                     },
                     "gene_list_for": {
                         "type": "keyword"

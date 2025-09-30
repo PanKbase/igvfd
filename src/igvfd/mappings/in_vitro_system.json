@@ -1,6 +1,6 @@
 {
-    "hash": "ea5dd23910f77189c4074bc35dd1ed1a",
-    "index_name": "in_vitro_system_ea5dd239",
+    "hash": "49301772194c28d73f8cdaf1a9956443",
+    "index_name": "in_vitro_system_49301772",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -488,7 +488,372 @@
                         "type": "keyword"
                     },
                     "donors": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aab_gada": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "aab_gada_assay": {
+                                "type": "keyword"
+                            },
+                            "aab_gada_value": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "aab_ia2": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "aab_ia2_assay": {
+                                "type": "keyword"
+                            },
+                            "aab_ia2_value": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "aab_iaa": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "aab_iaa_assay": {
+                                "type": "keyword"
+                            },
+                            "aab_iaa_value": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "aab_znt8": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "aab_znt8_assay": {
+                                "type": "keyword"
+                            },
+                            "aab_znt8_value": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "accession": {
+                                "type": "keyword"
+                            },
+                            "age": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "award": {
+                                "type": "keyword"
+                            },
+                            "biological_sex": {
+                                "type": "keyword"
+                            },
+                            "bmi": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "c_peptide": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "cause_of_death": {
+                                "type": "keyword"
+                            },
+                            "center_donor_id": {
+                                "type": "keyword"
+                            },
+                            "collections": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "data_available": {
+                                "properties": {
+                                    "dataset": {
+                                        "type": "keyword"
+                                    },
+                                    "dataset_link": {
+                                        "type": "keyword"
+                                    },
+                                    "dataset_tissue": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "derived_diabetes_status": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "diabetes_duration": {
+                                "type": "keyword"
+                            },
+                            "diabetes_status": {
+                                "type": "keyword"
+                            },
+                            "diabetes_status_description": {
+                                "type": "keyword"
+                            },
+                            "documents": {
+                                "type": "keyword"
+                            },
+                            "donation_type": {
+                                "type": "keyword"
+                            },
+                            "ethnicities": {
+                                "type": "keyword"
+                            },
+                            "family_history_of_diabetes": {
+                                "type": "keyword"
+                            },
+                            "family_history_of_diabetes_relationship": {
+                                "type": "keyword"
+                            },
+                            "genetic_ethnicities": {
+                                "properties": {
+                                    "ethnicity": {
+                                        "type": "keyword"
+                                    },
+                                    "percentage": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "genotype": {
+                                "type": "keyword"
+                            },
+                            "hba1c": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "hla_typing": {
+                                "type": "keyword"
+                            },
+                            "hospital_stay": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "human_donor_identifiers": {
+                                "type": "keyword"
+                            },
+                            "individual_rodent": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "living_donor": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "lot_id": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "other_disease_states": {
+                                "type": "keyword"
+                            },
+                            "other_theraphy": {
+                                "type": "keyword"
+                            },
+                            "other_tissues_available": {
+                                "type": "keyword"
+                            },
+                            "pancreas_tissue_available": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "phenotypic_features": {
+                                "type": "keyword"
+                            },
+                            "product_id": {
+                                "type": "keyword"
+                            },
+                            "publication_data": {
+                                "type": "keyword"
+                            },
+                            "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "related_donors": {
+                                "properties": {
+                                    "donor": {
+                                        "type": "keyword"
+                                    },
+                                    "relationship_type": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
+                            "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "rodent_identifier": {
+                                "type": "keyword"
+                            },
+                            "rrid": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "sex": {
+                                "type": "keyword"
+                            },
+                            "sources": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "strain": {
+                                "type": "keyword"
+                            },
+                            "strain_background": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "t1d_stage": {
+                                "type": "keyword"
+                            },
+                            "taxa": {
+                                "type": "keyword"
+                            },
+                            "url": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            },
+                            "virtual": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            }
+                        },
+                        "type": "object"
                     },
                     "embryonic": {
                         "fields": {
@@ -653,6 +1018,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "donor_validation_method": {
+                                "type": "keyword"
+                            },
                             "donors": {
                                 "type": "keyword"
                             },
@@ -743,9 +1111,6 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
-                                "type": "keyword"
-                            },
-                            "library_construction_platform": {
                                 "type": "keyword"
                             },
                             "lot_id": {
@@ -1432,6 +1797,9 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "authentication": {
+                                "type": "keyword"
+                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -1439,6 +1807,9 @@
                                 "type": "keyword"
                             },
                             "ccf_id": {
+                                "type": "keyword"
+                            },
+                            "cell_density": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_protocol": {
@@ -1453,6 +1824,18 @@
                             "classifications": {
                                 "type": "keyword"
                             },
+                            "coating_condition": {
+                                "type": "keyword"
+                            },
+                            "cold_ischaemia_time": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1460,6 +1843,9 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "date_harvested": {
                                 "type": "keyword"
                             },
                             "date_obtained": {
@@ -1471,11 +1857,17 @@
                             "demultiplexed_from": {
                                 "type": "keyword"
                             },
-                            "demultiplexed_to": {
-                                "type": "keyword"
-                            },
                             "description": {
                                 "type": "text"
+                            },
+                            "digest_time": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "disease_terms": {
                                 "type": "keyword"
@@ -1495,13 +1887,67 @@
                                 "store": true,
                                 "type": "boolean"
                             },
+                            "excision_status": {
+                                "type": "keyword"
+                            },
+                            "facs_purification": {
+                                "type": "keyword"
+                            },
                             "file_sets": {
                                 "type": "keyword"
                             },
                             "growth_medium": {
                                 "type": "keyword"
                             },
+                            "hand_picked": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "institutional_certificates": {
+                                "type": "keyword"
+                            },
+                            "islet_function_available": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "islet_histology": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "islet_morphology": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "islet_yield": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "isolation_center": {
                                 "type": "keyword"
                             },
                             "lab": {
@@ -1549,11 +1995,23 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "organ_source": {
+                                "type": "keyword"
+                            },
                             "origin_of": {
                                 "type": "keyword"
                             },
                             "originated_from": {
                                 "type": "keyword"
+                            },
+                            "pancreas_weight": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "part_of": {
                                 "type": "keyword"
@@ -1569,6 +2027,15 @@
                                 },
                                 "store": true,
                                 "type": "long"
+                            },
+                            "percentage_trapped": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "pmi": {
                                 "fields": {
@@ -1588,8 +2055,32 @@
                             "pooled_in": {
                                 "type": "keyword"
                             },
-                            "preservation_method": {
-                                "type": "keyword"
+                            "post_shipment_islet_viability": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "pre_shipment_culture_time": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "prep_viability": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "product_id": {
                                 "type": "keyword"
@@ -1600,10 +2091,25 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+                            "purity": {
+                                "type": "keyword"
+                            },
+                            "purity_assay": {
+                                "type": "keyword"
+                            },
                             "release_timestamp": {
                                 "type": "keyword"
                             },
+                            "resource": {
+                                "type": "keyword"
+                            },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "rrid": {
+                                "type": "keyword"
+                            },
+                            "sample_name": {
                                 "type": "keyword"
                             },
                             "sample_terms": {
@@ -1708,6 +2214,15 @@
                             "uuid": {
                                 "type": "keyword"
                             },
+                            "vendor_passage": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
+                            },
                             "virtual": {
                                 "fields": {
                                     "raw": {
@@ -1716,6 +2231,24 @@
                                 },
                                 "store": true,
                                 "type": "boolean"
+                            },
+                            "warm_ischaemia_duration": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "year_obtained": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
                             }
                         },
                         "type": "object"
@@ -1871,6 +2404,9 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "authentication": {
+                                "type": "keyword"
+                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -1881,6 +2417,9 @@
                                 "type": "keyword"
                             },
                             "ccf_id": {
+                                "type": "keyword"
+                            },
+                            "cell_density": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_protocol": {
@@ -1895,6 +2434,18 @@
                             "classifications": {
                                 "type": "keyword"
                             },
+                            "coating_condition": {
+                                "type": "keyword"
+                            },
+                            "cold_ischaemia_time": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1902,6 +2453,9 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "date_harvested": {
                                 "type": "keyword"
                             },
                             "date_obtained": {
@@ -1913,11 +2467,17 @@
                             "demultiplexed_from": {
                                 "type": "keyword"
                             },
-                            "demultiplexed_to": {
-                                "type": "keyword"
-                            },
                             "description": {
                                 "type": "text"
+                            },
+                            "digest_time": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "disease_terms": {
                                 "type": "keyword"
@@ -1937,13 +2497,67 @@
                                 "store": true,
                                 "type": "boolean"
                             },
+                            "excision_status": {
+                                "type": "keyword"
+                            },
+                            "facs_purification": {
+                                "type": "keyword"
+                            },
                             "file_sets": {
                                 "type": "keyword"
                             },
                             "growth_medium": {
                                 "type": "keyword"
                             },
+                            "hand_picked": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "institutional_certificates": {
+                                "type": "keyword"
+                            },
+                            "islet_function_available": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "islet_histology": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "islet_morphology": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "islet_yield": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "isolation_center": {
                                 "type": "keyword"
                             },
                             "lab": {
@@ -1994,11 +2608,23 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "organ_source": {
+                                "type": "keyword"
+                            },
                             "origin_of": {
                                 "type": "keyword"
                             },
                             "originated_from": {
                                 "type": "keyword"
+                            },
+                            "pancreas_weight": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "part_of": {
                                 "type": "keyword"
@@ -2014,6 +2640,15 @@
                                 },
                                 "store": true,
                                 "type": "long"
+                            },
+                            "percentage_trapped": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "pmi": {
                                 "fields": {
@@ -2033,8 +2668,32 @@
                             "pooled_in": {
                                 "type": "keyword"
                             },
-                            "preservation_method": {
-                                "type": "keyword"
+                            "post_shipment_islet_viability": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "pre_shipment_culture_time": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "prep_viability": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "product_id": {
                                 "type": "keyword"
@@ -2045,13 +2704,28 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+                            "purity": {
+                                "type": "keyword"
+                            },
+                            "purity_assay": {
+                                "type": "keyword"
+                            },
                             "release_timestamp": {
+                                "type": "keyword"
+                            },
+                            "resource": {
                                 "type": "keyword"
                             },
                             "revoke_detail": {
                                 "type": "keyword"
                             },
+                            "rrid": {
+                                "type": "keyword"
+                            },
                             "sample_material": {
+                                "type": "keyword"
+                            },
+                            "sample_name": {
                                 "type": "keyword"
                             },
                             "sample_terms": {
@@ -2156,6 +2830,15 @@
                             "uuid": {
                                 "type": "keyword"
                             },
+                            "vendor_passage": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
+                            },
                             "virtual": {
                                 "fields": {
                                     "raw": {
@@ -2164,6 +2847,24 @@
                                 },
                                 "store": true,
                                 "type": "boolean"
+                            },
+                            "warm_ischaemia_duration": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "year_obtained": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
                             }
                         },
                         "type": "object"

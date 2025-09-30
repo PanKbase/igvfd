@@ -1,6 +1,6 @@
 {
-    "hash": "aae4382a6d92bf9a1ac6598a06b00e23",
-    "index_name": "sequence_file_aae4382a",
+    "hash": "2d3a221962dc554bc1b12e897eba0598",
+    "index_name": "sequence_file_2d3a2219",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -288,6 +288,10 @@
                         },
                         "store": true,
                         "type": "long"
+                    },
+                    "file_url": {
+                        "copy_to": "_exact",
+                        "type": "keyword"
                     },
                     "flowcell_id": {
                         "type": "keyword"

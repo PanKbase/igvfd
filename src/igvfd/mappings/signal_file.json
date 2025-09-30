@@ -1,6 +1,6 @@
 {
-    "hash": "212b23c7ec4ab084ff463afc1c24dd5e",
-    "index_name": "signal_file_212b23c7",
+    "hash": "a9bc72b495f1938875bef4f8ce04bbff",
+    "index_name": "signal_file_a9bc72b4",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -282,6 +282,10 @@
                         },
                         "store": true,
                         "type": "long"
+                    },
+                    "file_url": {
+                        "copy_to": "_exact",
+                        "type": "keyword"
                     },
                     "filtered": {
                         "fields": {

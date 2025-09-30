@@ -1,6 +1,6 @@
 {
-    "hash": "d4502893ff3ad55a5dd984e819c93cb4",
-    "index_name": "image_file_d4502893",
+    "hash": "2a881782f47d89b93cf0474a6360352f",
+    "index_name": "image_file_2a881782",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -276,6 +276,10 @@
                         },
                         "store": true,
                         "type": "long"
+                    },
+                    "file_url": {
+                        "copy_to": "_exact",
+                        "type": "keyword"
                     },
                     "gene_list_for": {
                         "type": "keyword"

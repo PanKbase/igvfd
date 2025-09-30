@@ -1,6 +1,6 @@
 {
-    "hash": "afb91ca2c14f1e07c35a1d2eb43bccc1",
-    "index_name": "human_donor_afb91ca2",
+    "hash": "93e3272c386c4614caf91e45020593bd",
+    "index_name": "human_donor_93e3272c",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -148,8 +148,101 @@
                         "copy_to": "_exact",
                         "type": "keyword"
                     },
+                    "aab_gada": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "aab_gada_assay": {
+                        "type": "keyword"
+                    },
+                    "aab_gada_value": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "aab_ia2": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "aab_ia2_assay": {
+                        "type": "keyword"
+                    },
+                    "aab_ia2_value": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "aab_iaa": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "aab_iaa_assay": {
+                        "type": "keyword"
+                    },
+                    "aab_iaa_value": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "aab_znt8": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "aab_znt8_assay": {
+                        "type": "keyword"
+                    },
+                    "aab_znt8_value": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
                     "accession": {
                         "type": "keyword"
+                    },
+                    "age": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
                     },
                     "aliases": {
                         "type": "keyword"
@@ -228,25 +321,126 @@
                         },
                         "type": "object"
                     },
+                    "biological_sex": {
+                        "type": "keyword"
+                    },
+                    "bmi": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "c_peptide": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "cause_of_death": {
+                        "type": "keyword"
+                    },
+                    "center_donor_id": {
+                        "type": "keyword"
+                    },
                     "collections": {
                         "type": "keyword"
                     },
                     "creation_timestamp": {
                         "type": "keyword"
                     },
+                    "data_available": {
+                        "properties": {
+                            "dataset": {
+                                "type": "keyword"
+                            },
+                            "dataset_link": {
+                                "type": "keyword"
+                            },
+                            "dataset_tissue": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
                     "dbxrefs": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "derived_diabetes_status": {
                         "type": "keyword"
                     },
                     "description": {
                         "type": "text"
                     },
+                    "diabetes_duration": {
+                        "type": "keyword"
+                    },
+                    "diabetes_status": {
+                        "type": "keyword"
+                    },
+                    "diabetes_status_description": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
                     "documents": {
+                        "type": "keyword"
+                    },
+                    "donation_type": {
                         "type": "keyword"
                     },
                     "ethnicities": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
+                    },
+                    "family_history_of_diabetes": {
+                        "type": "keyword"
+                    },
+                    "family_history_of_diabetes_relationship": {
+                        "type": "keyword"
+                    },
+                    "genetic_ethnicities": {
+                        "properties": {
+                            "ethnicity": {
+                                "type": "keyword"
+                            },
+                            "percentage": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "hba1c": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "hla_typing": {
+                        "type": "keyword"
+                    },
+                    "hospital_stay": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
                     },
                     "human_donor_identifiers": {
                         "copy_to": "_fuzzy",
@@ -311,8 +505,35 @@
                         },
                         "type": "object"
                     },
+                    "living_donor": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "notes": {
                         "type": "text"
+                    },
+                    "other_disease_states": {
+                        "type": "keyword"
+                    },
+                    "other_theraphy": {
+                        "type": "keyword"
+                    },
+                    "other_tissues_available": {
+                        "type": "keyword"
+                    },
+                    "pancreas_tissue_available": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "phenotypic_features": {
                         "properties": {
@@ -448,10 +669,10 @@
                         },
                         "type": "object"
                     },
-                    "publication_identifiers": {
+                    "publication_data": {
                         "type": "keyword"
                     },
-                    "publication_data": {
+                    "publication_identifiers": {
                         "type": "keyword"
                     },
                     "related_donors": {
@@ -464,9 +685,102 @@
                                     "@type": {
                                         "type": "keyword"
                                     },
+                                    "aab_gada": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
+                                    "aab_gada_assay": {
+                                        "type": "keyword"
+                                    },
+                                    "aab_gada_value": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "aab_ia2": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
+                                    "aab_ia2_assay": {
+                                        "type": "keyword"
+                                    },
+                                    "aab_ia2_value": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "aab_iaa": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
+                                    "aab_iaa_assay": {
+                                        "type": "keyword"
+                                    },
+                                    "aab_iaa_value": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "aab_znt8": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
+                                    "aab_znt8_assay": {
+                                        "type": "keyword"
+                                    },
+                                    "aab_znt8_value": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    },
                                     "accession": {
                                         "copy_to": "_exact",
                                         "type": "keyword"
+                                    },
+                                    "age": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
                                     },
                                     "aliases": {
                                         "type": "keyword"
@@ -477,23 +791,123 @@
                                     "award": {
                                         "type": "keyword"
                                     },
+                                    "biological_sex": {
+                                        "type": "keyword"
+                                    },
+                                    "bmi": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "c_peptide": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "cause_of_death": {
+                                        "type": "keyword"
+                                    },
+                                    "center_donor_id": {
+                                        "type": "keyword"
+                                    },
                                     "collections": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
                                         "type": "keyword"
                                     },
+                                    "data_available": {
+                                        "properties": {
+                                            "dataset": {
+                                                "type": "keyword"
+                                            },
+                                            "dataset_link": {
+                                                "type": "keyword"
+                                            },
+                                            "dataset_tissue": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
                                     "dbxrefs": {
+                                        "type": "keyword"
+                                    },
+                                    "derived_diabetes_status": {
                                         "type": "keyword"
                                     },
                                     "description": {
                                         "type": "text"
                                     },
+                                    "diabetes_duration": {
+                                        "type": "keyword"
+                                    },
+                                    "diabetes_status": {
+                                        "type": "keyword"
+                                    },
+                                    "diabetes_status_description": {
+                                        "type": "keyword"
+                                    },
                                     "documents": {
+                                        "type": "keyword"
+                                    },
+                                    "donation_type": {
                                         "type": "keyword"
                                     },
                                     "ethnicities": {
                                         "type": "keyword"
+                                    },
+                                    "family_history_of_diabetes": {
+                                        "type": "keyword"
+                                    },
+                                    "family_history_of_diabetes_relationship": {
+                                        "type": "keyword"
+                                    },
+                                    "genetic_ethnicities": {
+                                        "properties": {
+                                            "ethnicity": {
+                                                "type": "keyword"
+                                            },
+                                            "percentage": {
+                                                "fields": {
+                                                    "raw": {
+                                                        "type": "keyword"
+                                                    }
+                                                },
+                                                "store": true,
+                                                "type": "float"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "hba1c": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "hla_typing": {
+                                        "type": "keyword"
+                                    },
+                                    "hospital_stay": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
                                     },
                                     "human_donor_identifiers": {
                                         "type": "keyword"
@@ -501,16 +915,43 @@
                                     "lab": {
                                         "type": "keyword"
                                     },
+                                    "living_donor": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "other_disease_states": {
+                                        "type": "keyword"
+                                    },
+                                    "other_theraphy": {
+                                        "type": "keyword"
+                                    },
+                                    "other_tissues_available": {
+                                        "type": "keyword"
+                                    },
+                                    "pancreas_tissue_available": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
                                     },
                                     "phenotypic_features": {
                                         "type": "keyword"
                                     },
-                                    "publication_identifiers": {
+                                    "publication_data": {
                                         "type": "keyword"
                                     },
-                                    "publication_data": {
+                                    "publication_identifiers": {
                                         "type": "keyword"
                                     },
                                     "related_donors": {
@@ -530,6 +971,9 @@
                                     "revoke_detail": {
                                         "type": "keyword"
                                     },
+                                    "rrid": {
+                                        "type": "keyword"
+                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
@@ -546,6 +990,9 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "t1d_stage": {
                                         "type": "keyword"
                                     },
                                     "taxa": {
@@ -579,6 +1026,9 @@
                         "type": "keyword"
                     },
                     "revoke_detail": {
+                        "type": "keyword"
+                    },
+                    "rrid": {
                         "type": "keyword"
                     },
                     "schema_version": {
@@ -663,6 +1113,9 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "type": "keyword"
+                    },
+                    "t1d_stage": {
                         "type": "keyword"
                     },
                     "taxa": {
