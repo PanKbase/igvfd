@@ -2,7 +2,7 @@ from snovault.elasticsearch.searches.configs import search_config
 
 
 @search_config(
-    name='HumanBetaCellLine'
+    name='HumanBetaCellLines'
 )
 def human_beta_cell_line():
     return {

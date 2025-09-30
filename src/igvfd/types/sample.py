@@ -709,7 +709,7 @@ class Tissue(Biosample):
         'description': 'Listing of human beta cell lines',
     }
 )
-class HumanBetaCellLine(Biosample):
+class HumanBetaCellLines(Biosample):
     item_type = 'human_beta_cell_line'
     schema = load_schema('igvfd:schemas/human_beta_cell_line.json')
     embedded_with_frame = Biosample.embedded_with_frame

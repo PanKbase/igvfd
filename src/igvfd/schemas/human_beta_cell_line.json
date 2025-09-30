@@ -877,7 +877,7 @@
           "string",
           "object"
         ],
-        "linkFrom": "HumanBetaCellLine.part_of"
+        "linkFrom": "HumanBetaCellLines.part_of"
       },
       "notSubmittable": true
     },
