@@ -1,6 +1,6 @@
 {
-    "hash": "8fca37e32f3703136bc76efb217ba313",
-    "index_name": "construct_library_set_8fca37e3",
+    "hash": "993cc5d729c2bb9034e8c78c771832ce",
+    "index_name": "construct_library_set_993cc5d7",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -472,15 +472,6 @@
                             },
                             "parts": {
                                 "type": "keyword"
-                            },
-                            "passage_number": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
                             },
                             "percentage_trapped": {
                                 "fields": {

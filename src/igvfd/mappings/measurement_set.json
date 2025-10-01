@@ -1,6 +1,6 @@
 {
-    "hash": "3b2bb492b8f82ae184bfe538ab05d684",
-    "index_name": "measurement_set_3b2bb492",
+    "hash": "bcdf71cb3ec5b07c095acd75a06390fd",
+    "index_name": "measurement_set_bcdf71cb",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2983,15 +2983,6 @@
                             },
                             "parts": {
                                 "type": "keyword"
-                            },
-                            "passage_number": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
                             },
                             "percentage_trapped": {
                                 "fields": {

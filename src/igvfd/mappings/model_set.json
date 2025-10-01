@@ -1,6 +1,6 @@
 {
-    "hash": "729ec0549ffed68b53f807d08fb144df",
-    "index_name": "model_set_729ec054",
+    "hash": "c3257e421fc831aac164b08397aa6e21",
+    "index_name": "model_set_c3257e42",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -2038,15 +2038,6 @@
                             },
                             "parts": {
                                 "type": "keyword"
-                            },
-                            "passage_number": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
                             },
                             "percentage_trapped": {
                                 "fields": {

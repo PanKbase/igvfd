@@ -1,6 +1,6 @@
 {
-    "hash": "a689d170030049df7bc6716318bb96a8",
-    "index_name": "primary_islet_a689d170",
+    "hash": "70889032ad1da2c1b425d06fbecfbad8",
+    "index_name": "primary_islet_70889032",
     "item_type": "primary_islet",
     "mapping": {
         "dynamic_templates": [
@@ -2134,15 +2134,6 @@
                             },
                             "parts": {
                                 "type": "keyword"
-                            },
-                            "passage_number": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
                             },
                             "percentage_trapped": {
                                 "fields": {

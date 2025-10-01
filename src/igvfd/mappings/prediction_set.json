@@ -1,6 +1,6 @@
 {
-    "hash": "85814f3e62320ed99b2c3bea8acc4d8f",
-    "index_name": "prediction_set_85814f3e",
+    "hash": "10549e9d8445049cd8f0126c3b075ba9",
+    "index_name": "prediction_set_10549e9d",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -2290,15 +2290,6 @@
                             },
                             "parts": {
                                 "type": "keyword"
-                            },
-                            "passage_number": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
                             },
                             "percentage_trapped": {
                                 "fields": {

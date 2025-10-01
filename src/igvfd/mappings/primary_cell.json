@@ -1,6 +1,6 @@
 {
-    "hash": "63cab6a4f43f9abed96cb78d971d0771",
-    "index_name": "primary_cell_63cab6a4",
+    "hash": "2de2163882d3d55114a3854b146c4393",
+    "index_name": "primary_cell_2de21638",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1999,15 +1999,6 @@
                             },
                             "parts": {
                                 "type": "keyword"
-                            },
-                            "passage_number": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
                             },
                             "percentage_trapped": {
                                 "fields": {

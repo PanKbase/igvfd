@@ -1,6 +1,6 @@
 {
-    "hash": "a1eed107331f51428a2ee96916cab473",
-    "index_name": "human_beta_cell_line_a1eed107",
+    "hash": "04df8c98020dcd74fe0b8b7351e847ad",
+    "index_name": "human_beta_cell_line_04df8c98",
     "item_type": "human_beta_cell_line",
     "mapping": {
         "dynamic_templates": [
@@ -1652,13 +1652,7 @@
                         "type": "keyword"
                     },
                     "passage_number": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "long"
+                        "type": "keyword"
                     },
                     "pooled_from": {
                         "type": "keyword"
@@ -2027,15 +2021,6 @@
                             },
                             "parts": {
                                 "type": "keyword"
-                            },
-                            "passage_number": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
                             },
                             "percentage_trapped": {
                                 "fields": {

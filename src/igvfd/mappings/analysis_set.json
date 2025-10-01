@@ -1,6 +1,6 @@
 {
-    "hash": "260e05f4e062931d17719b571d49ce7d",
-    "index_name": "analysis_set_260e05f4",
+    "hash": "6ba48ac3667dc0014b0afac06cd9434b",
+    "index_name": "analysis_set_6ba48ac3",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -2030,15 +2030,6 @@
                             },
                             "parts": {
                                 "type": "keyword"
-                            },
-                            "passage_number": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
                             },
                             "percentage_trapped": {
                                 "fields": {

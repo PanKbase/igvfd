@@ -1,6 +1,6 @@
 {
-    "hash": "6638c843b907cd596121016b7605c431",
-    "index_name": "tissue_6638c843",
+    "hash": "b0f21b3d519e11116443bd76ec4ee61b",
+    "index_name": "tissue_b0f21b3d",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -2008,15 +2008,6 @@
                             },
                             "parts": {
                                 "type": "keyword"
-                            },
-                            "passage_number": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
                             },
                             "percentage_trapped": {
                                 "fields": {

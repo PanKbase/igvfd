@@ -1,6 +1,6 @@
 {
-    "hash": "3b0c5dd6091d9214b8e15b717434ceec",
-    "index_name": "auxiliary_set_3b0c5dd6",
+    "hash": "6a19cf627f5ca177b0462a2906584ccb",
+    "index_name": "auxiliary_set_6a19cf62",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1841,15 +1841,6 @@
                             },
                             "parts": {
                                 "type": "keyword"
-                            },
-                            "passage_number": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
                             },
                             "percentage_trapped": {
                                 "fields": {

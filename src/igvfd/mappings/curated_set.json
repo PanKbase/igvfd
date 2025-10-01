@@ -1,6 +1,6 @@
 {
-    "hash": "f4eba5fa3f6db48626c8221803d79ab6",
-    "index_name": "curated_set_f4eba5fa",
+    "hash": "61ec14f2d68108956902d532ea5b22c6",
+    "index_name": "curated_set_61ec14f2",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1706,15 +1706,6 @@
                             },
                             "parts": {
                                 "type": "keyword"
-                            },
-                            "passage_number": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
                             },
                             "percentage_trapped": {
                                 "fields": {
