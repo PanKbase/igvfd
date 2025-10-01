@@ -52,9 +52,6 @@ def human_beta_cell_line():
             'sample_name.raw': {
                 'title': 'Sample Name'
             },
-            'passage_number': {
-                'title': 'Passage Number'
-            },
             'growth_medium.raw': {
                 'title': 'Growth Medium'
             },
@@ -84,7 +81,6 @@ def human_beta_cell_line():
                     'sample_terms.term_name',
                     'sample_name.raw',
                     'classifications',
-                    'passage_number',
                     'growth_medium.raw',
                     'authentication.raw',
                     'disease_terms.term_name',
@@ -143,9 +139,6 @@ def human_beta_cell_line():
             },
             'donors': {
                 'title': 'Donors'
-            },
-            'passage_number': {
-                'title': 'Passage Number'
             },
             'growth_medium': {
                 'title': 'Growth Medium'
