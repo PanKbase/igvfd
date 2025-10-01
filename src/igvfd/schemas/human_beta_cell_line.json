@@ -734,7 +734,9 @@
       "enum": [
         "transfection",
         "adenoviral transduction",
-        "lentiviral transduction"
+        "lentiviral transduction",
+        "Lipofectamine RNAiMAX",
+        "Lipofectamine 3000"
       ],
       "submissionExample": {
         "appscript": "transfection",
