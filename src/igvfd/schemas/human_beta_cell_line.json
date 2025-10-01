@@ -817,11 +817,10 @@
     "passage_number": {
       "title": "Passage Number",
       "description": "Number of passages from source.",
-      "type": "integer",
-      "minimum": 0,
+      "type": "string",
       "submissionExample": {
-        "appscript": 15,
-        "igvf_utils": 15
+        "appscript": "15",
+        "igvf_utils": "15"
       }
     },
     "growth_medium": {
