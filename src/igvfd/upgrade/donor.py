@@ -269,3 +269,30 @@ def human_donor_16_17(value, system):
         current_type = value['donation_type']
         if current_type in donation_type_mapping:
             value['donation_type'] = donation_type_mapping[current_type]
+
+
+@upgrade_step('human_donor', '17', '18')
+def human_donor_17_18(value, system):
+    # Migrate glucose_loweing_theraphy to other_theraphy
+    if 'glucose_loweing_theraphy' in value:
+        glucose_therapy = value['glucose_loweing_theraphy']
+        
+        # Initialize other_theraphy if it doesn't exist
+        if 'other_theraphy' not in value:
+            value['other_theraphy'] = []
+        
+        # Ensure other_theraphy is a list
+        if not isinstance(value['other_theraphy'], list):
+            value['other_theraphy'] = []
+        
+        # Ensure glucose_loweing_theraphy is a list
+        if not isinstance(glucose_therapy, list):
+            glucose_therapy = [glucose_therapy] if glucose_therapy else []
+        
+        # Merge glucose therapy data into other_theraphy
+        for therapy in glucose_therapy:
+            if therapy and therapy not in value['other_theraphy']:
+                value['other_theraphy'].append(therapy)
+        
+        # Remove the old field
+        del value['glucose_loweing_theraphy']
