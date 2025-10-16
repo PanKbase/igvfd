@@ -525,7 +525,7 @@ class Biosample(Sample):
                     summary_terms += f' {verb} multiple libraries,'
 
         # growth media is appended to the end of the summary
-        if (growth_medium and biosample_type in ['in_vitro_system', 'human_beta_cell_line']):
+        if (growth_medium and biosample_type in ['in_vitro_system']):
             summary_terms += f' grown in {growth_medium}'
 
         return summary_terms.strip(',')
