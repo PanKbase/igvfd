@@ -528,7 +528,7 @@ class Biosample(Sample):
         #if (growth_medium and biosample_type in ['in_vitro_system']):
         #    summary_terms += f' grown in {growth_medium}'
 
-        #return summary_terms.strip(',')
+        return summary_terms.strip(',')
 
     @calculated_property(schema={
         'title': 'Biosample Parts',
