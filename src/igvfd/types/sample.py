@@ -424,7 +424,7 @@ class Biosample(Sample):
 
         # sex is appended to the end of the summary
         if (sex and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism', 'human_beta_cell_line']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
             if sex != 'unspecified':
                 if sex == 'mixed':
                     sex = 'mixed sex'
@@ -432,7 +432,7 @@ class Biosample(Sample):
 
         # taxa of the donor(s) is appended to the end of the summary
         if (donors and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism', 'human_beta_cell_line']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
             if not taxa or taxa == 'Mus musculus':
                 taxa_set = set()
                 strains_set = set()
@@ -451,18 +451,18 @@ class Biosample(Sample):
 
         # age is appended to the end of the summary
         if (age != 'unknown' and
-                biosample_type in ['primary_cell', 'tissue', 'whole_organism', 'human_beta_cell_line']):
+                biosample_type in ['primary_cell', 'tissue', 'whole_organism']):
             age = concat_numeric_and_units(age, age_units)
             summary_terms += f' ({age})'
 
         # sorted from detail is appended to the end of the summary
         if (sorted_from_detail and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'human_beta_cell_line']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system']):
             summary_terms += f' (sorting details: {sorted_from_detail})'
 
         # biomarker summaries are appended to the end of the summary
         if (biomarkers and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'human_beta_cell_line']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system']):
             biomarker_summaries = []
             for biomarker in biomarkers:
                 biomarker_object = request.embed(biomarker)
@@ -479,7 +479,7 @@ class Biosample(Sample):
 
         # disease terms are appended to the end of the summary
         if (disease_terms and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism', 'human_beta_cell_line']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
             phenotype_term_names = sorted([request.embed(disease_term).get('term_name')
                                           for disease_term in disease_terms])
             summary_terms += f' associated with {", ".join(phenotype_term_names)},'
@@ -499,7 +499,7 @@ class Biosample(Sample):
 
         # construct library set overview is appended to the end of the summary
         if (construct_library_sets and
-                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism', 'human_beta_cell_line']):
+                biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
             verb = 'modified with'
             library_types = set()
             for CLS in construct_library_sets:
@@ -525,10 +525,10 @@ class Biosample(Sample):
                     summary_terms += f' {verb} multiple libraries,'
 
         # growth media is appended to the end of the summary
-        if (growth_medium and biosample_type in ['in_vitro_system']):
-            summary_terms += f' grown in {growth_medium}'
+        #if (growth_medium and biosample_type in ['in_vitro_system']):
+        #    summary_terms += f' grown in {growth_medium}'
 
-        return summary_terms.strip(',')
+        #return summary_terms.strip(',')
 
     @calculated_property(schema={
         'title': 'Biosample Parts',
