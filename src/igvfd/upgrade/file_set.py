@@ -349,3 +349,16 @@ def auxiliary_set_7_8(value, system):
         value['file_set_type'] = 'circularized RNA barcode detection'
     if value.get('file_set_type', '') == 'quantification barcode sequencing':
         value['file_set_type'] = 'quantification DNA barcode sequencing'
+
+
+@upgrade_step('analysis_set', '7', '8')
+@upgrade_step('auxiliary_set', '8', '9')
+@upgrade_step('construct_library_set', '8', '9')
+@upgrade_step('curated_set', '7', '8')
+@upgrade_step('measurement_set', '17', '18')
+@upgrade_step('model_set', '3', '4')
+@upgrade_step('prediction_set', '7', '8')
+def file_set_9_10(value, system):
+    # Convert award field from string to array
+    if 'award' in value and isinstance(value['award'], str):
+        value['award'] = [value['award']]

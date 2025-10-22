@@ -13,7 +13,7 @@
         "treatment_term_name": "lactate",
         "treatment_type": "chemical",
         "uuid": "3280b708-0f05-40fa-bff2-54e2b6505c13",
-        "award": "/awards/HG012012/",
+        "award": ["/awards/HG012012/"],
         "lab": "/labs/j-michael-cherry/",
         "depletion": false
     },
@@ -31,7 +31,7 @@
         "treatment_type": "protein",
         "treatment_term_id": "UniProtKB:P09919",
         "uuid": "10c05ac0-52a2-11e6-bdf4-0800200c9a66",
-        "award": "/awards/HG012012/",
+        "award": ["/awards/HG012012/"],
         "lab": "/labs/j-michael-cherry/",
         "depletion": false
     },
@@ -48,7 +48,7 @@
         "treatment_type": "chemical",
         "treatment_term_id": "CHEBI:27810",
         "uuid": "4fbb0dc2-c72e-11ec-9d64-0242ac120002",
-        "award": "/awards/HG012012/",
+        "award": ["/awards/HG012012/"],
         "lab": "/labs/j-michael-cherry/",
         "depletion": false
     },
@@ -68,7 +68,7 @@
         "treatment_type": "chemical",
         "treatment_term_id": "NTR:0001185",
         "uuid": "2d57c810-c729-11ec-9d64-0242ac120002",
-        "award": "/awards/HG012012/",
+        "award": ["/awards/HG012012/"],
         "lab": "/labs/j-michael-cherry/",
         "depletion": false
     },
@@ -83,7 +83,7 @@
         "treatment_type": "protein",
         "treatment_term_id": "NTR:0001189",
         "uuid": "bd2cb34e-c72c-11ec-9d64-0242ac120002",
-        "award": "/awards/HG012012/",
+        "award": ["/awards/HG012012/"],
         "lab": "/labs/j-michael-cherry/",
         "depletion": false
     },
@@ -96,7 +96,7 @@
         "treatment_type": "protein",
         "treatment_term_id": "NTR:0001189",
         "uuid": "d7562e66-c218-46e8-b0e2-ea6d89978b32",
-        "award": "/awards/HG012012/",
+        "award": ["/awards/HG012012/"],
         "lab": "/labs/j-michael-cherry/",
         "depletion": true
     }

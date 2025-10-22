@@ -1,5 +1,9 @@
 ## Changelog for *`award.json`*
 
+### Schema version 6
+
+* Convert `award` field from string to array in mixins.json to allow multiple awards per object.
+
 ### Minor changes since schema version 4
 
 * Update calculation of `summary`.

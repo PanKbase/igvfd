@@ -31,3 +31,11 @@ def award_4_5(value, system):
     if 'pis' in value:
         if len(value['pis']) < 1:
             del value['pis']
+
+
+@upgrade_step('award', '5', '6')
+def award_5_6(value, system):
+    # Convert award field from string to array (this affects mixins.json)
+    # This upgrade step is mainly for documentation purposes
+    # The actual conversion happens in individual schema upgrade scripts
+    pass

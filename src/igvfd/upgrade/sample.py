@@ -448,3 +448,15 @@ def sample_18_19(value, system):
             notes = f'{old_notes} {notes}'
         value['notes'] = notes
         del value['nih_institutional_certification']
+
+
+@upgrade_step('primary_cell', '19', '20')
+@upgrade_step('in_vitro_system', '21', '22')
+@upgrade_step('tissue', '19', '20')
+@upgrade_step('whole_organism', '22', '23')
+@upgrade_step('multiplexed_sample', '7', '8')
+@upgrade_step('technical_sample', '12', '13')
+def sample_19_20(value, system):
+    # Convert award field from string to array
+    if 'award' in value and isinstance(value['award'], str):
+        value['award'] = [value['award']]

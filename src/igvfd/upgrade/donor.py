@@ -296,3 +296,11 @@ def human_donor_17_18(value, system):
         
         # Remove the old field
         del value['glucose_loweing_theraphy']
+
+
+@upgrade_step('human_donor', '18', '19')
+@upgrade_step('rodent_donor', '12', '13')
+def donor_18_19(value, system):
+    # Convert award field from string to array
+    if 'award' in value and isinstance(value['award'], str):
+        value['award'] = [value['award']]

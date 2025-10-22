@@ -21,7 +21,7 @@
     },
     {
         "accession": "IGVFDS4845MXHR",
-        "award": "/awards/HG012012/",
+        "award": ["/awards/HG012012/"],
         "lab": "/labs/j-michael-cherry/",
         "model_name": "SEMpl",
         "model_version": "v1.0.1",

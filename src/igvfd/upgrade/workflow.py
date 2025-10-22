@@ -25,3 +25,10 @@ def workflow_3_4(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('workflow', '4', '5')
+def workflow_4_5(value, system):
+    # Convert award field from string to array
+    if 'award' in value and isinstance(value['award'], str):
+        value['award'] = [value['award']]
