@@ -134,14 +134,14 @@
                     "IGVF_catalog_beta_v0.3",
                     "IGVF_catalog_beta_v0.4",
                     "MaveDB",
-                    "IIDP",
-                    "HPAP",
-                    "ADI",
-                    "nPOD",
-                    "Prodo",
-                    "Prodo Laboratories",
-                    "PanKbase",
-                    "IsletCore",
+		    "IIDP",
+		    "HPAP",
+		    "ADI",
+		    "nPOD",
+		    "Prodo",
+		    "Prodo Laboratories",
+		    "PanKbase",
+		    "IsletCore",
                     "MPRAbase",
                     "Vista"
                 ]
@@ -242,11 +242,6 @@
             "description": "Grants associated with the submission.",
             "comment": "Required. See award.json for list of available identifiers.",
             "type": "array",
-            "linkTo": "Award",
-            "submissionExample": {
-                "appscript": "[\"/awards/HG012012/\"]",
-                "igvf_utils": "/awards/HG012012/"
-            },
             "minItems": 1,
             "uniqueItems": true,
             "items": {
@@ -254,6 +249,10 @@
                 "description": "Grant associated with the submission.",
                 "type": "string",
                 "linkTo": "Award"
+            },
+            "submissionExample": {
+                "appscript": "["/awards/HG012012/"]",
+                "igvf_utils": "/awards/HG012012/"
             }
         }
     },
