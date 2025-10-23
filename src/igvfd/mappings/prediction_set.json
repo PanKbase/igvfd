@@ -1,6 +1,6 @@
 {
-    "hash": "10549e9d8445049cd8f0126c3b075ba9",
-    "index_name": "prediction_set_10549e9d",
+    "hash": "2f813fc2cdadd5151e8f9c33f8b9b78b",
+    "index_name": "prediction_set_2f813fc2",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1762,9 +1762,6 @@
                                 "type": "keyword"
                             },
                             "authentication": {
-                                "type": "keyword"
-                            },
-                            "award": {
                                 "type": "keyword"
                             },
                             "barcode_sample_map": {

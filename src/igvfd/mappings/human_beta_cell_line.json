@@ -1,6 +1,6 @@
 {
-    "hash": "04df8c98020dcd74fe0b8b7351e847ad",
-    "index_name": "human_beta_cell_line_04df8c98",
+    "hash": "93a046b88b3ebbb82d5ec80185c6c01b",
+    "index_name": "human_beta_cell_line_93a046b8",
     "item_type": "human_beta_cell_line",
     "mapping": {
         "dynamic_templates": [
@@ -1795,9 +1795,6 @@
                                 "type": "keyword"
                             },
                             "authentication": {
-                                "type": "keyword"
-                            },
-                            "award": {
                                 "type": "keyword"
                             },
                             "barcode_sample_map": {

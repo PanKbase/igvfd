@@ -1,6 +1,6 @@
 {
-    "hash": "70889032ad1da2c1b425d06fbecfbad8",
-    "index_name": "primary_islet_70889032",
+    "hash": "ae260c68ca75af6ced8f1a3f16455207",
+    "index_name": "primary_islet_ae260c68",
     "item_type": "primary_islet",
     "mapping": {
         "dynamic_templates": [
@@ -1908,9 +1908,6 @@
                                 "type": "keyword"
                             },
                             "authentication": {
-                                "type": "keyword"
-                            },
-                            "award": {
                                 "type": "keyword"
                             },
                             "barcode_sample_map": {

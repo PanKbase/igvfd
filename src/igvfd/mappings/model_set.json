@@ -1,6 +1,6 @@
 {
-    "hash": "c3257e421fc831aac164b08397aa6e21",
-    "index_name": "model_set_c3257e42",
+    "hash": "4ce5cd4bc043a0c9303e10dbdeb6cf92",
+    "index_name": "model_set_4ce5cd4b",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1747,9 +1747,6 @@
                                 "type": "keyword"
                             },
                             "authentication": {
-                                "type": "keyword"
-                            },
-                            "award": {
                                 "type": "keyword"
                             },
                             "barcode_sample_map": {

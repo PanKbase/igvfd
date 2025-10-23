@@ -1,6 +1,6 @@
 {
-    "hash": "b0f21b3d519e11116443bd76ec4ee61b",
-    "index_name": "tissue_b0f21b3d",
+    "hash": "03c40a639f991413bd7fe77e1fea63a7",
+    "index_name": "tissue_03c40a63",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1782,9 +1782,6 @@
                                 "type": "keyword"
                             },
                             "authentication": {
-                                "type": "keyword"
-                            },
-                            "award": {
                                 "type": "keyword"
                             },
                             "barcode_sample_map": {

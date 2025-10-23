@@ -1,6 +1,6 @@
 {
-    "hash": "61ec14f2d68108956902d532ea5b22c6",
-    "index_name": "curated_set_61ec14f2",
+    "hash": "d892668bf04c03e764b9eb93f4dddf2f",
+    "index_name": "curated_set_d892668b",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1415,9 +1415,6 @@
                                 "type": "keyword"
                             },
                             "authentication": {
-                                "type": "keyword"
-                            },
-                            "award": {
                                 "type": "keyword"
                             },
                             "barcode_sample_map": {

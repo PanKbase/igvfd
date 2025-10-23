@@ -1,6 +1,6 @@
 {
-    "hash": "993cc5d729c2bb9034e8c78c771832ce",
-    "index_name": "construct_library_set_993cc5d7",
+    "hash": "8bcf1ac6fae98f7b8f9e50fe3d74db1a",
+    "index_name": "construct_library_set_8bcf1ac6",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -181,9 +181,6 @@
                                 "type": "keyword"
                             },
                             "authentication": {
-                                "type": "keyword"
-                            },
-                            "award": {
                                 "type": "keyword"
                             },
                             "barcode_sample_map": {

@@ -1,6 +1,6 @@
 {
-    "hash": "406f2ee2af1c10a3c0940f2ca2c62ada",
-    "index_name": "technical_sample_406f2ee2",
+    "hash": "902652e81306d9817583b112c39e08c4",
+    "index_name": "technical_sample_902652e8",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1108,9 +1108,6 @@
                                 "type": "keyword"
                             },
                             "authentication": {
-                                "type": "keyword"
-                            },
-                            "award": {
                                 "type": "keyword"
                             },
                             "barcode_sample_map": {

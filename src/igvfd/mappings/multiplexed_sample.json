@@ -1,6 +1,6 @@
 {
-    "hash": "153424cb9f5732749ac10a5e9ab39315",
-    "index_name": "multiplexed_sample_153424cb",
+    "hash": "c7a50db8b3a3e0b3921ec62fe425fb19",
+    "index_name": "multiplexed_sample_c7a50db8",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1402,9 +1402,6 @@
                             "authentication": {
                                 "type": "keyword"
                             },
-                            "award": {
-                                "type": "keyword"
-                            },
                             "barcode_sample_map": {
                                 "type": "keyword"
                             },
@@ -2499,9 +2496,6 @@
                                 "type": "keyword"
                             },
                             "authentication": {
-                                "type": "keyword"
-                            },
-                            "award": {
                                 "type": "keyword"
                             },
                             "barcode_sample_map": {

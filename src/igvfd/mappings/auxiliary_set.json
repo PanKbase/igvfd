@@ -1,6 +1,6 @@
 {
-    "hash": "6a19cf627f5ca177b0462a2906584ccb",
-    "index_name": "auxiliary_set_6a19cf62",
+    "hash": "e9e3c8b7dfee673fac754cec77b1dca2",
+    "index_name": "auxiliary_set_e9e3c8b7",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1550,9 +1550,6 @@
                                 "type": "keyword"
                             },
                             "authentication": {
-                                "type": "keyword"
-                            },
-                            "award": {
                                 "type": "keyword"
                             },
                             "barcode_sample_map": {

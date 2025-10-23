@@ -1,6 +1,6 @@
 {
-    "hash": "2de2163882d3d55114a3854b146c4393",
-    "index_name": "primary_cell_2de21638",
+    "hash": "795f8b79139fdc007accafaf7376286d",
+    "index_name": "primary_cell_795f8b79",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1773,9 +1773,6 @@
                                 "type": "keyword"
                             },
                             "authentication": {
-                                "type": "keyword"
-                            },
-                            "award": {
                                 "type": "keyword"
                             },
                             "barcode_sample_map": {
