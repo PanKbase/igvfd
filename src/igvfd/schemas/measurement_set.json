@@ -52,7 +52,7 @@
             "default": "17"
         },
         "samples": {
-            "maxItems": 1
+            "maxItems": 10
         },
         "assay_term": {
             "title": "Assay Term",
