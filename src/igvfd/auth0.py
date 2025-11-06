@@ -43,7 +43,7 @@ def includeme(config):
     config.add_route('impersonate-user', 'impersonate-user')
 
 
-AUTH0_DOMAIN = 't2depi.auth0.com'
+AUTH0_DOMAIN = 'pankbase-prod.us.auth0.com'
 
 
 class LoginDenied(HTTPForbidden):

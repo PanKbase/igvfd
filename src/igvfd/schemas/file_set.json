@@ -77,7 +77,7 @@
             "description": "The sample(s) associated with this file set.",
             "type": "array",
             "uniqueItems": true,
-            "minItems": 1,
+            "minItems": 10,
             "items": {
                 "title": "Sample",
                 "description": "A sample associated with this file set.",
