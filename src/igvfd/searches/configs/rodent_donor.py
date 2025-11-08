@@ -10,8 +10,8 @@ def rodent_donor():
             'strain_background': {
                 'title': 'Strain Background',
             },
-            'sex': {
-                'title': 'Sex'
+            'gender': {
+                'title': 'Gender'
             },
             'collections': {
                 'title': 'Collections',
@@ -52,7 +52,7 @@ def rodent_donor():
                 'title': 'Donor',
                 'facet_fields': [
                     'strain_background',
-                    'sex',
+                    'gender',
                     'virtual',
                 ],
             },
@@ -90,8 +90,8 @@ def rodent_donor():
             'taxa': {
                 'title': 'Taxa'
             },
-            'sex': {
-                'title': 'Sex'
+            'gender': {
+                'title': 'Gender'
             },
             'award': {
                 'title': 'Award'

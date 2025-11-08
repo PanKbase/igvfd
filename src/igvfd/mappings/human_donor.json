@@ -977,7 +977,7 @@
                                     "schema_version": {
                                         "type": "keyword"
                                     },
-                                    "sex": {
+                                    "gender": {
                                         "type": "keyword"
                                     },
                                     "status": {
@@ -1034,7 +1034,7 @@
                     "schema_version": {
                         "type": "keyword"
                     },
-                    "sex": {
+                    "gender": {
                         "type": "keyword"
                     },
                     "status": {

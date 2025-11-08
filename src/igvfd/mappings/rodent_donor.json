@@ -475,7 +475,7 @@
                     "schema_version": {
                         "type": "keyword"
                     },
-                    "sex": {
+                    "gender": {
                         "type": "keyword"
                     },
                     "sources": {

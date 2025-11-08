@@ -200,7 +200,7 @@ class Biosample(Sample):
         Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('modifications', include=['@id', 'modality', 'summary', 'status']),
         Path('institutional_certificates', include=['@id', 'certificate_identifier']),
-        Path('donors', include=['@id', 'accession', 'sex', 'age', 'taxa', 'summary'])
+        Path('donors', include=['@id', 'accession', 'gender', 'age', 'taxa', 'summary'])
     ]
 
     audit_inherit = Sample.audit_inherit + [
@@ -224,7 +224,7 @@ class Biosample(Sample):
     @calculated_property(
         define=True,
         schema={
-            'title': 'Sex',
+            'title': 'Gender',
             'type': 'string',
             'enum': [
                 'female',
@@ -236,15 +236,15 @@ class Biosample(Sample):
         }
     )
     def sex(self, request, donors=None):
-        sexes = set()
+        genders = set()
         if donors:
             for d in donors:
                 donor_object = request.embed(d, '@@object')
-                if donor_object.get('sex'):
-                    sexes.add(donor_object.get('sex'))
-        if len(sexes) == 1:
-            return list(sexes).pop()
-        elif len(sexes) > 1:
+                if donor_object.get('gender'):
+                    genders.add(donor_object.get('gender'))
+        if len(genders) == 1:
+            return list(genders).pop()
+        elif len(genders) > 1:
             return 'mixed'
 
     @calculated_property(

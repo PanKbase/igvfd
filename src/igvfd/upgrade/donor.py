@@ -296,3 +296,13 @@ def human_donor_17_18(value, system):
         
         # Remove the old field
         del value['glucose_loweing_theraphy']
+
+
+@upgrade_step('human_donor', '18', '19')
+@upgrade_step('rodent_donor', '12', '13')
+def donor_sex_to_gender(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-XXXX
+    # Rename 'sex' field to 'gender'
+    if 'sex' in value:
+        value['gender'] = value['sex']
+        del value['sex']
