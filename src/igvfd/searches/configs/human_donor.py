@@ -10,8 +10,8 @@ def human_donor():
             'ethnicities': {
                 'title': 'Ethnicities'
             },
-            'sex': {
-                'title': 'Sex at Birth'
+            'gender': {
+                'title': 'Self Reported Gender'
             },
             'diabetes_status_description': {
                 'title': 'Diabetes Status'
@@ -55,7 +55,7 @@ def human_donor():
                 'title': 'Donor',
                 'facet_fields': [
                     'ethnicities',
-                    'sex',
+                    'gender',
                     'diabetes_status_description',
                     'aab_gada',
                     'aab_ia2',
@@ -91,8 +91,8 @@ def human_donor():
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
             },
-            'sex': {
-                'title': 'Sex at Birth'
+            'gender': {
+                'title': 'Self Reported Gender'
             },
             'award': {
                 'title': 'Funding'
