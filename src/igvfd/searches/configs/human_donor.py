@@ -11,7 +11,7 @@ def human_donor():
                 'title': 'Ethnicities'
             },
             'gender': {
-                'title': 'Self Reported Gender'
+                'title': 'Gender'
             },
             'diabetes_status_description': {
                 'title': 'Diabetes Status'
@@ -92,7 +92,7 @@ def human_donor():
                 'title': 'Alternate Accessions'
             },
             'gender': {
-                'title': 'Self Reported Gender'
+                'title': 'Gender'
             },
             'award': {
                 'title': 'Funding'

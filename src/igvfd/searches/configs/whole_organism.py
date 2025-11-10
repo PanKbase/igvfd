@@ -10,8 +10,8 @@ def whole_organism():
             'taxa': {
                 'title': 'Taxa'
             },
-            'sex': {
-                'title': 'Sex'
+            'gender': {
+                'title': 'Gender'
             },
             'classifications': {
                 'title': 'Classifications',
@@ -64,7 +64,7 @@ def whole_organism():
                 'title': 'Sample',
                 'facet_fields': [
                     'taxa',
-                    'sex',
+                    'gender',
                     'classifications',
                     'treatments.treatment_type',
                     'biomarkers.classification',

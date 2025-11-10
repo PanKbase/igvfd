@@ -998,8 +998,8 @@
       },
       "notSubmittable": true
     },
-    "sex": {
-      "title": "Sex",
+    "gender": {
+      "title": "Gender",
       "type": "string",
       "enum": [
         "female",

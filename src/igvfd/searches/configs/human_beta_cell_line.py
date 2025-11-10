@@ -19,8 +19,8 @@ def human_beta_cell_line():
             'taxa': {
                 'title': 'Taxa',
             },
-            'sex': {
-                'title': 'Sex'
+            'gender': {
+                'title': 'Gender'
             },
             'classifications': {
                 'title': 'Classifications',
@@ -93,7 +93,7 @@ def human_beta_cell_line():
                 'title': 'Sample',
                 'facet_fields': [
                     'taxa',
-                    'sex',
+                    'gender',
                     'file_sets.assay_term.term_name',
                 ]
             },

@@ -19,8 +19,8 @@ def in_vitro_system():
             'taxa': {
                 'title': 'Taxa',
             },
-            'sex': {
-                'title': 'Sex'
+            'gender': {
+                'title': 'Gender'
             },
             'classifications': {
                 'title': 'Classifications',
@@ -76,7 +76,7 @@ def in_vitro_system():
                     'disease_terms.term_name',
                     'treatments.treatment_term_name',
                     'taxa',
-                    'sex',
+                    'gender',
                     'classifications',
                     'biomarkers.classification',
                     'virtual',

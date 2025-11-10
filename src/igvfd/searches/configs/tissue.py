@@ -19,8 +19,8 @@ def tissue():
             'taxa': {
                 'title': 'Taxa',
             },
-            'sex': {
-                'title': 'Sex'
+            'gender': {
+                'title': 'Gender'
             },
             'classifications': {
                 'title': 'Classifications',
@@ -73,7 +73,7 @@ def tissue():
                     'disease_terms.term_name',
                     'treatments.treatment_term_name',
                     'taxa',
-                    'sex',
+                    'gender',
                     'classifications',
                     'biomarkers.classification',
                     'virtual',
