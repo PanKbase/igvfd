@@ -92,6 +92,7 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
 
         if user_info['email_verified'] is True:
             email = request._auth0_authenticated = user_info['email'].lower()
+            email = request._auth0_authenticated = user_info['email'].lower()
             return email
         else:
             return None
@@ -169,10 +170,13 @@ def _get_user_info(user_data):
 def login(request):
     """View to check the auth0 assertion and remember the user"""
     login = request.authenticated_userid
+    print(f"DEBUG: authenticated_userid = '{login}'")
     if login is None:
+        print("DEBUG: login is None")  # ADD THIS
         namespace = userid = None
     else:
         namespace, userid = login.split('.', 1)
+        print(f"DEBUG: namespace='{namespace}', userid='{userid}'")
 
     # create new user account if one does not exist
     if namespace != 'auth0':
