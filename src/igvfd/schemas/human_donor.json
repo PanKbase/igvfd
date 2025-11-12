@@ -334,7 +334,7 @@
                 "igvf_utils": "SAMN19776455"
             }
         },
-        "biological_sex": {
+        "genetic_sex": {
             "title": "Genetic Sex",
             "description": "Inferred biological sex derived from genomic data",
             "type": "string",

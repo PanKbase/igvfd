@@ -28,7 +28,7 @@
     * `living_donor`: A `boolean` field.
     * `pancreas_tissue_available`: A `boolean` field.
     * `center_donor_id`: A `string` field.
-    * `biological_sex`: A `string` field with an `enum` of `"male"`, `"female"`, `"unspecified"`.
+    * `genetic_sex`: A `string` field with an `enum` of `"male"`, `"female"`, `"unspecified"`.
     * `donation_type`: A `string` field with an `enum` of `"DCD"`, `"NDD"`, `"MAID"`.
     * `cause_of_death`: A `string` field.
     * `c_peptide`: A `number` field.

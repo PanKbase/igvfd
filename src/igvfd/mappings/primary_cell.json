@@ -447,7 +447,7 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "biological_sex": {
+                            "genetic_sex": {
                                 "type": "keyword"
                             },
                             "bmi": {
