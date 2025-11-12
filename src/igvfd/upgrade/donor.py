@@ -306,3 +306,10 @@ def donor_sex_to_gender(value, system):
     if 'sex' in value:
         value['gender'] = value['sex']
         del value['sex']
+
+@upgrade_step('human_donor', '19', '20')
+def human_donor_19_20(value, system):
+    # Migrate 'biological_sex' field to 'genetic_sex'
+    if 'biological_sex' in value:
+        value['genetic_sex'] = value['biological_sex']
+        del value['biological_sex']
