@@ -106,6 +106,9 @@ def analysis_set():
             'summary': {
                 'title': 'Summary'
             },
+            'description': {
+                'title': 'Description'
+            },
             'donors.taxa': {
                 'title': 'Taxa'
             },
