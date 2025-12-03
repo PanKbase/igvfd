@@ -60,7 +60,9 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
 
     def unauthenticated_userid(self, request):
 
-        if request.method != self.method or request.path != self.login_path:
+        # Accept both /login and /login/ paths
+        login_paths = [self.login_path, self.login_path + '/']
+        if request.method != self.method or request.path not in login_paths:
             return None
 
         cached = getattr(request, '_auth0_authenticated', _marker)
