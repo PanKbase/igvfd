@@ -311,6 +311,7 @@ class Biosample(Sample):
 
     @calculated_property(
         define=True,
+        condition='request, donors',
         schema={
             'title': 'Taxa',
             'type': 'string',

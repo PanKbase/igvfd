@@ -1,6 +1,30 @@
 from snovault import upgrade_step
 
 
+@upgrade_step('phenotype_term', '', '1')
+def phenotype_term_empty_1(value, system):
+    # Handle items with empty schema version
+    pass
+
+
+@upgrade_step('sample_term', '', '1')
+def sample_term_empty_1(value, system):
+    # Handle items with empty schema version
+    pass
+
+
+@upgrade_step('platform_term', '', '1')
+def platform_term_empty_1(value, system):
+    # Handle items with empty schema version
+    pass
+
+
+@upgrade_step('assay_term', '', '1')
+def assay_term_empty_1(value, system):
+    # Handle items with empty schema version
+    pass
+
+
 @upgrade_step('phenotype_term', '1', '2')
 @upgrade_step('assay_term', '1', '2')
 @upgrade_step('sample_term', '1', '2')
@@ -57,7 +81,7 @@ def assay_term_3_4(value, system):
 @upgrade_step('platform_term', '2', '3')
 def ontology_term_3_4(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1494
-    if value['status'] in ['released', 'archived'] and 'release_timestamp' not in value:
+    if 'status' in value and value['status'] in ['released', 'archived'] and 'release_timestamp' not in value:
         value['release_timestamp'] = '2024-03-06T12:34:56Z'
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
@@ -65,7 +89,7 @@ def ontology_term_3_4(value, system):
 
 
 @upgrade_step('assay_term', '5', '6')
-def ontology_term_3_4(value, system):
+def assay_term_5_6(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1533
     if 'preferred_assay_titles' in value:
         if len(value['preferred_assay_titles']) < 1:

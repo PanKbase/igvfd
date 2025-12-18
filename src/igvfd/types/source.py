@@ -28,7 +28,7 @@ class Source(Item):
     set_status_up = []
     set_status_down = []
 
-    @calculated_property(
+    @calculated_property(condition='title', 
         schema={
             'title': 'Summary',
             'type': 'string',

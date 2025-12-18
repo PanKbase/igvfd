@@ -40,7 +40,7 @@ class OntologyTerm(Item):
     def __name__(self):
         return self.name()
 
-    @calculated_property(schema={
+    @calculated_property(condition='term_id', schema={
         'title': 'Name',
         'type': 'string',
         'description': 'A unique identifier for the ontology term, reformatted from the original term ID.',
@@ -50,6 +50,8 @@ class OntologyTerm(Item):
     def name(self, properties=None):
         if properties is None:
             properties = self.upgrade_properties()
+        if 'term_id' not in properties:
+            return ''
         format_cleaned_term_id = properties['term_id'].replace(' ', '_').replace(':', '_')
         return u'{}'.format(format_cleaned_term_id)
 
@@ -297,7 +299,8 @@ class PhenotypeTerm(OntologyTerm):
         keys = super(OntologyTerm, self).unique_keys(properties)
         if 'deprecated_ntr_terms' in properties:
             keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
-        keys.setdefault('phenotype_term:name', []).append(self.name(properties))
+        if 'term_id' in properties:
+            keys.setdefault('phenotype_term:name', []).append(self.name(properties))
         return keys
 
 
@@ -318,5 +321,6 @@ class PlatformTerm(OntologyTerm):
         keys = super(OntologyTerm, self).unique_keys(properties)
         if 'deprecated_ntr_terms' in properties:
             keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
-        keys.setdefault('platform_term:name', []).append(self.name(properties))
+        if 'term_id' in properties:
+            keys.setdefault('platform_term:name', []).append(self.name(properties))
         return keys

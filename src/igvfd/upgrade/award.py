@@ -31,3 +31,8 @@ def award_4_5(value, system):
     if 'pis' in value:
         if len(value['pis']) < 1:
             del value['pis']
+
+@upgrade_step('award', '5', '6')
+def award_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-XXXX
+    pass

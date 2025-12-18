@@ -1,5 +1,17 @@
 from snovault import upgrade_step
 
+# Direct upgrades from empty to current version
+@upgrade_step('measurement_set', '', '17')
+def measurement_set_empty_17(value, system):
+    pass
+
+@upgrade_step('curated_set', '', '8')
+def curated_set_empty_8(value, system):
+    pass
+
+@upgrade_step('analysis_set', '', '8')
+def analysis_set_empty_8(value, system):
+    pass
 
 @upgrade_step('analysis_set', '1', '2')
 @upgrade_step('curated_set', '1', '2')
@@ -279,7 +291,7 @@ def measurement_set_12_13(value, system):
 @upgrade_step('prediction_set', '6', '7')
 def file_set_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1494
-    if value['status'] in ['released', 'archived', 'revoked'] and 'release_timestamp' not in value:
+    if 'status' in value and value['status'] in ['released', 'archived', 'revoked'] and 'release_timestamp' not in value:
         value['release_timestamp'] = '2024-03-06T12:34:56Z'
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
@@ -312,7 +324,7 @@ def measurement_set_14_15(value, system):
 @upgrade_step('measurement_set', '15', '16')
 def measurement_set_15_16(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1571
-    if len(value['samples']) > 1:
+    if 'samples' in value and len(value['samples']) > 1:
         sample = value['samples'][0]
         other_samples = ', '.join(value['samples'][1:])
         notes = value.get('notes', '')
@@ -340,6 +352,16 @@ def analysis_set_6_7(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s file_set_type was primary analysis and has been updated to be principal analysis.'
         value['notes'] = notes.strip()
+
+@upgrade_step('analysis_set', '7', '8')
+def analysis_set_7_8(value, system):
+    # Handle items upgrading from version 7 to 8
+    pass
+
+@upgrade_step('curated_set', '7', '8')
+def curated_set_7_8(value, system):
+    # Handle items upgrading from version 7 to 8
+    pass
 
 
 @upgrade_step('auxiliary_set', '7', '8')

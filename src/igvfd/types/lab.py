@@ -34,6 +34,7 @@ class Lab(Item):
 
     @calculated_property(
         define=True,
+        condition='pi, institute_label',
         schema={
             'title': 'Title',
             'type': 'string',
