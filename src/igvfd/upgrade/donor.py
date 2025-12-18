@@ -172,6 +172,12 @@ def donor_12_13(value, system):
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
 
+@upgrade_step('human_donor', '13', '14')
+def human_donor_13_14(value, system):
+    # Bridge gap in upgrade path
+    # No schema changes needed between v13 and v14
+    pass
+
 @upgrade_step('human_donor', '14', '15')
 def human_donor_14_15(value, system):
     # Convert family_history_of_diabetes boolean to string
