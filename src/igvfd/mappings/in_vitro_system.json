@@ -1,6 +1,6 @@
 {
-    "hash": "987948493957b7cf25addd242dc7cc5a",
-    "index_name": "in_vitro_system_98794849",
+    "hash": "4665b239603145708a5b2f72681e6512",
+    "index_name": "in_vitro_system_4665b239",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -600,9 +600,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "genetic_sex": {
-                                "type": "keyword"
-                            },
                             "bmi": {
                                 "fields": {
                                     "raw": {
@@ -680,6 +677,9 @@
                             "family_history_of_diabetes_relationship": {
                                 "type": "keyword"
                             },
+                            "gender": {
+                                "type": "keyword"
+                            },
                             "genetic_ethnicities": {
                                 "properties": {
                                     "ethnicity": {
@@ -696,6 +696,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "genetic_sex": {
+                                "type": "keyword"
                             },
                             "genotype": {
                                 "type": "keyword"
@@ -805,9 +808,6 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
-                                "type": "keyword"
-                            },
-                            "sex": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1896,6 +1896,9 @@
                             "file_sets": {
                                 "type": "keyword"
                             },
+                            "gender": {
+                                "type": "keyword"
+                            },
                             "growth_medium": {
                                 "type": "keyword"
                             },
@@ -2495,6 +2498,9 @@
                                 "type": "keyword"
                             },
                             "file_sets": {
+                                "type": "keyword"
+                            },
+                            "gender": {
                                 "type": "keyword"
                             },
                             "growth_medium": {

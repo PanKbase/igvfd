@@ -1,6 +1,6 @@
 {
-    "hash": "61ec14f2d68108956902d532ea5b22c6",
-    "index_name": "curated_set_61ec14f2",
+    "hash": "f2c28c0859c57161258791659f5100dd",
+    "index_name": "curated_set_f2c28c08",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -756,9 +756,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "genetic_sex": {
-                                "type": "keyword"
-                            },
                             "bmi": {
                                 "fields": {
                                     "raw": {
@@ -836,6 +833,9 @@
                             "family_history_of_diabetes_relationship": {
                                 "type": "keyword"
                             },
+                            "gender": {
+                                "type": "keyword"
+                            },
                             "genetic_ethnicities": {
                                 "properties": {
                                     "ethnicity": {
@@ -852,6 +852,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "genetic_sex": {
+                                "type": "keyword"
                             },
                             "genotype": {
                                 "type": "keyword"
@@ -961,9 +964,6 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
-                                "type": "keyword"
-                            },
-                            "sex": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1579,6 +1579,9 @@
                                 "type": "keyword"
                             },
                             "file_sets": {
+                                "type": "keyword"
+                            },
+                            "gender": {
                                 "type": "keyword"
                             },
                             "growth_medium": {

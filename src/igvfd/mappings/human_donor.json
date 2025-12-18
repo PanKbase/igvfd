@@ -1,6 +1,6 @@
 {
-    "hash": "93e3272c386c4614caf91e45020593bd",
-    "index_name": "human_donor_93e3272c",
+    "hash": "9fc7a4b49d820e0b00be730b0cbfd432",
+    "index_name": "human_donor_9fc7a4b4",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -321,9 +321,6 @@
                         },
                         "type": "object"
                     },
-                    "genetic_sex": {
-                        "type": "keyword"
-                    },
                     "bmi": {
                         "fields": {
                             "raw": {
@@ -404,6 +401,9 @@
                     "family_history_of_diabetes_relationship": {
                         "type": "keyword"
                     },
+                    "gender": {
+                        "type": "keyword"
+                    },
                     "genetic_ethnicities": {
                         "properties": {
                             "ethnicity": {
@@ -420,6 +420,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "genetic_sex": {
+                        "type": "keyword"
                     },
                     "hba1c": {
                         "fields": {
@@ -791,9 +794,6 @@
                                     "award": {
                                         "type": "keyword"
                                     },
-                                    "genetic_sex": {
-                                        "type": "keyword"
-                                    },
                                     "bmi": {
                                         "fields": {
                                             "raw": {
@@ -871,6 +871,9 @@
                                     "family_history_of_diabetes_relationship": {
                                         "type": "keyword"
                                     },
+                                    "gender": {
+                                        "type": "keyword"
+                                    },
                                     "genetic_ethnicities": {
                                         "properties": {
                                             "ethnicity": {
@@ -887,6 +890,9 @@
                                             }
                                         },
                                         "type": "object"
+                                    },
+                                    "genetic_sex": {
+                                        "type": "keyword"
                                     },
                                     "hba1c": {
                                         "fields": {
@@ -977,9 +983,6 @@
                                     "schema_version": {
                                         "type": "keyword"
                                     },
-                                    "gender": {
-                                        "type": "keyword"
-                                    },
                                     "status": {
                                         "type": "keyword"
                                     },
@@ -1032,9 +1035,6 @@
                         "type": "keyword"
                     },
                     "schema_version": {
-                        "type": "keyword"
-                    },
-                    "gender": {
                         "type": "keyword"
                     },
                     "status": {
