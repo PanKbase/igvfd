@@ -4,7 +4,7 @@ from aws_cdk.assertions import Template
 from aws_cdk.assertions import Match
 
 
-def test_constructs_postgres_initialize_postgres_base_construct(stack, config, instance_type, mocker, existing_resources):
+def test_constructs_postgres_initialize_postgres_base_construct(stack, config, instance_type, mocker, existing_resources, postgres_engine_version):
     from infrastructure.constructs.postgres import PostgresBase
     from infrastructure.constructs.postgres import PostgresProps
     from jsii._reference_map import _refs
@@ -12,9 +12,10 @@ def test_constructs_postgres_initialize_postgres_base_construct(stack, config, i
     props = PostgresProps(
         config=config,
         existing_resources=existing_resources,
-        allocated_storage=10,
-        max_allocated_storage=20,
-        instance_type=instance_type
+        allocated_storage=20,
+        max_allocated_storage=40,
+        instance_type=instance_type,
+        engine_version=postgres_engine_version,
     )
     postgres_base = PostgresBase(
         stack,
@@ -25,7 +26,7 @@ def test_constructs_postgres_initialize_postgres_base_construct(stack, config, i
     assert postgres_base.database_name == 'igvfd'
 
 
-def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_type, mocker, config, existing_resources):
+def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_type, mocker, config, existing_resources, postgres_engine_version):
     from infrastructure.constructs.postgres import Postgres
     from infrastructure.constructs.postgres import PostgresProps
     # When
@@ -35,9 +36,10 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
         props=PostgresProps(
             config=config,
             existing_resources=existing_resources,
-            allocated_storage=10,
-            max_allocated_storage=20,
+            allocated_storage=20,
+            max_allocated_storage=40,
             instance_type=instance_type,
+            engine_version=postgres_engine_version,
         )
     )
     # Then
@@ -80,14 +82,14 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
         'Type': 'AWS::RDS::DBInstance',
         'Properties': {
             'DBInstanceClass': 'db.t3.medium',
-            'AllocatedStorage': '10',
+            'AllocatedStorage': '20',
             'AutoMinorVersionUpgrade': False,
             'CopyTagsToSnapshot': True,
             'DBName': 'igvfd',
             'DBSubnetGroupName': {'Ref': 'PostgresSubnetGroup68192ADF'},
             'EnablePerformanceInsights': True,
             'Engine': 'postgres',
-            'EngineVersion': '14.9',
+            'EngineVersion': '14.19',
             'MasterUsername': {
                 'Fn::Join': [
                     '',
@@ -108,7 +110,7 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
                     ]
                 ]
             },
-            'MaxAllocatedStorage': 20,
+            'MaxAllocatedStorage': 40,
             'PerformanceInsightsRetentionPeriod': 7,
             'PubliclyAccessible': False,
             'StorageType': 'gp2',
@@ -183,7 +185,7 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
     )
 
 
-def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(stack, vpc, instance_type, mocker, config, existing_resources):
+def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(stack, vpc, instance_type, mocker, config, existing_resources,postgres_engine_version):
     from infrastructure.constructs.postgres import PostgresFromSnapshotArn
     from infrastructure.constructs.postgres import PostgresProps
     # When
@@ -193,9 +195,10 @@ def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(sta
         props=PostgresProps(
             config=config,
             existing_resources=existing_resources,
-            allocated_storage=10,
-            max_allocated_storage=20,
+            allocated_storage=20,
+            max_allocated_storage=40,
             instance_type=instance_type,
+            engine_version=postgres_engine_version,
             snapshot_arn='some-arn-xyz',
         )
     )
@@ -227,7 +230,7 @@ def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(sta
     )
 
 
-def test_constructs_postgres_initialize_postgres_from_latest_snapshot_construct(stack, vpc, instance_type, mocker, config, existing_resources):
+def test_constructs_postgres_initialize_postgres_from_latest_snapshot_construct(stack, vpc, instance_type, mocker, config, existing_resources, postgres_engine_version):
     from infrastructure.constructs.postgres import PostgresFromLatestSnapshot
     from infrastructure.constructs.postgres import PostgresProps
     # Given
@@ -239,9 +242,10 @@ def test_constructs_postgres_initialize_postgres_from_latest_snapshot_construct(
         props=PostgresProps(
             config=config,
             existing_resources=existing_resources,
-            allocated_storage=10,
-            max_allocated_storage=20,
+            allocated_storage=20,
+            max_allocated_storage=40,
             instance_type=instance_type,
+            engine_version=postgres_engine_version,
             snapshot_source_db_identifier='source-db-123'
         )
     )
@@ -311,7 +315,7 @@ def test_constructs_postgres_initialize_postgres_from_latest_snapshot_construct(
     )
 
 
-def test_constructs_postgres_postgres_factory(config, existing_resources, instance_type):
+def test_constructs_postgres_postgres_factory(config, existing_resources, instance_type, postgres_engine_version):
     from infrastructure.constructs.postgres import PostgresProps
     from infrastructure.constructs.postgres import Postgres
     from infrastructure.constructs.postgres import PostgresFromSnapshotArn
@@ -320,8 +324,9 @@ def test_constructs_postgres_postgres_factory(config, existing_resources, instan
     props = PostgresProps(
         config=config,
         existing_resources=existing_resources,
-        allocated_storage=10,
-        max_allocated_storage=20,
+        allocated_storage=20,
+        max_allocated_storage=40,
+        engine_version=postgres_engine_version,
         instance_type=instance_type
     )
     postgres = postgres_factory(props)
@@ -329,9 +334,10 @@ def test_constructs_postgres_postgres_factory(config, existing_resources, instan
     props = PostgresProps(
         config=config,
         existing_resources=existing_resources,
-        allocated_storage=10,
-        max_allocated_storage=20,
+        allocated_storage=20,
+        max_allocated_storage=40,
         instance_type=instance_type,
+        engine_version=postgres_engine_version,
         snapshot_arn='some-arn-xyz',
     )
     postgres = postgres_factory(props)
@@ -339,9 +345,10 @@ def test_constructs_postgres_postgres_factory(config, existing_resources, instan
     props = PostgresProps(
         config=config,
         existing_resources=existing_resources,
-        allocated_storage=10,
-        max_allocated_storage=20,
+        allocated_storage=20,
+        max_allocated_storage=40,
         instance_type=instance_type,
+        engine_version=postgres_engine_version,
         snapshot_source_db_identifier='source-db-id',
     )
     postgres = postgres_factory(props)

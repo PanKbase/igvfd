@@ -1,5 +1,5 @@
-aws-cdk-lib==2.114.1
-aws-cdk.aws-lambda-python-alpha==2.114.1a0
+aws-cdk-lib==2.110.1
+aws-cdk.aws-lambda-python-alpha==2.110.1a0
 constructs>=10.0.0,<11.0.0
 git+https://github.com/PanKbase-DB/shared-infrastructure@v1.6.0#egg=shared_infrastructure
 

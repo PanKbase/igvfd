@@ -27,7 +27,7 @@ def test_stacks_postgres_initialize_postgres_stack(config):
                 'Ref': 'PostgresSubnetGroup68192ADF'
             },
             'Engine': 'postgres',
-            'EngineVersion': '14.9',
+            'EngineVersion': '14.19',
             'MasterUsername': {
                 'Fn::Join': [
                     '',

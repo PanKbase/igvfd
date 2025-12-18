@@ -6,6 +6,7 @@ from aws_cdk.aws_ec2 import InstanceSize
 
 from aws_cdk.aws_opensearchservice import CapacityConfig
 from aws_cdk.aws_opensearchservice import EngineVersion
+from aws_cdk.aws_rds import PostgresEngineVersion
 
 from dataclasses import dataclass
 from dataclasses import field
@@ -61,12 +62,13 @@ config: Dict[str, Any] = {
                         'on': True,
                         'props': {
                             'snapshot_arn': 'pankbase-staging-snapshot-08',
-                            'allocated_storage': 10,
-                            'max_allocated_storage': 20,
+                            'allocated_storage': 20,
+                            'max_allocated_storage': 40,
                             'instance_type': InstanceType.of(
                                 InstanceClass.BURSTABLE3,
                                 InstanceSize.MEDIUM,
                             ),
+                            'engine_version': PostgresEngineVersion.of("14.19", "14"),
                         },
                     }
                 ],
@@ -128,12 +130,13 @@ config: Dict[str, Any] = {
                         'on': True,
                         'props': {
                             'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
-                            'allocated_storage': 10,
-                            'max_allocated_storage': 20,
+                            'allocated_storage': 20,
+                            'max_allocated_storage': 40,
                             'instance_type': InstanceType.of(
                                 InstanceClass.BURSTABLE3,
                                 InstanceSize.MEDIUM,
                             ),
+                            'engine_version': PostgresEngineVersion.of("14.19", "14"),
                         },
                     },
                 ],
@@ -192,12 +195,13 @@ config: Dict[str, Any] = {
                         'on': True,
                         'props': {
                             'snapshot_arn': 'pankbase-staging-snapshot-08',
-                            'allocated_storage': 10,
-                            'max_allocated_storage': 20,
+                            'allocated_storage': 20,
+                            'max_allocated_storage': 40,
                             'instance_type': InstanceType.of(
                                 InstanceClass.BURSTABLE3,
                                 InstanceSize.MEDIUM,
                             ),
+                            'engine_version': PostgresEngineVersion.of("14.19", "14"),
                         },
                     },
                 ],
@@ -257,12 +261,13 @@ config: Dict[str, Any] = {
                         'on': True,
                         'props': {
                             'snapshot_arn': 'pankbase-staging-snapshot-08',
-                            'allocated_storage': 10,
-                            'max_allocated_storage': 20,
+                            'allocated_storage': 20,
+                            'max_allocated_storage': 40,
                             'instance_type': InstanceType.of(
                                 InstanceClass.BURSTABLE3,
                                 InstanceSize.MEDIUM,
                             ),
+                            'engine_version': PostgresEngineVersion.of("14.19", "14"),
                         },
                     },
                 ],
@@ -322,12 +327,13 @@ config: Dict[str, Any] = {
                         'on': True,
                         'props': {
                             'snapshot_source_db_identifier': PROD_DATABASE_IDENTIFIER,
-                            'allocated_storage': 10,
-                            'max_allocated_storage': 20,
+                            'allocated_storage': 20,
+                            'max_allocated_storage': 40,
                             'instance_type': InstanceType.of(
                                 InstanceClass.BURSTABLE3,
                                 InstanceSize.MEDIUM,
                             ),
+                            'engine_version': PostgresEngineVersion.of("14.19", "14"),
                         },
                     },
                 ],
@@ -388,7 +394,7 @@ class Common:
     organization_name: str = 'PanKbase-DB'
     project_name: str = 'igvfd'
     default_region: str = 'us-west-2'
-    aws_cdk_version: str = '2.114.1'
+    aws_cdk_version: str = '2.110.1'
 
 
 @dataclass
