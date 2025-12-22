@@ -1,5 +1,20 @@
 from snovault import upgrade_step
 
+@upgrade_step('measurement_set', '', '1')
+def measurement_set_empty_1(value, system):
+    # Handle items with empty schema version
+    pass
+
+@upgrade_step('curated_set', '', '1')
+def curated_set_empty_1(value, system):
+    # Handle items with empty schema version
+    pass
+
+@upgrade_step('analysis_set', '', '1')
+def analysis_set_empty_1(value, system):
+    # Handle items with empty schema version
+    pass
+
 
 @upgrade_step('analysis_set', '1', '2')
 @upgrade_step('curated_set', '1', '2')

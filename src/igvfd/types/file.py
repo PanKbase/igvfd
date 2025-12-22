@@ -437,6 +437,7 @@ class AlignmentFile(File):
         return keys
 
     @calculated_property(
+        condition='request, content_type, redacted, filtered',
         define=True,
         schema={
             'title': 'Content Summary',
@@ -501,6 +502,7 @@ class MatrixFile(File):
         return keys
 
     @calculated_property(
+        condition='request, dimension1, dimension2, content_type',
         define=True,
         schema={
             'title': 'Content Summary',
@@ -548,6 +550,7 @@ class SignalFile(File):
         return keys
 
     @calculated_property(
+        condition='content_type, strand_specificity, filtered, normalized',
         define=True,
         schema={
             'title': 'Content Summary',
@@ -656,6 +659,7 @@ class TabularFile(File):
         return keys
 
     @calculated_property(
+        condition='content_type, assembly, transcriptome_annotation',
         schema={
             'title': 'Summary',
             'type': 'string',

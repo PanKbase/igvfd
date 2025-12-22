@@ -1,6 +1,30 @@
 from snovault import upgrade_step
 
 
+@upgrade_step('alignment_file', '', '1')
+def alignment_file_empty_1(value, system):
+    # Handle items with empty schema version
+    pass
+
+
+@upgrade_step('tabular_file', '', '1')
+def tabular_file_empty_1(value, system):
+    # Handle items with empty schema version
+    pass
+
+
+@upgrade_step('matrix_file', '', '1')
+def matrix_file_empty_1(value, system):
+    # Handle items with empty schema version
+    pass
+
+
+@upgrade_step('signal_file', '', '1')
+def signal_file_empty_1(value, system):
+    # Handle items with empty schema version
+    pass
+
+
 @upgrade_step('sequence_file', '2', '3')
 def file_2b_3(value, system):
     # https://igvf.atlassian.net/browse/IGVF-615
