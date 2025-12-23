@@ -1,6 +1,12 @@
 from snovault import upgrade_step
 
 
+@upgrade_step('lab', '', '1')
+def lab_empty_1(value, system):
+    # Handle items with empty schema version
+    pass
+
+
 @upgrade_step('lab', '1', '2')
 def lab_1_2(value, system):
     # https://igvf.atlassian.net/browse/IGVF-221
