@@ -321,5 +321,6 @@ class PlatformTerm(OntologyTerm):
         keys = super(OntologyTerm, self).unique_keys(properties)
         if 'deprecated_ntr_terms' in properties:
             keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
-        keys.setdefault('platform_term:name', []).append(self.name(properties))
+        if 'term_id' in properties:
+            keys.setdefault('platform_term:name', []).append(self.name(properties))
         return keys

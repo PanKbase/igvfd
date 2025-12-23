@@ -19,6 +19,12 @@ def platform_term_empty_1(value, system):
     pass
 
 
+@upgrade_step('assay_term', '', '1')
+def assay_term_empty_1(value, system):
+    # Handle items with empty schema version
+    pass
+
+
 @upgrade_step('phenotype_term', '1', '2')
 @upgrade_step('assay_term', '1', '2')
 @upgrade_step('sample_term', '1', '2')
@@ -83,7 +89,7 @@ def ontology_term_3_4(value, system):
 
 
 @upgrade_step('assay_term', '5', '6')
-def ontology_term_3_4(value, system):
+def assay_term_5_6(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1533
     if 'preferred_assay_titles' in value:
         if len(value['preferred_assay_titles']) < 1:

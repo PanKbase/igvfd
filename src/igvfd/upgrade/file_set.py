@@ -327,7 +327,7 @@ def measurement_set_14_15(value, system):
 @upgrade_step('measurement_set', '15', '16')
 def measurement_set_15_16(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1571
-    if len(value['samples']) > 1:
+    if 'samples' in value and len(value['samples']) > 1:
         sample = value['samples'][0]
         other_samples = ', '.join(value['samples'][1:])
         notes = value.get('notes', '')
