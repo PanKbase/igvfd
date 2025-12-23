@@ -1,20 +1,17 @@
 from snovault import upgrade_step
 
-@upgrade_step('measurement_set', '', '1')
-def measurement_set_empty_1(value, system):
-    # Handle items with empty schema version
+# Direct upgrades from empty to current version
+@upgrade_step('measurement_set', '', '17')
+def measurement_set_empty_17(value, system):
     pass
 
-@upgrade_step('curated_set', '', '1')
-def curated_set_empty_1(value, system):
-    # Handle items with empty schema version
+@upgrade_step('curated_set', '', '8')
+def curated_set_empty_8(value, system):
     pass
 
-@upgrade_step('analysis_set', '', '1')
-def analysis_set_empty_1(value, system):
-    # Handle items with empty schema version
+@upgrade_step('analysis_set', '', '8')
+def analysis_set_empty_8(value, system):
     pass
-
 
 @upgrade_step('analysis_set', '1', '2')
 @upgrade_step('curated_set', '1', '2')
@@ -361,6 +358,10 @@ def analysis_set_7_8(value, system):
     # Handle items upgrading from version 7 to 8
     pass
 
+@upgrade_step('curated_set', '7', '8')
+def curated_set_7_8(value, system):
+    # Handle items upgrading from version 7 to 8
+    pass
 
 
 @upgrade_step('auxiliary_set', '7', '8')
