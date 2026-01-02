@@ -208,7 +208,13 @@ class Item(snovault.Item):
         return roles
 
     def unique_keys(self, properties):
-        keys = super(Item, self).unique_keys(properties)
+        # Filter out None values to prevent errors in snovault's unique_keys method
+        # which uses ensurelist() on property values
+        cleaned_properties = {
+            k: v if v is not None else ()
+            for k, v in properties.items()
+        }
+        keys = super(Item, self).unique_keys(cleaned_properties)
         if 'accession' not in self.schema['properties']:
             return keys
         keys.setdefault('accession', []).extend(properties.get('alternate_accessions', []))
