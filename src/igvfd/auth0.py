@@ -36,10 +36,8 @@ _marker = object()
 def includeme(config):
     config.scan(__name__, categories=None)
     config.add_route('signup', 'signup')
-    config.add_route('login', 'login')
-    config.add_route('logout', 'logout')
-    config.add_route('login-trailing', 'login/')
-    config.add_route('logout-trailing', 'logout/')
+    config.add_route('login', '/login{slash:/?}')
+    config.add_route('logout', '/logout{slash:/?}')
     config.add_route('session', 'session')
     config.add_route('session-properties', 'session-properties')
     config.add_route('impersonate-user', 'impersonate-user')
@@ -171,8 +169,6 @@ def _get_user_info(user_data):
 # Unfortunately, X-Requested-With is not sufficient.
 # http://lists.webappsec.org/pipermail/websecurity_lists.webappsec.org/2011-February/007533.html
 # Checking the CSRF token in middleware is easier
-@view_config(route_name='login-trailing', request_method='POST',
-             permission=NO_PERMISSION_REQUIRED)
 @view_config(route_name='login', request_method='POST',
              permission=NO_PERMISSION_REQUIRED)
 def login(request):
@@ -203,8 +199,6 @@ def login(request):
     return properties
 
 
-@view_config(route_name='logout-trailing',
-             permission=NO_PERMISSION_REQUIRED, http_cache=0)
 @view_config(route_name='logout',
              permission=NO_PERMISSION_REQUIRED, http_cache=0)
 def logout(request):
