@@ -228,7 +228,6 @@ def main(global_config, **local_config):
     config.include(session)
     # Must go before other route registration.
     config.include('.cors')
-    config.include('.auth0')
     config.include('.cookie')
 
     config.include(configure_dbsession)
@@ -238,6 +237,7 @@ def main(global_config, **local_config):
     config.include(configure_transaction_dead_letter_queue)
     config.include(configure_invalidation_dead_letter_queue)
     config.include('snovault')
+    config.include('.auth0')
     config.commit()  # commit so search can override listing
 
     # Render an HTML page to browsers and a JSON document for API clients

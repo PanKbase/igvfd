@@ -91,8 +91,10 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
             return None
 
         if user_info['email_verified'] is True:
-            email = request._auth0_authenticated = user_info['email'].lower()
-            return email
+            email = user_info['email'].lower()
+            # Return in format expected by login function: auth0.{email}
+            request._auth0_authenticated = 'auth0.{email}'.format(email=email)
+            return request._auth0_authenticated
         else:
             return None
 
