@@ -78,10 +78,9 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
             return None
 
         try:
-            # Use modern Auth0 API with Bearer token in Authorization header
-            user_url = 'https://{domain}/userinfo'.format(domain=AUTH0_DOMAIN)
-            headers = {'Authorization': 'Bearer {access_token}'.format(access_token=access_token)}
-            user_info = requests.get(user_url, headers=headers).json()
+            user_url = 'https://{domain}/userinfo?access_token={access_token}' \
+                .format(domain=AUTH0_DOMAIN, access_token=access_token)
+            user_info = requests.get(user_url).json()
         except Exception as e:
             if self.debug:
                 self._log(
@@ -91,11 +90,9 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
             request._auth0_authenticated = None
             return None
 
-        if user_info.get('email_verified') is True:
-            email = user_info['email'].lower()
-            # Return in format expected by login function: auth0.{email}
-            request._auth0_authenticated = 'auth0.{email}'.format(email=email)
-            return request._auth0_authenticated
+        if user_info['email_verified'] is True:
+            email = request._auth0_authenticated = user_info['email'].lower()
+            return email
         else:
             return None
 
@@ -115,10 +112,8 @@ def signup(context, request):
     access_token = request.json.get('accessToken')
     if not access_token:
         raise HTTPBadRequest(explanation='Access token required')
-    # Use modern Auth0 API with Bearer token in Authorization header
-    url = 'https://{domain}/userinfo'.format(domain=AUTH0_DOMAIN)
-    headers = {'Authorization': 'Bearer {access_token}'.format(access_token=access_token)}
-    user_data_request = requests.get(url, headers=headers)
+    url = 'https://{domain}/userinfo?access_token={access_token}'.format(domain=AUTH0_DOMAIN, access_token=access_token)
+    user_data_request = requests.get(url)
     if user_data_request.status_code != 200:
         raise HTTPBadRequest(explanation='Could not get user data')
     user_data = user_data_request.json()
@@ -174,13 +169,10 @@ def _get_user_info(user_data):
 def login(request):
     """View to check the auth0 assertion and remember the user"""
     login = request.authenticated_userid
-    print(f"DEBUG: authenticated_userid = '{login}'")
     if login is None:
-        print("DEBUG: login is None")
         namespace = userid = None
     else:
         namespace, userid = login.split('.', 1)
-        print(f"DEBUG: namespace='{namespace}', userid='{userid}'")
 
     # create new user account if one does not exist
     if namespace != 'auth0':
@@ -191,6 +183,7 @@ def login(request):
     request.session.invalidate()
     request.session.get_csrf_token()
     request.response.headerlist.extend(remember(request, 'mailto.' + userid))
+    request.session['auth.userid'] = userid
 
     properties = request.embed('/session-properties', as_user=userid)
     if 'auth.userid' in request.session:
