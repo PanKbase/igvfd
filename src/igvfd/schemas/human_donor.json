@@ -56,7 +56,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "20"
+            "default": "21"
         },
         "related_donors": {
             "title": "Related Donors",
@@ -81,7 +81,7 @@
                     },
                     "relationship_type": {
                         "title": "Relationship Type",
-                        "description": "A descriptive term for the related donor’s relationship to this donor.",
+                        "description": "A descriptive term for the related donor\u2019s relationship to this donor.",
                         "comment": "List of enums comes from http://genealogy-quest.com/glossary-terms/relationship-terms/.",
                         "type": "string",
                         "enum": [
@@ -163,47 +163,49 @@
                     "ethnicity": {
                         "type": "string",
                         "enum": [
-                           "African-American",
-                           "African-Caribbean",
-                           "Admixed-American",
-                           "African",
-                           "Arab",
-                           "Asian",
-                           "Black",
-                           "Black-African",
-                           "White",
-                           "Chinese",
-                           "Colombian",
-                           "Dai-Chinese",
-                           "East-Asian",
-                           "Esan",
-                           "Eskimo",
-                           "European",
-                           "Gambian",
-                           "Han-Chinese",
-                           "Hispanic",
-                           "Indian",
-                           "Japanese",
-                           "Kinh-Vietnamese",
-                           "Luhya",
-                           "Maasai",
-                           "Mende",
-                           "Native-Hawaiian",
-                           "Native-American",
-                           "Pacific-Islander",
-                           "Puerto-Rican",
-                           "South-Asian",
-                           "Yoruba"
-                         ]
+                            "African-American",
+                            "African-Caribbean",
+                            "Admixed-American",
+                            "African",
+                            "Arab",
+                            "Asian",
+                            "Black",
+                            "Black-African",
+                            "White",
+                            "Chinese",
+                            "Colombian",
+                            "Dai-Chinese",
+                            "East-Asian",
+                            "Esan",
+                            "Eskimo",
+                            "European",
+                            "Gambian",
+                            "Han-Chinese",
+                            "Hispanic",
+                            "Indian",
+                            "Japanese",
+                            "Kinh-Vietnamese",
+                            "Luhya",
+                            "Maasai",
+                            "Mende",
+                            "Native-Hawaiian",
+                            "Native-American",
+                            "Pacific-Islander",
+                            "Puerto-Rican",
+                            "South-Asian",
+                            "Yoruba"
+                        ]
                     },
                     "percentage": {
                         "type": "number",
                         "minimum": 0,
                         "maximum": 100,
                         "description": "Optional percentage of the genetic ancestry for the specified ethnicity."
-                       }
-                    },
-                    "required": ["ethnicity"]
+                    }
+                },
+                "required": [
+                    "ethnicity"
+                ]
             },
             "submissionExample": {
                 "appscript": "[{\"ethnicity\": \"Japanese\", \"percentage\": 60}, {\"ethnicity\": \"European\", \"percentage\": 40}]",
@@ -244,9 +246,9 @@
                             "WGBS"
                         ]
                     },
-        "dataset_tissue": {
-             "type": "string",
-             "enum": [
+                    "dataset_tissue": {
+                        "type": "string",
+                        "enum": [
                             "Pancreas",
                             "-",
                             "Islet",
@@ -257,12 +259,15 @@
                         ],
                         "description": "Dataset Tissue"
                     },
-           "dataset_link": {
-                "type": "string",
-                "description": "Dataset Link which is optional"
+                    "dataset_link": {
+                        "type": "string",
+                        "description": "Dataset Link which is optional"
                     }
-                    },
-            "required": ["dataset", "dataset_tissue"]
+                },
+                "required": [
+                    "dataset",
+                    "dataset_tissue"
+                ]
             }
         },
         "living_donor": {
@@ -278,7 +283,11 @@
             "title": "Family History of Diabetes",
             "description": "Family History of Diabetes",
             "type": "string",
-            "enum": ["true", "false", "NA", "unknown"],
+            "enum": [
+                "TRUE",
+                "FALSE",
+                "-"
+            ],
             "submissionExample": {
                 "appscript": "false",
                 "igvf_utils": "false"
@@ -339,8 +348,10 @@
             "description": "Inferred biological sex derived from genomic data",
             "type": "string",
             "enum": [
-                "male",
-                "female"
+                "Male",
+                "Female",
+                "Other",
+                "-"
             ],
             "submissionExample": {
                 "appscript": "female",
@@ -352,13 +363,12 @@
             "description": "T1D stage",
             "type": "string",
             "enum": [
-                "At-risk: Single or transient autoantibody, normal glucose level",
-                "Stage 1: Two or more autoantibodies, normal glucose metabolism level",
-                "Stage 2: Two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)",
-		"Stage 3: One or more autoantibodies and diagnostic hyperglycemia or T1D diagnosis",
-		"Conflicting diabetes evidence",
-		"No stage",
-		"no sufficient information to derive"
+                "Stage 1: two or more autoantibodies, normal glucose metabolism level",
+                "Stage 2: two or more autoantibodies, dysglycemia (e.g., HbA1c \u2265 5.7%)",
+                "Stage 3: one or more autoantibodies and diagnostic hyperglycemia or T1D diagnosis",
+                "No sufficient information to derive",
+                "Conflicting diabetes evidence",
+                "At-risk: single or transient autoantibody, normal glucose level"
             ],
             "submissionExample": {
                 "appscript": "No stage",
@@ -371,8 +381,8 @@
             "type": "string",
             "enum": [
                 "Normal",
-		"Prediabetes",
-		"Diabetes"
+                "Prediabetes",
+                "Diabetes"
             ],
             "submissionExample": {
                 "appscript": "Normal",
@@ -419,7 +429,10 @@
                 "linkTo": "PhenotypeTerm"
             },
             "submissionExample": {
-                "appscript": ["/phenotype-terms/MONDO_0010894/", "/phenotype-terms/MONDO_0009100/"],
+                "appscript": [
+                    "/phenotype-terms/MONDO_0010894/",
+                    "/phenotype-terms/MONDO_0009100/"
+                ],
                 "igvf_utils": "/phenotype-terms/MONDO_0010894/, /phenotype-terms/MONDO_0009100/"
             }
         },
@@ -428,20 +441,14 @@
             "description": "Description of diabetes status",
             "type": "string",
             "enum": [
-                "type 1 diabetes",
-                "type 2 diabetes",
-                "gestational diabetes",
-                "maturity onset diabetes of the young (MODY)",
-                "monogenic diabetes",
-                "neonatal diabetes",
-                "wolfram syndrome",
-                "Alström syndrome",
-                "latent autoimmune diabetes in adults (LADA)",
-                "type 3c diabetes",
-                "steroid-induced diabetes",
-                "cystic fibrosis-related diabetes",
-                "control without diabetes",
-                "diabetes unspecified"
+                "Type 1 Diabetes",
+                "Type 2 Diabetes",
+                "Control Without Diabetes",
+                "Diabetes Unspecified",
+                "Monogenic Diabetes",
+                "Gestational Diabetes",
+                "Cystic Fibrosis-Related Diabetes",
+                "-"
             ],
             "submissionExample": {
                 "appscript": "control without diabetes",
@@ -462,10 +469,11 @@
             "description": "The type of organ donation, categorized as DCD, NDD, or MAID",
             "type": "string",
             "enum": [
-                "Donation after Circulatory Death",
-                "Donation after Brain Death",
-                "Natural Death Donation",
-                "Medical Assistance in Dying"
+                "Donation after brain death",
+                "Donation after circulatory death",
+                "Natural death donation",
+                "Medical assistance in dying",
+                "-"
             ],
             "submissionExample": {
                 "appscript": "Donation after Circulatory Death",
@@ -474,7 +482,7 @@
         },
         "cause_of_death": {
             "title": "Cause of Death",
-            "description": "The primary medical condition or event that led to the patient’s death",
+            "description": "The primary medical condition or event that led to the patient\u2019s death",
             "type": "string",
             "submissionExample": {
                 "appscript": "unspecified",
@@ -506,7 +514,7 @@
             "uniqueItems": true,
             "items": {
                 "type": "string"
-                      }
+            }
         },
         "aab_gada_value": {
             "title": "AAB GADA value (unit/ml)",
@@ -533,7 +541,7 @@
             "uniqueItems": true,
             "items": {
                 "type": "string"
-                      }
+            }
         },
         "aab_iaa_value": {
             "title": "AAB IAA value (unit/ml)",
@@ -560,7 +568,7 @@
             "uniqueItems": true,
             "items": {
                 "type": "string"
-                      }
+            }
         },
         "aab_ia2_value": {
             "title": "AAB IA2 value (unit/ml)",
@@ -587,7 +595,7 @@
             "uniqueItems": true,
             "items": {
                 "type": "string"
-                      }
+            }
         },
         "aab_znt8_value": {
             "title": "AAB ZNT8 value (unit/ml)",
@@ -652,7 +660,7 @@
             "uniqueItems": true,
             "items": {
                 "type": "string"
-                      }
+            }
         },
         "human_donor_identifiers": {
             "title": "Human Donor Identifiers",

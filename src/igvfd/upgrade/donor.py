@@ -319,3 +319,119 @@ def human_donor_19_20(value, system):
     if 'biological_sex' in value:
         value['genetic_sex'] = value['biological_sex']
         del value['biological_sex']
+
+@upgrade_step('human_donor', '20', '21')
+def human_donor_20_21(value, system):
+    # Update family_history_of_diabetes enum values (capitalize and standardize)
+    if 'family_history_of_diabetes' in value:
+        mapping = {
+            'true': 'TRUE',
+            'false': 'FALSE',
+            'na': '-',
+            'n/a': '-',
+            'unknown': '-',
+            '': '-'
+        }
+        current_val = str(value['family_history_of_diabetes']).lower()
+        if current_val in mapping:
+            value['family_history_of_diabetes'] = mapping[current_val]
+        elif current_val not in ['TRUE', 'FALSE', '-']:
+            value['family_history_of_diabetes'] = '-'
+    
+    # Update donation_type enum values
+    if 'donation_type' in value:
+        mapping = {
+            'Donation after Circulatory Death': 'Donation after circulatory death',
+            'Donation after Brain Death': 'Donation after brain death',
+            'Natural Death Donation': 'Natural death donation',
+            'Medical Assistance in Dying': 'Medical assistance in dying',
+            'DCD': 'Donation after circulatory death',
+            'DBD': 'Donation after brain death',
+            'NDD': 'Natural death donation',
+            'MAD': 'Medical assistance in dying'
+        }
+        current_val = value['donation_type']
+        if current_val in mapping:
+            value['donation_type'] = mapping[current_val]
+        elif current_val not in ['Donation after brain death', 'Donation after circulatory death',
+                                 'Natural death donation', 'Medical assistance in dying', '-']:
+            value['donation_type'] = '-'
+    
+    # Update gender enum values (capitalize)
+    if 'gender' in value:
+        mapping = {
+            'male': 'Male',
+            'female': 'Female',
+            'other': 'Other'
+        }
+        current_val = str(value['gender']).lower()
+        if current_val in mapping:
+            value['gender'] = mapping[current_val]
+        elif current_val not in ['Male', 'Female', 'Other', '-']:
+            value['gender'] = '-'
+    
+    # Update genetic_sex enum values (capitalize and add Other/-)
+    if 'genetic_sex' in value:
+        mapping = {
+            'male': 'Male',
+            'female': 'Female',
+            'other': 'Other'
+        }
+        current_val = str(value['genetic_sex']).lower()
+        if current_val in mapping:
+            value['genetic_sex'] = mapping[current_val]
+        elif current_val not in ['Male', 'Female', 'Other', '-']:
+            value['genetic_sex'] = '-'
+    
+    # Update diabetes_status_description enum values
+    if 'diabetes_status_description' in value:
+        mapping = {
+            'type 1 diabetes': 'Type 1 Diabetes',
+            'type 2 diabetes': 'Type 2 Diabetes',
+            'control without diabetes': 'Control Without Diabetes',
+            'diabetes unspecified': 'Diabetes Unspecified',
+            'monogenic diabetes': 'Monogenic Diabetes',
+            'gestational diabetes': 'Gestational Diabetes',
+            'cystic fibrosis-related diabetes': 'Cystic Fibrosis-Related Diabetes',
+            'cystic fibrosis diabetes': 'Cystic Fibrosis-Related Diabetes',
+            'maturity onset diabetes of the young (mody)': 'Monogenic Diabetes',
+            'non-diabetic': 'Control Without Diabetes'
+        }
+        current_val = str(value['diabetes_status_description']).lower()
+        if current_val in mapping:
+            value['diabetes_status_description'] = mapping[current_val]
+        elif current_val not in ['Type 1 Diabetes', 'Type 2 Diabetes', 'Control Without Diabetes',
+                                 'Diabetes Unspecified', 'Monogenic Diabetes', 'Gestational Diabetes',
+                                 'Cystic Fibrosis-Related Diabetes', '-']:
+            value['diabetes_status_description'] = '-'
+    
+    # Update t1d_stage enum values
+    if 't1d_stage' in value:
+        mapping = {
+            'Stage 1: Two or more autoantibodies, normal glucose metabolism level': 
+                'Stage 1: two or more autoantibodies, normal glucose metabolism level',
+            'Stage 2: Two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)': 
+                'Stage 2: two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)',
+            'Stage 3: One or more autoantibodies and diagnostic hyperglycemia or T1D diagnosis': 
+                'Stage 3: one or more autoantibodies and diagnostic hyperglycemia or T1D diagnosis',
+            'No sufficient information to derive': 
+                'No sufficient information to derive',
+            'Conflicting diabetes evidence': 
+                'Conflicting diabetes evidence',
+            'At-risk: Single or transient autoantibody, normal glucose level': 
+                'At-risk: single or transient autoantibody, normal glucose level',
+            'At-risk: Single or transient autoantibody, normal glucose': 
+                'At-risk: single or transient autoantibody, normal glucose level',
+            'no sufficient information to derive': 
+                'No sufficient information to derive'
+        }
+        current_val = value['t1d_stage']
+        if current_val in mapping:
+            value['t1d_stage'] = mapping[current_val]
+        elif current_val not in ['Stage 1: two or more autoantibodies, normal glucose metabolism level',
+                                 'Stage 2: two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)',
+                                 'Stage 3: one or more autoantibodies and diagnostic hyperglycemia or T1D diagnosis',
+                                 'No sufficient information to derive',
+                                 'Conflicting diabetes evidence',
+                                 'At-risk: single or transient autoantibody, normal glucose level']:
+            value['t1d_stage'] = 'No sufficient information to derive'

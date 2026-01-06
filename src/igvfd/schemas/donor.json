@@ -66,9 +66,10 @@
             "description": "Gender of the donor.",
             "type": "string",
             "enum": [
-                "male",
-                "female",
-                "other"
+                "Male",
+                "Female",
+                "Other",
+                "-"
             ],
             "submissionExample": {
                 "appscript": "female",
