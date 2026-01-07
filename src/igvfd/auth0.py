@@ -36,8 +36,8 @@ _marker = object()
 def includeme(config):
     config.scan(__name__, categories=None)
     config.add_route('signup', 'signup')
-    config.add_route('login', '/login{slash:/?}')
-    config.add_route('logout', '/logout{slash:/?}')
+    config.add_route('login', 'login')
+    config.add_route('logout', 'logout')
     config.add_route('session', 'session')
     config.add_route('session-properties', 'session-properties')
     config.add_route('impersonate-user', 'impersonate-user')
@@ -59,7 +59,7 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
 
     def unauthenticated_userid(self, request):
 
-        if request.method != self.method or request.path not in (self.login_path, self.login_path + '/'):
+        if request.method != self.method or request.path != self.login_path:
             return None
 
         cached = getattr(request, '_auth0_authenticated', _marker)
@@ -91,10 +91,8 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
             return None
 
         if user_info['email_verified'] is True:
-            email = user_info['email'].lower()
-            # Return in format expected by login function: auth0.{email}
-            request._auth0_authenticated = 'auth0.{email}'.format(email=email)
-            return request._auth0_authenticated
+            email = request._auth0_authenticated = user_info['email'].lower()
+            return email
         else:
             return None
 
@@ -185,7 +183,6 @@ def login(request):
     request.session.invalidate()
     request.session.get_csrf_token()
     request.response.headerlist.extend(remember(request, 'mailto.' + userid))
-    request.session['auth.userid'] = userid
 
     properties = request.embed('/session-properties', as_user=userid)
     if 'auth.userid' in request.session:
