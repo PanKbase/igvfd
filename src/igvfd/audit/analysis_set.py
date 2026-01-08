@@ -49,13 +49,14 @@ def audit_input_file_sets_derived_from(value, system):
                 for derived_from_file in derived_from_files:
                     derived_from_file_object = system.get('request').embed(
                         derived_from_file + '@@object?skip_calculated=true')
-                    derived_from_file_set = derived_from_file_object.get('file_set')
-                    if derived_from_file_set:
-                        all_derived_from_file_sets.append(derived_from_file_set)
-                        if derived_from_file_set not in input_file_sets and derived_from_file_set != value['@id']:
-                            files_to_link.append(file)
-                            derived_from_files_to_link.append(derived_from_file)
-                            missing_derived_from_file_sets.append(derived_from_file_set)
+                    if derived_from_file_object:
+                        derived_from_file_set = derived_from_file_object.get('file_set')
+                        if derived_from_file_set:
+                            all_derived_from_file_sets.append(derived_from_file_set)
+                            if derived_from_file_set not in input_file_sets and derived_from_file_set != value['@id']:
+                                files_to_link.append(file)
+                                derived_from_files_to_link.append(derived_from_file)
+                                missing_derived_from_file_sets.append(derived_from_file_set)
             else:
                 missing_derived_from.append(file)
     if missing_derived_from_file_sets:
