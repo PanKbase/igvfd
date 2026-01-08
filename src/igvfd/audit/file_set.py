@@ -388,7 +388,26 @@ def audit_unexpected_virtual_samples(value, system):
             )
             yield AuditFailure('unexpected sample', f'{detail} {description}', level='ERROR')
 
-
+@audit_checker('FileSet', frame='object')
+def audit_file_set_missing_description(value, system):
+    '''
+    [
+        {
+            "audit_description": "Principal analysis sets, prediction sets, and model sets are expected to have descriptions summarizing the experiment or predictive model they are associated with.",
+            "audit_category": "missing description",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    description = get_audit_description(audit_file_set_missing_description)
+    if value.get('file_set_type') != 'intermediate analysis' and not (value.get('description')):
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has no `description`.'
+        )
+        yield AuditFailure('missing description', f'{detail} {description}', level='NOT_COMPLIANT')
+        
 @audit_checker('MeasurementSet', frame='object')
 @audit_checker('AuxiliarySet', frame='object')
 @audit_checker('ConstructLibrarySet', frame='object')
