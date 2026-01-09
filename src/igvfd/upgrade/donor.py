@@ -423,7 +423,9 @@ def human_donor_20_21(value, system):
             'At-risk: Single or transient autoantibody, normal glucose': 
                 'At-risk: single or transient autoantibody, normal glucose level',
             'no sufficient information to derive': 
-                'No sufficient information to derive'
+                'No sufficient information to derive',
+            'no_stage': 
+                'normal glucose level'
         }
         current_val = value['t1d_stage']
         if current_val in mapping:
@@ -433,5 +435,6 @@ def human_donor_20_21(value, system):
                                  'Stage 3: one or more autoantibodies and diagnostic hyperglycemia or T1D diagnosis',
                                  'No sufficient information to derive',
                                  'Conflicting diabetes evidence',
-                                 'At-risk: single or transient autoantibody, normal glucose level']:
+                                 'At-risk: single or transient autoantibody, normal glucose level',
+                                 'normal glucose level']:
             value['t1d_stage'] = 'No sufficient information to derive'

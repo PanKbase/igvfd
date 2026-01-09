@@ -368,7 +368,8 @@
                 "Stage 3: one or more autoantibodies and diagnostic hyperglycemia or T1D diagnosis",
                 "No sufficient information to derive",
                 "Conflicting diabetes evidence",
-                "At-risk: single or transient autoantibody, normal glucose level"
+                "At-risk: single or transient autoantibody, normal glucose level",
+                "normal glucose level"
             ],
             "submissionExample": {
                 "appscript": "No stage",
