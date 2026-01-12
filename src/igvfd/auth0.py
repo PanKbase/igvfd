@@ -37,6 +37,7 @@ def includeme(config):
     config.scan(__name__, categories=None)
     config.add_route('signup', 'signup')
     config.add_route('login', 'login')
+    config.add_route('login-trailing', 'login/')  # Handle trailing slash
     config.add_route('logout', 'logout')
     config.add_route('session', 'session')
     config.add_route('session-properties', 'session-properties')
@@ -59,7 +60,9 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
 
     def unauthenticated_userid(self, request):
 
-        if request.method != self.method or request.path != self.login_path:
+        # Handle both /login and /login/ paths
+        normalized_path = request.path.rstrip('/')
+        if request.method != self.method or normalized_path != self.login_path:
             return None
 
         cached = getattr(request, '_auth0_authenticated', _marker)
@@ -165,6 +168,8 @@ def _get_user_info(user_data):
 # http://lists.webappsec.org/pipermail/websecurity_lists.webappsec.org/2011-February/007533.html
 # Checking the CSRF token in middleware is easier
 @view_config(route_name='login', request_method='POST',
+             permission=NO_PERMISSION_REQUIRED)
+@view_config(route_name='login-trailing', request_method='POST',
              permission=NO_PERMISSION_REQUIRED)
 def login(request):
     """View to check the auth0 assertion and remember the user"""
