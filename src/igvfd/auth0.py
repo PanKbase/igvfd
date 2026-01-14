@@ -28,6 +28,7 @@ from pyramid.view import (
     view_config,
 )
 import requests
+import logging
 
 
 _marker = object()
@@ -94,7 +95,6 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
             response = requests.get(user_url, headers=headers, timeout=10)
             if response.status_code != 200:
                 # Log the error for debugging (even if debug mode is off, log critical auth failures)
-                import logging
                 logger = logging.getLogger(__name__)
                 logger.warning(
                     'Auth0 userinfo returned status %d for login attempt: %s',
@@ -120,7 +120,6 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
                 request._auth0_authenticated = None
                 return None
         except requests.exceptions.Timeout as e:
-            import logging
             logger = logging.getLogger(__name__)
             logger.error('Auth0 userinfo request timed out: %s', e)
             if self.debug:
@@ -131,7 +130,6 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
             request._auth0_authenticated = None
             return None
         except requests.exceptions.RequestException as e:
-            import logging
             logger = logging.getLogger(__name__)
             logger.error('Auth0 request failed: %s (%s)', e, type(e).__name__)
             if self.debug:
@@ -142,7 +140,6 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
             request._auth0_authenticated = None
             return None
         except (ValueError, KeyError) as e:
-            import logging
             logger = logging.getLogger(__name__)
             logger.error('Invalid Auth0 response format: %s (%s)', e, type(e).__name__)
             if self.debug:
@@ -154,7 +151,6 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
             return None
 
         if not user_info.get('email_verified'):
-            import logging
             logger = logging.getLogger(__name__)
             logger.warning(
                 'Email not verified for user: %s',
@@ -170,7 +166,6 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
 
         email = user_info.get('email')
         if not email:
-            import logging
             logger = logging.getLogger(__name__)
             logger.error('No email in Auth0 userinfo response: %s', user_info)
             if self.debug:
@@ -202,7 +197,7 @@ def signup(context, request):
         raise HTTPBadRequest(explanation='Access token required')
     url = 'https://{domain}/userinfo'.format(domain=AUTH0_DOMAIN)
     headers = {'Authorization': 'Bearer {access_token}'.format(access_token=access_token)}
-    user_data_request = requests.get(url, headers=headers)
+    user_data_request = requests.get(url, headers=headers, timeout=10)
     if user_data_request.status_code != 200:
         raise HTTPBadRequest(explanation='Could not get user data')
     user_data = user_data_request.json()
@@ -259,7 +254,6 @@ def _get_user_info(user_data):
              permission=NO_PERMISSION_REQUIRED)
 def login(request):
     """View to check the auth0 assertion and remember the user"""
-    import logging
     logger = logging.getLogger(__name__)
     
     # Check if request body can be parsed
