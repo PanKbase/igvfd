@@ -71,33 +71,74 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
 
         try:
             access_token = request.json['accessToken']
-        except (ValueError, TypeError, KeyError):
+            if not access_token:
+                if self.debug:
+                    self._log(
+                        'Empty access token provided.',
+                        'unauthenticated_userid',
+                        request)
+                request._auth0_authenticated = None
+                return None
+        except (ValueError, TypeError, KeyError) as e:
             if self.debug:
                 self._log(
-                    'Missing assertion.',
+                    ('Missing or invalid access token: %s (%s)', (e, type(e).__name__)),
                     'unauthenticated_userid',
                     request)
             request._auth0_authenticated = None
             return None
 
         try:
-            user_url = 'https://{domain}/userinfo?access_token={access_token}' \
-                .format(domain=AUTH0_DOMAIN, access_token=access_token)
-            user_info = requests.get(user_url).json()
-        except Exception as e:
+            user_url = 'https://{domain}/userinfo'.format(domain=AUTH0_DOMAIN)
+            headers = {'Authorization': 'Bearer {access_token}'.format(access_token=access_token)}
+            response = requests.get(user_url, headers=headers)
+            if response.status_code != 200:
+                if self.debug:
+                    self._log(
+                        ('Auth0 userinfo returned status %d: %s', (response.status_code, response.text)),
+                        'unauthenticated_userid',
+                        request)
+                request._auth0_authenticated = None
+                return None
+            user_info = response.json()
+        except requests.exceptions.RequestException as e:
             if self.debug:
                 self._log(
-                    ('Invalid assertion: %s (%s)', (e, type(e).__name__)),
+                    ('Auth0 request failed: %s (%s)', (e, type(e).__name__)),
+                    'unauthenticated_userid',
+                    request)
+            request._auth0_authenticated = None
+            return None
+        except (ValueError, KeyError) as e:
+            if self.debug:
+                self._log(
+                    ('Invalid Auth0 response format: %s (%s)', (e, type(e).__name__)),
                     'unauthenticated_userid',
                     request)
             request._auth0_authenticated = None
             return None
 
-        if user_info['email_verified'] is True:
-            email = request._auth0_authenticated = user_info['email'].lower()
-            return email
-        else:
+        if not user_info.get('email_verified'):
+            if self.debug:
+                self._log(
+                    ('Email not verified for user: %s', user_info.get('email', 'unknown')),
+                    'unauthenticated_userid',
+                    request)
+            request._auth0_authenticated = None
             return None
+
+        email = user_info.get('email')
+        if not email:
+            if self.debug:
+                self._log(
+                    ('No email in Auth0 userinfo response'),
+                    'unauthenticated_userid',
+                    request)
+            request._auth0_authenticated = None
+            return None
+
+        email = request._auth0_authenticated = email.lower()
+        return email
 
     def remember(self, request, principal, **kw):
         return []
@@ -115,8 +156,9 @@ def signup(context, request):
     access_token = request.json.get('accessToken')
     if not access_token:
         raise HTTPBadRequest(explanation='Access token required')
-    url = 'https://{domain}/userinfo?access_token={access_token}'.format(domain=AUTH0_DOMAIN, access_token=access_token)
-    user_data_request = requests.get(url)
+    url = 'https://{domain}/userinfo'.format(domain=AUTH0_DOMAIN)
+    headers = {'Authorization': 'Bearer {access_token}'.format(access_token=access_token)}
+    user_data_request = requests.get(url, headers=headers)
     if user_data_request.status_code != 200:
         raise HTTPBadRequest(explanation='Could not get user data')
     user_data = user_data_request.json()
