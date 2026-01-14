@@ -91,8 +91,16 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
         try:
             user_url = 'https://{domain}/userinfo'.format(domain=AUTH0_DOMAIN)
             headers = {'Authorization': 'Bearer {access_token}'.format(access_token=access_token)}
-            response = requests.get(user_url, headers=headers)
+            response = requests.get(user_url, headers=headers, timeout=10)
             if response.status_code != 200:
+                # Log the error for debugging (even if debug mode is off, log critical auth failures)
+                import logging
+                logger = logging.getLogger(__name__)
+                logger.warning(
+                    'Auth0 userinfo returned status %d for login attempt: %s',
+                    response.status_code,
+                    response.text[:200]  # Limit log size
+                )
                 if self.debug:
                     self._log(
                         ('Auth0 userinfo returned status %d: %s', (response.status_code, response.text)),
@@ -100,8 +108,32 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
                         request)
                 request._auth0_authenticated = None
                 return None
-            user_info = response.json()
+            try:
+                user_info = response.json()
+            except ValueError as json_error:
+                import logging
+                logger = logging.getLogger(__name__)
+                logger.error(
+                    'Auth0 userinfo returned invalid JSON: %s',
+                    response.text[:200]
+                )
+                request._auth0_authenticated = None
+                return None
+        except requests.exceptions.Timeout as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error('Auth0 userinfo request timed out: %s', e)
+            if self.debug:
+                self._log(
+                    ('Auth0 request timed out: %s', e),
+                    'unauthenticated_userid',
+                    request)
+            request._auth0_authenticated = None
+            return None
         except requests.exceptions.RequestException as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error('Auth0 request failed: %s (%s)', e, type(e).__name__)
             if self.debug:
                 self._log(
                     ('Auth0 request failed: %s (%s)', (e, type(e).__name__)),
@@ -110,6 +142,9 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
             request._auth0_authenticated = None
             return None
         except (ValueError, KeyError) as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error('Invalid Auth0 response format: %s (%s)', e, type(e).__name__)
             if self.debug:
                 self._log(
                     ('Invalid Auth0 response format: %s (%s)', (e, type(e).__name__)),
@@ -119,6 +154,12 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
             return None
 
         if not user_info.get('email_verified'):
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.warning(
+                'Email not verified for user: %s',
+                user_info.get('email', 'unknown')
+            )
             if self.debug:
                 self._log(
                     ('Email not verified for user: %s', user_info.get('email', 'unknown')),
@@ -129,6 +170,9 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
 
         email = user_info.get('email')
         if not email:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error('No email in Auth0 userinfo response: %s', user_info)
             if self.debug:
                 self._log(
                     ('No email in Auth0 userinfo response'),
@@ -215,14 +259,35 @@ def _get_user_info(user_data):
              permission=NO_PERMISSION_REQUIRED)
 def login(request):
     """View to check the auth0 assertion and remember the user"""
+    import logging
+    logger = logging.getLogger(__name__)
+    
+    # Check if request body can be parsed
+    try:
+        request_body = request.json
+    except (ValueError, TypeError) as e:
+        logger.error('Failed to parse login request JSON: %s', e)
+        raise HTTPBadRequest(explanation='Invalid JSON in request body')
+    
+    # Check if accessToken is present
+    if not request_body or 'accessToken' not in request_body:
+        logger.warning('Login request missing accessToken')
+        raise HTTPBadRequest(explanation='Missing accessToken in request body')
+    
     login = request.authenticated_userid
     if login is None:
         namespace = userid = None
+        logger.warning('Authentication failed: authenticated_userid is None')
     else:
-        namespace, userid = login.split('.', 1)
+        try:
+            namespace, userid = login.split('.', 1)
+        except ValueError:
+            logger.error('Invalid authenticated_userid format: %s', login)
+            namespace = userid = None
 
     # create new user account if one does not exist
     if namespace != 'auth0':
+        logger.warning('Login denied: namespace is %s, expected auth0', namespace)
         request.session.invalidate()
         request.response.headerlist.extend(forget(request))
         raise LoginDenied()
