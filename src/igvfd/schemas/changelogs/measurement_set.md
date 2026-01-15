@@ -4,6 +4,7 @@
 
 * Add `targeted_genes`.
 * Add `external_image_url`.
+* Add `sequencing_chemistry`.
 
 ### Schema version 17
 

@@ -40,6 +40,9 @@ def measurement_set():
             'sequencing_library_types': {
                 'title': 'Library Material'
             },
+            'sequencing_chemistry': {
+                'title': 'Sequencing Chemistry'
+            },
             'targeted_genes.symbol': {
                 'title': 'Assay Targeted Genes'
             },
@@ -97,6 +100,7 @@ def measurement_set():
                 'facet_fields': [
                     'library_construction_platform.term_name',
                     'sequencing_library_types',
+                    'sequencing_chemistry',
                     'files.sequencing_platform.term_name'
                 ],
             },
@@ -152,6 +156,9 @@ def measurement_set():
             },
             'sequencing_library_types': {
                 'title': 'Sequencing Library Types'
+            },
+            'sequencing_chemistry': {
+                'title': 'Sequencing Chemistry'
             },
             'targeted_genes.symbol': {
                 'title': 'Assay Targeted Genes'
