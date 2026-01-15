@@ -36,13 +36,12 @@ _marker = object()
 
 def includeme(config):
     config.scan(__name__, categories=None)
-    config.add_route('signup', 'signup')
-    config.add_route('login', 'login')
-    config.add_route('login-trailing', 'login/')  # Handle trailing slash
-    config.add_route('logout', 'logout')
-    config.add_route('session', 'session')
-    config.add_route('session-properties', 'session-properties')
-    config.add_route('impersonate-user', 'impersonate-user')
+    config.add_route('signup', '/signup{slash:/?}')
+    config.add_route('login', '/login{slash:/?}')
+    config.add_route('logout', '/logout{slash:/?}')
+    config.add_route('session', '/session{slash:/?}')
+    config.add_route('session-properties', '/session-properties{slash:/?}')
+    config.add_route('impersonate-user', '/impersonate-user{slash:/?}')
 
 
 AUTH0_DOMAIN = 't2depi.auth0.com'
@@ -60,7 +59,6 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
     method = 'POST'
 
     def unauthenticated_userid(self, request):
-
         # Handle both /login and /login/ paths
         normalized_path = request.path.rstrip('/')
         if request.method != self.method or normalized_path != self.login_path:
@@ -249,8 +247,6 @@ def _get_user_info(user_data):
 # http://lists.webappsec.org/pipermail/websecurity_lists.webappsec.org/2011-February/007533.html
 # Checking the CSRF token in middleware is easier
 @view_config(route_name='login', request_method='POST',
-             permission=NO_PERMISSION_REQUIRED)
-@view_config(route_name='login-trailing', request_method='POST',
              permission=NO_PERMISSION_REQUIRED)
 def login(request):
     """View to check the auth0 assertion and remember the user"""
