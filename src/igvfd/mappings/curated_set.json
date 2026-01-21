@@ -1,6 +1,6 @@
 {
-    "hash": "f2c28c0859c57161258791659f5100dd",
-    "index_name": "curated_set_f2c28c08",
+    "hash": "acc0ed646ef06b499e7ef7d80d394c72",
+    "index_name": "curated_set_acc0ed64",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -501,6 +501,9 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {

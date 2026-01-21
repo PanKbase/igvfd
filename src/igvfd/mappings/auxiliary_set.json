@@ -1,6 +1,6 @@
 {
-    "hash": "24821bc4d973b7620200a8e3535e4a7a",
-    "index_name": "auxiliary_set_24821bc4",
+    "hash": "58f2558ecacf8705d813ae950a3dd9c5",
+    "index_name": "auxiliary_set_58f2558e",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -497,6 +497,9 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
@@ -1482,6 +1485,9 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {

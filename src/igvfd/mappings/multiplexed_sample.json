@@ -1,6 +1,6 @@
 {
-    "hash": "7471c72075a7e5ec0ece45916110e444",
-    "index_name": "multiplexed_sample_7471c720",
+    "hash": "588e58e65abc81522a2a79cfe651d102",
+    "index_name": "multiplexed_sample_588e58e6",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -902,6 +902,9 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {

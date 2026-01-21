@@ -1,6 +1,6 @@
 {
-    "hash": "dff0b68afe50a95cc4346a57329e0360",
-    "index_name": "analysis_set_dff0b68a",
+    "hash": "c33aad7e2b02efee65e0185e9c3ab425",
+    "index_name": "analysis_set_c33aad7e",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -501,6 +501,9 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
@@ -1515,6 +1518,9 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {

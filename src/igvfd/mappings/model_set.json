@@ -1,6 +1,6 @@
 {
-    "hash": "db07852b5bdd4778e383cc2616cc1472",
-    "index_name": "model_set_db07852b",
+    "hash": "1a98fe858ef151965fb703db1c307f3f",
+    "index_name": "model_set_1a98fe85",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -497,6 +497,9 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
@@ -1510,6 +1513,9 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {

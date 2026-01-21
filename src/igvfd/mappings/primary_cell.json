@@ -1,6 +1,6 @@
 {
-    "hash": "b89f72a22a69083417bffa6be1b2b37d",
-    "index_name": "primary_cell_b89f72a2",
+    "hash": "ee9c7de7a75d13c3c200cc69ec29acce",
+    "index_name": "primary_cell_ee9c7de7",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1042,6 +1042,9 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {

@@ -1,6 +1,6 @@
 {
-    "hash": "c06bd703caf25dad92eef18b3713c0c2",
-    "index_name": "prediction_set_c06bd703",
+    "hash": "6f9f42ce4c132ae0c54b2b90941b5c01",
+    "index_name": "prediction_set_6f9f42ce",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -497,6 +497,9 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {

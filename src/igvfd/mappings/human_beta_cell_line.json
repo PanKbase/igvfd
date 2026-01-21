@@ -1,6 +1,6 @@
 {
-    "hash": "4e7af6554a48fef949aab2feb246a05b",
-    "index_name": "human_beta_cell_line_4e7af655",
+    "hash": "99a8ca269dc8e326a0b27a38e0096b32",
+    "index_name": "human_beta_cell_line_99a8ca26",
     "item_type": "human_beta_cell_line",
     "mapping": {
         "dynamic_templates": [
@@ -1062,6 +1062,9 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {

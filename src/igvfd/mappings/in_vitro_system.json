@@ -1,6 +1,6 @@
 {
-    "hash": "4665b239603145708a5b2f72681e6512",
-    "index_name": "in_vitro_system_4665b239",
+    "hash": "1f07779da8e51e6196961506158d39b3",
+    "index_name": "in_vitro_system_1f07779d",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1195,6 +1195,9 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {

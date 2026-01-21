@@ -1,6 +1,6 @@
 {
-    "hash": "7df4fd89d8fc4e5d48d003ada8a11cc9",
-    "index_name": "tissue_7df4fd89",
+    "hash": "0ac622b86b73f50fa990a34fdbf39c25",
+    "index_name": "tissue_0ac622b8",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1045,6 +1045,9 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {

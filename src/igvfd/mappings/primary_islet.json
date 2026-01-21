@@ -1,6 +1,6 @@
 {
-    "hash": "f9dbc3509c0c9f766cfa16b509107a12",
-    "index_name": "primary_islet_f9dbc350",
+    "hash": "ccc0c4d0225d0f1c6b43b0919864f94f",
+    "index_name": "primary_islet_ccc0c4d0",
     "item_type": "primary_islet",
     "mapping": {
         "dynamic_templates": [
@@ -1066,6 +1066,9 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {

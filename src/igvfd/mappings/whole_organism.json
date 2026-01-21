@@ -1,6 +1,6 @@
 {
-    "hash": "b400f8e22cce0c821e7fb83ac0be2499",
-    "index_name": "whole_organism_b400f8e2",
+    "hash": "121560e8d1335550cb89ee1120cad373",
+    "index_name": "whole_organism_121560e8",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1042,6 +1042,9 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "sequencing_chemistry": {
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
