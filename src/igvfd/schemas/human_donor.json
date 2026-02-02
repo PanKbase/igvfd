@@ -683,7 +683,7 @@
         },
         "genetic_risk_score": {
             "title": "Genetic Risk Score",
-            "description": "A list of genetic risk scores for the donor. Each entry has a method and overall_score (required). GRS2 and T1GRS also include mhc_only and non_mhc_only scores, while GRS1 only has overall_score.",
+            "description": "A list of genetic risk scores for the donor. Each entry has a method and overall_score (required). GRS2 and T1GRS also include mhc_only and non_mhc_only scores.",
             "type": "array",
             "uniqueItems": true,
             "items": {
@@ -692,7 +692,6 @@
                     "method": {
                         "type": "string",
                         "enum": [
-                            "GRS1",
                             "GRS2",
                             "T1GRS"
                         ],
@@ -704,11 +703,11 @@
                     },
                     "mhc_only": {
                         "type": "number",
-                        "description": "The MHC-only genetic risk score value (optional, not available for GRS1)"
+                        "description": "The MHC-only genetic risk score value (optional)"
                     },
                     "non_mhc_only": {
                         "type": "number",
-                        "description": "The non-MHC-only genetic risk score value (optional, not available for GRS1)"
+                        "description": "The non-MHC-only genetic risk score value (optional)"
                     }
                 },
                 "required": [
