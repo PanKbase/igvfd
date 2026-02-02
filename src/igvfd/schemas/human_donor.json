@@ -675,6 +675,39 @@
                 "comment": "Cell line donors should specify as so. e.g. 'K562 cell line donor'.",
                 "type": "string"
             }
+        },
+        "hla_status": {
+            "title": "HLA Status",
+            "description": "HLA status of the donor",
+            "type": "string"
+        },
+        "genetic_risk_score": {
+            "title": "Genetic Risk Score",
+            "description": "A list of genetic risk scores for the donor, each with method and score.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "method": {
+                        "type": "string",
+                        "enum": [
+                            "GRS1",
+                            "GRS2",
+                            "T1GRS"
+                        ],
+                        "description": "The method used to calculate the genetic risk score"
+                    },
+                    "score": {
+                        "type": "number",
+                        "description": "The genetic risk score value"
+                    }
+                },
+                "required": [
+                    "method",
+                    "score"
+                ]
+            }
         }
     },
     "fuzzy_searchable_fields": [
