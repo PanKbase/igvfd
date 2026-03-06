@@ -76,6 +76,11 @@
         "schema_version": {
             "default": "19"
         },
+        "biosample_type": {
+            "title": "Biosample Type",
+            "description": "Type or classification of the biosample.",
+            "type": "string"
+        },
         "rrid": {
             "title": "RRID",
             "description": "RRID for biosample",
