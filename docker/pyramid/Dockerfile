@@ -1,8 +1,8 @@
 FROM public.ecr.aws/docker/library/python:3.11.4-slim-bookworm
 
-ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONDONTWRITEBYTECODE=1
 
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
 
 ENV VIRTUAL_ENV=/opt/venv
 
@@ -61,6 +61,8 @@ COPY --chown=igvfd:igvfd assets/ontology.json.gz assets/ontology.json.gz
 COPY --chown=igvfd:igvfd src/igvfd/commands/make_reference_db.py src/igvfd/commands/make_reference_db.py
 
 COPY --chown=igvfd:igvfd src/igvfd/commands/make_audit_docstring_json.py src/igvfd/commands/make_audit_docstring_json.py
+
+RUN python -m pip install --upgrade setuptools && python -c "import pkg_resources"
 
 RUN make-reference-db
 
