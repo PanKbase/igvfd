@@ -121,7 +121,7 @@
             "uniqueItems": true,
             "items": {
                 "type": "string",
-                "enum": ["cryopreservation", "flash-freezing", "0", "UW", "Flushing:UW", "Storage:HTK", "HTK", "Flushing:Servator-B", "Flush-solution:UW-and-HTK", "-", "SPS", "SPS-1", "SPS-1:UW", "Fresh:HTK", "BTL", "Storage_Viaspan_SPS-1", "UW-Belzer-Cold", "HTK-for-Heart", "Viaspan_SPS-1", "initial-flush:UW", "storage-solution:HTK"]
+                "enum": ["cryopreservation", "flash-freezing", "0", "UW", "Flushing:UW", "Storage:HTK", "HTK", "Flushing:Servator-B", "Flush-solution:UW-and-HTK", "-", "SPS", "SPS-1", "SPS-1:UW", "Fresh:HTK", "BTL", "Storage_Viaspan_SPS-1", "UW-Belzer-Cold", "HTK-for-Heart", "Viaspan_SPS-1", "initial-flush:UW", "storage-solution:HTK", "CSS", "Servator-H", "Flush-solution:SPS-1", "Storage-solution:KPS", "Heart-storage-solution:HTK", "KPS-1"]
             },
             "submissionExample": {
                 "appscript": "flash-freezing",

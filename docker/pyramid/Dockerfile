@@ -48,7 +48,7 @@ COPY --chown=igvfd:igvfd src/igvfd/__init__.py src/igvfd/__init__.py
 
 USER igvfd
 
-RUN python -m pip install --upgrade pip setuptools
+RUN python -m pip install --upgrade pip "setuptools[legacy]"
 
 RUN pip install -e .[test]
 
@@ -62,7 +62,7 @@ COPY --chown=igvfd:igvfd src/igvfd/commands/make_reference_db.py src/igvfd/comma
 
 COPY --chown=igvfd:igvfd src/igvfd/commands/make_audit_docstring_json.py src/igvfd/commands/make_audit_docstring_json.py
 
-RUN python -m pip install --upgrade setuptools && python -c "import pkg_resources"
+RUN python -m pip install --upgrade "setuptools[legacy]" && python -c "import pkg_resources"
 
 RUN make-reference-db
 
