@@ -92,7 +92,9 @@
                     "enum": [
                         "revoked",
                         "archived",
-                        "released"
+                        "released",
+                        "deleted",
+                        "replaced"
                     ]
                 }
             }
