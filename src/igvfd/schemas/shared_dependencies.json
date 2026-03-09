@@ -57,12 +57,19 @@
                             "enum": [
                                 "revoked",
                                 "archived",
-                                "released"
+                                "released",
+                                "deleted",
+                                "replaced"
                             ]
                         }
                     }
                 },
                 {
+                    "not": {
+                        "required": [
+                            "release_timestamp"
+                        ]
+                    },
                     "properties": {
                         "status": {
                             "enum": [
