@@ -106,7 +106,8 @@ class FileSet(Item):
         'notSubmittable': True
     })
     def files(self, request, files):
-        return paths_filtered_by_status(request, files)
+        # Include all versions including replaced files, only exclude deleted files
+        return paths_filtered_by_status(request, files, exclude=('deleted',))
 
     @calculated_property(schema={
         'title': 'File Sets Controlled By This File Set',

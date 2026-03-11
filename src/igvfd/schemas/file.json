@@ -372,6 +372,24 @@
                 "validated"
             ]
         },
+        "version": {
+            "title": "Version",
+            "description": "The version number of the file.",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "1.0",
+                "igvf_utils": "1.0"
+            }
+        },
+        "note": {
+            "title": "Note",
+            "description": "A note or comment about the file.",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "Initial release",
+                "igvf_utils": "Initial release"
+            }
+        },
         "validation_error_detail": {
             "title": "Validation Error Detail",
             "description": "Explanation of why the file failed the automated content checks.",
