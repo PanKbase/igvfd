@@ -683,17 +683,24 @@
         },
         "genetic_risk_score": {
             "title": "Genetic Risk Score",
-            "description": "A list of genetic risk scores for the donor. Each entry has a method and overall_score (required). GRS2 and T1GRS also include mhc_only and non_mhc_only scores.",
+            "description": "A list of genetic risk scores for the donor. Each entry represents a scoring method with an overall score and optional partitioned sub-scores.",
             "type": "array",
             "uniqueItems": true,
             "items": {
                 "type": "object",
+                "required": [
+                    "method",
+                    "overall_score"
+                ],
+                "additionalProperties": false,
                 "properties": {
                     "method": {
                         "type": "string",
                         "enum": [
                             "GRS2",
-                            "T1GRS"
+                            "T1GRS",
+                            "T2D_GRS_Mahajan",
+                            "pT2D_deCorpio"
                         ],
                         "description": "The method used to calculate the genetic risk score"
                     },
@@ -701,19 +708,52 @@
                         "type": "number",
                         "description": "The overall genetic risk score value"
                     },
-                    "mhc_only": {
-                        "type": "number",
-                        "description": "The MHC-only genetic risk score value (optional)"
+                    "sub_scores": {
+                        "type": "array",
+                        "description": "Optional partitioned sub-scores. Each entry is a labeled numeric score component (e.g., MHC-only, non-MHC, HLA, cluster assignments).",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "label",
+                                "value"
+                            ],
+                            "additionalProperties": false,
+                            "properties": {
+                                "label": {
+                                    "type": "string",
+                                    "description": "Name of the sub-score partition (e.g., 'mhc_only', 'non_mhc_only', 'hla', 'non_hla', 'cluster')"
+                                },
+                                "value": {
+                                    "type": "number",
+                                    "description": "Numeric value of this sub-score"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "Optional human-readable description of this sub-score"
+                                }
+                            }
+                        }
                     },
-                    "non_mhc_only": {
-                        "type": "number",
-                        "description": "The non-MHC-only genetic risk score value (optional)"
+                    "metadata": {
+                        "type": "object",
+                        "description": "Optional method-specific metadata such as reference publication, version, or population ancestry.",
+                        "additionalProperties": true,
+                        "properties": {
+                            "publication": {
+                                "type": "string",
+                                "description": "Reference publication for this method (e.g., 'Sharp 2019', 'Mahajan et al.')"
+                            },
+                            "version": {
+                                "type": "string",
+                                "description": "Version of the scoring method, if applicable"
+                            },
+                            "ancestry": {
+                                "type": "string",
+                                "description": "Population ancestry the score was derived from or applied to"
+                            }
+                        }
                     }
-                },
-                "required": [
-                    "method",
-                    "overall_score"
-                ]
+                }
             }
         }
     },
