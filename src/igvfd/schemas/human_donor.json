@@ -683,36 +683,123 @@
         },
         "genetic_risk_score": {
             "title": "Genetic Risk Score",
-            "description": "A list of genetic risk scores for the donor. Each entry has a method and overall_score (required). GRS2 and T1GRS also include mhc_only and non_mhc_only scores.",
+            "description": "Genetic risk scores for a donor.",
             "type": "array",
             "uniqueItems": true,
             "items": {
                 "type": "object",
+                "required": [
+                    "method",
+                    "overall_score"
+                ],
+                "additionalProperties": false,
                 "properties": {
                     "method": {
                         "type": "string",
                         "enum": [
                             "GRS2",
-                            "T1GRS"
+                            "T2D_GRS_Mahajan"
                         ],
-                        "description": "The method used to calculate the genetic risk score"
+                        "description": "The scoring method"
                     },
                     "overall_score": {
                         "type": "number",
-                        "description": "The overall genetic risk score value"
+                        "description": "Total genetic risk score (e.g., t1dgrs2-sharp19_total, t2d-mahajan22-ma_total)"
                     },
-                    "mhc_only": {
+                    "normalized_score": {
                         "type": "number",
-                        "description": "The MHC-only genetic risk score value (optional)"
+                        "description": "Normalized score scaled to a reference population (e.g., t1dgrs2-sharp19_norm, t2d-mahajan22-ma_norm)"
                     },
-                    "non_mhc_only": {
-                        "type": "number",
-                        "description": "The non-MHC-only genetic risk score value (optional)"
+                    "sub_scores": {
+                        "type": "array",
+                        "description": "HLA partition sub-scores. Used for GRS2 only: hla_drdq, hla_class_1, hla_class_2, non_hla.",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "label",
+                                "value"
+                            ],
+                            "additionalProperties": false,
+                            "properties": {
+                                "label": {
+                                    "type": "string",
+                                    "enum": [
+                                        "hla_drdq",
+                                        "hla_class_1",
+                                        "hla_class_2",
+                                        "non_hla"
+                                    ],
+                                    "description": "HLA partition identifier"
+                                },
+                                "value": {
+                                    "type": "number",
+                                    "description": "Numeric value of this partition"
+                                }
+                            }
+                        }
                     }
-                },
-                "required": [
-                    "method",
-                    "overall_score"
+                }
+            },
+            "submissionExample": {
+                "appscript": [
+                    {
+                        "method": "GRS2",
+                        "overall_score": 10.600693414435800,
+                        "normalized_score": 0.5086109173062790,
+                        "sub_scores": [
+                            {
+                                "label": "hla_drdq",
+                                "value": 1.064821765
+                            },
+                            {
+                                "label": "hla_class_1",
+                                "value": 1.929245605253620
+                            },
+                            {
+                                "label": "hla_class_2",
+                                "value": 5.1315198387900500
+                            },
+                            {
+                                "label": "non_hla",
+                                "value": 2.4751062053921000
+                            }
+                        ]
+                    },
+                    {
+                        "method": "T2D_GRS_Mahajan",
+                        "overall_score": 21.29355837711160,
+                        "normalized_score": 0.5136052930104470
+                    }
+                ],
+                "igvf_utils": [
+                    {
+                        "method": "GRS2",
+                        "overall_score": 10.600693414435800,
+                        "normalized_score": 0.5086109173062790,
+                        "sub_scores": [
+                            {
+                                "label": "hla_drdq",
+                                "value": 1.064821765
+                            },
+                            {
+                                "label": "hla_class_1",
+                                "value": 1.929245605253620
+                            },
+                            {
+                                "label": "hla_class_2",
+                                "value": 5.1315198387900500
+                            },
+                            {
+                                "label": "non_hla",
+                                "value": 2.4751062053921000
+                            }
+                        ]
+                    },
+                    {
+                        "method": "T2D_GRS_Mahajan",
+                        "overall_score": 21.29355837711160,
+                        "normalized_score": 0.5136052930104470
+                    }
                 ]
             }
         }
