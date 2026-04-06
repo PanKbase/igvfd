@@ -683,7 +683,7 @@
         },
         "genetic_risk_score": {
             "title": "Genetic Risk Score",
-            "description": "A list of genetic risk scores for the donor. Each entry represents a scoring method with an overall score and optional partitioned sub-scores.",
+            "description": "Genetic risk scores for a donor.",
             "type": "array",
             "uniqueItems": true,
             "items": {
@@ -698,19 +698,21 @@
                         "type": "string",
                         "enum": [
                             "GRS2",
-                            "T1GRS",
-                            "T2D_GRS_Mahajan",
-                            "pT2D_deCorpio"
+                            "T2D_GRS_Mahajan"
                         ],
-                        "description": "The method used to calculate the genetic risk score"
+                        "description": "The scoring method"
                     },
                     "overall_score": {
                         "type": "number",
-                        "description": "The overall genetic risk score value"
+                        "description": "Total genetic risk score (e.g., t1dgrs2-sharp19_total, t2d-mahajan22-ma_total)"
+                    },
+                    "normalized_score": {
+                        "type": "number",
+                        "description": "Normalized score scaled to a reference population (e.g., t1dgrs2-sharp19_norm, t2d-mahajan22-ma_norm)"
                     },
                     "sub_scores": {
                         "type": "array",
-                        "description": "Optional partitioned sub-scores. Each entry is a labeled numeric score component (e.g., MHC-only, non-MHC, HLA, cluster assignments).",
+                        "description": "HLA partition sub-scores. Used for GRS2 only: hla_drdq, hla_class_1, hla_class_2, non_hla.",
                         "items": {
                             "type": "object",
                             "required": [
@@ -721,39 +723,84 @@
                             "properties": {
                                 "label": {
                                     "type": "string",
-                                    "description": "Name of the sub-score partition (e.g., 'mhc_only', 'non_mhc_only', 'hla', 'non_hla', 'cluster')"
+                                    "enum": [
+                                        "hla_drdq",
+                                        "hla_class_1",
+                                        "hla_class_2",
+                                        "non_hla"
+                                    ],
+                                    "description": "HLA partition identifier"
                                 },
                                 "value": {
                                     "type": "number",
-                                    "description": "Numeric value of this sub-score"
-                                },
-                                "description": {
-                                    "type": "string",
-                                    "description": "Optional human-readable description of this sub-score"
+                                    "description": "Numeric value of this partition"
                                 }
-                            }
-                        }
-                    },
-                    "metadata": {
-                        "type": "object",
-                        "description": "Optional method-specific metadata such as reference publication, version, or population ancestry.",
-                        "additionalProperties": true,
-                        "properties": {
-                            "publication": {
-                                "type": "string",
-                                "description": "Reference publication for this method (e.g., 'Sharp 2019', 'Mahajan et al.')"
-                            },
-                            "version": {
-                                "type": "string",
-                                "description": "Version of the scoring method, if applicable"
-                            },
-                            "ancestry": {
-                                "type": "string",
-                                "description": "Population ancestry the score was derived from or applied to"
                             }
                         }
                     }
                 }
+            },
+            "submissionExample": {
+                "appscript": [
+                    {
+                        "method": "GRS2",
+                        "overall_score": 10.600693414435800,
+                        "normalized_score": 0.5086109173062790,
+                        "sub_scores": [
+                            {
+                                "label": "hla_drdq",
+                                "value": 1.064821765
+                            },
+                            {
+                                "label": "hla_class_1",
+                                "value": 1.929245605253620
+                            },
+                            {
+                                "label": "hla_class_2",
+                                "value": 5.1315198387900500
+                            },
+                            {
+                                "label": "non_hla",
+                                "value": 2.4751062053921000
+                            }
+                        ]
+                    },
+                    {
+                        "method": "T2D_GRS_Mahajan",
+                        "overall_score": 21.29355837711160,
+                        "normalized_score": 0.5136052930104470
+                    }
+                ],
+                "igvf_utils": [
+                    {
+                        "method": "GRS2",
+                        "overall_score": 10.600693414435800,
+                        "normalized_score": 0.5086109173062790,
+                        "sub_scores": [
+                            {
+                                "label": "hla_drdq",
+                                "value": 1.064821765
+                            },
+                            {
+                                "label": "hla_class_1",
+                                "value": 1.929245605253620
+                            },
+                            {
+                                "label": "hla_class_2",
+                                "value": 5.1315198387900500
+                            },
+                            {
+                                "label": "non_hla",
+                                "value": 2.4751062053921000
+                            }
+                        ]
+                    },
+                    {
+                        "method": "T2D_GRS_Mahajan",
+                        "overall_score": 21.29355837711160,
+                        "normalized_score": 0.5136052930104470
+                    }
+                ]
             }
         }
     },
