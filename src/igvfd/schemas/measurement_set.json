@@ -290,6 +290,148 @@
                 "appscript": "[\"ENSMUSG00000044487\", \"john-doe:gene01\"]",
                 "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
             }
+        },
+        "islet_purification_method": {
+            "title": "Islet Purification for Functional Assay",
+            "description": "Method used to purify islets before the functional assay (e.g., hand-picking to ensure purity and size consistency)",
+            "comment": "Example value from perifusion metadata: Hand-picked",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "Hand-picked",
+                "igvf_utils": "Hand-picked"
+            }
+        },
+        "total_islets_for_assay": {
+            "title": "Total Number of Islets for Functional Assay",
+            "description": "Total number of islets loaded into the perifusion chamber or tissue culture well for the functional assay",
+            "comment": "Example value from perifusion metadata: 4867",
+            "type": "integer",
+            "submissionExample": {
+                "appscript": 4867,
+                "igvf_utils": 4867
+            }
+        },
+        "islet_diameter": {
+            "title": "Islet Size/Diameter (μm)",
+            "description": "Average islet diameter calculated as (longest + shortest) / 2 in micrometers",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 150,
+                "igvf_utils": 150
+            }
+        },
+        "islet_purity_for_assay": {
+            "title": "Islet Purity for Functional Assay (%)",
+            "description": "Percentage of target islet cells in the preparation used for the functional assay",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 90,
+                "igvf_utils": 90
+            }
+        },
+        "islet_volume_ieq": {
+            "title": "Islet Cell Volume for Functional Assay (IEQ)",
+            "description": "Islet cell volume expressed as islet equivalents (IEQ). 1 IEQ = 1 islet with a diameter of 150 μm.",
+            "comment": "Example value from perifusion metadata: 1230 (HPAP), 1335 (IIDP)",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 1230,
+                "igvf_utils": 1230
+            }
+        },
+        "islet_endocrine_composition": {
+            "title": "Islet Endocrine Cell Composition (%)",
+            "description": "Percentage breakdown of endocrine cell types within the islet preparation. See https://www.protocols.io/view/islet-embedding-for-histology-261ge455dv47/v1",
+            "comment": "Example value from perifusion metadata: Beta: 76%; Alpha: 19%; Delta: 5%",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "Beta: 76%; Alpha: 19%; Delta: 5%",
+                "igvf_utils": "Beta: 76%; Alpha: 19%; Delta: 5%"
+            }
+        },
+        "perifusion_protocol": {
+            "title": "Perifusion Protocol",
+            "description": "Link to the protocols.io protocol for the dynamic cell perifusion assay",
+            "comment": "Example value from perifusion metadata: https://www.protocols.io/view/analysis-of-islet-function-in-dynamic-cell-perifus-eq2ly4nxrlx9/v1",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "https://www.protocols.io/view/analysis-of-islet-function-in-dynamic-cell-perifus-eq2ly4nxrlx9/v1",
+                "igvf_utils": "https://www.protocols.io/view/analysis-of-islet-function-in-dynamic-cell-perifus-eq2ly4nxrlx9/v1"
+            }
+        },
+        "base_media": {
+            "title": "Base Media",
+            "description": "Detailed composition of the perifusion media including supplements and buffering components",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "CMRL 1066 supplemented with 0.1% BSA, 10 mM HEPES",
+                "igvf_utils": "CMRL 1066 supplemented with 0.1% BSA, 10 mM HEPES"
+            }
+        },
+        "stimuli_secretagogues": {
+            "title": "Stimuli or Secretagogues",
+            "description": "JSON object describing the temporal sequence of glucose and pharmacological stimulations during perifusion. Each key is a time range (e.g., '3-9 min') and each value is an array of stimuli applied.",
+            "comment": "Example value from perifusion metadata: {\"3-9 min\": [\"5.6 mM glucose\"], \"12-39 min\": [\"16.7 mM glucose\"], \"42-60 min\": [\"5.6 mM glucose\"], \"63-69 min\": [\"16.7 mM glucose + 100 μM IBMX\"]}",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "{\"3-9 min\": [\"5.6 mM glucose\"], \"12-39 min\": [\"16.7 mM glucose\"]}",
+                "igvf_utils": "{\"3-9 min\": [\"5.6 mM glucose\"], \"12-39 min\": [\"16.7 mM glucose\"]}"
+            }
+        },
+        "perifusion_flow_rate": {
+            "title": "Perifusion Flow Rate",
+            "description": "Flow rate of media through the perifusion system (e.g., mL/min, μL/min)",
+            "comment": "Example value from perifusion metadata: 1 mL/min",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "1 mL/min",
+                "igvf_utils": "1 mL/min"
+            }
+        },
+        "perifusion_fraction_volume": {
+            "title": "Perifusion Fraction Volume",
+            "description": "Volume of each fraction collected over a defined time interval (e.g., mL, μL)",
+            "comment": "Example value from perifusion metadata: 3 mL",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "3 mL",
+                "igvf_utils": "3 mL"
+            }
+        },
+        "fraction_collection_time": {
+            "title": "Fraction Collection Time (min)",
+            "description": "Time interval set on the perifusion fraction collector for each fraction collection",
+            "comment": "Example value from perifusion metadata: 3 mins",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "3 mins",
+                "igvf_utils": "3 mins"
+            }
+        },
+        "hormone_assays": {
+            "title": "Hormone Assays",
+            "description": "Hormones measured in perifusion fractions (e.g., insulin, glucagon). See https://www.protocols.io/view/analysis-of-islet-function-by-insulin-enzyme-linke-bz7bp9in",
+            "comment": "Example value from perifusion metadata: Insulin; glucagon",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string"
+            },
+            "submissionExample": {
+                "appscript": "[\"Insulin\", \"glucagon\"]",
+                "igvf_utils": "Insulin, glucagon"
+            }
+        },
+        "data_url": {
+            "title": "Data URL",
+            "description": "Link for downloading the functional assay data (if publicly available)",
+            "comment": "Example value from perifusion metadata: https://hipp.coh.org/#/entry/435",
+            "type": "string",
+            "format": "uri",
+            "submissionExample": {
+                "appscript": "https://hipp.coh.org/#/entry/435",
+                "igvf_utils": "https://hipp.coh.org/#/entry/435"
+            }
         }
     },
     "fuzzy_searchable_fields": [

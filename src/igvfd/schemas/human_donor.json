@@ -408,6 +408,26 @@
                 "igvf_utils": 21.03
             }
         },
+        "height": {
+            "title": "Height (cm)",
+            "description": "Height of the donor in centimeters",
+            "comment": "Example value from perifusion metadata: 196",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 196,
+                "igvf_utils": 196
+            }
+        },
+        "weight": {
+            "title": "Weight (kg)",
+            "description": "Weight of the donor in kilograms",
+            "comment": "Example value from perifusion metadata: 110",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 110,
+                "igvf_utils": 110
+            }
+        },
         "diabetes_duration": {
             "title": "Diabetes Duration (years)",
             "description": "Diabetes Duration in years",

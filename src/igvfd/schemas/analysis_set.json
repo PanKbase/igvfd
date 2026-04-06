@@ -100,6 +100,85 @@
                 "appscript": "principal analysis",
                 "igvf_utils": "principal analysis"
             }
+        },
+        "total_islet_cell_volume": {
+            "title": "Total Islet Cell Volume (IEQ)",
+            "description": "Total islet equivalents (IEQ) used for data normalization, if available. 1 IEQ = 1 islet with a diameter of 150 μm.",
+            "comment": "Example value from perifusion metadata: 1230 (HPAP), 1335 (IIDP)",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 1230,
+                "igvf_utils": 1230
+            }
+        },
+        "total_insulin_content": {
+            "title": "Total Islet Insulin Content",
+            "description": "Total islet insulin content with unit, used for data normalization (e.g., ng, ng/ml)",
+            "comment": "Example value from perifusion metadata: 21527 ng/ml",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "21527 ng/ml",
+                "igvf_utils": "21527 ng/ml"
+            }
+        },
+        "total_glucagon_content": {
+            "title": "Total Islet Glucagon Content",
+            "description": "Total islet glucagon content with unit, used for data normalization (e.g., pg, pg/ml)",
+            "comment": "Example value from perifusion metadata: 375350 ng/ml (HPAP), 1267659 pg/ml (IIDP)",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "375350 ng/ml",
+                "igvf_utils": "375350 ng/ml"
+            }
+        },
+        "total_dna_content": {
+            "title": "Total Islet DNA Content",
+            "description": "Total islet DNA content with unit, used for data normalization (e.g., μg)",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "5 μg",
+                "igvf_utils": "5 μg"
+            }
+        },
+        "normalized_insulin_secretion_units": {
+            "title": "Normalized Islet Insulin Secretion Units",
+            "description": "Units used to report dynamic or static insulin secretion (e.g., ng/100 IEQs/min; % insulin content/min; ng/DNA/min)",
+            "comment": "Example value from perifusion metadata: ng/100 IEQs/min; %content/min",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "ng/100 IEQs/min; %content/min",
+                "igvf_utils": "ng/100 IEQs/min; %content/min"
+            }
+        },
+        "normalized_glucagon_secretion_units": {
+            "title": "Normalized Islet Glucagon Secretion Units",
+            "description": "Units used to report dynamic or static glucagon secretion (e.g., pg/100 IEQs/min; % glucagon content/min; pg/DNA/min)",
+            "comment": "Example value from perifusion metadata: pg/100 IEQs/min; %content/min",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "pg/100 IEQs/min; %content/min",
+                "igvf_utils": "pg/100 IEQs/min; %content/min"
+            }
+        },
+        "normalized_insulin_content": {
+            "title": "Normalized Islet Insulin Content",
+            "description": "Islet insulin content expressed per cell volume or DNA content (e.g., ng/100 IEQ; pg/IEQ; ng/DNA)",
+            "comment": "Example value from perifusion metadata: 17.52 ng/IEQ",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "17.52 ng/IEQ",
+                "igvf_utils": "17.52 ng/IEQ"
+            }
+        },
+        "normalized_glucagon_content": {
+            "title": "Normalized Islet Glucagon Content",
+            "description": "Islet glucagon content expressed per cell volume or DNA content (e.g., ng/100 IEQ; pg/IEQ; ng/DNA)",
+            "comment": "Example value from perifusion metadata: 305 pg/IEQ",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "305 pg/IEQ",
+                "igvf_utils": "305 pg/IEQ"
+            }
         }
     },
     "fuzzy_searchable_fields": [
