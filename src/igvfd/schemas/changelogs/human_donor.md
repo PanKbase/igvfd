@@ -1,4 +1,7 @@
 ## Changelog for *`human_donor.json`*
+### Schema version 22
+* Remove `diabetes_status_hba1c`. The `human_donor` upgrade from schema version 21 to 22 deletes this property from existing objects. Use `derived_diabetes_status`, `diabetes_status_description`, and/or `hba1c` to capture glycemic or clinical context.
+
 ### Schema version 15
 * change diabetes_status from required to optional tier 3
 * change family_history_of_diabetes to boolean to string

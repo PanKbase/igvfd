@@ -436,5 +436,13 @@ def human_donor_20_21(value, system):
                                  'No sufficient information to derive',
                                  'Conflicting diabetes evidence',
                                  'At-risk: single or transient autoantibody, normal glucose level',
-                                 'normal glucose level']:
+                                 'normal glucose level',
+                                 'No stage']:
             value['t1d_stage'] = 'No sufficient information to derive'
+
+
+@upgrade_step('human_donor', '21', '22')
+def human_donor_21_22(value, system):
+    # Remove diabetes_status_hba1c (property dropped from schema); historical values are not retained.
+    if 'diabetes_status_hba1c' in value:
+        del value['diabetes_status_hba1c']

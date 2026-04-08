@@ -64,6 +64,9 @@ class HumanDonor(Donor):
         if 'biological_sex' in properties:
             properties['genetic_sex'] = properties['biological_sex']
             del properties['biological_sex']
+        if 'other_therapy' in properties and 'other_theraphy' not in properties:
+            properties['other_theraphy'] = properties['other_therapy']
+            del properties['other_therapy']
         super().update(properties, sheets)
 
 
@@ -75,55 +78,23 @@ def transform_biological_sex_to_genetic_sex(context, request):
             del request.json_body['biological_sex']
 
 
-@view_config(
-    context=HumanDonor.Collection,
-    permission='add',
-    request_method='POST',
-    validators=[transform_biological_sex_to_genetic_sex]
-)
-def human_donor_add(context, request):
-    """Custom add view for HumanDonor that transforms biological_sex to genetic_sex."""
-    from snovault.crud_views import collection_add
-    return collection_add(context, request)
-
-    @calculated_property(
-        schema={
-            'title': 'Summary',
-            'type': 'string',
-            'description': 'A summary of the human donor.',
-            'notSubmittable': True,
-        }
-    )
-    def summary(self, ethnicities=None, sex=None, diabetes_status=None):
-        ethnicities_phrase = ''
-        sex_phrase = ''
-        diabetes_status_phrase = ''
-        if ethnicities:
-            ethnicities_phrase = ', '.join(ethnicities)
-        if sex and sex != 'unspecified':
-            sex_phrase = sex
-        if diabetes_status and diabetes_status:
-            diabetes_status_phrase = ', '.join(diabetes_status)
-        summary_phrase = ' '.join([x for x in [ethnicities_phrase, sex_phrase, diabetes_status_phrase] if x != '']).strip()
-        if summary_phrase:
-            return summary_phrase
-        else:
-            return self.uuid
-
-
-def transform_biological_sex_to_genetic_sex(context, request):
-    """Validator to transform 'biological_sex' to 'genetic_sex' before validation."""
+def normalize_human_donor_payload(context, request):
+    """Accept spreadsheet field name other_therapy (maps to schema property other_theraphy)."""
     if hasattr(request, 'json_body') and request.json_body:
-        if 'biological_sex' in request.json_body:
-            request.json_body['genetic_sex'] = request.json_body['biological_sex']
-            del request.json_body['biological_sex']
+        body = request.json_body
+        if 'other_therapy' in body and 'other_theraphy' not in body:
+            body['other_theraphy'] = body['other_therapy']
+            del body['other_therapy']
 
 
 @view_config(
     context=HumanDonor.Collection,
     permission='add',
     request_method='POST',
-    validators=[transform_biological_sex_to_genetic_sex]
+    validators=[
+        transform_biological_sex_to_genetic_sex,
+        normalize_human_donor_payload,
+    ]
 )
 def human_donor_add(context, request):
     """Custom add view for HumanDonor that transforms biological_sex to genetic_sex."""
