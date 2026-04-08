@@ -64,9 +64,16 @@ class HumanDonor(Donor):
         if 'biological_sex' in properties:
             properties['genetic_sex'] = properties['biological_sex']
             del properties['biological_sex']
-        if 'other_therapy' in properties and 'other_theraphy' not in properties:
-            properties['other_theraphy'] = properties['other_therapy']
-            del properties['other_therapy']
+        if 'other_theraphy' in properties:
+            legacy = properties.pop('other_theraphy')
+            if 'other_therapy' not in properties:
+                properties['other_therapy'] = legacy
+            elif isinstance(legacy, list) and isinstance(
+                properties['other_therapy'], list
+            ):
+                for x in legacy:
+                    if x and x not in properties['other_therapy']:
+                        properties['other_therapy'].append(x)
         super().update(properties, sheets)
 
 
@@ -79,12 +86,17 @@ def transform_biological_sex_to_genetic_sex(context, request):
 
 
 def normalize_human_donor_payload(context, request):
-    """Accept spreadsheet field name other_therapy (maps to schema property other_theraphy)."""
+    """Accept legacy misspelled key other_theraphy (maps to other_therapy)."""
     if hasattr(request, 'json_body') and request.json_body:
         body = request.json_body
-        if 'other_therapy' in body and 'other_theraphy' not in body:
-            body['other_theraphy'] = body['other_therapy']
-            del body['other_therapy']
+        if 'other_theraphy' in body:
+            legacy = body.pop('other_theraphy')
+            if 'other_therapy' not in body:
+                body['other_therapy'] = legacy
+            elif isinstance(legacy, list) and isinstance(body['other_therapy'], list):
+                for x in legacy:
+                    if x and x not in body['other_therapy']:
+                        body['other_therapy'].append(x)
 
 
 @view_config(

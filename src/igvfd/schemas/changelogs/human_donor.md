@@ -1,4 +1,7 @@
 ## Changelog for *`human_donor.json`*
+### Schema version 23
+* Rename `other_theraphy` to `other_therapy`. Upgrade `human_donor` 22→23 renames the property on existing objects (merges lists if both keys were present).
+
 ### Schema version 22
 * Remove `diabetes_status_hba1c`. The `human_donor` upgrade from schema version 21 to 22 deletes this property from existing objects. Use `derived_diabetes_status`, `diabetes_status_description`, and/or `hba1c` to capture glycemic or clinical context.
 

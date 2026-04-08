@@ -446,3 +446,24 @@ def human_donor_21_22(value, system):
     # Remove diabetes_status_hba1c (property dropped from schema); historical values are not retained.
     if 'diabetes_status_hba1c' in value:
         del value['diabetes_status_hba1c']
+
+
+@upgrade_step('human_donor', '22', '23')
+def human_donor_22_23(value, system):
+    # Rename misspelled other_theraphy -> other_therapy
+    if 'other_theraphy' not in value:
+        return
+    legacy = value.pop('other_theraphy')
+    if not isinstance(legacy, list):
+        legacy = [legacy] if legacy else []
+    if 'other_therapy' not in value:
+        value['other_therapy'] = legacy
+    else:
+        existing = value['other_therapy']
+        if not isinstance(existing, list):
+            existing = [existing] if existing else []
+        merged = list(existing)
+        for item in legacy:
+            if item and item not in merged:
+                merged.append(item)
+        value['other_therapy'] = merged

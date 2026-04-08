@@ -94,3 +94,14 @@ def test_human_donor_upgrade_21_22(upgrader):
     value = upgrader.upgrade('human_donor', value, current_version='21', target_version='22')
     assert 'diabetes_status_hba1c' not in value
     assert value['schema_version'] == '22'
+
+
+def test_human_donor_upgrade_22_23(upgrader):
+    value = {
+        'schema_version': '22',
+        'other_theraphy': ['metformin'],
+    }
+    value = upgrader.upgrade('human_donor', value, current_version='22', target_version='23')
+    assert 'other_theraphy' not in value
+    assert value['other_therapy'] == ['metformin']
+    assert value['schema_version'] == '23'
