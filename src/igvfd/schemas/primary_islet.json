@@ -244,16 +244,6 @@
                 "igvf_utils": 22
             }
         },
-        "islets_shipped": {
-            "title": "Were the Islets Shipped?",
-            "description": "Whether the islets were shipped to a recipient lab before the experiment",
-            "comment": "Example value from perifusion metadata: Yes (true)",
-            "type": "boolean",
-            "submissionExample": {
-                "appscript": true,
-                "igvf_utils": true
-            }
-        },
         "shipping_temperature": {
             "title": "Shipping Temperature (ºC)",
             "description": "Temperature at which islets were maintained during shipment (e.g., 4ºC, 25ºC)",

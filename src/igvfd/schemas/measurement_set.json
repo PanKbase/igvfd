@@ -291,6 +291,16 @@
                 "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
             }
         },
+        "islets_shipped": {
+            "title": "Were the Islets Shipped?",
+            "description": "Whether the islets were shipped to a recipient lab before the experiment",
+            "comment": "Example value from perifusion metadata: Yes (true)",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": true,
+                "igvf_utils": true
+            }
+        },
         "islet_purification_method": {
             "title": "Islet Purification for Functional Assay",
             "description": "Method used to purify islets before the functional assay (e.g., hand-picking to ensure purity and size consistency)",
