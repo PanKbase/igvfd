@@ -2,6 +2,7 @@
 
 ### Schema version 1
 
+* Align `originated_from` description with `biosample.json`; remove duplicate `origin_of` (use `sample.json` mixin). (04/09/2026)
 * Initial schema creation for Human Beta Cell Line biosample.
 * Add required fields: `award`, `lab`, `sources`, `donors`, `sample_terms`, `sample_name`, `classifications`, and `description`.
 * Add cell line-specific fields: `sample_name`, `classifications`, `passage_number`, `growth_medium`, `date_harvested`, `authentication`, `file_sets`.

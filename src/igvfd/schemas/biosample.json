@@ -176,7 +176,7 @@
         },
         "originated_from": {
             "title": "Originated From",
-            "description": "Links to a biosample that was originated from due to differentiation, dedifferentiation, reprogramming, or the introduction of a genetic modification.",
+            "description": "Links to the parent biosample this record was derived from (e.g. differentiation, reprogramming, genetic modification, or post-shipment material from an isolation biosample). Submit only on the child; the parent's origin_of list is computed from this link.",
             "type": "string",
             "linkTo": "Biosample",
             "submissionExample": {

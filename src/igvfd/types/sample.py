@@ -150,13 +150,13 @@ class Sample(Item):
     @calculated_property(schema={
         'title': 'Origin Sample Of',
         'type': 'array',
-        'description': 'The samples which originate from this sample, such as through a process of cell differentiation.',
+        'description': 'Biosamples that list this sample in originated_from (computed from stored links). Examples include differentiated or reprogrammed derivatives and post-shipment biosamples linked to an isolation parent.',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
             'title': 'Originated Sample',
             'type': ['string', 'object'],
-            'linkFrom': 'InVitroSystem.originated_from',
+            'linkFrom': 'Biosample.originated_from',
         },
         'notSubmittable': True,
     })
