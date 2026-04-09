@@ -9,10 +9,10 @@
         "sources",
         "donors",
         "sample_terms",
-        "isolation_center",
-        "cold_ischaemia_time"
+        "isolation_center"
     ],
     "desired": [
+        "cold_ischaemia_time",
         "rrid",
         "organ_source",
         "resource",
@@ -74,7 +74,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "19"
+            "default": "20"
         },
         "biosample_type": {
             "title": "Biosample Type",
