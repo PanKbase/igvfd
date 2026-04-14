@@ -27,6 +27,7 @@ from pyramid.traversal import find_resource
 from pyramid.view import (
     view_config,
 )
+import os
 import requests
 import logging
 
@@ -44,7 +45,7 @@ def includeme(config):
     config.add_route('impersonate-user', '/impersonate-user{slash:/?}')
 
 
-AUTH0_DOMAIN = 't2depi.auth0.com'
+AUTH0_DOMAIN = os.environ.get('AUTH0_DOMAIN', 't2depi.auth0.com')
 
 
 class LoginDenied(HTTPForbidden):
