@@ -152,12 +152,13 @@ class BasicSelfUpdatingPipeline(Construct):
         return self.pipeline
 
     def _add_slack_notifications(self) -> None:
-        # CodeStar → SNS → AWS Chatbot (Slack). Use a stable construct id that differs
-        # from the old Chatbot-based rule so CloudFormation replaces the resource;
-        # in-place updates Chatbot→SNS often return InvalidRequest.
+        # CodeStar notification rule targeting SNS (alarm_notification_topic) fails
+        # in production with InvalidRequest on AWS::CodeStarNotifications::NotificationRule
+        # (cross-account pipeline / topic policy). AWS Chatbot is a supported target and
+        # matches the historical working behavior.
         self._get_underlying_pipeline().notify_on_execution_state_change(
-            'NotifyPipelineExecutionViaSns',
-            self.props.existing_resources.notification.alarm_notification_topic,
+            'NotifySlack',
+            self.props.existing_resources.notification.encode_dcc_chatbot,
         )
 
 
