@@ -125,7 +125,7 @@ def audit_tier3_fields(value, system):
         "aab_znt8_value", 
         "hla_typing", 
         "other_tissues_available", 
-        "other_theraphy", 
+        "other_therapy", 
         "publication_identifiers", 
         "collections", 
         "pancreas_tissue_available", 

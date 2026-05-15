@@ -229,6 +229,22 @@
                 "igvf_utils": "transfection"
             }
         },
+        "origin_of": {
+            "title": "Origin Sample Of",
+            "type": "array",
+            "description": "Biosamples that list this sample in originated_from (computed by the portal from stored links; do not submit). Examples include differentiated or reprogrammed derivatives and post-shipment biosamples linked to an isolation parent.",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Originated Sample",
+                "type": [
+                    "string",
+                    "object"
+                ],
+                "linkFrom": "Biosample.originated_from"
+            },
+            "notSubmittable": true
+        },
         "time_post_library_delivery": {
             "title": "Time Post Library Delivery",
             "description": "The time that elapsed past the time-point when the construct library sets were introduced.",

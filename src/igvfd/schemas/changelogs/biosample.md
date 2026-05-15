@@ -1,5 +1,6 @@
 ## Changelog for *`biosample.json`*
 
+* Clarify `originated_from` description (child submits link; parent `origin_of` is computed). (04/09/2026)
 * Allow `modifications` to contain a maximum of 2 items. (05/20/2024)
 * Add `originated_from`. (04/24/2024)
 * Update `dbxrefs` regex to allow ENCODE sample accessions. (03/25/2024)

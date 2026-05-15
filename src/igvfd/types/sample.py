@@ -1,10 +1,20 @@
+from pyramid.settings import asbool
+from pyramid.view import view_config
 from snovault import (
     abstract_collection,
     calculated_property,
     collection,
     load_schema,
 )
+from snovault.crud_views import maybe_block_database_writes, update_item
+from snovault.etag import if_match_tid
 from snovault.util import Path
+from snovault.validators import (
+    no_validate_item_content_patch,
+    no_validate_item_content_put,
+    validate_item_content_patch,
+    validate_item_content_put,
+)
 from .base import (
     Item,
     paths_filtered_by_status
@@ -150,13 +160,13 @@ class Sample(Item):
     @calculated_property(schema={
         'title': 'Origin Sample Of',
         'type': 'array',
-        'description': 'The samples which originate from this sample, such as through a process of cell differentiation.',
+        'description': 'Biosamples that list this sample in originated_from (computed from stored links). Examples include differentiated or reprogrammed derivatives and post-shipment biosamples linked to an isolation parent.',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
             'title': 'Originated Sample',
             'type': ['string', 'object'],
-            'linkFrom': 'InVitroSystem.originated_from',
+            'linkFrom': 'Biosample.originated_from',
         },
         'notSubmittable': True,
     })
@@ -629,6 +639,73 @@ class PrimaryIslet(Biosample):
     )
     def classifications(self):
         return [self.item_type.replace('_', ' ')]
+
+
+def strip_legacy_primary_islet_request_properties(context, request):
+    """Drop fields removed from the schema so older clients can still PUT/PATCH.
+
+    ``islets_shipped`` moved to ``measurement_set`` (schema version 20); submissions
+    that round-trip it are accepted and the property is discarded.
+    """
+    data = request.json_body
+    if isinstance(data, dict):
+        data.pop('islets_shipped', None)
+
+
+@view_config(
+    context=PrimaryIslet,
+    permission='edit',
+    request_method='PUT',
+    validators=[strip_legacy_primary_islet_request_properties, validate_item_content_put],
+    decorator=if_match_tid,
+)
+@view_config(
+    context=PrimaryIslet,
+    permission='edit',
+    request_method='PATCH',
+    validators=[strip_legacy_primary_islet_request_properties, validate_item_content_patch],
+    decorator=if_match_tid,
+)
+@view_config(
+    context=PrimaryIslet,
+    permission='edit_unvalidated',
+    request_method='PUT',
+    validators=[strip_legacy_primary_islet_request_properties, no_validate_item_content_put],
+    request_param=['validate=false'],
+    decorator=if_match_tid,
+)
+@view_config(
+    context=PrimaryIslet,
+    permission='edit_unvalidated',
+    request_method='PATCH',
+    validators=[strip_legacy_primary_islet_request_properties, no_validate_item_content_patch],
+    request_param=['validate=false'],
+    decorator=if_match_tid,
+)
+@maybe_block_database_writes
+def primary_islet_item_edit(context, request, render=None):
+    """Same as snovault ``item_edit``, registered for PrimaryIslet to strip legacy fields first."""
+    if render is None:
+        render = request.params.get('render', True)
+
+    update_item(context, request, request.validated)
+
+    if render == 'uuid':
+        item_uri = '/%s' % context.uuid
+    else:
+        item_uri = request.resource_path(context)
+    if asbool(render) is True:
+        rendered = request.embed(item_uri, '@@object', as_user=True)
+    else:
+        rendered = item_uri
+    request.response.status = 200
+    result = {
+        'status': 'success',
+        '@type': ['result'],
+        '@graph': [rendered],
+    }
+    return result
+
 
 @collection(
     name='in-vitro-systems',

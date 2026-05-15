@@ -9,10 +9,10 @@
         "sources",
         "donors",
         "sample_terms",
-        "isolation_center",
-        "cold_ischaemia_time"
+        "isolation_center"
     ],
     "desired": [
+        "cold_ischaemia_time",
         "rrid",
         "organ_source",
         "resource",
@@ -74,7 +74,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "19"
+            "default": "20"
         },
         "biosample_type": {
             "title": "Biosample Type",
@@ -225,6 +225,53 @@
                 "igvf_utils": 0.22
             }
         },
+        "pre_shipment_culture_media": {
+            "title": "Pre-Shipment Culture Media",
+            "description": "Media used to culture islets before shipment (e.g., UW media, CMRL). Reported by Islet Isolation Center.",
+            "comment": "Example value from perifusion metadata: UW",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "UW",
+                "igvf_utils": "UW"
+            }
+        },
+        "pre_shipment_culture_temperature": {
+            "title": "Pre-Shipment Culture Temperature (ºC)",
+            "description": "Temperature at which islets were cultured before shipment. Reported by Islet Isolation Center.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 22,
+                "igvf_utils": 22
+            }
+        },
+        "shipping_temperature": {
+            "title": "Shipping Temperature (ºC)",
+            "description": "Temperature at which islets were maintained during shipment (e.g., 4ºC, 25ºC)",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 4,
+                "igvf_utils": 4
+            }
+        },
+        "shipping_media": {
+            "title": "Shipping Media",
+            "description": "Media used for islet shipment (e.g., UW, CMRL). Reported by Islet Isolation Center.",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "UW",
+                "igvf_utils": "UW"
+            }
+        },
+        "transit_time": {
+            "title": "Transit Time (hours)",
+            "description": "Total hours from shipment dispatch to recipient receipt",
+            "comment": "Example value from perifusion metadata: 72 (HPAP), 24 (IIDP)",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 72,
+                "igvf_utils": 72
+            }
+        },
         "islet_function_available": {
             "title": "Islet Function Available",
             "description": "Whether functional assays or data are available for the isolated pancreatic islets",
@@ -268,6 +315,65 @@
             "submissionExample": {
                 "appscript": 995.2,
                 "igvf_utils": 995.2
+            }
+        },
+        "post_shipment_viability_qualitative": {
+            "title": "Post-Shipment Islet Viability Qualitative (Imaging Data)",
+            "description": "Link to imaging data for qualitative post-shipment viability assessment. See https://iidp.coh.org/LinkClick.aspx?fileticket=nkLcMcZL9GQ%3d&portalid=0",
+            "comment": "Example value from perifusion metadata: link to hosted images on IIDP site",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "https://hipp.coh.org/#/entry/435",
+                "igvf_utils": "https://hipp.coh.org/#/entry/435"
+            }
+        },
+        "post_shipment_viability_quantitative": {
+            "title": "Post-Shipment Islet Viability Quantitative (%)",
+            "description": "Quantitative percentage of viable islet cells measured after shipment arrival. See https://www.protocols.io/view/quantitative-assessment-of-islet-viability-upon-ar-bp97mr9n",
+            "comment": "Example value from perifusion metadata: 81",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 81,
+                "igvf_utils": 81
+            }
+        },
+        "post_shipment_purity": {
+            "title": "Post-Shipment Islet Purity (%)",
+            "description": "Percentage of target islet cells in the preparation after shipment. See https://www.protocols.io/view/human-islet-quantification-and-purity-assessment-14egnxxwml5d/v3",
+            "comment": "Example value from perifusion metadata: 64",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 64,
+                "igvf_utils": 64
+            }
+        },
+        "post_shipment_culture_time": {
+            "title": "Post-Shipment Culture Time (hours)",
+            "description": "Number of hours islets were cultured after arrival before the functional assay. Reported by islet recipient.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 2,
+                "igvf_utils": 2
+            }
+        },
+        "post_shipment_culture_media": {
+            "title": "Post-Shipment Culture Media",
+            "description": "Media used to culture islets after shipment arrival (e.g., UW, CMRL). Reported by islet recipient.",
+            "comment": "Example value from perifusion metadata: CMRL-based media",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "CMRL-based media",
+                "igvf_utils": "CMRL-based media"
+            }
+        },
+        "post_shipment_culture_temperature": {
+            "title": "Post-Shipment Culture Temperature (ºC)",
+            "description": "Temperature at which islets were cultured after shipment arrival (e.g., 25ºC, 37ºC). Reported by islet recipient.",
+            "comment": "Example value from perifusion metadata: 37ºC",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "37ºC",
+                "igvf_utils": "37ºC"
             }
         },
         "post_shipment_islet_viability": {

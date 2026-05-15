@@ -621,7 +621,7 @@
                             "other_disease_states": {
                                 "type": "keyword"
                             },
-                            "other_theraphy": {
+                            "other_therapy": {
                                 "type": "keyword"
                             },
                             "other_tissues_available": {
