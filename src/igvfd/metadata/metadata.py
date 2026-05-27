@@ -86,6 +86,7 @@ class MetadataReport:
         ('field', 'audit'),
         ('field', 'files.@id'),
         ('field', 'files.href'),
+        ('field', 'files.file_url'),
         ('field', 'files.file_format'),
         ('field', 'files.file_format_type'),
         ('field', 'files.status'),
@@ -226,7 +227,7 @@ class MetadataReport:
         conditions = [
             not file_matches_file_params(file_, self.positive_file_param_set),
             not file_satisfies_inequality_constraints(file_, self.positive_file_inequalities),
-            'href' not in file_,
+            not file_.get('href') and not file_.get('file_url'),
         ]
         return any(conditions)
 
@@ -237,7 +238,10 @@ class MetadataReport:
         }
 
     def _get_file_data(self, file_):
-        file_['href'] = self.request.host_url + file_['href']
+        if file_.get('file_url'):
+            file_['href'] = file_['file_url']
+        elif file_.get('href'):
+            file_['href'] = self.request.host_url + file_['href']
         return {
             column: make_file_cell(fields, file_)
             for column, fields in self.file_column_to_fields_mapping.items()

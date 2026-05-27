@@ -18,6 +18,7 @@ class BatchDownloadMixin:
         ('limit', 'all'),
         ('field', 'files.@id'),
         ('field', 'files.href'),
+        ('field', 'files.file_url'),
         ('field', 'files.file_format'),
         ('field', 'files.file_format_type'),
     ]
