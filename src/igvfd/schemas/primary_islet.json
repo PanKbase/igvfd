@@ -74,7 +74,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "20"
+            "default": "21"
         },
         "biosample_type": {
             "title": "Biosample Type",
@@ -246,11 +246,12 @@
         },
         "shipping_temperature": {
             "title": "Shipping Temperature (ºC)",
-            "description": "Temperature at which islets were maintained during shipment (e.g., 4ºC, 25ºC)",
-            "type": "number",
+            "description": "Temperature at which islets were maintained during shipment, as a single value or range in degrees Celsius (e.g., 4, 6-10, 25)",
+            "type": "string",
+            "pattern": "^\\d+(?:\\.\\d+)?(?:-\\d+(?:\\.\\d+)?)?$",
             "submissionExample": {
-                "appscript": 4,
-                "igvf_utils": 4
+                "appscript": "6-10",
+                "igvf_utils": "6-10"
             }
         },
         "shipping_media": {

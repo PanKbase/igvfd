@@ -448,3 +448,12 @@ def sample_18_19(value, system):
             notes = f'{old_notes} {notes}'
         value['notes'] = notes
         del value['nih_institutional_certification']
+
+
+@upgrade_step('primary_islet', '20', '21')
+def primary_islet_20_21(value, system):
+    if 'shipping_temperature' in value and isinstance(value['shipping_temperature'], (int, float)):
+        temperature = value['shipping_temperature']
+        if isinstance(temperature, float) and temperature.is_integer():
+            temperature = int(temperature)
+        value['shipping_temperature'] = str(temperature)
