@@ -247,25 +247,100 @@ def _get_user_info(user_data):
 # Unfortunately, X-Requested-With is not sufficient.
 # http://lists.webappsec.org/pipermail/websecurity_lists.webappsec.org/2011-February/007533.html
 # Checking the CSRF token in middleware is easier
+def _login_denied_response(request, detail=None):
+    """
+    Return a JSON 403 for failed login.
+
+    Do not raise LoginDenied/HTTPForbidden here: snovault's refresh_session
+    exception view for HTTPForbidden currently crashes on this deployment and
+    turns expected login failures into opaque HTML 500 responses.
+    """
+    logger = logging.getLogger(__name__)
+    try:
+        request.session.invalidate()
+        request.session.get_csrf_token()
+    except Exception:
+        logger.exception('Failed to reset session after login denial')
+    try:
+        request.response.headerlist.extend(forget(request))
+    except Exception:
+        logger.exception('Failed to clear auth headers after login denial')
+    request.response.status_code = 403
+    result = {
+        '@type': ['LoginDenied', 'Error'],
+        'status': 'error',
+        'code': 403,
+        'title': 'Login failure',
+        'description': 'Login failure',
+    }
+    if detail:
+        result['detail'] = detail
+    return result
+
+
+def patch_snovault_error_views():
+    """
+    Replace snovault's refresh_session exception view implementation before
+    snovault is included, so CSRF/Forbidden errors return JSON instead of 500.
+    """
+    from snovault import validation as snovault_validation
+
+    def safe_refresh_session(exc, request):
+        logger = logging.getLogger(__name__)
+        try:
+            request.session.get_csrf_token()
+            request.session.changed()
+        except Exception:
+            logger.exception(
+                'Session refresh failed while rendering %s',
+                type(exc).__name__,
+            )
+        try:
+            return snovault_validation.http_error(exc, request)
+        except Exception:
+            logger.exception(
+                'http_error failed while rendering %s',
+                type(exc).__name__,
+            )
+            request.response.status_code = getattr(exc, 'code', 400) or 400
+            return {
+                '@type': [type(exc).__name__, 'Error'],
+                'status': 'error',
+                'code': getattr(exc, 'code', 400) or 400,
+                'title': getattr(exc, 'title', 'Error'),
+                'description': getattr(exc, 'explanation', None) or str(exc),
+            }
+
+    snovault_validation.refresh_session = safe_refresh_session
+
+
 @view_config(route_name='login', request_method='POST',
              permission=NO_PERMISSION_REQUIRED)
 def login(request):
     """View to check the auth0 assertion and remember the user"""
     logger = logging.getLogger(__name__)
-    
+
     # Check if request body can be parsed
     try:
         request_body = request.json
     except (ValueError, TypeError) as e:
         logger.error('Failed to parse login request JSON: %s', e)
         raise HTTPBadRequest(explanation='Invalid JSON in request body')
-    
+
     # Check if accessToken is present
     if not request_body or 'accessToken' not in request_body:
         logger.warning('Login request missing accessToken')
         raise HTTPBadRequest(explanation='Missing accessToken in request body')
-    
-    login = request.authenticated_userid
+
+    try:
+        login = request.authenticated_userid
+    except Exception:
+        logger.exception('authenticated_userid raised during login')
+        return _login_denied_response(
+            request,
+            detail='Auth0 token validation failed on the server.',
+        )
+
     if login is None:
         namespace = userid = None
         logger.warning('Authentication failed: authenticated_userid is None')
@@ -276,18 +351,32 @@ def login(request):
             logger.error('Invalid authenticated_userid format: %s', login)
             namespace = userid = None
 
-    # create new user account if one does not exist
+    # User must already exist as a current User with an Auth0-linked email.
     if namespace != 'auth0':
         logger.warning('Login denied: namespace is %s, expected auth0', namespace)
-        request.session.invalidate()
-        request.response.headerlist.extend(forget(request))
-        raise LoginDenied()
+        return _login_denied_response(
+            request,
+            detail=(
+                'Auth0 succeeded but this email is not a current portal user, '
+                'or the access token was rejected by /userinfo.'
+            ),
+        )
 
     request.session.invalidate()
     request.session.get_csrf_token()
     request.response.headerlist.extend(remember(request, 'mailto.' + userid))
 
-    properties = request.embed('/session-properties', as_user=userid)
+    try:
+        properties = request.embed('/session-properties', as_user=userid)
+    except Exception:
+        logger.exception('session-properties embed failed for userid %s', userid)
+        return _login_denied_response(
+            request,
+            detail=(
+                'Auth0 succeeded but loading the portal user failed. '
+                'Confirm this email exists as a current User.'
+            ),
+        )
     if 'auth.userid' in request.session:
         properties['auth.userid'] = request.session['auth.userid']
 

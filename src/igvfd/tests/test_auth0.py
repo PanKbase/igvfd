@@ -414,8 +414,8 @@ def test_signup_verify_exception_thrown_if_user_is_not_created(mock_get, mock_co
         signup = auth0.signup(context, request)
 
 
-@mock.patch('igvfd.auth0.forget', return_value='')
-@mock.patch('igvfd.auth0.remember', return_value='')
+@mock.patch('igvfd.auth0.forget', return_value=[])
+@mock.patch('igvfd.auth0.remember', return_value=[])
 @mock.patch('igvfd.auth0.signup', return_value='userid-uuid')
 @mock.patch('requests.get', return_value=_mock_requests_get(
     url='',
@@ -442,14 +442,19 @@ def test_login_throws_proper_exception_when_user_does_not_exist(mock_get, signup
             # iteration is irrelevant
             raise StopIteration()
     request_mock = mock.Mock()
+    request_mock.json = {'accessToken': 'token'}
     request_mock.authenticated_userid = '12334.34433'
     request_mock.session = Session()
     request_mock.session.invalidate.return_value = False
     request_mock.session.get_csrf_token.return_value = True
     request_mock.response.headerlist = []
     request_mock.embed.return_value = 'embed-result'
-    with pytest.raises(HTTPForbidden):
-        login = auth0.login(request_mock)
+    result = auth0.login(request_mock)
+    assert result['@type'] == ['LoginDenied', 'Error']
+    assert result['code'] == 403
+    assert request_mock.response.status_code == 403
+    request_mock.session.invalidate.assert_called()
+    forget.assert_called()
 
 
 def test_login_logout(testapp, anontestapp, auth0_igvf_user_token, auth0_igvf_user_profile):
