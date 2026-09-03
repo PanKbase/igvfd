@@ -278,40 +278,44 @@ def _login_denied_response(request, detail=None):
     return result
 
 
+def _safe_refresh_session(exc, request):
+    """Render Forbidden/CSRF errors as JSON even if session refresh fails."""
+    from snovault import validation as snovault_validation
+
+    logger = logging.getLogger(__name__)
+    try:
+        request.session.get_csrf_token()
+        request.session.changed()
+    except Exception:
+        logger.exception(
+            'Session refresh failed while rendering %s',
+            type(exc).__name__,
+        )
+    try:
+        return snovault_validation.http_error(exc, request)
+    except Exception:
+        logger.exception(
+            'http_error failed while rendering %s',
+            type(exc).__name__,
+        )
+        request.response.status_code = getattr(exc, 'code', 400) or 400
+        return {
+            '@type': [type(exc).__name__, 'Error'],
+            'status': 'error',
+            'code': getattr(exc, 'code', 400) or 400,
+            'title': getattr(exc, 'title', 'Error'),
+            'description': getattr(exc, 'explanation', None) or str(exc),
+        }
+
+
 def patch_snovault_error_views():
     """
-    Replace snovault's refresh_session exception view implementation before
-    snovault is included, so CSRF/Forbidden errors return JSON instead of 500.
+    Replace snovault's refresh_session before snovault is included, so CSRF /
+    Forbidden errors return JSON instead of HTML 500.
     """
     from snovault import validation as snovault_validation
 
-    def safe_refresh_session(exc, request):
-        logger = logging.getLogger(__name__)
-        try:
-            request.session.get_csrf_token()
-            request.session.changed()
-        except Exception:
-            logger.exception(
-                'Session refresh failed while rendering %s',
-                type(exc).__name__,
-            )
-        try:
-            return snovault_validation.http_error(exc, request)
-        except Exception:
-            logger.exception(
-                'http_error failed while rendering %s',
-                type(exc).__name__,
-            )
-            request.response.status_code = getattr(exc, 'code', 400) or 400
-            return {
-                '@type': [type(exc).__name__, 'Error'],
-                'status': 'error',
-                'code': getattr(exc, 'code', 400) or 400,
-                'title': getattr(exc, 'title', 'Error'),
-                'description': getattr(exc, 'explanation', None) or str(exc),
-            }
-
-    snovault_validation.refresh_session = safe_refresh_session
+    snovault_validation.refresh_session = _safe_refresh_session
 
 
 @view_config(route_name='login', request_method='POST',
