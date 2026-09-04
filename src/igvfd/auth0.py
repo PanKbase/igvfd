@@ -251,20 +251,10 @@ def _login_denied_response(request, detail=None):
     """
     Return a JSON 403 for failed login.
 
-    Do not raise LoginDenied/HTTPForbidden here: snovault's refresh_session
-    exception view for HTTPForbidden currently crashes on this deployment and
-    turns expected login failures into opaque HTML 500 responses.
+    Keep this minimal: session invalidate/forget during denial has been
+    associated with opaque HTML 500s on this deployment. Do not raise
+    LoginDenied/HTTPForbidden (snovault refresh_session also 500s here).
     """
-    logger = logging.getLogger(__name__)
-    try:
-        request.session.invalidate()
-        request.session.get_csrf_token()
-    except Exception:
-        logger.exception('Failed to reset session after login denial')
-    try:
-        request.response.headerlist.extend(forget(request))
-    except Exception:
-        logger.exception('Failed to clear auth headers after login denial')
     request.response.status_code = 403
     result = {
         '@type': ['LoginDenied', 'Error'],
@@ -276,6 +266,58 @@ def _login_denied_response(request, detail=None):
     if detail:
         result['detail'] = detail
     return result
+
+
+def _auth0_email_from_access_token(access_token):
+    """
+    Validate an Auth0 access token via /userinfo and return the verified email.
+    Returns (email, error_detail). On success error_detail is None.
+    """
+    logger = logging.getLogger(__name__)
+    if not access_token:
+        return None, 'Empty access token.'
+    try:
+        user_url = 'https://{domain}/userinfo'.format(domain=AUTH0_DOMAIN)
+        headers = {
+            'Authorization': 'Bearer {access_token}'.format(
+                access_token=access_token
+            )
+        }
+        response = requests.get(user_url, headers=headers, timeout=10)
+    except requests.exceptions.Timeout:
+        logger.exception('Auth0 userinfo timed out during login')
+        return None, 'Auth0 userinfo request timed out.'
+    except requests.exceptions.RequestException:
+        logger.exception('Auth0 userinfo request failed during login')
+        return None, 'Auth0 userinfo request failed.'
+
+    if response.status_code != 200:
+        logger.warning(
+            'Auth0 userinfo returned status %d during login: %s',
+            response.status_code,
+            (response.text or '')[:200],
+        )
+        return None, 'Auth0 rejected the access token (userinfo status %d).' % (
+            response.status_code,
+        )
+
+    try:
+        user_info = response.json()
+    except ValueError:
+        logger.error(
+            'Auth0 userinfo returned invalid JSON during login: %s',
+            (response.text or '')[:200],
+        )
+        return None, 'Auth0 userinfo returned invalid JSON.'
+
+    if not user_info.get('email_verified'):
+        return None, 'Auth0 email is not verified.'
+
+    email = user_info.get('email')
+    if not email or not str(email).strip():
+        return None, 'Auth0 userinfo did not include an email.'
+
+    return str(email).strip().lower(), None
 
 
 def _safe_refresh_session(exc, request):
@@ -324,63 +366,74 @@ def login(request):
     """View to check the auth0 assertion and remember the user"""
     logger = logging.getLogger(__name__)
 
-    # Check if request body can be parsed
     try:
         request_body = request.json
     except (ValueError, TypeError) as e:
         logger.error('Failed to parse login request JSON: %s', e)
         raise HTTPBadRequest(explanation='Invalid JSON in request body')
 
-    # Check if accessToken is present
     if not request_body or 'accessToken' not in request_body:
         logger.warning('Login request missing accessToken')
         raise HTTPBadRequest(explanation='Missing accessToken in request body')
 
+    # Validate Auth0 inline (same approach as signup). Do not call
+    # request.authenticated_userid here — that path hard-crashes this
+    # deployment into an HTML 500 even when Auth0 correctly rejects the token.
     try:
-        login = request.authenticated_userid
+        email, auth_error = _auth0_email_from_access_token(
+            request_body.get('accessToken')
+        )
     except Exception:
-        logger.exception('authenticated_userid raised during login')
+        logger.exception('Unexpected failure validating Auth0 token during login')
         return _login_denied_response(
             request,
             detail='Auth0 token validation failed on the server.',
         )
 
-    if login is None:
-        namespace = userid = None
-        logger.warning('Authentication failed: authenticated_userid is None')
-    else:
-        try:
-            namespace, userid = login.split('.', 1)
-        except ValueError:
-            logger.error('Invalid authenticated_userid format: %s', login)
-            namespace = userid = None
+    if auth_error or not email:
+        logger.warning('Login denied: %s', auth_error)
+        return _login_denied_response(
+            request,
+            detail=auth_error or 'Auth0 token validation failed.',
+        )
 
-    # User must already exist as a current User with an Auth0-linked email.
-    if namespace != 'auth0':
-        logger.warning('Login denied: namespace is %s, expected auth0', namespace)
+    users = request.registry[COLLECTIONS]['user']
+    try:
+        user = users[email]
+    except KeyError:
+        logger.warning('Login denied: no portal user for %s', email)
         return _login_denied_response(
             request,
             detail=(
-                'Auth0 succeeded but this email is not a current portal user, '
-                'or the access token was rejected by /userinfo.'
+                'Auth0 succeeded but this email is not a current portal user. '
+                'Ask an admin to create your User account.'
             ),
         )
 
-    request.session.invalidate()
-    request.session.get_csrf_token()
-    request.response.headerlist.extend(remember(request, 'mailto.' + userid))
+    if user.properties.get('status') != 'current':
+        logger.warning(
+            'Login denied: user %s status=%s',
+            email,
+            user.properties.get('status'),
+        )
+        return _login_denied_response(
+            request,
+            detail='Auth0 succeeded but this portal user is not current.',
+        )
 
+    userid = email
     try:
+        request.session.invalidate()
+        request.session.get_csrf_token()
+        request.response.headerlist.extend(remember(request, 'mailto.' + userid))
         properties = request.embed('/session-properties', as_user=userid)
     except Exception:
-        logger.exception('session-properties embed failed for userid %s', userid)
+        logger.exception('Failed to establish session for user %s', email)
         return _login_denied_response(
             request,
-            detail=(
-                'Auth0 succeeded but loading the portal user failed. '
-                'Confirm this email exists as a current User.'
-            ),
+            detail='Auth0 succeeded but establishing the portal session failed.',
         )
+
     if 'auth.userid' in request.session:
         properties['auth.userid'] = request.session['auth.userid']
 

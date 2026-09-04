@@ -58,6 +58,7 @@ def _mock_requests_get(**kwargs):
         def __init__(self, kwargs):
             self.json_data = kwargs['json_data']
             self.status_code = kwargs['status_code']
+            self.text = kwargs.get('text', '')
 
         def json(self):
             return self.json_data
@@ -416,45 +417,25 @@ def test_signup_verify_exception_thrown_if_user_is_not_created(mock_get, mock_co
 
 @mock.patch('igvfd.auth0.forget', return_value=[])
 @mock.patch('igvfd.auth0.remember', return_value=[])
-@mock.patch('igvfd.auth0.signup', return_value='userid-uuid')
 @mock.patch('requests.get', return_value=_mock_requests_get(
     url='',
-    json_data={
-        'email_verified': True,
-        'email': 'fakeemail@email.com',
-        'first_name': 'fakefirstname',
-        'last_name': 'fakelastname',
-    },
-    status_code=200,))
-def test_login_throws_proper_exception_when_user_does_not_exist(mock_get, signup, remember, forget):
+    json_data={},
+    status_code=401,))
+def test_login_throws_proper_exception_when_user_does_not_exist(mock_get, remember, forget):
     class Session:
         def __init__(self):
-            self.lst = ['a']
-            self.idx = 0
-            self.session = mock.Mock(return_value=[])
             self.invalidate = mock.Mock()
             self.get_csrf_token = mock.Mock()
 
-        def __iter__(self):
-            return self
-
-        def __next__(self):
-            # iteration is irrelevant
-            raise StopIteration()
     request_mock = mock.Mock()
     request_mock.json = {'accessToken': 'token'}
-    request_mock.authenticated_userid = '12334.34433'
     request_mock.session = Session()
-    request_mock.session.invalidate.return_value = False
-    request_mock.session.get_csrf_token.return_value = True
     request_mock.response.headerlist = []
-    request_mock.embed.return_value = 'embed-result'
     result = auth0.login(request_mock)
     assert result['@type'] == ['LoginDenied', 'Error']
     assert result['code'] == 403
     assert request_mock.response.status_code == 403
-    request_mock.session.invalidate.assert_called()
-    forget.assert_called()
+    assert 'Auth0 rejected the access token' in result['detail']
 
 
 def test_login_logout(testapp, anontestapp, auth0_igvf_user_token, auth0_igvf_user_profile):
