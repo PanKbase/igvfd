@@ -13,6 +13,7 @@ from pyramid.httpexceptions import (
     HTTPInternalServerError,
     HTTPForbidden,
     HTTPFound,
+    HTTPUnauthorized,
 )
 from pyramid.security import (
     remember,
@@ -60,123 +61,14 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
     method = 'POST'
 
     def unauthenticated_userid(self, request):
-        # Handle both /login and /login/ paths
-        normalized_path = request.path.rstrip('/')
-        if request.method != self.method or normalized_path != self.login_path:
-            return None
-
+        # Do not call Auth0 from the authentication policy. On production,
+        # invoking /userinfo here during POST /login hard-crashes into an
+        # HTML 500. The login view validates tokens directly and may set
+        # request._auth0_authenticated for callers that still expect it.
         cached = getattr(request, '_auth0_authenticated', _marker)
         if cached is not _marker:
             return cached
-
-        try:
-            access_token = request.json['accessToken']
-            if not access_token:
-                if self.debug:
-                    self._log(
-                        'Empty access token provided.',
-                        'unauthenticated_userid',
-                        request)
-                request._auth0_authenticated = None
-                return None
-        except (ValueError, TypeError, KeyError) as e:
-            if self.debug:
-                self._log(
-                    ('Missing or invalid access token: %s (%s)', (e, type(e).__name__)),
-                    'unauthenticated_userid',
-                    request)
-            request._auth0_authenticated = None
-            return None
-
-        try:
-            user_url = 'https://{domain}/userinfo'.format(domain=AUTH0_DOMAIN)
-            headers = {'Authorization': 'Bearer {access_token}'.format(access_token=access_token)}
-            response = requests.get(user_url, headers=headers, timeout=10)
-            if response.status_code != 200:
-                # Log the error for debugging (even if debug mode is off, log critical auth failures)
-                logger = logging.getLogger(__name__)
-                logger.warning(
-                    'Auth0 userinfo returned status %d for login attempt: %s',
-                    response.status_code,
-                    response.text[:200]  # Limit log size
-                )
-                if self.debug:
-                    self._log(
-                        ('Auth0 userinfo returned status %d: %s', (response.status_code, response.text)),
-                        'unauthenticated_userid',
-                        request)
-                request._auth0_authenticated = None
-                return None
-            try:
-                user_info = response.json()
-            except ValueError as json_error:
-                import logging
-                logger = logging.getLogger(__name__)
-                logger.error(
-                    'Auth0 userinfo returned invalid JSON: %s',
-                    response.text[:200]
-                )
-                request._auth0_authenticated = None
-                return None
-        except requests.exceptions.Timeout as e:
-            logger = logging.getLogger(__name__)
-            logger.error('Auth0 userinfo request timed out: %s', e)
-            if self.debug:
-                self._log(
-                    ('Auth0 request timed out: %s', e),
-                    'unauthenticated_userid',
-                    request)
-            request._auth0_authenticated = None
-            return None
-        except requests.exceptions.RequestException as e:
-            logger = logging.getLogger(__name__)
-            logger.error('Auth0 request failed: %s (%s)', e, type(e).__name__)
-            if self.debug:
-                self._log(
-                    ('Auth0 request failed: %s (%s)', (e, type(e).__name__)),
-                    'unauthenticated_userid',
-                    request)
-            request._auth0_authenticated = None
-            return None
-        except (ValueError, KeyError) as e:
-            logger = logging.getLogger(__name__)
-            logger.error('Invalid Auth0 response format: %s (%s)', e, type(e).__name__)
-            if self.debug:
-                self._log(
-                    ('Invalid Auth0 response format: %s (%s)', (e, type(e).__name__)),
-                    'unauthenticated_userid',
-                    request)
-            request._auth0_authenticated = None
-            return None
-
-        if not user_info.get('email_verified'):
-            logger = logging.getLogger(__name__)
-            logger.warning(
-                'Email not verified for user: %s',
-                user_info.get('email', 'unknown')
-            )
-            if self.debug:
-                self._log(
-                    ('Email not verified for user: %s', user_info.get('email', 'unknown')),
-                    'unauthenticated_userid',
-                    request)
-            request._auth0_authenticated = None
-            return None
-
-        email = user_info.get('email')
-        if not email:
-            logger = logging.getLogger(__name__)
-            logger.error('No email in Auth0 userinfo response: %s', user_info)
-            if self.debug:
-                self._log(
-                    ('No email in Auth0 userinfo response'),
-                    'unauthenticated_userid',
-                    request)
-            request._auth0_authenticated = None
-            return None
-
-        email = request._auth0_authenticated = email.lower()
-        return email
+        return None
 
     def remember(self, request, principal, **kw):
         return []
@@ -249,23 +141,16 @@ def _get_user_info(user_data):
 # Checking the CSRF token in middleware is easier
 def _login_denied_response(request, detail=None):
     """
-    Return a JSON 403 for failed login.
+    Fail login with a JSON error response.
 
-    Keep this minimal: session invalidate/forget during denial has been
-    associated with opaque HTML 500s on this deployment. Do not raise
-    LoginDenied/HTTPForbidden (snovault refresh_session also 500s here).
+    Do not raise HTTPForbidden/LoginDenied — snovault's refresh_session
+    exception view for Forbidden returns HTML 500 on this deployment.
+    Do not return a dict with status_code=403 either — that also 500s on
+    production (observed on 41.0.1 and 41.0.2). HTTPUnauthorized uses the
+    working http_error exception view (same path as HTTPBadRequest).
     """
-    request.response.status_code = 403
-    result = {
-        '@type': ['LoginDenied', 'Error'],
-        'status': 'error',
-        'code': 403,
-        'title': 'Login failure',
-        'description': 'Login failure',
-    }
-    if detail:
-        result['detail'] = detail
-    return result
+    message = detail or 'Login failure'
+    raise HTTPUnauthorized(explanation='%s (igvfd-41.0.3)' % message)
 
 
 def _auth0_email_from_access_token(access_token):

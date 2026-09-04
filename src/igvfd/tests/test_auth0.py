@@ -9,6 +9,7 @@ from pyramid.httpexceptions import (
     HTTPBadRequest,
     HTTPInternalServerError,
     HTTPForbidden,
+    HTTPUnauthorized,
     HTTPUnprocessableEntity,
 )
 from pyramid.security import (
@@ -148,8 +149,7 @@ def test_login_unknown_user(anontestapp, auth0_igvf_user_token):
     res = anontestapp.get('/session')
     csrf_token = str(res.json['_csrft_'])
     headers = {'X-CSRF-Token': csrf_token}
-    res = anontestapp.post_json('/login', auth0_igvf_user_token, headers=headers, status=403)
-    assert 'Set-Cookie' in res.headers
+    res = anontestapp.post_json('/login', auth0_igvf_user_token, headers=headers, status=401)
 
 
 @mock.patch('requests.get', return_value=_mock_requests_get(url='', json_data={}, status_code=400))
@@ -422,20 +422,12 @@ def test_signup_verify_exception_thrown_if_user_is_not_created(mock_get, mock_co
     json_data={},
     status_code=401,))
 def test_login_throws_proper_exception_when_user_does_not_exist(mock_get, remember, forget):
-    class Session:
-        def __init__(self):
-            self.invalidate = mock.Mock()
-            self.get_csrf_token = mock.Mock()
-
     request_mock = mock.Mock()
     request_mock.json = {'accessToken': 'token'}
-    request_mock.session = Session()
-    request_mock.response.headerlist = []
-    result = auth0.login(request_mock)
-    assert result['@type'] == ['LoginDenied', 'Error']
-    assert result['code'] == 403
-    assert request_mock.response.status_code == 403
-    assert 'Auth0 rejected the access token' in result['detail']
+    with pytest.raises(HTTPUnauthorized) as excinfo:
+        auth0.login(request_mock)
+    assert 'Auth0 rejected the access token' in str(excinfo.value)
+    assert 'igvfd-41.0.3' in str(excinfo.value)
 
 
 def test_login_logout(testapp, anontestapp, auth0_igvf_user_token, auth0_igvf_user_profile):
