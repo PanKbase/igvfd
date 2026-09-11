@@ -1,5 +1,7 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `collections` enum list to include `InsPIRE`. (09/11/2026)
+* Extend `collections` enum list to include `GTEx`. (09/11/2026)
 * Add `input_file_sets`. (06/26/2024)
 * Add `anvil_url` to `controlled_access`. (05/31/2024)
 * Extend `collections` enum list to include `Vista`. (04/17/2024)

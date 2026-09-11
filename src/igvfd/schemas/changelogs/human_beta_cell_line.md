@@ -2,6 +2,8 @@
 
 ### Schema version 1
 
+* Extend `collections` enum list to include `InsPIRE`. (09/11/2026)
+* Extend `collections` enum list to include `GTEx`. (09/11/2026)
 * Align `originated_from` description with `biosample.json`; remove duplicate `origin_of` (use `sample.json` mixin). (04/09/2026)
 * Initial schema creation for Human Beta Cell Line biosample.
 * Add required fields: `award`, `lab`, `sources`, `donors`, `sample_terms`, `sample_name`, `classifications`, and `description`.
