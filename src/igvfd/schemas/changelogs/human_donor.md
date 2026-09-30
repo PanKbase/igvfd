@@ -1,4 +1,14 @@
 ## Changelog for *`human_donor.json`*
+### Minor changes since schema version 23
+* Add calculated properties for research filtering/faceting (non-breaking, notSubmittable):
+  `data_available_keys`, `data_available_datasets`, `data_available_tissues`,
+  `aab_count`, `aab_tested`, `aab_positive`, `aab_summary`, `age_group`, `pediatric`,
+  `sex_discordant`, `label_hba1c_discordant`, `dominant_genetic_ancestry`,
+  `grs2_score`, `grs2_normalized`, `t2d_grs_score`, `t2d_grs_normalized`, `tier1_complete`.
+* Search facets added for `data_available_datasets`, `data_available_tissues`, `age_group`,
+  `aab_count`, `aab_positive`, `donation_type`, `genetic_sex`, `family_history_of_diabetes`,
+  `sex_discordant`, `label_hba1c_discordant`.
+
 ### Schema version 23
 * Rename `other_theraphy` to `other_therapy`. Upgrade `human_donor` 22→23 renames the property on existing objects (merges lists if both keys were present).
 

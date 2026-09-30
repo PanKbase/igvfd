@@ -8,6 +8,26 @@ from snovault.util import Path
 from pyramid.view import view_config
 from .base import (
     Item,
+    paths_filtered_by_status,
+)
+from igvfd.calculated.human_donor import (
+    compute_aab_count,
+    compute_aab_positive,
+    compute_aab_summary,
+    compute_aab_tested,
+    compute_age_group,
+    compute_dominant_genetic_ancestry,
+    compute_grs2_normalized,
+    compute_grs2_score,
+    compute_label_hba1c_discordant,
+    compute_pediatric,
+    compute_sex_discordant,
+    compute_t2d_grs_normalized,
+    compute_t2d_grs_score,
+    compute_tier1_complete,
+    data_available_datasets,
+    data_available_keys,
+    data_available_tissues,
 )
 
 
@@ -24,6 +44,10 @@ class Donor(Item):
     base_types = ['Donor'] + Item.base_types
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/donor.json')
+    # Reverse link so donor edits invalidate biosamples that list this donor.
+    rev = {
+        'biosamples': ('Biosample', 'donors'),
+    }
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
@@ -36,6 +60,22 @@ class Donor(Item):
         'documents'
     ]
     set_status_down = []
+
+    @calculated_property(schema={
+        'title': 'Biosamples',
+        'type': 'array',
+        'description': 'Biosamples that list this donor.',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Biosample',
+            'type': ['string', 'object'],
+            'linkFrom': 'Biosample.donors',
+        },
+        'notSubmittable': True,
+    })
+    def biosamples(self, request, biosamples):
+        return paths_filtered_by_status(request, biosamples)
 
 
 @collection(
@@ -75,6 +115,176 @@ class HumanDonor(Donor):
                     if x and x not in properties['other_therapy']:
                         properties['other_therapy'].append(x)
         super().update(properties, sheets)
+
+    @calculated_property(schema={
+        'title': 'Data Available Keys',
+        'description': 'Normalized dataset|tissue keys from data_available (scMultiome expands to snATACseq and scRNAseq).',
+        'type': 'array',
+        'uniqueItems': True,
+        'items': {'type': 'string'},
+        'notSubmittable': True,
+    })
+    def data_available_keys(self, data_available=None):
+        keys = data_available_keys(data_available)
+        return keys or None
+
+    @calculated_property(schema={
+        'title': 'Data Available Datasets',
+        'description': 'Normalized dataset names from data_available (scMultiome expands to snATACseq and scRNAseq).',
+        'type': 'array',
+        'uniqueItems': True,
+        'items': {'type': 'string'},
+        'notSubmittable': True,
+    })
+    def data_available_datasets(self, data_available=None):
+        values = data_available_datasets(data_available)
+        return values or None
+
+    @calculated_property(schema={
+        'title': 'Data Available Tissues',
+        'description': 'Normalized tissues from data_available.',
+        'type': 'array',
+        'uniqueItems': True,
+        'items': {'type': 'string'},
+        'notSubmittable': True,
+    })
+    def data_available_tissues(self, data_available=None):
+        values = data_available_tissues(data_available)
+        return values or None
+
+    @calculated_property(schema={
+        'title': 'Autoantibody Count',
+        'description': 'Number of positive autoantibodies among GADA, IAA, IA2, and ZNT8.',
+        'type': 'integer',
+        'notSubmittable': True,
+    })
+    def aab_count(self, aab_gada=None, aab_iaa=None, aab_ia2=None, aab_znt8=None, **kwargs):
+        props = {
+            'aab_gada': aab_gada,
+            'aab_iaa': aab_iaa,
+            'aab_ia2': aab_ia2,
+            'aab_znt8': aab_znt8,
+        }
+        # Only treat as tested when at least one key was submitted (present on properties).
+        present = {k: v for k, v in props.items() if k in self.properties}
+        return compute_aab_count(present)
+
+    @calculated_property(schema={
+        'title': 'Autoantibody Tested',
+        'description': 'True when any autoantibody field is present.',
+        'type': 'boolean',
+        'notSubmittable': True,
+    })
+    def aab_tested(self, aab_gada=None, aab_iaa=None, aab_ia2=None, aab_znt8=None, **kwargs):
+        present = {k: self.properties.get(k) for k in ('aab_gada', 'aab_iaa', 'aab_ia2', 'aab_znt8') if k in self.properties}
+        return compute_aab_tested(present)
+
+    @calculated_property(schema={
+        'title': 'Autoantibody Positive',
+        'description': 'True when aab_count > 0; omitted when not tested.',
+        'type': 'boolean',
+        'notSubmittable': True,
+    })
+    def aab_positive(self, aab_gada=None, aab_iaa=None, aab_ia2=None, aab_znt8=None, **kwargs):
+        present = {k: self.properties.get(k) for k in ('aab_gada', 'aab_iaa', 'aab_ia2', 'aab_znt8') if k in self.properties}
+        return compute_aab_positive(present)
+
+    @calculated_property(schema={
+        'title': 'Autoantibody Summary',
+        'description': 'Short summary of positive autoantibodies (e.g. GADA+, IA2+).',
+        'type': 'string',
+        'notSubmittable': True,
+    })
+    def aab_summary(self, aab_gada=None, aab_iaa=None, aab_ia2=None, aab_znt8=None, **kwargs):
+        present = {k: self.properties.get(k) for k in ('aab_gada', 'aab_iaa', 'aab_ia2', 'aab_znt8') if k in self.properties}
+        return compute_aab_summary(present)
+
+    @calculated_property(schema={
+        'title': 'Age Group',
+        'description': 'Age bin for filtering and faceting.',
+        'type': 'string',
+        'enum': ['0-12', '13-17', '18-39', '40-64', '65+'],
+        'notSubmittable': True,
+    })
+    def age_group(self, age=None):
+        return compute_age_group(age)
+
+    @calculated_property(schema={
+        'title': 'Pediatric',
+        'description': 'True when age is under 18 years.',
+        'type': 'boolean',
+        'notSubmittable': True,
+    })
+    def pediatric(self, age=None):
+        return compute_pediatric(age)
+
+    @calculated_property(schema={
+        'title': 'Sex Discordant',
+        'description': 'True when gender and genetic_sex both present, not "-", and differ.',
+        'type': 'boolean',
+        'notSubmittable': True,
+    })
+    def sex_discordant(self, gender=None, genetic_sex=None):
+        return compute_sex_discordant(gender, genetic_sex)
+
+    @calculated_property(schema={
+        'title': 'Label vs HbA1c Discordant',
+        'description': 'True when diabetes_status_description conflicts with derived_diabetes_status.',
+        'type': 'boolean',
+        'notSubmittable': True,
+    })
+    def label_hba1c_discordant(self, diabetes_status_description=None, derived_diabetes_status=None):
+        return compute_label_hba1c_discordant(diabetes_status_description, derived_diabetes_status)
+
+    @calculated_property(schema={
+        'title': 'Dominant Genetic Ancestry',
+        'description': 'Highest-percentage genetic_ethnicities entry, or the sole entry when percentages are absent.',
+        'type': 'string',
+        'notSubmittable': True,
+    })
+    def dominant_genetic_ancestry(self, genetic_ethnicities=None):
+        return compute_dominant_genetic_ancestry(genetic_ethnicities)
+
+    @calculated_property(schema={
+        'title': 'GRS2 Score',
+        'type': 'number',
+        'notSubmittable': True,
+    })
+    def grs2_score(self, genetic_risk_score=None):
+        return compute_grs2_score(genetic_risk_score)
+
+    @calculated_property(schema={
+        'title': 'GRS2 Normalized Score',
+        'type': 'number',
+        'notSubmittable': True,
+    })
+    def grs2_normalized(self, genetic_risk_score=None):
+        return compute_grs2_normalized(genetic_risk_score)
+
+    @calculated_property(schema={
+        'title': 'T2D GRS Score',
+        'type': 'number',
+        'notSubmittable': True,
+    })
+    def t2d_grs_score(self, genetic_risk_score=None):
+        return compute_t2d_grs_score(genetic_risk_score)
+
+    @calculated_property(schema={
+        'title': 'T2D GRS Normalized Score',
+        'type': 'number',
+        'notSubmittable': True,
+    })
+    def t2d_grs_normalized(self, genetic_risk_score=None):
+        return compute_t2d_grs_normalized(genetic_risk_score)
+
+    @calculated_property(schema={
+        'title': 'Tier 1 Complete',
+        'description': 'True when all Tier 0 and Tier 1 fields are present.',
+        'type': 'boolean',
+        'notSubmittable': True,
+    })
+    def tier1_complete(self, **kwargs):
+        return compute_tier1_complete(self.properties)
 
 
 def transform_biological_sex_to_genetic_sex(context, request):

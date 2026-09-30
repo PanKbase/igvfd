@@ -22,6 +22,24 @@ def primary_islet():
             'classifications': {
                 'title': 'Classifications',
             },
+            'isolation_center': {
+                'title': 'Isolation Center',
+            },
+            'organ_source': {
+                'title': 'Organ Source',
+            },
+            'islet_function_available': {
+                'title': 'Islet Function Available',
+            },
+            'donors.diabetes_status_description': {
+                'title': 'Donor Diabetes Status',
+            },
+            'donors.age_group': {
+                'title': 'Donor Age Group',
+            },
+            'donors.aab_positive': {
+                'title': 'Donor Autoantibody Positive',
+            },
             'collections': {
                 'title': 'Collections',
             },
@@ -71,6 +89,12 @@ def primary_islet():
                     'taxa',
                     'sex',
                     'classifications',
+                    'isolation_center',
+                    'organ_source',
+                    'islet_function_available',
+                    'donors.diabetes_status_description',
+                    'donors.age_group',
+                    'donors.aab_positive',
                     'biomarkers.classification',
                     'virtual',
                     'file_sets.assay_term.term_name',

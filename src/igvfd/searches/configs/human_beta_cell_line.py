@@ -52,6 +52,9 @@ def human_beta_cell_line():
             'sample_name.raw': {
                 'title': 'Sample Name'
             },
+            'excision_status': {
+                'title': 'Excision Status'
+            },
             'growth_medium.raw': {
                 'title': 'Growth Medium'
             },
@@ -80,6 +83,7 @@ def human_beta_cell_line():
                 'facet_fields': [
                     'sample_terms.term_name',
                     'sample_name.raw',
+                    'excision_status',
                     'classifications',
                     'growth_medium.raw',
                     'authentication.raw',

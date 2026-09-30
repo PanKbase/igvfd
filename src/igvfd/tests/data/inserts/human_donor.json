@@ -167,5 +167,70 @@
             "igvf:ENTEx_donor_1"
         ],
         "virtual": false
+    },
+    {
+        "uuid": "c33d88e1-b0cf-4c33-ab30-2c8c7b839901",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": ["igvf:calc_donor_positive"],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "taxa": "Homo sapiens",
+        "center_donor_id": "HPAP-CALC-001",
+        "age": 15,
+        "living_donor": false,
+        "gender": "Female",
+        "genetic_sex": "Male",
+        "bmi": 22.1,
+        "hba1c": 9.2,
+        "diabetes_status_description": "Type 1 Diabetes",
+        "derived_diabetes_status": "Diabetes",
+        "aab_gada": true,
+        "aab_iaa": false,
+        "aab_ia2": true,
+        "aab_znt8": false,
+        "donation_type": "Donation after brain death",
+        "family_history_of_diabetes": "TRUE",
+        "data_available": [
+            {"dataset": "scMultiome", "dataset_tissue": "Islet"},
+            {"dataset": "histology", "dataset_tissue": "-"}
+        ],
+        "genetic_ethnicities": [
+            {"ethnicity": "European", "percentage": 35},
+            {"ethnicity": "African", "percentage": 65}
+        ],
+        "genetic_risk_score": [
+            {"method": "GRS2", "overall_score": 10.5, "normalized_score": 0.51},
+            {"method": "T2D_GRS_Mahajan", "overall_score": 20.1, "normalized_score": 0.49}
+        ],
+        "virtual": false
+    },
+    {
+        "uuid": "c33d88e1-b0cf-4c33-ab30-2c8c7b839902",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": ["igvf:calc_donor_negative"],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "taxa": "Homo sapiens",
+        "center_donor_id": "HPAP-CALC-002",
+        "age": 45,
+        "living_donor": false,
+        "gender": "Male",
+        "genetic_sex": "Male",
+        "bmi": 28.0,
+        "hba1c": 7.8,
+        "diabetes_status_description": "Control Without Diabetes",
+        "derived_diabetes_status": "Diabetes",
+        "aab_gada": false,
+        "aab_iaa": false,
+        "aab_ia2": false,
+        "aab_znt8": false,
+        "donation_type": "Living organ donor",
+        "family_history_of_diabetes": "FALSE",
+        "data_available": [
+            {"dataset": "scRNAseq", "dataset_tissue": "Islet"}
+        ],
+        "virtual": false
     }
 ]

@@ -28,6 +28,36 @@ def human_donor():
             'aab_iaa': {
                 'title': 'AAB IAA POSITIVE'
             },
+            'data_available_datasets': {
+                'title': 'Data Available Datasets'
+            },
+            'data_available_tissues': {
+                'title': 'Data Available Tissues'
+            },
+            'age_group': {
+                'title': 'Age Group'
+            },
+            'aab_count': {
+                'title': 'Autoantibody Count'
+            },
+            'aab_positive': {
+                'title': 'Autoantibody Positive'
+            },
+            'donation_type': {
+                'title': 'Donation Type'
+            },
+            'genetic_sex': {
+                'title': 'Genetic Sex'
+            },
+            'family_history_of_diabetes': {
+                'title': 'Family History of Diabetes'
+            },
+            'sex_discordant': {
+                'title': 'Sex Discordant'
+            },
+            'label_hba1c_discordant': {
+                'title': 'Label vs HbA1c Discordant'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -56,11 +86,21 @@ def human_donor():
                 'facet_fields': [
                     'ethnicities',
                     'gender',
+                    'genetic_sex',
                     'diabetes_status_description',
+                    'donation_type',
+                    'age_group',
                     'aab_gada',
                     'aab_ia2',
                     'aab_iaa',
                     'aab_znt8',
+                    'aab_count',
+                    'aab_positive',
+                    'data_available_datasets',
+                    'data_available_tissues',
+                    'family_history_of_diabetes',
+                    'sex_discordant',
+                    'label_hba1c_discordant',
                     'collections',
                 ]
             },
