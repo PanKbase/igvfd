@@ -1,6 +1,6 @@
 {
-    "hash": "023434fb2e37b761e1834907e93851ea",
-    "index_name": "alignment_file_023434fb",
+    "hash": "d82803e12e023d40d62e69c377adefd8",
+    "index_name": "alignment_file_d82803e1",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -385,6 +385,9 @@
                     "md5sum": {
                         "type": "keyword"
                     },
+                    "note": {
+                        "type": "keyword"
+                    },
                     "notes": {
                         "type": "text"
                     },
@@ -509,6 +512,9 @@
                         "type": "keyword"
                     },
                     "validation_error_detail": {
+                        "type": "keyword"
+                    },
+                    "version": {
                         "type": "keyword"
                     }
                 },

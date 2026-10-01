@@ -1,6 +1,6 @@
 {
-    "hash": "afc4e985e76cee4fa4112f2f1e5a28f7",
-    "index_name": "construct_library_set_afc4e985",
+    "hash": "14982524eb2a81480804fcdb2b4065b0",
+    "index_name": "construct_library_set_14982524",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -190,6 +190,9 @@
                                 "type": "keyword"
                             },
                             "biomarkers": {
+                                "type": "keyword"
+                            },
+                            "biosample_type": {
                                 "type": "keyword"
                             },
                             "ccf_id": {
@@ -503,7 +506,64 @@
                             "pooled_in": {
                                 "type": "keyword"
                             },
+                            "post_shipment_culture_media": {
+                                "type": "keyword"
+                            },
+                            "post_shipment_culture_temperature": {
+                                "type": "keyword"
+                            },
+                            "post_shipment_culture_time": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "post_shipment_islet_viability": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "post_shipment_purity": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "post_shipment_viability": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "post_shipment_viability_qualitative": {
+                                "type": "keyword"
+                            },
+                            "post_shipment_viability_quantitative": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "pre_shipment_culture_media": {
+                                "type": "keyword"
+                            },
+                            "pre_shipment_culture_temperature": {
                                 "fields": {
                                     "raw": {
                                         "type": "keyword"
@@ -544,6 +604,15 @@
                             },
                             "purity_assay": {
                                 "type": "keyword"
+                            },
+                            "purity_value": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "release_timestamp": {
                                 "type": "keyword"
@@ -652,6 +721,12 @@
                             "sex": {
                                 "type": "keyword"
                             },
+                            "shipping_media": {
+                                "type": "keyword"
+                            },
+                            "shipping_temperature": {
+                                "type": "keyword"
+                            },
                             "sorted_fractions": {
                                 "type": "keyword"
                             },
@@ -717,6 +792,15 @@
                             },
                             "time_post_library_delivery_units": {
                                 "type": "keyword"
+                            },
+                            "transit_time": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "treatments": {
                                 "type": "keyword"
@@ -1003,6 +1087,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "base_media": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1013,6 +1100,9 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "data_url": {
                                 "type": "keyword"
                             },
                             "dbxrefs": {
@@ -1042,7 +1132,13 @@
                             "files": {
                                 "type": "keyword"
                             },
+                            "fraction_collection_time": {
+                                "type": "keyword"
+                            },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hormone_assays": {
                                 "type": "keyword"
                             },
                             "input_file_set_for": {
@@ -1053,6 +1149,48 @@
                             },
                             "integrated_content_files": {
                                 "type": "keyword"
+                            },
+                            "islet_diameter": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "islet_endocrine_composition": {
+                                "type": "keyword"
+                            },
+                            "islet_purification_method": {
+                                "type": "keyword"
+                            },
+                            "islet_purity_for_assay": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "islet_volume_ieq": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "islets_shipped": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"
@@ -1105,10 +1243,31 @@
                                 "store": true,
                                 "type": "long"
                             },
+                            "normalized_glucagon_content": {
+                                "type": "keyword"
+                            },
+                            "normalized_glucagon_secretion_units": {
+                                "type": "keyword"
+                            },
+                            "normalized_insulin_content": {
+                                "type": "keyword"
+                            },
+                            "normalized_insulin_secretion_units": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "perifusion_flow_rate": {
+                                "type": "keyword"
+                            },
+                            "perifusion_fraction_volume": {
+                                "type": "keyword"
+                            },
+                            "perifusion_protocol": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {
@@ -1194,6 +1353,9 @@
                             "status": {
                                 "type": "keyword"
                             },
+                            "stimuli_secretagogues": {
+                                "type": "keyword"
+                            },
                             "submitted_by": {
                                 "type": "keyword"
                             },
@@ -1243,6 +1405,33 @@
                             },
                             "tiling_modality": {
                                 "type": "keyword"
+                            },
+                            "total_dna_content": {
+                                "type": "keyword"
+                            },
+                            "total_glucagon_content": {
+                                "type": "keyword"
+                            },
+                            "total_insulin_content": {
+                                "type": "keyword"
+                            },
+                            "total_islet_cell_volume": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "total_islets_for_assay": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
                             },
                             "transcriptome_annotations": {
                                 "type": "keyword"
@@ -1484,6 +1673,9 @@
                                 "store": true,
                                 "type": "boolean"
                             },
+                            "note": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -1583,6 +1775,9 @@
                                 "type": "keyword"
                             },
                             "validation_error_detail": {
+                                "type": "keyword"
+                            },
+                            "version": {
                                 "type": "keyword"
                             }
                         },
@@ -1776,6 +1971,9 @@
                             "md5sum": {
                                 "type": "keyword"
                             },
+                            "note": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -1826,6 +2024,9 @@
                                 "type": "keyword"
                             },
                             "validation_error_detail": {
+                                "type": "keyword"
+                            },
+                            "version": {
                                 "type": "keyword"
                             }
                         },
@@ -1950,6 +2151,9 @@
                             "md5sum": {
                                 "type": "keyword"
                             },
+                            "note": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -2000,6 +2204,9 @@
                                 "type": "keyword"
                             },
                             "validation_error_detail": {
+                                "type": "keyword"
+                            },
+                            "version": {
                                 "type": "keyword"
                             }
                         },

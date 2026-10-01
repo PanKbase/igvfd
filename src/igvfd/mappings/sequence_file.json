@@ -1,6 +1,6 @@
 {
-    "hash": "2d3a221962dc554bc1b12e897eba0598",
-    "index_name": "sequence_file_2d3a2219",
+    "hash": "949dec407490b749f4e4ec7cfc5fe600",
+    "index_name": "sequence_file_949dec40",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -415,6 +415,9 @@
                         "store": true,
                         "type": "long"
                     },
+                    "note": {
+                        "type": "keyword"
+                    },
                     "notes": {
                         "type": "text"
                     },
@@ -551,6 +554,9 @@
                         "type": "keyword"
                     },
                     "validation_error_detail": {
+                        "type": "keyword"
+                    },
+                    "version": {
                         "type": "keyword"
                     }
                 },

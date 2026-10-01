@@ -1,6 +1,6 @@
 {
-    "hash": "a3a2ce5a7f1df3efa07c3a19aa3d5b2d",
-    "index_name": "index_file_a3a2ce5a",
+    "hash": "9a4f5f26cc93a56b0cf98395378c9a47",
+    "index_name": "index_file_9a4f5f26",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -378,6 +378,9 @@
                     "md5sum": {
                         "type": "keyword"
                     },
+                    "note": {
+                        "type": "keyword"
+                    },
                     "notes": {
                         "type": "text"
                     },
@@ -499,6 +502,9 @@
                         "type": "keyword"
                     },
                     "validation_error_detail": {
+                        "type": "keyword"
+                    },
+                    "version": {
                         "type": "keyword"
                     }
                 },

@@ -1,6 +1,6 @@
 {
-    "hash": "47a278ffa1d8f65a16f6ab5deb771922",
-    "index_name": "reference_file_47a278ff",
+    "hash": "9e50718725843aef50e9caf266b387e8",
+    "index_name": "reference_file_9e507187",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -385,6 +385,9 @@
                     "md5sum": {
                         "type": "keyword"
                     },
+                    "note": {
+                        "type": "keyword"
+                    },
                     "notes": {
                         "type": "text"
                     },
@@ -502,6 +505,9 @@
                         "type": "keyword"
                     },
                     "validation_error_detail": {
+                        "type": "keyword"
+                    },
+                    "version": {
                         "type": "keyword"
                     }
                 },

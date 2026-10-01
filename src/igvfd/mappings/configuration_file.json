@@ -1,6 +1,6 @@
 {
-    "hash": "deb90b6e015b57886d224b1d781dad73",
-    "index_name": "configuration_file_deb90b6e",
+    "hash": "3ba4675b184ab73dd36eff95e5347fd3",
+    "index_name": "configuration_file_3ba4675b",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -358,6 +358,9 @@
                     "md5sum": {
                         "type": "keyword"
                     },
+                    "note": {
+                        "type": "keyword"
+                    },
                     "notes": {
                         "type": "text"
                     },
@@ -470,6 +473,9 @@
                         "type": "keyword"
                     },
                     "validation_error_detail": {
+                        "type": "keyword"
+                    },
+                    "version": {
                         "type": "keyword"
                     }
                 },
