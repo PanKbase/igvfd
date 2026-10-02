@@ -1,6 +1,6 @@
 {
-    "hash": "14982524eb2a81480804fcdb2b4065b0",
-    "index_name": "construct_library_set_14982524",
+    "hash": "c5641ca2977eacb87a949199d744aabc",
+    "index_name": "construct_library_set_c5641ca2",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1046,6 +1046,12 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotation_category": {
+                                "type": "keyword"
+                            },
+                            "annotation_type": {
                                 "type": "keyword"
                             },
                             "applied_to_samples": {

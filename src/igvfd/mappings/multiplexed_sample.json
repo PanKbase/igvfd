@@ -1,6 +1,6 @@
 {
-    "hash": "4fa88469417d4c1f0c304e5cf99e9458",
-    "index_name": "multiplexed_sample_4fa88469",
+    "hash": "59f4654bd95d7c4e0502cae311e3316c",
+    "index_name": "multiplexed_sample_59f4654b",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -586,6 +586,12 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotation_category": {
+                                "type": "keyword"
+                            },
+                            "annotation_type": {
                                 "type": "keyword"
                             },
                             "applied_to_samples": {

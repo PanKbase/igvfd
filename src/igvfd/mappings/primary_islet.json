@@ -1,6 +1,6 @@
 {
-    "hash": "7a0ded0d741c1d0cbdb479857451af1b",
-    "index_name": "primary_islet_7a0ded0d",
+    "hash": "99a45130805c697de793413dc181a554",
+    "index_name": "primary_islet_99a45130",
     "item_type": "primary_islet",
     "mapping": {
         "dynamic_templates": [
@@ -937,6 +937,12 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotation_category": {
+                                "type": "keyword"
+                            },
+                            "annotation_type": {
                                 "type": "keyword"
                             },
                             "applied_to_samples": {

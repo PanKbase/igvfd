@@ -1,6 +1,6 @@
 {
-    "hash": "186209a69bff84eff181aacf9a1e502c",
-    "index_name": "in_vitro_system_186209a6",
+    "hash": "5e3ace84213f6fbfda6fee43eee3859a",
+    "index_name": "in_vitro_system_5e3ace84",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1063,6 +1063,12 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotation_category": {
+                                "type": "keyword"
+                            },
+                            "annotation_type": {
                                 "type": "keyword"
                             },
                             "applied_to_samples": {

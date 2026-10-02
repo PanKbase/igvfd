@@ -16,7 +16,8 @@
             "igvf:treated_tissue"
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
-        "file_set_type": "intermediate analysis"
+        "file_set_type": "intermediate analysis",
+        "annotation_type": "sample_scrnaseq"
     },
     {
         "aliases": [
@@ -39,6 +40,7 @@
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set_type": "principal analysis",
+        "annotation_type": "gene_expression_matrix",
         "collections": [
             "MPRAbase"
         ]

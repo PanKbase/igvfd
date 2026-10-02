@@ -1,6 +1,6 @@
 {
-    "hash": "1706f306f5bb0532b09cc415134abc1b",
-    "index_name": "model_set_1706f306",
+    "hash": "4f7b2a0a2807b3fa334913688d0681d1",
+    "index_name": "model_set_4f7b2a0a",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -314,6 +314,12 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotation_category": {
+                                "type": "keyword"
+                            },
+                            "annotation_type": {
                                 "type": "keyword"
                             },
                             "applied_to_samples": {
@@ -1625,6 +1631,12 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotation_category": {
+                                "type": "keyword"
+                            },
+                            "annotation_type": {
                                 "type": "keyword"
                             },
                             "applied_to_samples": {

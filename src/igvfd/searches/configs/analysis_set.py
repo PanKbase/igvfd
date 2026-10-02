@@ -16,6 +16,12 @@ def analysis_set():
             'assay_titles': {
                 'title': 'Assay Title'
             },
+            'annotation_type': {
+                'title': 'Annotation Type',
+            },
+            'annotation_category': {
+                'title': 'Annotation Category',
+            },
             'samples.sample_terms.term_name': {
                 'title': 'Sample Term'
             },
@@ -56,7 +62,9 @@ def analysis_set():
                 'title': 'File Set',
                 'facet_fields': [
                     'file_set_type',
-                    'assay_titles'
+                    'assay_titles',
+                    'annotation_type',
+                    'annotation_category',
                 ],
             },
             {
@@ -114,6 +122,12 @@ def analysis_set():
             },
             'file_set_type': {
                 'title': 'File Set Type'
+            },
+            'annotation_type': {
+                'title': 'Annotation Type'
+            },
+            'annotation_category': {
+                'title': 'Annotation Category'
             },
         },
     }

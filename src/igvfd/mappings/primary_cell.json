@@ -1,6 +1,6 @@
 {
-    "hash": "6daf1ae7d1840a54cbc4a40f2e2d7d00",
-    "index_name": "primary_cell_6daf1ae7",
+    "hash": "4b9d3c4c3614808974d2b8f8aab54abd",
+    "index_name": "primary_cell_4b9d3c4c",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -910,6 +910,12 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotation_category": {
+                                "type": "keyword"
+                            },
+                            "annotation_type": {
                                 "type": "keyword"
                             },
                             "applied_to_samples": {

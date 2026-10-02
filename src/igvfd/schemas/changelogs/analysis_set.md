@@ -1,5 +1,10 @@
 ## Changelog for *`analysis_set.json`*
 
+### Minor changes since schema version 8
+
+* Add `annotation_type`.
+* Add calculated property `annotation_category`.
+
 ### Schema version 7
 
 * Adjust `file_set_type` enum list to replace `primary analysis` with `principal analysis`.

@@ -1,6 +1,6 @@
 {
-    "hash": "2da8437da826ed0e3646bb7cf0306d2c",
-    "index_name": "human_beta_cell_line_2da8437d",
+    "hash": "802f09b62671669af08cfe500e426fd6",
+    "index_name": "human_beta_cell_line_802f09b6",
     "item_type": "human_beta_cell_line",
     "mapping": {
         "dynamic_templates": [
@@ -930,6 +930,12 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotation_category": {
+                                "type": "keyword"
+                            },
+                            "annotation_type": {
                                 "type": "keyword"
                             },
                             "applied_to_samples": {

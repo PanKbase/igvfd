@@ -1,6 +1,6 @@
 {
-    "hash": "4608b7607e43f29ae75a69c7cc61f499",
-    "index_name": "whole_organism_4608b760",
+    "hash": "029c2c5f69078c5feaa4f17ab463eb52",
+    "index_name": "whole_organism_029c2c5f",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -910,6 +910,12 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotation_category": {
+                                "type": "keyword"
+                            },
+                            "annotation_type": {
                                 "type": "keyword"
                             },
                             "applied_to_samples": {

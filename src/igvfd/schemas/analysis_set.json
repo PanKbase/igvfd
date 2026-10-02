@@ -179,10 +179,56 @@
                 "appscript": "305 pg/IEQ",
                 "igvf_utils": "305 pg/IEQ"
             }
+        },
+        "annotation_type": {
+            "title": "Annotation Type",
+            "description": "The type of analysis product represented by this analysis set.",
+            "comment": "Determines the calculated annotation_category. For reference_atlas, annotation_category also depends on assay title (scRNA-seq vs snATAC-seq).",
+            "type": "string",
+            "enum": [
+                "sample_bulk_rnaseq",
+                "sample_scrnaseq",
+                "gene_expression_matrix",
+                "reference_atlas",
+                "differential_expression",
+                "sample_snatacseq",
+                "chromatin_accessibility_peaks",
+                "chromatin_signal_track",
+                "cre_target_links",
+                "islet_function_perifusion",
+                "metadata_table",
+                "qtl_colocalization",
+                "qtl_summary_statistics",
+                "credible_set_ld",
+                "unclear"
+            ],
+            "enum_titles": {
+                "sample_bulk_rnaseq": "Per-sample processed bulk RNA-seq",
+                "sample_scrnaseq": "Per-sample processed islet scRNA-seq",
+                "gene_expression_matrix": "Pseudobulk counts per cell type, or bulk TPM matrix",
+                "reference_atlas": "Cell type reference map (scRNA-seq or snATAC-seq)",
+                "differential_expression": "Differential expression results by cell type",
+                "sample_snatacseq": "Per-sample processed snATAC-seq",
+                "chromatin_accessibility_peaks": "Peak calls and read counts per cell type, or unified peaks",
+                "chromatin_signal_track": "Accessibility signal track per cell type",
+                "cre_target_links": "cRE-to-gene links predicted by ABC, per cell type",
+                "islet_function_perifusion": "Per-donor dynamic perifusion analysis",
+                "metadata_table": "Donor or islet biosample metadata table",
+                "qtl_colocalization": "GWAS and eQTL colocalization results",
+                "qtl_summary_statistics": "QTL variant summary statistics",
+                "credible_set_ld": "LD among SNPs within a credible set",
+                "unclear": "Not classifiable from description and assay title"
+            },
+            "submissionExample": {
+                "appscript": "sample_scrnaseq",
+                "igvf_utils": "sample_scrnaseq"
+            }
         }
     },
     "fuzzy_searchable_fields": [
         "@type",
+        "annotation_type",
+        "annotation_category",
         "assay_titles",
         "collections",
         "description",

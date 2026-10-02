@@ -1,6 +1,6 @@
 {
-    "hash": "2c52b5e51e6335db6dab7e2b8966e546",
-    "index_name": "prediction_set_2c52b5e5",
+    "hash": "46f082552691753a2deddb695d16532a",
+    "index_name": "prediction_set_46f08255",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -314,6 +314,12 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotation_category": {
+                                "type": "keyword"
+                            },
+                            "annotation_type": {
                                 "type": "keyword"
                             },
                             "applied_to_samples": {
