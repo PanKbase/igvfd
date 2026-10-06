@@ -40,7 +40,7 @@ class FileSet(Item):
         'input_file_set_for': ('FileSet', 'input_file_sets')
     }
     embedded_with_frame = [
-        Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'title']),
+        Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'title', 'name']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('files', include=['@id', 'accession', 'aliases', 'content_type',

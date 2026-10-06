@@ -87,7 +87,7 @@ class Sample(Item):
         'institutional_certificates': ('InstitutionalCertificate', 'samples'),
     }
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'title', 'name']),
         Path('lab', include=['@id', 'title']),
         Path('sources', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),

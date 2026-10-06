@@ -7,120 +7,205 @@ from snovault.elasticsearch.searches.configs import search_config
 def human_donor():
     return {
         'facets': {
-            'ethnicities': {
-                'title': 'Ethnicities'
-            },
-            'gender': {
-                'title': 'Gender'
-            },
+            # Defaults (order = display order)
             'diabetes_status_description': {
-                'title': 'Diabetes Status'
+                'title': 'Diabetes Status',
+                'category': 'Clinical',
+                'description': 'Reported diabetes status description for the donor.',
             },
-            'aab_gada': {
-                'title': 'AAB GADA POSITIVE'
-            },
-            'aab_ia2': {
-                'title': 'AAB IA2 POSITIVE'
-            },
-            'aab_znt8': {
-                'title': 'AAB ZNT8 POSITIVE'
-            },
-            'aab_iaa': {
-                'title': 'AAB IAA POSITIVE'
-            },
-            'data_available_datasets': {
-                'title': 'Data Available Datasets'
-            },
-            'data_available_tissues': {
-                'title': 'Data Available Tissues'
+            'derived_diabetes_status': {
+                'title': 'HbA1c-derived Status',
+                'category': 'Clinical',
+                'description': 'Diabetes status derived from HbA1c when available.',
             },
             'age_group': {
-                'title': 'Age Group'
+                'title': 'Age Group',
+                'category': 'Clinical',
+                'description': 'Binned age group of the donor.',
             },
-            'aab_count': {
-                'title': 'Autoantibody Count'
+            'gender': {
+                'title': 'Gender',
+                'category': 'Clinical',
+                'description': 'Reported gender of the donor.',
             },
             'aab_positive': {
-                'title': 'Autoantibody Positive'
+                'title': 'Autoantibody Positive',
+                'category': 'Clinical',
+                'description': 'Whether the donor is positive for any autoantibody.',
             },
             'donation_type': {
-                'title': 'Donation Type'
-            },
-            'genetic_sex': {
-                'title': 'Genetic Sex'
-            },
-            'family_history_of_diabetes': {
-                'title': 'Family History of Diabetes'
-            },
-            'sex_discordant': {
-                'title': 'Sex Discordant'
-            },
-            'label_hba1c_discordant': {
-                'title': 'Label vs HbA1c Discordant'
-            },
-            'collections': {
-                'title': 'Collections'
-            },
-            'award.component': {
-                'title': 'Funding'
+                'title': 'Donation Type',
+                'category': 'Clinical',
+                'description': 'Type of donation associated with the donor.',
             },
             'status': {
-                'title': 'Status'
+                'title': 'Status',
+                'category': 'Quality',
+                'description': 'Release status of the donor object.',
+            },
+            # Optional — Clinical
+            't1d_stage': {
+                'title': 'T1D Stage',
+                'category': 'Clinical',
+                'description': 'Type 1 diabetes stage when derivable.',
+                'optional': True,
+            },
+            'aab_count': {
+                'title': 'Autoantibody Count',
+                'category': 'Clinical',
+                'description': 'Number of autoantibodies positive.',
+                'optional': True,
+            },
+            'family_history_of_diabetes': {
+                'title': 'Family History of Diabetes',
+                'category': 'Clinical',
+                'description': 'Family history of diabetes.',
+                'optional': True,
+            },
+            'label_hba1c_discordant': {
+                'title': 'Label vs HbA1c Discordant',
+                'category': 'Clinical',
+                'description': 'Whether reported diabetes status disagrees with HbA1c-derived status.',
+                'optional': True,
+            },
+            'aab_gada': {
+                'title': 'AAB GADA Positive',
+                'category': 'Clinical',
+                'description': 'GADA autoantibody status.',
+                'optional': True,
+            },
+            'aab_ia2': {
+                'title': 'AAB IA2 Positive',
+                'category': 'Clinical',
+                'description': 'IA-2 autoantibody status.',
+                'optional': True,
+            },
+            'aab_iaa': {
+                'title': 'AAB IAA Positive',
+                'category': 'Clinical',
+                'description': 'IAA autoantibody status.',
+                'optional': True,
+            },
+            'aab_znt8': {
+                'title': 'AAB ZnT8 Positive',
+                'category': 'Clinical',
+                'description': 'ZnT8 autoantibody status.',
+                'optional': True,
+            },
+            'data_available_datasets': {
+                'title': 'Data Available',
+                'category': 'Clinical',
+                'description': 'Normalized dataset types available for this donor.',
+                'optional': True,
+            },
+            # Optional — Genetics
+            'genetic_sex': {
+                'title': 'Genetic Sex',
+                'category': 'Genetics',
+                'description': 'Genetically determined sex.',
+                'optional': True,
+            },
+            'dominant_genetic_ancestry': {
+                'title': 'Genetic Ancestry',
+                'category': 'Genetics',
+                'description': 'Dominant genetic ancestry.',
+                'optional': True,
+            },
+            'ethnicities': {
+                'title': 'Self-reported Ethnicity',
+                'category': 'Genetics',
+                'description': 'Self-reported ethnicity.',
+                'optional': True,
+            },
+            'sex_discordant': {
+                'title': 'Sex Discordant',
+                'category': 'Genetics',
+                'description': 'Whether reported gender and genetic sex disagree.',
+                'optional': True,
+            },
+            # Optional — Tissue
+            'pancreas_tissue_available': {
+                'title': 'Pancreas Tissue Available',
+                'category': 'Tissue',
+                'description': 'Whether pancreas tissue is available.',
+                'optional': True,
+            },
+            'other_tissues_available': {
+                'title': 'Other Tissues Available',
+                'category': 'Tissue',
+                'description': 'Whether other tissues are available.',
+                'optional': True,
+            },
+            'data_available_tissues': {
+                'title': 'Data Available Tissues',
+                'category': 'Tissue',
+                'description': 'Tissues with associated data.',
+                'optional': True,
+            },
+            # Optional — Provenance
+            'collections': {
+                'title': 'Collection',
+                'category': 'Provenance',
+                'description': 'Collections that include this donor.',
+                'optional': True,
+            },
+            'lab.title': {
+                'title': 'Lab',
+                'category': 'Provenance',
+                'description': 'Lab that submitted the donor.',
+                'optional': True,
+            },
+            'award.title': {
+                'title': 'Award',
+                'category': 'Provenance',
+                'description': 'Award that funded the donor.',
+                'optional': True,
+            },
+            'release_timestamp': {
+                'title': 'Release Date',
+                'category': 'Provenance',
+                'description': 'Date the donor was publicly released.',
+                'optional': True,
+            },
+            'creation_timestamp': {
+                'title': 'Creation Date',
+                'category': 'Provenance',
+                'description': 'Date the donor object was created.',
+                'optional': True,
+            },
+            # Optional — Quality
+            'tier1_complete': {
+                'title': 'Tier 1 Complete',
+                'category': 'Quality',
+                'description': 'Whether tier 1 metadata is complete.',
+                'optional': True,
             },
             'audit.ERROR.category': {
-                'title': 'Audit Category: Error'
+                'title': 'Audit Category: Error',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.NOT_COMPLIANT.category': {
-                'title': 'Audit Category: Not Compliant'
+                'title': 'Audit Category: Not Compliant',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.WARNING.category': {
-                'title': 'Audit Category: Warning'
+                'title': 'Audit Category: Warning',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.INTERNAL_ACTION.category': {
-                'title': 'Audit Category: Internal Action'
+                'title': 'Audit Category: Internal Action',
+                'category': 'Quality',
+                'optional': True,
+            },
+            'type': {
+                'title': 'Object Type',
+                'category': 'Provenance',
+                'optional': True,
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Donor',
-                'facet_fields': [
-                    'ethnicities',
-                    'gender',
-                    'genetic_sex',
-                    'diabetes_status_description',
-                    'donation_type',
-                    'age_group',
-                    'aab_gada',
-                    'aab_ia2',
-                    'aab_iaa',
-                    'aab_znt8',
-                    'aab_count',
-                    'aab_positive',
-                    'data_available_datasets',
-                    'data_available_tissues',
-                    'family_history_of_diabetes',
-                    'sex_discordant',
-                    'label_hba1c_discordant',
-                    'collections',
-                ]
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'award.component',
-                ]
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ]
-            },
-        ],
         'columns': {
             'uuid': {
                 'title': 'UUID'
@@ -135,7 +220,10 @@ def human_donor():
                 'title': 'Gender'
             },
             'award': {
-                'title': 'Funding'
+                'title': 'Award'
+            },
+            'lab': {
+                'title': 'Lab'
             },
             'ethnicities': {
                 'title': 'Ethnicities'
@@ -154,6 +242,15 @@ def human_donor():
             },
             'phenotypic_features': {
                 'title': 'Phenotypic Features'
+            },
+            'diabetes_status_description': {
+                'title': 'Diabetes Status'
+            },
+            'derived_diabetes_status': {
+                'title': 'HbA1c-derived Status'
+            },
+            'age_group': {
+                'title': 'Age Group'
             },
         }
     }

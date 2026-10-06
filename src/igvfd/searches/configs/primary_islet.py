@@ -7,120 +7,158 @@ from snovault.elasticsearch.searches.configs import search_config
 def primary_islet():
     return {
         'facets': {
+            # Defaults
+            'type': {
+                'title': 'Sample Type',
+                'category': 'Sample',
+                'description': 'Object type of the biosample.',
+            },
             'sample_terms.term_name': {
-                'title': 'Sample Terms',
-            },
-            'treatments.treatment_term_name': {
-                'title': 'Treatments',
-            },
-            'taxa': {
-                'title': 'Taxa',
-            },
-            'sex': {
-                'title': 'Sex'
-            },
-            'classifications': {
-                'title': 'Classifications',
-            },
-            'isolation_center': {
-                'title': 'Isolation Center',
-            },
-            'organ_source': {
-                'title': 'Organ Source',
-            },
-            'islet_function_available': {
-                'title': 'Islet Function Available',
+                'title': 'Sample Term',
+                'category': 'Sample',
+                'description': 'Ontology term for the sample.',
             },
             'donors.diabetes_status_description': {
                 'title': 'Donor Diabetes Status',
+                'category': 'Donor',
+                'description': 'Diabetes status of associated donors.',
             },
             'donors.age_group': {
                 'title': 'Donor Age Group',
+                'category': 'Donor',
+                'description': 'Age group of associated donors.',
+            },
+            'isolation_center': {
+                'title': 'Isolation Center',
+                'category': 'Islet prep',
+                'description': 'Center that isolated the islet preparation.',
+            },
+            'islet_function_available': {
+                'title': 'Islet Function Available',
+                'category': 'Islet prep',
+                'description': 'Whether islet function (perifusion) data is available.',
+            },
+            'organ_source': {
+                'title': 'Organ Source',
+                'category': 'Islet prep',
+                'description': 'Source of the organ used for the islet preparation.',
+            },
+            'status': {
+                'title': 'Status',
+                'category': 'Quality',
+                'description': 'Release status of the sample.',
+            },
+            # Optional — Islet prep
+            'preservation_method': {
+                'title': 'Preservation Method',
+                'category': 'Islet prep',
+                'description': 'Tissue preservation method.',
+                'optional': True,
+            },
+            'hand_picked': {
+                'title': 'Hand Picked',
+                'category': 'Islet prep',
+                'description': 'Whether islets were hand picked.',
+                'optional': True,
+            },
+            # Optional — Donor
+            'donors.gender': {
+                'title': 'Donor Gender',
+                'category': 'Donor',
+                'description': 'Gender of associated donors.',
+                'optional': True,
+            },
+            'donors.t1d_stage': {
+                'title': 'Donor T1D Stage',
+                'category': 'Donor',
+                'description': 'T1D stage of associated donors.',
+                'optional': True,
             },
             'donors.aab_positive': {
                 'title': 'Donor Autoantibody Positive',
+                'category': 'Donor',
+                'description': 'Whether associated donors are autoantibody positive.',
+                'optional': True,
             },
+            # Optional — Sample misc
+            'sex': {
+                'title': 'Sex',
+                'category': 'Sample',
+                'optional': True,
+            },
+            'classifications': {
+                'title': 'Classifications',
+                'category': 'Sample',
+                'optional': True,
+            },
+            'taxa': {
+                'title': 'Taxa',
+                'category': 'Sample',
+                'optional': True,
+            },
+            'virtual': {
+                'title': 'Virtual',
+                'category': 'Sample',
+                'optional': True,
+            },
+            'file_sets.assay_term.term_name': {
+                'title': 'Assay',
+                'category': 'Sample',
+                'optional': True,
+            },
+            # Optional — Provenance
             'collections': {
-                'title': 'Collections',
+                'title': 'Collection',
+                'category': 'Provenance',
+                'optional': True,
             },
             'lab.title': {
                 'title': 'Lab',
+                'category': 'Provenance',
+                'optional': True,
             },
-            'award.component': {
+            'award.title': {
                 'title': 'Award',
+                'category': 'Provenance',
+                'optional': True,
             },
             'sources.title': {
                 'title': 'Sources',
+                'category': 'Provenance',
+                'optional': True,
             },
-            'status': {
-                'title': 'Status'
+            'release_timestamp': {
+                'title': 'Release Date',
+                'category': 'Provenance',
+                'optional': True,
             },
-            'virtual': {
-                'title': 'Virtual'
+            'creation_timestamp': {
+                'title': 'Creation Date',
+                'category': 'Provenance',
+                'optional': True,
             },
-            'file_sets.assay_term.term_name': {
-                'title': 'Assay'
-            },
-            'biomarkers.classification': {
-                'title': 'Biomarkers Classification'
-            },
-            'type': {
-                'title': 'Object Type'
-            },
+            # Optional — Quality
             'audit.ERROR.category': {
-                'title': 'Audit Category: Error'
+                'title': 'Audit Category: Error',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.NOT_COMPLIANT.category': {
-                'title': 'Audit Category: Not Compliant'
+                'title': 'Audit Category: Not Compliant',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.WARNING.category': {
-                'title': 'Audit Category: Warning'
+                'title': 'Audit Category: Warning',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.INTERNAL_ACTION.category': {
-                'title': 'Audit Category: Internal Action'
+                'title': 'Audit Category: Internal Action',
+                'category': 'Quality',
+                'optional': True,
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'sample_terms.term_name',
-                    'treatments.treatment_term_name',
-                    'taxa',
-                    'sex',
-                    'classifications',
-                    'isolation_center',
-                    'organ_source',
-                    'islet_function_available',
-                    'donors.diabetes_status_description',
-                    'donors.age_group',
-                    'donors.aab_positive',
-                    'biomarkers.classification',
-                    'virtual',
-                    'file_sets.assay_term.term_name',
-                ]
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'lab.title',
-                    'award.component',
-                    'sources.title',
-                    'type',
-                ]
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ]
-            },
-        ],
         'columns': {
             'uuid': {
                 'title': 'UUID'

@@ -49,7 +49,7 @@ class Donor(Item):
         'biosamples': ('Biosample', 'donors'),
     }
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'title', 'name']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('phenotypic_features.feature', include=['@id', 'feature', 'term_id',

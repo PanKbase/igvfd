@@ -7,85 +7,108 @@ from snovault.elasticsearch.searches.configs import search_config
 def analysis_set():
     return {
         'facets': {
-            'collections': {
-                'title': 'Collections',
-            },
-            'donors.taxa': {
-                'title': 'Taxa',
-            },
-            'assay_titles': {
-                'title': 'Assay Title'
+            # Defaults (DE fields omitted until backfill ships)
+            'annotation_category': {
+                'title': 'Annotation Category',
+                'category': 'Analysis Set Details',
+                'description': 'High-level category derived from annotation type.',
             },
             'annotation_type': {
                 'title': 'Annotation Type',
-            },
-            'annotation_category': {
-                'title': 'Annotation Category',
-            },
-            'samples.sample_terms.term_name': {
-                'title': 'Sample Term'
-            },
-            'award.component': {
-                'title': 'Funding'
-            },
-            'status': {
-                'title': 'Status'
+                'category': 'Analysis Set Details',
+                'description': 'Type of analysis product represented by this analysis set.',
             },
             'file_set_type': {
                 'title': 'File Set Type',
+                'category': 'Analysis Set Details',
+                'description': 'Level of this analysis set (intermediate, principal, or resource).',
+            },
+            'assay_titles': {
+                'title': 'Assay Title',
+                'category': 'Analysis Set Details',
+                'description': 'Assay titles relevant to this analysis set.',
+            },
+            'samples.sample_terms.term_name': {
+                'title': 'Sample Term',
+                'category': 'Sample',
+                'description': 'Sample ontology terms associated with the analysis set.',
+            },
+            'files.file_format': {
+                'title': 'File Format',
+                'category': 'File',
+                'description': 'Format of files in the analysis set.',
+            },
+            'status': {
+                'title': 'Status',
+                'category': 'Quality',
+                'description': 'Release status of the analysis set.',
+            },
+            # Optional — File
+            'files.content_type': {
+                'title': 'File Type',
+                'category': 'File',
+                'description': 'Content type of files in the analysis set.',
+                'optional': True,
+            },
+            # Optional — Sample
+            'donors.taxa': {
+                'title': 'Taxa',
+                'category': 'Sample',
+                'optional': True,
+            },
+            # Optional — Provenance
+            'collections': {
+                'title': 'Collection',
+                'category': 'Provenance',
+                'optional': True,
+            },
+            'lab.title': {
+                'title': 'Lab',
+                'category': 'Provenance',
+                'optional': True,
+            },
+            'award.title': {
+                'title': 'Award',
+                'category': 'Provenance',
+                'optional': True,
+            },
+            'release_timestamp': {
+                'title': 'Release Date',
+                'category': 'Provenance',
+                'optional': True,
+            },
+            'creation_timestamp': {
+                'title': 'Creation Date',
+                'category': 'Provenance',
+                'optional': True,
             },
             'type': {
                 'title': 'Object Type',
+                'category': 'Provenance',
+                'optional': True,
             },
+            # Optional — Quality
             'audit.ERROR.category': {
-                'title': 'Audit Category: Error'
+                'title': 'Audit Category: Error',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.NOT_COMPLIANT.category': {
-                'title': 'Audit Category: Not Compliant'
+                'title': 'Audit Category: Not Compliant',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.WARNING.category': {
-                'title': 'Audit Category: Warning'
+                'title': 'Audit Category: Warning',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.INTERNAL_ACTION.category': {
-                'title': 'Audit Category: Internal Action'
+                'title': 'Audit Category: Internal Action',
+                'category': 'Quality',
+                'optional': True,
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'donors.taxa',
-                    'samples.sample_terms.term_name'
-                ],
-            },
-            {
-                'title': 'File Set',
-                'facet_fields': [
-                    'file_set_type',
-                    'assay_titles',
-                    'annotation_type',
-                    'annotation_category',
-                ],
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'award.component',
-                    'type',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ],
-            },
-        ],
         'columns': {
             'accession': {
                 'title': 'Accession'
@@ -108,6 +131,9 @@ def analysis_set():
             'award': {
                 'title': 'Award'
             },
+            'lab': {
+                'title': 'Lab'
+            },
             'input_file_sets': {
                 'title': 'Input File Sets'
             },
@@ -128,6 +154,15 @@ def analysis_set():
             },
             'annotation_category': {
                 'title': 'Annotation Category'
+            },
+            'cell_type': {
+                'title': 'Cell Type'
+            },
+            'de_comparison_class': {
+                'title': 'DE Comparison Class'
+            },
+            'de_method': {
+                'title': 'DE Method'
             },
         },
     }

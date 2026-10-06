@@ -4,6 +4,8 @@
 
 * Add `annotation_type`.
 * Add calculated property `annotation_category`.
+* Add `cell_type`.
+* Add `de_comparison_class`, `de_contrast`, `de_trait`, `de_trait_description`, and `de_method` for differential expression analysis sets.
 
 ### Schema version 7
 

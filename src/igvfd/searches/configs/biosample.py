@@ -7,66 +7,92 @@ from snovault.elasticsearch.searches.configs import search_config
 def biosample():
     return {
         'facets': {
-            'classifications': {
-                'title': 'Classifications',
+            # Defaults (shared)
+            'type': {
+                'title': 'Sample Type',
+                'category': 'Sample',
+                'description': 'Object type of the biosample.',
             },
-            'collections': {
-                'title': 'Collections',
+            'sample_terms.term_name': {
+                'title': 'Sample Term',
+                'category': 'Sample',
+                'description': 'Ontology term for the sample.',
             },
-            'award.component': {
-                'title': 'Funding',
+            'donors.diabetes_status_description': {
+                'title': 'Donor Diabetes Status',
+                'category': 'Donor',
+                'description': 'Diabetes status of associated donors.',
+            },
+            'donors.age_group': {
+                'title': 'Donor Age Group',
+                'category': 'Donor',
+                'description': 'Age group of associated donors.',
             },
             'status': {
-                'title': 'Status'
+                'title': 'Status',
+                'category': 'Quality',
+                'description': 'Release status of the sample.',
+            },
+            # Optional
+            'classifications': {
+                'title': 'Classifications',
+                'category': 'Sample',
+                'optional': True,
             },
             'virtual': {
-                'title': 'Virtual'
+                'title': 'Virtual',
+                'category': 'Sample',
+                'optional': True,
             },
             'file_sets.assay_term.term_name': {
-                'title': 'Assay'
+                'title': 'Assay',
+                'category': 'Sample',
+                'optional': True,
             },
-            'type': {
-                'title': 'Object Type'
+            'collections': {
+                'title': 'Collection',
+                'category': 'Provenance',
+                'optional': True,
+            },
+            'lab.title': {
+                'title': 'Lab',
+                'category': 'Provenance',
+                'optional': True,
+            },
+            'award.title': {
+                'title': 'Award',
+                'category': 'Provenance',
+                'optional': True,
+            },
+            'release_timestamp': {
+                'title': 'Release Date',
+                'category': 'Provenance',
+                'optional': True,
+            },
+            'creation_timestamp': {
+                'title': 'Creation Date',
+                'category': 'Provenance',
+                'optional': True,
             },
             'audit.ERROR.category': {
-                'title': 'Audit Category: Error'
+                'title': 'Audit Category: Error',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.NOT_COMPLIANT.category': {
-                'title': 'Audit Category: Not Compliant'
+                'title': 'Audit Category: Not Compliant',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.WARNING.category': {
-                'title': 'Audit Category: Warning'
+                'title': 'Audit Category: Warning',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.INTERNAL_ACTION.category': {
-                'title': 'Audit Category: Internal Action'
+                'title': 'Audit Category: Internal Action',
+                'category': 'Quality',
+                'optional': True,
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'classifications',
-                    'virtual',
-                    'file_sets.assay_term.term_name',
-                ]
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'award.component',
-                    'type',
-                ]
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ]
-            },
-        ],
     }
