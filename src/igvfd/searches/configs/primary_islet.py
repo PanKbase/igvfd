@@ -107,33 +107,8 @@ def primary_islet():
                 'optional': True,
             },
             # Optional — Provenance
-            'collections': {
-                'title': 'Collection',
-                'category': 'Provenance',
-                'optional': True,
-            },
-            'lab.title': {
-                'title': 'Lab',
-                'category': 'Provenance',
-                'optional': True,
-            },
-            'award.title': {
-                'title': 'Award',
-                'category': 'Provenance',
-                'optional': True,
-            },
             'sources.title': {
                 'title': 'Sources',
-                'category': 'Provenance',
-                'optional': True,
-            },
-            'release_timestamp': {
-                'title': 'Release Date',
-                'category': 'Provenance',
-                'optional': True,
-            },
-            'creation_timestamp': {
-                'title': 'Creation Date',
                 'category': 'Provenance',
                 'optional': True,
             },

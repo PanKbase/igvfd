@@ -46,10 +46,14 @@ def test_human_donor_default_facets(registry):
     # Gate 1: these must be optional, not default
     assert facets['t1d_stage'].get('optional') is True
     assert facets['data_available_datasets'].get('optional') is True
-    assert facets['collections'].get('optional') is True
-    assert facets['lab.title']['title'] == 'Lab'
-    assert facets['award.title']['title'] == 'Award'
+    # Provenance optional filters removed
+    assert 'collections' not in facets
+    assert 'lab.title' not in facets
+    assert 'award.title' not in facets
     assert 'award.component' not in facets
+    assert 'release_timestamp' not in facets
+    assert 'creation_timestamp' not in facets
+    assert 'type' not in facets
 
 
 def test_analysis_set_defaults_omit_de_fields(registry):
@@ -67,9 +71,13 @@ def test_analysis_set_defaults_omit_de_fields(registry):
         'status',
     ]
     assert facets['files.content_type'].get('optional') is True
-    assert facets['collections'].get('optional') is True
+    assert 'collections' not in facets
+    assert 'lab.title' not in facets
+    assert 'award.title' not in facets
     assert 'award.component' not in facets
-    assert 'award.title' in facets
+    assert 'release_timestamp' not in facets
+    assert 'creation_timestamp' not in facets
+    assert 'type' not in facets
 
 
 def test_measurement_set_defaults(registry):
@@ -83,8 +91,10 @@ def test_measurement_set_defaults(registry):
         'status',
     ]
     assert 'donors.diabetes_status_description' not in facets
-    assert facets['lab.title']['title'] == 'Lab'
-    assert 'award.title' in facets
+    assert 'lab.title' not in facets
+    assert 'award.title' not in facets
+    assert 'collections' not in facets
+    assert 'type' not in facets
 
 
 def test_primary_islet_defaults(registry):
@@ -96,7 +106,9 @@ def test_primary_islet_defaults(registry):
     assert 'sample_terms.term_name' in defaults
     assert 'donors.diabetes_status_description' in defaults
     assert 'status' in defaults
-    assert facets['collections'].get('optional') is True
+    assert 'collections' not in facets
+    assert 'lab.title' not in facets
+    assert 'award.title' not in facets
     assert facets['preservation_method'].get('optional') is True
     assert facets['hand_picked'].get('optional') is True
     assert 'purity' not in facets

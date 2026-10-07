@@ -80,37 +80,6 @@ def measurement_set():
                 'category': 'Assay',
                 'optional': True,
             },
-            # Optional — Provenance
-            'collections': {
-                'title': 'Collection',
-                'category': 'Provenance',
-                'optional': True,
-            },
-            'lab.title': {
-                'title': 'Lab',
-                'category': 'Provenance',
-                'optional': True,
-            },
-            'award.title': {
-                'title': 'Award',
-                'category': 'Provenance',
-                'optional': True,
-            },
-            'release_timestamp': {
-                'title': 'Release Date',
-                'category': 'Provenance',
-                'optional': True,
-            },
-            'creation_timestamp': {
-                'title': 'Creation Date',
-                'category': 'Provenance',
-                'optional': True,
-            },
-            'type': {
-                'title': 'Object Type',
-                'category': 'Provenance',
-                'optional': True,
-            },
             # Optional — Quality
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error',

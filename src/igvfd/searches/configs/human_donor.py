@@ -142,37 +142,6 @@ def human_donor():
                 'description': 'Tissues with associated data.',
                 'optional': True,
             },
-            # Optional — Provenance
-            'collections': {
-                'title': 'Collection',
-                'category': 'Provenance',
-                'description': 'Collections that include this donor.',
-                'optional': True,
-            },
-            'lab.title': {
-                'title': 'Lab',
-                'category': 'Provenance',
-                'description': 'Lab that submitted the donor.',
-                'optional': True,
-            },
-            'award.title': {
-                'title': 'Award',
-                'category': 'Provenance',
-                'description': 'Award that funded the donor.',
-                'optional': True,
-            },
-            'release_timestamp': {
-                'title': 'Release Date',
-                'category': 'Provenance',
-                'description': 'Date the donor was publicly released.',
-                'optional': True,
-            },
-            'creation_timestamp': {
-                'title': 'Creation Date',
-                'category': 'Provenance',
-                'description': 'Date the donor object was created.',
-                'optional': True,
-            },
             # Optional — Quality
             'tier1_complete': {
                 'title': 'Tier 1 Complete',
@@ -198,11 +167,6 @@ def human_donor():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action',
                 'category': 'Quality',
-                'optional': True,
-            },
-            'type': {
-                'title': 'Object Type',
-                'category': 'Provenance',
                 'optional': True,
             },
         },
