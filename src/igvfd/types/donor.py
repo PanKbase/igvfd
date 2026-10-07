@@ -176,7 +176,8 @@ class HumanDonor(Donor):
         'notSubmittable': True,
     })
     def aab_tested(self, aab_gada=None, aab_iaa=None, aab_ia2=None, aab_znt8=None, **kwargs):
-        present = {k: self.properties.get(k) for k in ('aab_gada', 'aab_iaa', 'aab_ia2', 'aab_znt8') if k in self.properties}
+        present = {k: self.properties.get(k) for k in (
+            'aab_gada', 'aab_iaa', 'aab_ia2', 'aab_znt8') if k in self.properties}
         return compute_aab_tested(present)
 
     @calculated_property(schema={
@@ -186,7 +187,8 @@ class HumanDonor(Donor):
         'notSubmittable': True,
     })
     def aab_positive(self, aab_gada=None, aab_iaa=None, aab_ia2=None, aab_znt8=None, **kwargs):
-        present = {k: self.properties.get(k) for k in ('aab_gada', 'aab_iaa', 'aab_ia2', 'aab_znt8') if k in self.properties}
+        present = {k: self.properties.get(k) for k in (
+            'aab_gada', 'aab_iaa', 'aab_ia2', 'aab_znt8') if k in self.properties}
         return compute_aab_positive(present)
 
     @calculated_property(schema={
@@ -196,7 +198,8 @@ class HumanDonor(Donor):
         'notSubmittable': True,
     })
     def aab_summary(self, aab_gada=None, aab_iaa=None, aab_ia2=None, aab_znt8=None, **kwargs):
-        present = {k: self.properties.get(k) for k in ('aab_gada', 'aab_iaa', 'aab_ia2', 'aab_znt8') if k in self.properties}
+        present = {k: self.properties.get(k) for k in (
+            'aab_gada', 'aab_iaa', 'aab_ia2', 'aab_znt8') if k in self.properties}
         return compute_aab_summary(present)
 
     @calculated_property(schema={
@@ -345,7 +348,7 @@ class RodentDonor(Donor):
         keys = super(RodentDonor, self).unique_keys(properties)
         if properties.get('rodent_identifier'):
             lab = properties.get('lab').split('/')[-1]
-            value = f'{lab}:{properties.get("rodent_identifier")}'
+            value = f'{lab}:{properties.get('rodent_identifier')}'
             keys.setdefault('rodentdonor:lab_rodentid', []).append(value)
         else:
             value = u'{strain}/{sex}'.format(**properties)

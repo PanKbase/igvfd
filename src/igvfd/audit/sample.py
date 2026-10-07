@@ -177,7 +177,7 @@ def audit_construct_library_sets_types(value, system):
             else:
                 library_types = ' and '.join(library_types)
             detail = (
-                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} '
                 f'has `construct_library_sets` of multiple types {library_types}.'
             )
             yield AuditFailure('inconsistent construct library sets', f'{detail} {description}', level='WARNING')
@@ -200,7 +200,7 @@ def audit_parent_sample_with_singular_child(value, system):
         if child_sample_type in value and len(value.get(child_sample_type, [])) == 1:
             child_sample = value.get(child_sample_type)[0]
             detail = (
-                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} '
                 f'has only 1 child sample {audit_link(path_to_text(child_sample), child_sample)} '
                 f'in `{child_sample_type}`.'
             )
