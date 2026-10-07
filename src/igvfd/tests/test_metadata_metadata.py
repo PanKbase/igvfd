@@ -960,7 +960,7 @@ def test_metadata_metadata_report_build_params(dummy_request):
     dummy_request.json = {'elements': ['/experiments/ENCSR123ABC/']}
     mr = MetadataReport(dummy_request)
     mr._build_params()
-    assert len(mr.param_list['field']) == 14, f'{len(mr.param_list["field"])} not expected'
+    assert len(mr.param_list['field']) == 14, f'{len(mr.param_list['field'])} not expected'
     assert len(mr.param_list['@id']) == 1
 
 
@@ -1117,4 +1117,4 @@ def test_metadata_metadata_report_get_audit_data(dummy_request):
         'Audit ERROR': ['extremely low read depth']
     }
     for k, v in expected_audit_data.items():
-        assert sorted(audit_data[k].split(', ')) == v, f'{sorted(audit_data[k].split(", "))} does not match {v}'
+        assert sorted(audit_data[k].split(', ')) == v, f'{sorted(audit_data[k].split(', '))} does not match {v}'

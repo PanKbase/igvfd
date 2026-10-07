@@ -401,7 +401,7 @@ def in_vitro_system_17_18(value, system):
         notes += (
             f' The following properties were removed in an upgrade '
             f'because they are invalid for a "cell line" in vitro '
-            f'system: {"; ".join(key_val_to_str)}.'
+            f'system: {'; '.join(key_val_to_str)}.'
         )
         value['notes'] = notes.strip()
 
@@ -442,7 +442,8 @@ def sample_18_19(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1684
     if 'nih_institutional_certification' in value:
         old_nic = value.get('nih_institutional_certification')
-        notes = f'This biosample previously specified {old_nic} as its NIC, but this property has been moved to the institutional certification object. Please submit there instead to specify certification.'
+        notes = f'This biosample previously specified {
+            old_nic} as its NIC, but this property has been moved to the institutional certification object. Please submit there instead to specify certification.'
         old_notes = value.get('notes', '')
         if old_notes:
             notes = f'{old_notes} {notes}'

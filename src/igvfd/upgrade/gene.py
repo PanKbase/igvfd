@@ -63,12 +63,14 @@ def gene_6_7(value, system):
     for location in value.get('locations', []):
         if location['assembly'] == 'hg19':
             notes = value.get('notes', '')
-            notes += f' This file set listed {location} as one of its locations but the assembly for this location has been upgraded to GRCh38.'
+            notes += f' This file set listed {
+                location} as one of its locations but the assembly for this location has been upgraded to GRCh38.'
             value['notes'] = notes.strip()
             location['assembly'] = 'GRCh38'
         elif location['assembly'] in ['mm9', 'mm10']:
             notes = value.get('notes', '')
-            notes += f' This file set listed {location} as one of its locations but the assembly for this location has been upgraded to GRCm39.'
+            notes += f' This file set listed {
+                location} as one of its locations but the assembly for this location has been upgraded to GRCm39.'
             value['notes'] = notes.strip()
             location['assembly'] = 'GRCm39'
     return
