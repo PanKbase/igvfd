@@ -182,17 +182,17 @@ def sequence_file_7_8(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1487
     if value['content_type'] == 'reads' and value['file_format'] == 'bam':
         notes = value.get('notes', '')
-        notes += f' This file\'s content_type was upgraded from \"{value["content_type"]}\" to "PacBio subreads".'
+        notes += f' This file\'s content_type was upgraded from \"{value['content_type']}\" to "PacBio subreads".'
         value['content_type'] = 'PacBio subreads'
         value['notes'] = notes.strip()
     elif value['content_type'] == 'subreads' and value['file_format'] == 'bam':
         notes = value.get('notes', '')
-        notes += f' This file\'s content_type was upgraded from \"{value["content_type"]}\" to "PacBio subreads".'
+        notes += f' This file\'s content_type was upgraded from \"{value['content_type']}\" to "PacBio subreads".'
         value['content_type'] = 'PacBio subreads'
         value['notes'] = notes.strip()
     elif value['content_type'] != 'reads' and value['file_format'] == 'fastq':
         notes = value.get('notes', '')
-        notes += f' This file\'s content_type was upgraded from \"{value["content_type"]}\" to "reads".'
+        notes += f' This file\'s content_type was upgraded from \"{value['content_type']}\" to "reads".'
         value['content_type'] = 'reads'
         value['notes'] = notes.strip()
 
@@ -211,12 +211,12 @@ def file_9_10(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1016
     if value.get('assembly') == 'hg19':
         notes = value.get('notes', '')
-        notes += f' This file\'s assembly was upgraded from {value["assembly"]} to "GRCh38".'
+        notes += f' This file\'s assembly was upgraded from {value['assembly']} to "GRCh38".'
         value['assembly'] = 'GRCh38'
         value['notes'] = notes.strip()
     elif value.get('assembly') == 'mm10':
         notes = value.get('notes', '')
-        notes += f' This file\'s assembly was upgraded from {value["assembly"]} to "GRCm39".'
+        notes += f' This file\'s assembly was upgraded from {value['assembly']} to "GRCm39".'
         value['assembly'] = 'GRCm39'
         value['notes'] = notes.strip()
     return
@@ -227,7 +227,7 @@ def sequence_file_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1481
     if 'seqspec' in value:
         notes = value.get('notes', '')
-        notes += f' This file previously linked to the configuration file at {value["seqspec"]}.'
+        notes += f' This file previously linked to the configuration file at {value['seqspec']}.'
         value['notes'] = notes.strip()
         del value['seqspec']
 
@@ -307,13 +307,14 @@ def file_13_14(value, system):
         value['controlled_access'] = False
         notes += f'This object\'s property controlled_access was set to be False, because it was previously missing.'
     elif (value['controlled_access'] is True and value['status'] in ['released', 'archived', 'revoked']):
-        notes += f'This object\'s property status was {value["status"]}, and has been changed to in progress.'
+        notes += f'This object\'s property status was {value['status']}, and has been changed to in progress.'
         value['status'] = 'in progress'
         if 'release_timestamp' in value:
-            notes += f'This object\'s property release_timestamp was {value["release_timestamp"]}, and has been removed.'
+            notes += f'This object\'s property release_timestamp was {
+                value['release_timestamp']}, and has been removed.'
             del value['release_timestamp']
     if 'anvil_source_url' in value:
-        notes += f'This object\'s property anvil_source_url was {value["anvil_source_url"]}.'
+        notes += f'This object\'s property anvil_source_url was {value['anvil_source_url']}.'
         del value['anvil_source_url']
     if value['upload_status'] == 'deposited':
         value['upload_status'] = 'pending'
@@ -329,6 +330,8 @@ def tabular_file_10_11_signal_file_8_9(value, system):
     if value.get('content_type') == 'fold over change control':
         value['content_type'] = 'fold change over control'
     return
+
+
 @upgrade_step('tabular_file', '11', '12')
 def tabular_file_11_12(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1948
@@ -367,7 +370,8 @@ def reference_file_14_15(value, system):
     notes = value.get('notes', '')
     if 'external_id' in value:
         external_id = value['external_id']
-        notes += f' This file previously had {external_id} submitted as external_id, but the property external_id has been now removed.'
+        notes += f' This file previously had {
+            external_id} submitted as external_id, but the property external_id has been now removed.'
         del value['external_id']
     if notes.strip() != '':
         value['notes'] = notes.strip()

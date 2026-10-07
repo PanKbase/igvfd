@@ -185,7 +185,7 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
     )
 
 
-def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(stack, vpc, instance_type, mocker, config, existing_resources,postgres_engine_version):
+def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(stack, vpc, instance_type, mocker, config, existing_resources, postgres_engine_version):
     from infrastructure.constructs.postgres import PostgresFromSnapshotArn
     from infrastructure.constructs.postgres import PostgresProps
     # When

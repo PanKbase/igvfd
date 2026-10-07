@@ -125,7 +125,7 @@ def get_auth() -> Optional[Tuple[str, str]]:
 
 
 def get_object(server: str, obj_id: str, auth: Optional[Tuple[str, str]]) -> Optional[Dict[str, Any]]:
-    url = f'{server.rstrip("/")}{obj_id}'
+    url = f'{server.rstrip('/')}{obj_id}'
     resp = requests.get(url, auth=auth, headers=HEADERS, timeout=60)
     if resp.status_code == 404:
         return None
@@ -137,7 +137,7 @@ def get_object(server: str, obj_id: str, auth: Optional[Tuple[str, str]]) -> Opt
 def patch_object(server: str, obj_id: str, payload: Dict[str, Any], auth: Optional[Tuple[str, str]]) -> Tuple[bool, str]:
     if auth is None:
         return False, 'auth required for PATCH (set IGVF_API_KEY and IGVF_SECRET_KEY)'
-    url = f'{server.rstrip("/")}{obj_id}'
+    url = f'{server.rstrip('/')}{obj_id}'
     resp = requests.patch(url, auth=auth, headers=HEADERS, json=payload, timeout=60)
     if resp.status_code in (200, 201, 204):
         return True, ''

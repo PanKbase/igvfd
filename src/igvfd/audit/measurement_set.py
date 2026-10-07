@@ -26,14 +26,14 @@ def audit_related_multiome_datasets(value, system):
     multiome_size = value.get('multiome_size')
     if related_multiome_datasets == [] and multiome_size:
         detail = (
-            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'Measurement set {audit_link(path_to_text(value['@id']), value['@id'])} '
             f'has a `multiome_size` of {multiome_size}, but no `related_multiome_datasets`.'
         )
         yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
     elif related_multiome_datasets and multiome_size:
         if len(related_multiome_datasets) != multiome_size - 1:
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'Measurement set {audit_link(path_to_text(value['@id']), value['@id'])} '
                 f'has a `multiome_size` of {multiome_size}, but {len(related_multiome_datasets)} '
                 f'`related_multiome_datasets` when {multiome_size - 1} are expected.'
             )
@@ -60,14 +60,14 @@ def audit_related_multiome_datasets(value, system):
         samples_to_link = ', '.join(samples_to_link)
         if datasets_with_different_samples:
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'Measurement set {audit_link(path_to_text(value['@id']), value['@id'])} '
                 f'has associated `samples`: {samples_to_link} which are not the same associated `samples` '
                 f'of `related_multiome_datasets`: {datasets_with_different_samples}'
             )
             yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
         if datasets_with_different_multiome_sizes:
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'Measurement set {audit_link(path_to_text(value['@id']), value['@id'])} '
                 f'has a specified `multiome_size` of {multiome_size}, which does not match the '
                 f'`multiome_size` of `related_multiome_datasets`: {datasets_with_different_multiome_sizes}'
             )
@@ -88,7 +88,7 @@ def audit_unspecified_protocol(value, system):
     description = get_audit_description(audit_unspecified_protocol)
     if 'protocols' not in value:
         detail = (
-            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'Measurement set {audit_link(path_to_text(value['@id']), value['@id'])} '
             f'has no `protocols`.'
         )
         yield AuditFailure('missing protocol', f'{detail} {description}', level='NOT_COMPLIANT')
@@ -123,7 +123,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
             samples_to_link = [audit_link(path_to_text(bad_sample), bad_sample) for bad_sample in bad_samples]
             sample_detail = samples_to_link = ', '.join(samples_to_link)
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'Measurement set {audit_link(path_to_text(value['@id']), value['@id'])} is '
                 f'a CRISPR screen assay but has no specified `modifications` on its `samples`: {sample_detail}.'
             )
             yield AuditFailure('missing modification', f'{detail} {description}', level='NOT_COMPLIANT')
@@ -147,7 +147,7 @@ def audit_preferred_assay_title(value, system):
     preferred_assay_title = value.get('preferred_assay_title', '')
     if preferred_assay_title and preferred_assay_title not in assay_object.get('preferred_assay_titles', []):
         detail = (
-            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
+            f'Measurement set {audit_link(path_to_text(value['@id']), value['@id'])} has '
             f'`assay_term` {assay_term_name}, but `preferred_assay_title` {preferred_assay_title}.'
         )
         yield AuditFailure('inconsistent assays', f'{detail} {description}', level='WARNING')
@@ -204,8 +204,8 @@ def audit_missing_institutional_certification(value, system):
             nic_awards.append(nic_object.get('award', ''))
         if lab not in nic_labs or award not in nic_awards:
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
-                f'a sample {audit_link(path_to_text(s),s)} that lacks any `institutional_certificates` '
+                f'Measurement set {audit_link(path_to_text(value['@id']), value['@id'])} has '
+                f'a sample {audit_link(path_to_text(s), s)} that lacks any `institutional_certificates` '
                 f'issued to the lab that submitted this file set.'
             )
             yield AuditFailure('missing nih certification', f'{detail} {description}', level='NOT_COMPLIANT')
@@ -230,7 +230,7 @@ def audit_CRISPR_screen_missing_gRNA_sequencing_auxiliary_set(value, system):
                           for auxiliary_set in value.get('auxiliary_sets', '')]
         if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type') == 'gRNA sequencing']):
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'Measurement set {audit_link(path_to_text(value['@id']), value['@id'])} '
                 f'has no gRNA sequencing `auxiliary_sets`.'
             )
             yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')
@@ -253,7 +253,7 @@ def audit_Variant_FlowFISH_missing_variant_sequencing_auxiliary_set(value, syste
                           for auxiliary_set in value.get('auxiliary_sets', '')]
         if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type') == 'variant sequencing']):
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'Measurement set {audit_link(path_to_text(value['@id']), value['@id'])} '
                 f'has no variant sequencing `auxiliary_sets`.'
             )
             yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')
@@ -279,7 +279,7 @@ def audit_CRISPR_assay_missing_cell_sorting_auxiliary_set(value, system):
                           for auxiliary_set in value.get('auxiliary_sets', '')]
         if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type') == 'cell sorting']):
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'Measurement set {audit_link(path_to_text(value['@id']), value['@id'])} '
                 f'has no cell sorting `auxiliary_sets`.'
             )
             yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')
@@ -304,9 +304,9 @@ def audit_missing_auxiliary_sets(value, system):
         for file_set in sample_object.get('file_sets', []):
             if file_set.startswith('/auxiliary-sets/') and file_set not in auxiliary_sets:
                 detail = (
-                    f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} links '
-                    f'to sample {audit_link(path_to_text(sample),sample)} which links to auxiliary set '
-                    f'{audit_link(path_to_text(file_set),file_set)} but is not in its `auxiliary_sets`.'
+                    f'Measurement set {audit_link(path_to_text(value['@id']), value['@id'])} links '
+                    f'to sample {audit_link(path_to_text(sample), sample)} which links to auxiliary set '
+                    f'{audit_link(path_to_text(file_set), file_set)} but is not in its `auxiliary_sets`.'
                 )
                 yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='WARNING')
 
@@ -331,7 +331,7 @@ def audit_missing_auxiliary_set_MPRA(value, system):
                           for auxiliary_set in value.get('auxiliary_sets', [])]
         if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type', '') == 'quantification DNA barcode sequencing']):
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'Measurement set {audit_link(path_to_text(value['@id']), value['@id'])} '
                 f'has no quantification DNA barcode sequencing `auxiliary_sets`.'
             )
             yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')

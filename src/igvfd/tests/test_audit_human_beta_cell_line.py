@@ -23,7 +23,7 @@ def test_audit_required_fields_check_missing_fields():
         # Missing 'lab' and 'sample_name'
     }
     system = MockSystem('/human-beta-cell-line/test/')
-    
+
     failures = list(audit_required_fields_check(value, system))
     assert len(failures) == 1
     assert isinstance(failures[0], AuditFailure)
@@ -41,7 +41,7 @@ def test_audit_required_fields_check_all_present():
         'sample_name': 'EndoC-Bh1'
     }
     system = MockSystem('/human-beta-cell-line/test/')
-    
+
     failures = list(audit_required_fields_check(value, system))
     assert len(failures) == 0
 
@@ -54,7 +54,7 @@ def test_audit_dependent_fields_check_lot_id_missing_product_id():
         # Missing 'product_id'
     }
     system = MockSystem('/human-beta-cell-line/test/')
-    
+
     failures = list(audit_dependent_fields_check(value, system))
     assert len(failures) == 1
     assert isinstance(failures[0], AuditFailure)
@@ -71,7 +71,7 @@ def test_audit_dependent_fields_check_passage_number_missing_growth_medium():
         # Missing 'growth_medium'
     }
     system = MockSystem('/human-beta-cell-line/test/')
-    
+
     failures = list(audit_dependent_fields_check(value, system))
     assert len(failures) == 1
     assert isinstance(failures[0], AuditFailure)
@@ -88,7 +88,7 @@ def test_audit_status_release_timestamp_check_missing_timestamp():
         # Missing 'release_timestamp'
     }
     system = MockSystem('/human-beta-cell-line/test/')
-    
+
     failures = list(audit_status_release_timestamp_check(value, system))
     assert len(failures) == 1
     assert isinstance(failures[0], AuditFailure)
@@ -102,7 +102,7 @@ def test_audit_classifications_format_check_not_array():
         'classifications': 'cell line',  # Should be array
     }
     system = MockSystem('/human-beta-cell-line/test/')
-    
+
     failures = list(audit_classifications_format_check(value, system))
     assert len(failures) == 1
     assert isinstance(failures[0], AuditFailure)
@@ -116,7 +116,7 @@ def test_audit_classifications_format_check_correct_format():
         'classifications': ['cell line'],
     }
     system = MockSystem('/human-beta-cell-line/test/')
-    
+
     failures = list(audit_classifications_format_check(value, system))
     assert len(failures) == 0
 
@@ -128,7 +128,7 @@ def test_audit_sample_name_format_check_empty_name():
         'sample_name': '   ',  # Whitespace only
     }
     system = MockSystem('/human-beta-cell-line/test/')
-    
+
     failures = list(audit_sample_name_format_check(value, system))
     assert len(failures) == 1
     assert isinstance(failures[0], AuditFailure)
@@ -142,6 +142,6 @@ def test_audit_sample_name_format_check_valid_name():
         'sample_name': 'EndoC-Bh1',
     }
     system = MockSystem('/human-beta-cell-line/test/')
-    
+
     failures = list(audit_sample_name_format_check(value, system))
     assert len(failures) == 0
