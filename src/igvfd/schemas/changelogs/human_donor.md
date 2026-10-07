@@ -19,18 +19,18 @@
 * change diabetes_status from required to optional tier 3
 * change family_history_of_diabetes to boolean to string
 * change 'diabetes_duration' from number to string for range
-* add glucose lowering therapy 
+* add glucose lowering therapy
 
 ### Minor changes since schema version 14
 * change desired field to tier 2 and add tier 3 which are optional tiers are tier 1, tier 2, tier 3. Audits accordingly
-* add family_history_of_diabetes (boolean), family_history_of_diabetes_relationship (array string) 
+* add family_history_of_diabetes (boolean), family_history_of_diabetes_relationship (array string)
 * add enum to donnation type and glucose lowering therapy
 ### Minor changes since schema version 14
 * add desired field tiers are required, desired and optional. Audits accordingly
-* update description to clarify that certain fields are marked as 'required', others as 'desired', and all remaining fields are considered optional. 
+* update description to clarify that certain fields are marked as 'required', others as 'desired', and all remaining fields are considered optional.
 ### Minor changes since schema version 14
 * add RRID: pattern `^RRID:[A-Z]{4}\d{8}$`
- 
+
 ### Schema version 14
 
 *Update schema to include new require fields and additional properties**:
@@ -59,7 +59,7 @@
     * `hospital_stay`: A `number` field.
   * Change `ethnicities` field title from `"Ethnicity"` to `"Self Reported Ethnicity"`.
   * Update `schema_version` from `"13"` to `"14"`.
-  
+
 ### Minor changes since schema version 13
 
 * Update calculation of `summary`.

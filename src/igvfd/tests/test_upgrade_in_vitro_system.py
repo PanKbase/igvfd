@@ -140,8 +140,8 @@ def test_in_vitro_system_upgrade_17_18(
     assert value['notes'] == (
         f'The following properties were removed in an upgrade because '
         f'they are invalid for a "cell line" in vitro system: '
-        f'cell_fate_change_treatments: [\'{treatment_protein["@id"]}\']; '
-        f'targeted_sample_term: {sample_term_endothelial_cell["@id"]}; '
+        f'cell_fate_change_treatments: [\'{treatment_protein['@id']}\']; '
+        f'targeted_sample_term: {sample_term_endothelial_cell['@id']}; '
         f'time_post_change: 10; time_post_change_units: day.'
     )
 

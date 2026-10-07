@@ -82,28 +82,58 @@
         },
         "de_comparison_class": {
             "comment": "DE fields are only valid on differential expression analysis sets.",
-            "required": ["annotation_type"],
-            "properties": {"annotation_type": {"const": "differential_expression"}}
+            "required": [
+                "annotation_type"
+            ],
+            "properties": {
+                "annotation_type": {
+                    "const": "differential_expression"
+                }
+            }
         },
         "de_contrast": {
             "comment": "de_contrast is only valid on DE analysis sets and is mutually exclusive with de_trait.",
-            "required": ["annotation_type"],
-            "properties": {"annotation_type": {"const": "differential_expression"}},
-            "not": {"required": ["de_trait"]}
+            "required": [
+                "annotation_type"
+            ],
+            "properties": {
+                "annotation_type": {
+                    "const": "differential_expression"
+                }
+            },
+            "not": {
+                "required": [
+                    "de_trait"
+                ]
+            }
         },
         "de_trait": {
             "comment": "de_trait is only valid on DE analysis sets.",
-            "required": ["annotation_type"],
-            "properties": {"annotation_type": {"const": "differential_expression"}}
+            "required": [
+                "annotation_type"
+            ],
+            "properties": {
+                "annotation_type": {
+                    "const": "differential_expression"
+                }
+            }
         },
         "de_trait_description": {
             "comment": "de_trait_description requires de_trait.",
-            "required": ["de_trait"]
+            "required": [
+                "de_trait"
+            ]
         },
         "de_method": {
             "comment": "de_method is only valid on DE analysis sets.",
-            "required": ["annotation_type"],
-            "properties": {"annotation_type": {"const": "differential_expression"}}
+            "required": [
+                "annotation_type"
+            ],
+            "properties": {
+                "annotation_type": {
+                    "const": "differential_expression"
+                }
+            }
         }
     },
     "properties": {
@@ -118,7 +148,7 @@
             "comment": "File set type describes the content of the analysis set. Intermediate analyses are processed data which are not the final results of an experiment. Principal analyses are processed data which are the final results of an experiment.A resource analysis is a resource used to perform a principal analysis such as a donor x gene count matrix.",
             "enum": [
                 "intermediate analysis",
-		"resource analysis",
+                "resource analysis",
                 "principal analysis"
             ],
             "submissionExample": {

@@ -81,7 +81,7 @@
                     },
                     "relationship_type": {
                         "title": "Relationship Type",
-                        "description": "A descriptive term for the related donor\u2019s relationship to this donor.",
+                        "description": "A descriptive term for the related donor’s relationship to this donor.",
                         "comment": "List of enums comes from http://genealogy-quest.com/glossary-terms/relationship-terms/.",
                         "type": "string",
                         "enum": [
@@ -364,7 +364,7 @@
             "type": "string",
             "enum": [
                 "Stage 1: two or more autoantibodies, normal glucose metabolism level",
-                "Stage 2: two or more autoantibodies, dysglycemia (e.g., HbA1c \u2265 5.7%)",
+                "Stage 2: two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)",
                 "Stage 3: one or more autoantibodies and diagnostic hyperglycemia or T1D diagnosis",
                 "No sufficient information to derive",
                 "Conflicting diabetes evidence",
@@ -503,7 +503,7 @@
         },
         "cause_of_death": {
             "title": "Cause of Death",
-            "description": "The primary medical condition or event that led to the patient\u2019s death",
+            "description": "The primary medical condition or event that led to the patient’s death",
             "type": "string",
             "submissionExample": {
                 "appscript": "unspecified",
@@ -764,8 +764,8 @@
                 "appscript": [
                     {
                         "method": "GRS2",
-                        "overall_score": 10.600693414435800,
-                        "normalized_score": 0.5086109173062790,
+                        "overall_score": 10.6006934144358,
+                        "normalized_score": 0.508610917306279,
                         "sub_scores": [
                             {
                                 "label": "hla_drdq",
@@ -773,29 +773,29 @@
                             },
                             {
                                 "label": "hla_class_1",
-                                "value": 1.929245605253620
+                                "value": 1.92924560525362
                             },
                             {
                                 "label": "hla_class_2",
-                                "value": 5.1315198387900500
+                                "value": 5.13151983879005
                             },
                             {
                                 "label": "non_hla",
-                                "value": 2.4751062053921000
+                                "value": 2.4751062053921
                             }
                         ]
                     },
                     {
                         "method": "T2D_GRS_Mahajan",
-                        "overall_score": 21.29355837711160,
-                        "normalized_score": 0.5136052930104470
+                        "overall_score": 21.2935583771116,
+                        "normalized_score": 0.513605293010447
                     }
                 ],
                 "igvf_utils": [
                     {
                         "method": "GRS2",
-                        "overall_score": 10.600693414435800,
-                        "normalized_score": 0.5086109173062790,
+                        "overall_score": 10.6006934144358,
+                        "normalized_score": 0.508610917306279,
                         "sub_scores": [
                             {
                                 "label": "hla_drdq",
@@ -803,22 +803,22 @@
                             },
                             {
                                 "label": "hla_class_1",
-                                "value": 1.929245605253620
+                                "value": 1.92924560525362
                             },
                             {
                                 "label": "hla_class_2",
-                                "value": 5.1315198387900500
+                                "value": 5.13151983879005
                             },
                             {
                                 "label": "non_hla",
-                                "value": 2.4751062053921000
+                                "value": 2.4751062053921
                             }
                         ]
                     },
                     {
                         "method": "T2D_GRS_Mahajan",
-                        "overall_score": 21.29355837711160,
-                        "normalized_score": 0.5136052930104470
+                        "overall_score": 21.2935583771116,
+                        "normalized_score": 0.513605293010447
                     }
                 ]
             }

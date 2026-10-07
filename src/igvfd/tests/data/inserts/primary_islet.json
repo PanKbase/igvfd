@@ -4,18 +4,31 @@
         "accession": "IGVFSMISLT0001",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": ["igvf:primary_islet_positive"],
+        "aliases": [
+            "igvf:primary_islet_positive"
+        ],
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
-        "donors": ["igvf:calc_donor_positive"],
-        "sources": ["/labs/j-michael-cherry/"],
-        "sample_terms": ["/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"],
+        "donors": [
+            "igvf:calc_donor_positive"
+        ],
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
+        "sample_terms": [
+            "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"
+        ],
         "isolation_center": "Human Pancreas Analysis Program (HPAP)",
         "resource": "Human Pancreas Analysis Program (HPAP)",
         "organ_source": "deceased",
         "prep_viability": 92,
-        "purity": ["80", "85.5"],
-        "purity_assay": ["DTZ"],
+        "purity": [
+            "80",
+            "85.5"
+        ],
+        "purity_assay": [
+            "DTZ"
+        ],
         "post_shipment_viability_quantitative": 88,
         "post_shipment_islet_viability": 70,
         "islet_function_available": true,
@@ -27,16 +40,28 @@
         "accession": "IGVFSMISLT0002",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": ["igvf:primary_islet_negative"],
+        "aliases": [
+            "igvf:primary_islet_negative"
+        ],
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
-        "donors": ["igvf:calc_donor_negative"],
-        "sources": ["/labs/j-michael-cherry/"],
-        "sample_terms": ["/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"],
+        "donors": [
+            "igvf:calc_donor_negative"
+        ],
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
+        "sample_terms": [
+            "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"
+        ],
         "isolation_center": "Integrated Islet Distribution Program (IIDP)",
         "organ_source": "unknown",
-        "purity": ["n/a"],
-        "purity_assay": ["unknown"],
+        "purity": [
+            "n/a"
+        ],
+        "purity_assay": [
+            "unknown"
+        ],
         "islet_function_available": false,
         "virtual": false
     }

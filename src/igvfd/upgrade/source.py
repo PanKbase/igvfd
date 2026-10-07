@@ -1,5 +1,6 @@
 from snovault import upgrade_step
 
+
 @upgrade_step('source', '', '1')
 def source_empty_1(value, system):
     # Handle items with empty schema version
