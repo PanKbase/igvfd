@@ -106,7 +106,6 @@ def human_beta_cell_line():
                 'category': 'Sample',
                 'optional': True,
             },
-            # Optional — Provenance
             'sources.title': {
                 'title': 'Sources',
                 'category': 'Provenance',

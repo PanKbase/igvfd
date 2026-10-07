@@ -85,7 +85,6 @@ def primary_cell():
                 'category': 'Sample',
                 'optional': True,
             },
-            # Optional — Provenance
             'sources.title': {
                 'title': 'Sources',
                 'category': 'Provenance',

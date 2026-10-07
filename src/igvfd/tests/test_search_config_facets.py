@@ -56,16 +56,20 @@ def test_human_donor_default_facets(registry):
     assert 'type' not in facets
 
 
-def test_analysis_set_defaults_omit_de_fields(registry):
+def test_analysis_set_defaults_include_de_fields(registry):
     facets = _facets(registry, 'AnalysisSet')
     for field in ('cell_type', 'de_comparison_class', 'de_method'):
-        assert field not in facets
+        assert field in facets
+        assert not facets[field].get('optional')
     defaults = [f for f, c in facets.items() if not c.get('optional')]
     assert defaults == [
         'annotation_category',
         'annotation_type',
         'file_set_type',
         'assay_titles',
+        'cell_type',
+        'de_comparison_class',
+        'de_method',
         'samples.sample_terms.term_name',
         'files.file_format',
         'status',
