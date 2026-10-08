@@ -36,7 +36,7 @@ def treatment_3_4(value, system):
         value['depletion'] = False
         if 'notes' in value:
             value['notes'] = f'{value.get(
-                "notes")}. This treatment does not have award, lab, depletion specified previously, it was upgraded to have Cherry lab/award and depletion=False.'
+                "notes")}. This treatment does not have award, lab, depletion specified previously, it was upgraded to have Cherry lab/award and depletion = False.'
         else:
             value['notes'] = 'This treatment does not have award, lab, depletion specified previously, it was upgraded to have Cherry lab/award and depletion=False.'
     return
