@@ -101,3 +101,7 @@ $ echo '{"index_name": "", "item_type": ""}' > src/igvfd/mappings/new_type.json
 ```
 
 Once the JSON template exists the correct values will be filled in by the `generate-opensearch-mappings.sh` script.
+
+## Branch and deploy flow
+
+See [CONTRIBUTING.md](CONTRIBUTING.md): feature branches → PR to `dev` → staging verify → promote `dev` → `main` (production).
