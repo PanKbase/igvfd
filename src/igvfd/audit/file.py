@@ -73,6 +73,38 @@ def audit_file_format_specifications(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+
+@audit_checker('File', frame='object')
+def audit_validated_file_missing_download_location(value, system):
+    '''
+    [
+        {
+            "audit_description": "Validated files are expected to have an external S3 sheet or a submitted file_url.",
+            "audit_category": "missing download location",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    if value.get('upload_status') != 'validated':
+        return
+    # frame=object exposes calculated s3_uri when an external S3 sheet exists.
+    has_s3 = bool(value.get('s3_uri'))
+    has_file_url = bool(value.get('file_url'))
+    if has_s3 or has_file_url:
+        return
+    description = get_audit_description(audit_validated_file_missing_download_location)
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    detail = (
+        f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+        f'has `upload_status` validated but neither an external S3 sheet nor `file_url`.'
+    )
+    yield AuditFailure(
+        'missing download location',
+        f'{detail} {description}',
+        level='ERROR',
+    )
+
+
 @audit_checker('ModelFile', frame='object')
 @audit_checker('SequenceFile', frame='object')
 def audit_external_identifiers(value, system):
