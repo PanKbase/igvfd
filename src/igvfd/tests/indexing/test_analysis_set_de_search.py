@@ -6,7 +6,7 @@ pytestmark = [pytest.mark.indexing]
 # Workbook/fixture setup fails (UUID conflicts / missing igvf:treated_tissue)
 # before assertions run. run=False so CI stays green (fixture ERRORs cannot be
 # caught by a normal xfail). Tracked at:
-# https://github.com/PanKbase/igvfd/issues/6 
+# https://github.com/PanKbase/igvfd/issues/6
 # Remove this mark when that issue is fixed.
 pytestmark.append(
     pytest.mark.xfail(
