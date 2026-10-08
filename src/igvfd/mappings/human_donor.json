@@ -1,6 +1,6 @@
 {
-    "hash": "9fc7a4b49d820e0b00be730b0cbfd432",
-    "index_name": "human_donor_9fc7a4b4",
+    "hash": "0a14e46e475848471e0e5a0fb1f451fe",
+    "index_name": "human_donor_0a14e46e",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -148,6 +148,15 @@
                         "copy_to": "_exact",
                         "type": "keyword"
                     },
+                    "aab_count": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "long"
+                    },
                     "aab_gada": {
                         "fields": {
                             "raw": {
@@ -211,6 +220,27 @@
                         "store": true,
                         "type": "float"
                     },
+                    "aab_positive": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "aab_summary": {
+                        "type": "keyword"
+                    },
+                    "aab_tested": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "aab_znt8": {
                         "fields": {
                             "raw": {
@@ -243,6 +273,9 @@
                         },
                         "store": true,
                         "type": "float"
+                    },
+                    "age_group": {
+                        "type": "keyword"
                     },
                     "aliases": {
                         "type": "keyword"
@@ -321,6 +354,9 @@
                         },
                         "type": "object"
                     },
+                    "biosamples": {
+                        "type": "keyword"
+                    },
                     "bmi": {
                         "fields": {
                             "raw": {
@@ -365,6 +401,15 @@
                         },
                         "type": "object"
                     },
+                    "data_available_datasets": {
+                        "type": "keyword"
+                    },
+                    "data_available_keys": {
+                        "type": "keyword"
+                    },
+                    "data_available_tissues": {
+                        "type": "keyword"
+                    },
                     "dbxrefs": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
@@ -386,6 +431,9 @@
                         "type": "keyword"
                     },
                     "documents": {
+                        "type": "keyword"
+                    },
+                    "dominant_genetic_ancestry": {
                         "type": "keyword"
                     },
                     "donation_type": {
@@ -421,8 +469,69 @@
                         },
                         "type": "object"
                     },
+                    "genetic_risk_score": {
+                        "properties": {
+                            "method": {
+                                "type": "keyword"
+                            },
+                            "normalized_score": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "overall_score": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "sub_scores": {
+                                "properties": {
+                                    "label": {
+                                        "type": "keyword"
+                                    },
+                                    "value": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    },
                     "genetic_sex": {
                         "type": "keyword"
+                    },
+                    "grs2_normalized": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "grs2_score": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
                     },
                     "hba1c": {
                         "fields": {
@@ -432,6 +541,18 @@
                         },
                         "store": true,
                         "type": "float"
+                    },
+                    "height": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "hla_status": {
+                        "type": "keyword"
                     },
                     "hla_typing": {
                         "type": "keyword"
@@ -508,6 +629,15 @@
                         },
                         "type": "object"
                     },
+                    "label_hba1c_discordant": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "living_donor": {
                         "fields": {
                             "raw": {
@@ -530,6 +660,15 @@
                         "type": "keyword"
                     },
                     "pancreas_tissue_available": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "pediatric": {
                         "fields": {
                             "raw": {
                                 "type": "keyword"
@@ -688,6 +827,15 @@
                                     "@type": {
                                         "type": "keyword"
                                     },
+                                    "aab_count": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
                                     "aab_gada": {
                                         "fields": {
                                             "raw": {
@@ -751,6 +899,27 @@
                                         "store": true,
                                         "type": "float"
                                     },
+                                    "aab_positive": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
+                                    "aab_summary": {
+                                        "type": "keyword"
+                                    },
+                                    "aab_tested": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
                                     "aab_znt8": {
                                         "fields": {
                                             "raw": {
@@ -785,6 +954,9 @@
                                         "store": true,
                                         "type": "float"
                                     },
+                                    "age_group": {
+                                        "type": "keyword"
+                                    },
                                     "aliases": {
                                         "type": "keyword"
                                     },
@@ -792,6 +964,9 @@
                                         "type": "keyword"
                                     },
                                     "award": {
+                                        "type": "keyword"
+                                    },
+                                    "biosamples": {
                                         "type": "keyword"
                                     },
                                     "bmi": {
@@ -838,6 +1013,15 @@
                                         },
                                         "type": "object"
                                     },
+                                    "data_available_datasets": {
+                                        "type": "keyword"
+                                    },
+                                    "data_available_keys": {
+                                        "type": "keyword"
+                                    },
+                                    "data_available_tissues": {
+                                        "type": "keyword"
+                                    },
                                     "dbxrefs": {
                                         "type": "keyword"
                                     },
@@ -857,6 +1041,9 @@
                                         "type": "keyword"
                                     },
                                     "documents": {
+                                        "type": "keyword"
+                                    },
+                                    "dominant_genetic_ancestry": {
                                         "type": "keyword"
                                     },
                                     "donation_type": {
@@ -891,8 +1078,69 @@
                                         },
                                         "type": "object"
                                     },
+                                    "genetic_risk_score": {
+                                        "properties": {
+                                            "method": {
+                                                "type": "keyword"
+                                            },
+                                            "normalized_score": {
+                                                "fields": {
+                                                    "raw": {
+                                                        "type": "keyword"
+                                                    }
+                                                },
+                                                "store": true,
+                                                "type": "float"
+                                            },
+                                            "overall_score": {
+                                                "fields": {
+                                                    "raw": {
+                                                        "type": "keyword"
+                                                    }
+                                                },
+                                                "store": true,
+                                                "type": "float"
+                                            },
+                                            "sub_scores": {
+                                                "properties": {
+                                                    "label": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "value": {
+                                                        "fields": {
+                                                            "raw": {
+                                                                "type": "keyword"
+                                                            }
+                                                        },
+                                                        "store": true,
+                                                        "type": "float"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
                                     "genetic_sex": {
                                         "type": "keyword"
+                                    },
+                                    "grs2_normalized": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "grs2_score": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
                                     },
                                     "hba1c": {
                                         "fields": {
@@ -902,6 +1150,18 @@
                                         },
                                         "store": true,
                                         "type": "float"
+                                    },
+                                    "height": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "hla_status": {
+                                        "type": "keyword"
                                     },
                                     "hla_typing": {
                                         "type": "keyword"
@@ -920,6 +1180,15 @@
                                     },
                                     "lab": {
                                         "type": "keyword"
+                                    },
+                                    "label_hba1c_discordant": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
                                     },
                                     "living_donor": {
                                         "fields": {
@@ -943,6 +1212,15 @@
                                         "type": "keyword"
                                     },
                                     "pancreas_tissue_available": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
+                                    "pediatric": {
                                         "fields": {
                                             "raw": {
                                                 "type": "keyword"
@@ -983,6 +1261,15 @@
                                     "schema_version": {
                                         "type": "keyword"
                                     },
+                                    "sex_discordant": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
                                     "status": {
                                         "type": "keyword"
                                     },
@@ -998,8 +1285,35 @@
                                     "t1d_stage": {
                                         "type": "keyword"
                                     },
+                                    "t2d_grs_normalized": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "t2d_grs_score": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    },
                                     "taxa": {
                                         "type": "keyword"
+                                    },
+                                    "tier1_complete": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
                                     },
                                     "url": {
                                         "type": "keyword"
@@ -1015,6 +1329,15 @@
                                         },
                                         "store": true,
                                         "type": "boolean"
+                                    },
+                                    "weight": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
                                     }
                                 },
                                 "type": "object"
@@ -1036,6 +1359,15 @@
                     },
                     "schema_version": {
                         "type": "keyword"
+                    },
+                    "sex_discordant": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "status": {
                         "type": "keyword"
@@ -1118,9 +1450,36 @@
                     "t1d_stage": {
                         "type": "keyword"
                     },
+                    "t2d_grs_normalized": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "t2d_grs_score": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
                     "taxa": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
+                    },
+                    "tier1_complete": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "url": {
                         "type": "keyword"
@@ -1136,6 +1495,15 @@
                         },
                         "store": true,
                         "type": "boolean"
+                    },
+                    "weight": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
                     }
                 },
                 "type": "object"

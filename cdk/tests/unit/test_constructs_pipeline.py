@@ -262,6 +262,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
     from aws_cdk import Environment
     from aws_cdk.aws_secretsmanager import Secret
     from aws_cdk.aws_sns import Topic
+    from aws_cdk.aws_chatbot import SlackChannelConfiguration
     from infrastructure.constructs.pipeline import ContinuousDeploymentPipeline
     from infrastructure.constructs.pipeline import ContinuousDeploymentPipelineProps
     from infrastructure.constructs.existing import igvf_dev
@@ -273,6 +274,13 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
     existing_resources.docker_hub_credentials.secret = Secret(
         stack,
         'TestSecret',
+    )
+    existing_resources.notification.encode_dcc_chatbot = SlackChannelConfiguration(
+        stack,
+        'TestPipelineChatbot',
+        slack_channel_configuration_name='some-config-name',
+        slack_channel_id='some-channel-id',
+        slack_workspace_id='some-workspace-id',
     )
     existing_resources.notification.alarm_notification_topic = Topic.from_topic_arn(
         stack,
@@ -986,7 +994,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
     )
     template.resource_count_is(
         'AWS::Chatbot::SlackChannelConfiguration',
-        0
+        1
     )
 
 
@@ -994,6 +1002,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
     from aws_cdk import Stack
     from aws_cdk.aws_secretsmanager import Secret
     from aws_cdk.aws_sns import Topic
+    from aws_cdk.aws_chatbot import SlackChannelConfiguration
     from infrastructure.config import Config
     from infrastructure.constructs.pipeline import ProductionDeploymentPipeline
     from infrastructure.constructs.pipeline import ProductionDeploymentPipelineProps
@@ -1006,6 +1015,13 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
     existing_resources.docker_hub_credentials.secret = Secret(
         stack,
         'TestSecret',
+    )
+    existing_resources.notification.encode_dcc_chatbot = SlackChannelConfiguration(
+        stack,
+        'TestPipelineChatbot',
+        slack_channel_configuration_name='some-config-name',
+        slack_channel_id='some-channel-id',
+        slack_workspace_id='some-workspace-id',
     )
     existing_resources.notification.alarm_notification_topic = Topic.from_topic_arn(
         stack,

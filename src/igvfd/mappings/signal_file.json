@@ -1,6 +1,6 @@
 {
-    "hash": "a9bc72b495f1938875bef4f8ce04bbff",
-    "index_name": "signal_file_a9bc72b4",
+    "hash": "c8968d8bc1bc947e8287446fcff9683c",
+    "index_name": "signal_file_c8968d8b",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -382,6 +382,9 @@
                         "store": true,
                         "type": "boolean"
                     },
+                    "note": {
+                        "type": "keyword"
+                    },
                     "notes": {
                         "type": "text"
                     },
@@ -503,6 +506,9 @@
                         "type": "keyword"
                     },
                     "validation_error_detail": {
+                        "type": "keyword"
+                    },
+                    "version": {
                         "type": "keyword"
                     }
                 },

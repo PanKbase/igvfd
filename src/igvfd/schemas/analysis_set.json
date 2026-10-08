@@ -79,6 +79,31 @@
                     }
                 }
             ]
+        },
+        "de_comparison_class": {
+            "comment": "DE fields are only valid on differential expression analysis sets.",
+            "required": ["annotation_type"],
+            "properties": {"annotation_type": {"const": "differential_expression"}}
+        },
+        "de_contrast": {
+            "comment": "de_contrast is only valid on DE analysis sets and is mutually exclusive with de_trait.",
+            "required": ["annotation_type"],
+            "properties": {"annotation_type": {"const": "differential_expression"}},
+            "not": {"required": ["de_trait"]}
+        },
+        "de_trait": {
+            "comment": "de_trait is only valid on DE analysis sets.",
+            "required": ["annotation_type"],
+            "properties": {"annotation_type": {"const": "differential_expression"}}
+        },
+        "de_trait_description": {
+            "comment": "de_trait_description requires de_trait.",
+            "required": ["de_trait"]
+        },
+        "de_method": {
+            "comment": "de_method is only valid on DE analysis sets.",
+            "required": ["annotation_type"],
+            "properties": {"annotation_type": {"const": "differential_expression"}}
         }
     },
     "properties": {
@@ -179,12 +204,156 @@
                 "appscript": "305 pg/IEQ",
                 "igvf_utils": "305 pg/IEQ"
             }
+        },
+        "annotation_type": {
+            "title": "Annotation Type",
+            "description": "The type of analysis product represented by this analysis set.",
+            "comment": "Determines the calculated annotation_category. For reference_atlas, annotation_category also depends on assay title (scRNA-seq vs snATAC-seq).",
+            "type": "string",
+            "enum": [
+                "sample_bulk_rnaseq",
+                "sample_scrnaseq",
+                "gene_expression_matrix",
+                "reference_atlas",
+                "differential_expression",
+                "sample_snatacseq",
+                "chromatin_accessibility_peaks",
+                "chromatin_signal_track",
+                "cre_target_links",
+                "islet_function_perifusion",
+                "metadata_table",
+                "qtl_colocalization",
+                "qtl_summary_statistics",
+                "credible_set_ld",
+                "unclear"
+            ],
+            "enum_titles": {
+                "sample_bulk_rnaseq": "Per-sample processed bulk RNA-seq",
+                "sample_scrnaseq": "Per-sample processed islet scRNA-seq",
+                "gene_expression_matrix": "Pseudobulk counts per cell type, or bulk TPM matrix",
+                "reference_atlas": "Cell type reference map (scRNA-seq or snATAC-seq)",
+                "differential_expression": "Differential expression results by cell type",
+                "sample_snatacseq": "Per-sample processed snATAC-seq",
+                "chromatin_accessibility_peaks": "Peak calls and read counts per cell type, or unified peaks",
+                "chromatin_signal_track": "Accessibility signal track per cell type",
+                "cre_target_links": "cRE-to-gene links predicted by ABC, per cell type",
+                "islet_function_perifusion": "Per-donor dynamic perifusion analysis",
+                "metadata_table": "Donor or islet biosample metadata table",
+                "qtl_colocalization": "GWAS and eQTL colocalization results",
+                "qtl_summary_statistics": "QTL variant summary statistics",
+                "credible_set_ld": "LD among SNPs within a credible set",
+                "unclear": "Not classifiable from description and assay title"
+            },
+            "submissionExample": {
+                "appscript": "sample_scrnaseq",
+                "igvf_utils": "sample_scrnaseq"
+            }
+        },
+        "cell_type": {
+            "title": "Cell Type",
+            "description": "Cell type the analysis was performed in. Usable by any annotation_type with per-cell-type results (DE, peaks, signal tracks, cRE-target links).",
+            "comment": "Consider replacing with a linkTo SampleTerm (Cell Ontology) once matching terms exist in PanKbase.",
+            "type": "string",
+            "enum": [
+                "acinar",
+                "active stellate",
+                "alpha",
+                "beta",
+                "cycling alpha",
+                "delta",
+                "ductal",
+                "MUC5B+ ductal",
+                "endothelial",
+                "gamma/epsilon",
+                "immune",
+                "quiescent stellate"
+            ],
+            "submissionExample": {
+                "appscript": "beta",
+                "igvf_utils": "beta"
+            }
+        },
+        "de_comparison_class": {
+            "title": "DE Comparison Class",
+            "description": "The kind of variable a differential expression analysis tests.",
+            "type": "string",
+            "enum": [
+                "islet_function_trait",
+                "clinical_trait",
+                "disease_status",
+                "treatment",
+                "autoantibody",
+                "cell_type_markers"
+            ],
+            "enum_titles": {
+                "islet_function_trait": "Association with a perifusion secretion or content measure",
+                "clinical_trait": "Association with a donor clinical variable (age, BMI, sex, HbA1c, C-peptide)",
+                "disease_status": "Comparison or association by diagnosis group (ND, prediabetes, T1D, T2D)",
+                "treatment": "Treated vs control samples",
+                "autoantibody": "Autoantibody-positive vs negative, or association with autoantibody presence",
+                "cell_type_markers": "One cell type vs all other cells"
+            },
+            "submissionExample": {
+                "appscript": "disease_status",
+                "igvf_utils": "disease_status"
+            }
+        },
+        "de_contrast": {
+            "title": "DE Contrast",
+            "description": "The two groups compared, written as 'A vs B' in the direction of the reported fold change. Use for explicit group comparisons; use de_trait for association tests.",
+            "type": "string",
+            "pattern": "^\\S.* vs \\S.*$",
+            "submissionExample": {
+                "appscript": "T1D vs control",
+                "igvf_utils": "T1D vs control"
+            }
+        },
+        "de_trait": {
+            "title": "DE Trait",
+            "description": "The variable tested for association with gene expression (clinical variable, disease status, autoantibody presence, or islet function trait code).",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "submissionExample": {
+                "appscript": "INSIEQ G 167 phase 2 AUC",
+                "igvf_utils": "INSIEQ G 167 phase 2 AUC"
+            }
+        },
+        "de_trait_description": {
+            "title": "DE Trait Description",
+            "description": "Plain-language description of de_trait, e.g. decoding an islet function trait code.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "submissionExample": {
+                "appscript": "Insulin secretion per IEQ, 16.7 mM glucose, second-phase AUC",
+                "igvf_utils": "Insulin secretion per IEQ, 16.7 mM glucose, second-phase AUC"
+            }
+        },
+        "de_method": {
+            "title": "DE Method",
+            "description": "Statistical design of the differential expression analysis.",
+            "type": "string",
+            "enum": [
+                "pseudobulk_group_comparison",
+                "association",
+                "one_vs_rest",
+                "unspecified"
+            ],
+            "submissionExample": {
+                "appscript": "association",
+                "igvf_utils": "association"
+            }
         }
     },
     "fuzzy_searchable_fields": [
         "@type",
+        "annotation_type",
+        "annotation_category",
         "assay_titles",
+        "cell_type",
         "collections",
+        "de_contrast",
+        "de_trait",
+        "de_trait_description",
         "description",
         "lab.title",
         "files.content_type",

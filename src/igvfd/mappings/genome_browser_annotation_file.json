@@ -1,6 +1,6 @@
 {
-    "hash": "3f2834b619f4fc9d9ae576a4762c29c9",
-    "index_name": "genome_browser_annotation_file_3f2834b6",
+    "hash": "a24ec0e5530bff12456b59dde54d1f31",
+    "index_name": "genome_browser_annotation_file_a24ec0e5",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -364,6 +364,9 @@
                     "md5sum": {
                         "type": "keyword"
                     },
+                    "note": {
+                        "type": "keyword"
+                    },
                     "notes": {
                         "type": "text"
                     },
@@ -476,6 +479,9 @@
                         "type": "keyword"
                     },
                     "validation_error_detail": {
+                        "type": "keyword"
+                    },
+                    "version": {
                         "type": "keyword"
                     }
                 },

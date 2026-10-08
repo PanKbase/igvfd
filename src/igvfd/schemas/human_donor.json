@@ -377,8 +377,8 @@
             }
         },
         "derived_diabetes_status": {
-            "title": "Derived diabetes status",
-            "description": "Derived diabetes status.Diabetes is diagnosed at an A1C of greater than or equal to 6.5%. https://diabetes.org/about-diabetes/diagnosis#:~:text=and%20cardiovascular%20disease.-,Symptoms,of%20140",
+            "title": "HbA1c-derived diabetes status",
+            "description": "HbA1c-derived diabetes status.Diabetes is diagnosed at an A1C of greater than or equal to 6.5%. https://diabetes.org/about-diabetes/diagnosis#:~:text=and%20cardiovascular%20disease.-,Symptoms,of%20140",
             "type": "string",
             "enum": [
                 "Normal",

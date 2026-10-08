@@ -16,7 +16,8 @@
             "igvf:treated_tissue"
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
-        "file_set_type": "intermediate analysis"
+        "file_set_type": "intermediate analysis",
+        "annotation_type": "sample_scrnaseq"
     },
     {
         "aliases": [
@@ -39,8 +40,87 @@
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set_type": "principal analysis",
+        "annotation_type": "gene_expression_matrix",
         "collections": [
             "MPRAbase"
         ]
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_de_contrast"
+        ],
+        "description": "Differential expression with disease status contrast.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "samples": [
+            "igvf-dacc:in_vitro_system_cell_line"
+        ],
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set_type": "intermediate analysis",
+        "annotation_type": "differential_expression",
+        "cell_type": "beta",
+        "de_comparison_class": "disease_status",
+        "de_contrast": "T1D vs control",
+        "de_method": "pseudobulk_group_comparison"
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_de_trait"
+        ],
+        "description": "Differential expression with islet function trait association.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "uuid": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+        "samples": [
+            "igvf-dacc:in_vitro_system_cell_line"
+        ],
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set_type": "intermediate analysis",
+        "annotation_type": "differential_expression",
+        "cell_type": "alpha",
+        "de_comparison_class": "islet_function_trait",
+        "de_trait": "INSIEQ G 167 phase 2 AUC",
+        "de_trait_description": "Insulin secretion per IEQ, 16.7 mM glucose, second-phase AUC",
+        "de_method": "association"
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_de_cell_type_markers"
+        ],
+        "description": "Differential expression cell type markers one vs rest.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "uuid": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+        "samples": [
+            "igvf-dacc:in_vitro_system_cell_line"
+        ],
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set_type": "intermediate analysis",
+        "annotation_type": "differential_expression",
+        "cell_type": "delta",
+        "de_comparison_class": "cell_type_markers",
+        "de_contrast": "delta vs all other cells",
+        "de_method": "one_vs_rest"
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_peaks_cell_type"
+        ],
+        "description": "Chromatin accessibility peaks with cell type only.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "uuid": "d4e5f6a7-b8c9-0123-def0-234567890123",
+        "samples": [
+            "igvf-dacc:in_vitro_system_cell_line"
+        ],
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set_type": "intermediate analysis",
+        "annotation_type": "chromatin_accessibility_peaks",
+        "cell_type": "beta"
     }
 ]

@@ -1,6 +1,6 @@
 {
-    "hash": "bc7298e24fb0221249f7d272a7a6a252",
-    "index_name": "matrix_file_bc7298e2",
+    "hash": "b1ac7959f06e193802708e6c55dbd21f",
+    "index_name": "matrix_file_b1ac7959",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -367,6 +367,9 @@
                     "md5sum": {
                         "type": "keyword"
                     },
+                    "note": {
+                        "type": "keyword"
+                    },
                     "notes": {
                         "type": "text"
                     },
@@ -479,6 +482,9 @@
                         "type": "keyword"
                     },
                     "validation_error_detail": {
+                        "type": "keyword"
+                    },
+                    "version": {
                         "type": "keyword"
                     }
                 },

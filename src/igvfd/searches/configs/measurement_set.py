@@ -7,118 +7,101 @@ from snovault.elasticsearch.searches.configs import search_config
 def measurement_set():
     return {
         'facets': {
-            'donors.taxa': {
-                'title': 'Taxa',
+            # Defaults (Donor Diabetes Status omitted until donor embed expands)
+            'assay_term.term_name': {
+                'title': 'Assay',
+                'category': 'Assay',
+                'description': 'Assay ontology term for the measurement set.',
             },
-            'samples.classifications': {
-                'title': 'Classifications',
+            'preferred_assay_title': {
+                'title': 'Preferred Assay Title',
+                'category': 'Assay',
+                'description': 'Preferred assay title for the measurement set.',
             },
             'samples.sample_terms.term_name': {
                 'title': 'Sample Term',
-            },
-            'samples.targeted_sample_term.term_name': {
-                'title': 'Targeted Sample Term',
-            },
-            'samples.disease_terms.term_name': {
-                'title': 'Disease Term',
-            },
-            'assay_term.term_name': {
-                'title': 'Assay Term'
-            },
-            'preferred_assay_title': {
-                'title': 'Preferred Assay Title'
-            },
-            'samples.modifications.modality': {
-                'title': 'CRISPR Modality'
-            },
-            'library_construction_platform.term_name': {
-                'title': 'Library Platform'
-            },
-            'files.sequencing_platform.term_name': {
-                'title': 'Sequencing Platform'
-            },
-            'sequencing_library_types': {
-                'title': 'Library Material'
-            },
-            'targeted_genes.symbol': {
-                'title': 'Assay Targeted Genes'
-            },
-            'collections': {
-                'title': 'Collections',
-            },
-            'award.component': {
-                'title': 'Funding'
-            },
-            'status': {
-                'title': 'Status'
+                'category': 'Sample',
+                'description': 'Sample ontology terms associated with the measurement set.',
             },
             'file_set_type': {
                 'title': 'File Set Type',
+                'category': 'Assay',
+                'description': 'Category of this file set.',
             },
-            'type': {
-                'title': 'Object Type',
+            'status': {
+                'title': 'Status',
+                'category': 'Quality',
+                'description': 'Release status of the measurement set.',
             },
+            # Optional — Sample
+            'donors.taxa': {
+                'title': 'Taxa',
+                'category': 'Sample',
+                'optional': True,
+            },
+            'samples.classifications': {
+                'title': 'Classifications',
+                'category': 'Sample',
+                'optional': True,
+            },
+            'samples.targeted_sample_term.term_name': {
+                'title': 'Targeted Sample Term',
+                'category': 'Sample',
+                'optional': True,
+            },
+            'samples.disease_terms.term_name': {
+                'title': 'Disease Term',
+                'category': 'Sample',
+                'optional': True,
+            },
+            # Optional — Library / sequencing
+            'library_construction_platform.term_name': {
+                'title': 'Library Platform',
+                'category': 'Library',
+                'optional': True,
+            },
+            'sequencing_library_types': {
+                'title': 'Library Material',
+                'category': 'Library',
+                'optional': True,
+            },
+            'files.sequencing_platform.term_name': {
+                'title': 'Sequencing Platform',
+                'category': 'Library',
+                'optional': True,
+            },
+            'samples.modifications.modality': {
+                'title': 'CRISPR Modality',
+                'category': 'Assay',
+                'optional': True,
+            },
+            'targeted_genes.symbol': {
+                'title': 'Assay Targeted Genes',
+                'category': 'Assay',
+                'optional': True,
+            },
+            # Optional — Quality
             'audit.ERROR.category': {
-                'title': 'Audit Category: Error'
+                'title': 'Audit Category: Error',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.NOT_COMPLIANT.category': {
-                'title': 'Audit Category: Not Compliant'
+                'title': 'Audit Category: Not Compliant',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.WARNING.category': {
-                'title': 'Audit Category: Warning'
+                'title': 'Audit Category: Warning',
+                'category': 'Quality',
+                'optional': True,
             },
             'audit.INTERNAL_ACTION.category': {
-                'title': 'Audit Category: Internal Action'
+                'title': 'Audit Category: Internal Action',
+                'category': 'Quality',
+                'optional': True,
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'donors.taxa',
-                    'samples.classifications',
-                    'samples.sample_terms.term_name',
-                    'samples.targeted_sample_term.term_name',
-                    'samples.disease_terms.term_name',
-                ],
-            },
-            {
-                'title': 'Assay',
-                'facet_fields': [
-                    'assay_term.term_name',
-                    'preferred_assay_title',
-                    'samples.modifications.modality',
-                    'file_set_type',
-                    'targeted_genes.symbol'
-                ],
-            },
-            {
-                'title': 'Library',
-                'facet_fields': [
-                    'library_construction_platform.term_name',
-                    'sequencing_library_types',
-                    'files.sequencing_platform.term_name',
-                ],
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'award.component',
-                    'type',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category'
-                ],
-            },
-        ],
         'columns': {
             'accession': {
                 'title': 'Accession'
@@ -140,6 +123,9 @@ def measurement_set():
             },
             'award': {
                 'title': 'Award'
+            },
+            'lab': {
+                'title': 'Lab'
             },
             'assay_term': {
                 'title': 'Assay Term'

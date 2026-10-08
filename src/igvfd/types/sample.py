@@ -19,6 +19,10 @@ from .base import (
     Item,
     paths_filtered_by_status
 )
+from igvfd.calculated.primary_islet import (
+    coalesce_post_shipment_viability,
+    parse_purity_value,
+)
 
 
 def collect_multiplexed_samples_prop(request, multiplexed_samples, property_name):
@@ -83,7 +87,7 @@ class Sample(Item):
         'institutional_certificates': ('InstitutionalCertificate', 'samples'),
     }
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'title', 'name']),
         Path('lab', include=['@id', 'title']),
         Path('sources', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
@@ -210,7 +214,22 @@ class Biosample(Sample):
         Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('modifications', include=['@id', 'modality', 'summary', 'status']),
         Path('institutional_certificates', include=['@id', 'certificate_identifier']),
-        Path('donors', include=['@id', 'accession', 'gender', 'age', 'taxa', 'summary'])
+        Path('donors', include=[
+            '@id',
+            'accession',
+            'age',
+            'age_group',
+            'gender',
+            'diabetes_status_description',
+            'derived_diabetes_status',
+            't1d_stage',
+            'bmi',
+            'hba1c',
+            'aab_positive',
+            'aab_count',
+            'taxa',
+            'summary',
+        ])
     ]
 
     audit_inherit = Sample.audit_inherit + [
@@ -639,6 +658,31 @@ class PrimaryIslet(Biosample):
     )
     def classifications(self):
         return [self.item_type.replace('_', ' ')]
+
+    @calculated_property(schema={
+        'title': 'Purity Value',
+        'description': 'Maximum numeric purity percentage parsed from purity[].',
+        'type': 'number',
+        'notSubmittable': True,
+    })
+    def purity_value(self, purity=None):
+        return parse_purity_value(purity)
+
+    @calculated_property(schema={
+        'title': 'Post Shipment Viability',
+        'description': 'post_shipment_viability_quantitative, falling back to post_shipment_islet_viability.',
+        'type': 'number',
+        'notSubmittable': True,
+    })
+    def post_shipment_viability(
+        self,
+        post_shipment_viability_quantitative=None,
+        post_shipment_islet_viability=None,
+    ):
+        return coalesce_post_shipment_viability(
+            post_shipment_viability_quantitative,
+            post_shipment_islet_viability,
+        )
 
 
 def strip_legacy_primary_islet_request_properties(context, request):

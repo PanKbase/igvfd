@@ -110,6 +110,7 @@
             "enum": [
                 "barcode to element mapping",
                 "barcode to sample mapping",
+                "data table",
                 "differential gene expression quantifications",
                 "differential transcript expression quantifications",
                 "editing templates",
@@ -125,6 +126,7 @@
                 "protein to protein interaction score",
                 "sample sort parameters",
                 "sequence barcodes",
+                "tabular file",
                 "variants",
                 "variant effects",
                 "variant to element mapping"

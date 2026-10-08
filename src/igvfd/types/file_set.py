@@ -40,7 +40,7 @@ class FileSet(Item):
         'input_file_set_for': ('FileSet', 'input_file_sets')
     }
     embedded_with_frame = [
-        Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'title']),
+        Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'title', 'name']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('files', include=['@id', 'accession', 'aliases', 'content_type',
@@ -169,6 +169,24 @@ class FileSet(Item):
         return paths_filtered_by_status(request, input_file_set_for)
 
 
+ANNOTATION_TYPE_TO_CATEGORY = {
+    'sample_bulk_rnaseq': 'Gene expression',
+    'sample_scrnaseq': 'Gene expression',
+    'gene_expression_matrix': 'Gene expression',
+    'differential_expression': 'Differential expression',
+    'sample_snatacseq': 'Chromatin accessibility',
+    'chromatin_accessibility_peaks': 'Chromatin accessibility',
+    'chromatin_signal_track': 'Chromatin accessibility',
+    'cre_target_links': 'Chromatin accessibility',
+    'islet_function_perifusion': 'Islet function',
+    'metadata_table': 'Resource',
+    'qtl_colocalization': 'QTL and fine-mapping',
+    'qtl_summary_statistics': 'QTL and fine-mapping',
+    'credible_set_ld': 'QTL and fine-mapping',
+    'unclear': 'Unclear',
+}
+
+
 @collection(
     name='analysis-sets',
     unique_key='accession',
@@ -186,6 +204,34 @@ class AnalysisSet(FileSet):
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
     set_status_down = FileSet.set_status_down + []
+
+    @calculated_property(
+        condition='annotation_type',
+        schema={
+            'title': 'Annotation Category',
+            'description': 'High-level category derived from annotation_type (and assay title for reference atlases).',
+            'type': 'string',
+            'enum': [
+                'Gene expression',
+                'Differential expression',
+                'Chromatin accessibility',
+                'Islet function',
+                'Resource',
+                'QTL and fine-mapping',
+                'Unclear',
+            ],
+            'notSubmittable': True,
+        }
+    )
+    def annotation_category(self, request, annotation_type, input_file_sets=None):
+        if annotation_type == 'reference_atlas':
+            titles = set(self.assay_titles(request, input_file_sets) or [])
+            if 'scRNA-seq' in titles:
+                return 'Gene expression'
+            if 'snATAC-seq' in titles:
+                return 'Chromatin accessibility'
+            return 'Unclear'
+        return ANNOTATION_TYPE_TO_CATEGORY.get(annotation_type)
 
     @calculated_property(condition='request, file_set_type, measurement_sets', 
         schema={

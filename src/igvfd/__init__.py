@@ -1,4 +1,4 @@
-__version__ = '41.0.0'
+__version__ = '41.0.3'
 
 
 import igvfd.schema_formats  # needed to import before snovault to add FormatCheckers
@@ -236,6 +236,9 @@ def main(global_config, **local_config):
     config.include(configure_invalidation_queue)
     config.include(configure_transaction_dead_letter_queue)
     config.include(configure_invalidation_dead_letter_queue)
+    # Patch before snovault registers its HTTPForbidden/CSRF exception views.
+    from igvfd.auth0 import patch_snovault_error_views
+    patch_snovault_error_views()
     config.include('snovault')
     config.include('.auth0')
     config.commit()  # commit so search can override listing
