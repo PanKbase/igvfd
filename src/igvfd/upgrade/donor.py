@@ -217,27 +217,27 @@ def human_donor_15_16(value, system):
                 # In case of unexpected data types, retain as is (or handle as needed)
                 updated_ethnicities.append(ethnicity)
         value['genetic_ethnicities'] = updated_ethnicities
-        
+
 @upgrade_step('human_donor', '16', '17')
 def human_donor_16_17(value, system):
     # https://igvf.atlassian.net/browse/IGVF-XXXX
     # Update multiple enum values for improved terminology and consistency
-    
+
     # Update T1D stage enum values to include "level" terminology
     if 't1d_stage' in value:
         t1d_stage_mapping = {
-            "At-risk: Single or transient autoantibody, normal glucose": 
+            "At-risk: Single or transient autoantibody, normal glucose":
                 "At-risk: Single or transient autoantibody, normal glucose level",
-            "Stage 1: Two or more autoantibodies, normal glucose metabolism": 
+            "Stage 1: Two or more autoantibodies, normal glucose metabolism":
                 "Stage 1: Two or more autoantibodies, normal glucose metabolism level",
-            "Stage 2: Two or more autoantibodies, dysglycemia (e.g. HbA1c ≥ 5.7%)": 
+            "Stage 2: Two or more autoantibodies, dysglycemia (e.g. HbA1c ≥ 5.7%)":
                 "Stage 2: Two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)"
         }
-        
+
         current_stage = value['t1d_stage']
         if current_stage in t1d_stage_mapping:
             value['t1d_stage'] = t1d_stage_mapping[current_stage]
-    
+
     # Update diabetes_status_description enum values
     if 'diabetes_status_description' in value:
         diabetes_status_mapping = {
@@ -245,7 +245,7 @@ def human_donor_16_17(value, system):
             "cystic fibrosis diabetes": "cystic fibrosis-related diabetes",
             "non-diabetic": "control without diabetes"
         }
-        
+
         current_status = value['diabetes_status_description']
         if current_status in diabetes_status_mapping:
             value['diabetes_status_description'] = diabetes_status_mapping[current_status]
@@ -262,16 +262,16 @@ def human_donor_16_17(value, system):
             else:
                 updated_ethnicities.append(ethnicity)
         value['ethnicities'] = updated_ethnicities
-    
+
     # Update donation_type enum values from abbreviations to full descriptions
     if 'donation_type' in value:
         donation_type_mapping = {
             "DCD": "Donation after Circulatory Death",
-            "DBD": "Donation after Brain Death", 
+            "DBD": "Donation after Brain Death",
             "NDD": "Natural Death Donation",
             "MAD": "Medical Assistance in Dying"
         }
-        
+
         current_type = value['donation_type']
         if current_type in donation_type_mapping:
             value['donation_type'] = donation_type_mapping[current_type]
@@ -282,24 +282,24 @@ def human_donor_17_18(value, system):
     # Migrate glucose_loweing_theraphy to other_theraphy
     if 'glucose_loweing_theraphy' in value:
         glucose_therapy = value['glucose_loweing_theraphy']
-        
+
         # Initialize other_theraphy if it doesn't exist
         if 'other_theraphy' not in value:
             value['other_theraphy'] = []
-        
+
         # Ensure other_theraphy is a list
         if not isinstance(value['other_theraphy'], list):
             value['other_theraphy'] = []
-        
+
         # Ensure glucose_loweing_theraphy is a list
         if not isinstance(glucose_therapy, list):
             glucose_therapy = [glucose_therapy] if glucose_therapy else []
-        
+
         # Merge glucose therapy data into other_theraphy
         for therapy in glucose_therapy:
             if therapy and therapy not in value['other_theraphy']:
                 value['other_theraphy'].append(therapy)
-        
+
         # Remove the old field
         del value['glucose_loweing_theraphy']
 
@@ -337,7 +337,7 @@ def human_donor_20_21(value, system):
             value['family_history_of_diabetes'] = mapping[current_val]
         elif current_val not in ['TRUE', 'FALSE', '-']:
             value['family_history_of_diabetes'] = '-'
-    
+
     # Update donation_type enum values
     if 'donation_type' in value:
         mapping = {
@@ -356,7 +356,7 @@ def human_donor_20_21(value, system):
         elif current_val not in ['Donation after brain death', 'Donation after circulatory death',
                                  'Natural death donation', 'Medical assistance in dying', '-']:
             value['donation_type'] = '-'
-    
+
     # Update gender enum values (capitalize)
     if 'gender' in value:
         mapping = {
@@ -369,7 +369,7 @@ def human_donor_20_21(value, system):
             value['gender'] = mapping[current_val]
         elif current_val not in ['Male', 'Female', 'Other', '-']:
             value['gender'] = '-'
-    
+
     # Update genetic_sex enum values (capitalize and add Other/-)
     if 'genetic_sex' in value:
         mapping = {
@@ -382,7 +382,7 @@ def human_donor_20_21(value, system):
             value['genetic_sex'] = mapping[current_val]
         elif current_val not in ['Male', 'Female', 'Other', '-']:
             value['genetic_sex'] = '-'
-    
+
     # Update diabetes_status_description enum values
     if 'diabetes_status_description' in value:
         mapping = {
@@ -404,27 +404,27 @@ def human_donor_20_21(value, system):
                                  'Diabetes Unspecified', 'Monogenic Diabetes', 'Gestational Diabetes',
                                  'Cystic Fibrosis-Related Diabetes', '-']:
             value['diabetes_status_description'] = '-'
-    
+
     # Update t1d_stage enum values
     if 't1d_stage' in value:
         mapping = {
-            'Stage 1: Two or more autoantibodies, normal glucose metabolism level': 
+            'Stage 1: Two or more autoantibodies, normal glucose metabolism level':
                 'Stage 1: two or more autoantibodies, normal glucose metabolism level',
-            'Stage 2: Two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)': 
+            'Stage 2: Two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)':
                 'Stage 2: two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)',
-            'Stage 3: One or more autoantibodies and diagnostic hyperglycemia or T1D diagnosis': 
+            'Stage 3: One or more autoantibodies and diagnostic hyperglycemia or T1D diagnosis':
                 'Stage 3: one or more autoantibodies and diagnostic hyperglycemia or T1D diagnosis',
-            'No sufficient information to derive': 
+            'No sufficient information to derive':
                 'No sufficient information to derive',
-            'Conflicting diabetes evidence': 
+            'Conflicting diabetes evidence':
                 'Conflicting diabetes evidence',
-            'At-risk: Single or transient autoantibody, normal glucose level': 
+            'At-risk: Single or transient autoantibody, normal glucose level':
                 'At-risk: single or transient autoantibody, normal glucose level',
-            'At-risk: Single or transient autoantibody, normal glucose': 
+            'At-risk: Single or transient autoantibody, normal glucose':
                 'At-risk: single or transient autoantibody, normal glucose level',
-            'no sufficient information to derive': 
+            'no sufficient information to derive':
                 'No sufficient information to derive',
-            'no_stage': 
+            'no_stage':
                 'normal glucose level'
         }
         current_val = value['t1d_stage']

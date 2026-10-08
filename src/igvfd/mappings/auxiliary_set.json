@@ -1,6 +1,6 @@
 {
-    "hash": "ddd1a4f0c8bec14a82e1a84a1e68a7e4",
-    "index_name": "auxiliary_set_ddd1a4f0",
+    "hash": "24b5b17fd02e8a3b78e267137ce3b3d9",
+    "index_name": "auxiliary_set_24b5b17f",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -364,6 +364,9 @@
                             "base_media": {
                                 "type": "keyword"
                             },
+                            "cell_type": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -380,6 +383,21 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "de_comparison_class": {
+                                "type": "keyword"
+                            },
+                            "de_contrast": {
+                                "type": "keyword"
+                            },
+                            "de_method": {
+                                "type": "keyword"
+                            },
+                            "de_trait": {
+                                "type": "keyword"
+                            },
+                            "de_trait_description": {
                                 "type": "keyword"
                             },
                             "description": {

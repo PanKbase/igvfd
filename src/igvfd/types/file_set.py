@@ -233,7 +233,7 @@ class AnalysisSet(FileSet):
             return 'Unclear'
         return ANNOTATION_TYPE_TO_CATEGORY.get(annotation_type)
 
-    @calculated_property(condition='request, file_set_type, measurement_sets', 
+    @calculated_property(condition='request, file_set_type, measurement_sets',
         schema={
             'title': 'Summary',
             'type': 'string',
@@ -391,7 +391,7 @@ class CuratedSet(FileSet):
             if annotation_values:
                 return sorted(list(annotation_values))
 
-    @calculated_property(condition='file_set_type, assemblies, transcriptome_annotations, taxa', 
+    @calculated_property(condition='file_set_type, assemblies, transcriptome_annotations, taxa',
         schema={
             'title': 'Summary',
             'type': 'string',
@@ -480,7 +480,7 @@ class MeasurementSet(FileSet):
                             related_datasets.append(file_set_id)
             return related_datasets
 
-    @calculated_property(condition='request, assay_term, preferred_assay_title, samples', 
+    @calculated_property(condition='request, assay_term, preferred_assay_title, samples',
         schema={
             'title': 'Summary',
             'type': 'string',
@@ -625,7 +625,7 @@ class AuxiliarySet(FileSet):
     def measurement_sets(self, request, measurement_sets):
         return paths_filtered_by_status(request, measurement_sets)
 
-    @calculated_property(condition='request, file_set_type, measurement_sets', 
+    @calculated_property(condition='request, file_set_type, measurement_sets',
         schema={
             'title': 'Summary',
             'type': 'string',
@@ -738,7 +738,7 @@ class ConstructLibrarySet(FileSet):
     def applied_to_samples(self, request, applied_to_samples):
         return paths_filtered_by_status(request, applied_to_samples)
 
-    @calculated_property(condition='request, file_set_type, measurement_sets', 
+    @calculated_property(condition='request, file_set_type, measurement_sets',
         schema={
             'title': 'Summary',
             'type': 'string',

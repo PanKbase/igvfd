@@ -26,6 +26,7 @@ ORDER = [
     'platform_term',
     'phenotypic_feature',
     'human_donor',
+    'rodent_donor',
     'treatment',
     'modification',
     'crispr_modification',

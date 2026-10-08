@@ -1,6 +1,6 @@
 {
-    "hash": "e902edc3090aac5848605b82856933e0",
-    "index_name": "analysis_set_e902edc3",
+    "hash": "071204bfb7cc66b5cab304df89e2815e",
+    "index_name": "analysis_set_071204bf",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -305,6 +305,10 @@
                         },
                         "type": "object"
                     },
+                    "cell_type": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
                     "collections": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
@@ -376,6 +380,9 @@
                             "base_media": {
                                 "type": "keyword"
                             },
+                            "cell_type": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -392,6 +399,21 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "de_comparison_class": {
+                                "type": "keyword"
+                            },
+                            "de_contrast": {
+                                "type": "keyword"
+                            },
+                            "de_method": {
+                                "type": "keyword"
+                            },
+                            "de_trait": {
+                                "type": "keyword"
+                            },
+                            "de_trait_description": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -754,6 +776,24 @@
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "de_comparison_class": {
+                        "type": "keyword"
+                    },
+                    "de_contrast": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "de_method": {
+                        "type": "keyword"
+                    },
+                    "de_trait": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "de_trait_description": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "description": {
@@ -1694,6 +1734,9 @@
                             "base_media": {
                                 "type": "keyword"
                             },
+                            "cell_type": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1710,6 +1753,21 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "de_comparison_class": {
+                                "type": "keyword"
+                            },
+                            "de_contrast": {
+                                "type": "keyword"
+                            },
+                            "de_method": {
+                                "type": "keyword"
+                            },
+                            "de_trait": {
+                                "type": "keyword"
+                            },
+                            "de_trait_description": {
                                 "type": "keyword"
                             },
                             "description": {

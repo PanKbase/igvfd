@@ -1,6 +1,6 @@
 {
-    "hash": "99a45130805c697de793413dc181a554",
-    "index_name": "primary_islet_99a45130",
+    "hash": "432691665ec4559765ebe8a8d7bd8c6a",
+    "index_name": "primary_islet_43269166",
     "item_type": "primary_islet",
     "mapping": {
         "dynamic_templates": [
@@ -1064,6 +1064,9 @@
                             "base_media": {
                                 "type": "keyword"
                             },
+                            "cell_type": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1080,6 +1083,21 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "de_comparison_class": {
+                                "type": "keyword"
+                            },
+                            "de_contrast": {
+                                "type": "keyword"
+                            },
+                            "de_method": {
+                                "type": "keyword"
+                            },
+                            "de_trait": {
+                                "type": "keyword"
+                            },
+                            "de_trait_description": {
                                 "type": "keyword"
                             },
                             "description": {

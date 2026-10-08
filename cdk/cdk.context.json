@@ -1,283 +1,283 @@
 {
-  "vpc-provider:account=618537831167:filter.vpc-id=vpc-ea3b6581:region=us-west-2:returnAsymmetricSubnets=true": {
-    "vpcId": "vpc-ea3b6581",
-    "vpcCidrBlock": "172.31.0.0/16",
-    "availabilityZones": [],
-    "subnetGroups": [
-      {
-        "name": "Public",
-        "type": "Public",
-        "subnets": [
-          {
-            "subnetId": "subnet-e93b6582",
-            "cidr": "172.31.16.0/20",
-            "availabilityZone": "us-west-2a",
-            "routeTableId": "rtb-e13b658a"
-          },
-          {
-            "subnetId": "subnet-ef3b6584",
-            "cidr": "172.31.32.0/20",
-            "availabilityZone": "us-west-2b",
-            "routeTableId": "rtb-e13b658a"
-          },
-          {
-            "subnetId": "subnet-e83b6583",
-            "cidr": "172.31.0.0/20",
-            "availabilityZone": "us-west-2c",
-            "routeTableId": "rtb-e13b658a"
-          },
-          {
-            "subnetId": "subnet-defd15f5",
-            "cidr": "172.31.48.0/20",
-            "availabilityZone": "us-west-2d",
-            "routeTableId": "rtb-e13b658a"
-          }
+    "vpc-provider:account=618537831167:filter.vpc-id=vpc-ea3b6581:region=us-west-2:returnAsymmetricSubnets=true": {
+        "vpcId": "vpc-ea3b6581",
+        "vpcCidrBlock": "172.31.0.0/16",
+        "availabilityZones": [],
+        "subnetGroups": [
+            {
+                "name": "Public",
+                "type": "Public",
+                "subnets": [
+                    {
+                        "subnetId": "subnet-e93b6582",
+                        "cidr": "172.31.16.0/20",
+                        "availabilityZone": "us-west-2a",
+                        "routeTableId": "rtb-e13b658a"
+                    },
+                    {
+                        "subnetId": "subnet-ef3b6584",
+                        "cidr": "172.31.32.0/20",
+                        "availabilityZone": "us-west-2b",
+                        "routeTableId": "rtb-e13b658a"
+                    },
+                    {
+                        "subnetId": "subnet-e83b6583",
+                        "cidr": "172.31.0.0/20",
+                        "availabilityZone": "us-west-2c",
+                        "routeTableId": "rtb-e13b658a"
+                    },
+                    {
+                        "subnetId": "subnet-defd15f5",
+                        "cidr": "172.31.48.0/20",
+                        "availabilityZone": "us-west-2d",
+                        "routeTableId": "rtb-e13b658a"
+                    }
+                ]
+            }
         ]
-      }
-    ]
-  },
-  "hosted-zone:account=618537831167:domainName=api.encodedcc.org:region=us-west-2": {
-    "Id": "/hostedzone/Z100726339CN2ETJI2S55",
-    "Name": "api.encodedcc.org."
-  },
-  "hosted-zone:account=654654139991:domainName=demo.pankbase.org:region=us-west-2": {
-    "Id": "/hostedzone/Z00919183NFQUZOQASARP",
-    "Name": "demo.pankbase.org."
-  },
-  "vpc-provider:account=565393070554:filter.vpc-id=vpc-012e2f9fcc348d584:region=us-west-2:returnAsymmetricSubnets=true": {
-    "vpcId": "vpc-012e2f9fcc348d584",
-    "vpcCidrBlock": "10.5.0.0/16",
-    "availabilityZones": [],
-    "subnetGroups": [
-      {
-        "name": "isolated",
-        "type": "Isolated",
-        "subnets": [
-          {
-            "subnetId": "subnet-02afeec29507c4746",
-            "cidr": "10.5.48.0/20",
-            "availabilityZone": "us-west-2a",
-            "routeTableId": "rtb-0fca06e1a195e256c"
-          },
-          {
-            "subnetId": "subnet-0fb0c200cd177e95c",
-            "cidr": "10.5.64.0/20",
-            "availabilityZone": "us-west-2b",
-            "routeTableId": "rtb-0ec7baea70b6a9cb3"
-          },
-          {
-            "subnetId": "subnet-0783b3bebe2175412",
-            "cidr": "10.5.80.0/20",
-            "availabilityZone": "us-west-2c",
-            "routeTableId": "rtb-0a807dd54eb254dd6"
-          }
+    },
+    "hosted-zone:account=618537831167:domainName=api.encodedcc.org:region=us-west-2": {
+        "Id": "/hostedzone/Z100726339CN2ETJI2S55",
+        "Name": "api.encodedcc.org."
+    },
+    "hosted-zone:account=654654139991:domainName=demo.pankbase.org:region=us-west-2": {
+        "Id": "/hostedzone/Z00919183NFQUZOQASARP",
+        "Name": "demo.pankbase.org."
+    },
+    "vpc-provider:account=565393070554:filter.vpc-id=vpc-012e2f9fcc348d584:region=us-west-2:returnAsymmetricSubnets=true": {
+        "vpcId": "vpc-012e2f9fcc348d584",
+        "vpcCidrBlock": "10.5.0.0/16",
+        "availabilityZones": [],
+        "subnetGroups": [
+            {
+                "name": "isolated",
+                "type": "Isolated",
+                "subnets": [
+                    {
+                        "subnetId": "subnet-02afeec29507c4746",
+                        "cidr": "10.5.48.0/20",
+                        "availabilityZone": "us-west-2a",
+                        "routeTableId": "rtb-0fca06e1a195e256c"
+                    },
+                    {
+                        "subnetId": "subnet-0fb0c200cd177e95c",
+                        "cidr": "10.5.64.0/20",
+                        "availabilityZone": "us-west-2b",
+                        "routeTableId": "rtb-0ec7baea70b6a9cb3"
+                    },
+                    {
+                        "subnetId": "subnet-0783b3bebe2175412",
+                        "cidr": "10.5.80.0/20",
+                        "availabilityZone": "us-west-2c",
+                        "routeTableId": "rtb-0a807dd54eb254dd6"
+                    }
+                ]
+            },
+            {
+                "name": "public",
+                "type": "Public",
+                "subnets": [
+                    {
+                        "subnetId": "subnet-09f9999e7003ffc02",
+                        "cidr": "10.5.0.0/20",
+                        "availabilityZone": "us-west-2a",
+                        "routeTableId": "rtb-015e51cf89c2a696e"
+                    },
+                    {
+                        "subnetId": "subnet-043d2535509794f7b",
+                        "cidr": "10.5.16.0/20",
+                        "availabilityZone": "us-west-2b",
+                        "routeTableId": "rtb-09551427701b780b1"
+                    },
+                    {
+                        "subnetId": "subnet-0769172eba6a3667a",
+                        "cidr": "10.5.32.0/20",
+                        "availabilityZone": "us-west-2c",
+                        "routeTableId": "rtb-0012afb0ee7d0e647"
+                    }
+                ]
+            }
         ]
-      },
-      {
-        "name": "public",
-        "type": "Public",
-        "subnets": [
-          {
-            "subnetId": "subnet-09f9999e7003ffc02",
-            "cidr": "10.5.0.0/20",
-            "availabilityZone": "us-west-2a",
-            "routeTableId": "rtb-015e51cf89c2a696e"
-          },
-          {
-            "subnetId": "subnet-043d2535509794f7b",
-            "cidr": "10.5.16.0/20",
-            "availabilityZone": "us-west-2b",
-            "routeTableId": "rtb-09551427701b780b1"
-          },
-          {
-            "subnetId": "subnet-0769172eba6a3667a",
-            "cidr": "10.5.32.0/20",
-            "availabilityZone": "us-west-2c",
-            "routeTableId": "rtb-0012afb0ee7d0e647"
-          }
+    },
+    "hosted-zone:account=565393070554:domainName=staging.pankbase.org:region=us-west-2": {
+        "Id": "/hostedzone/Z07816901RWFMG8AFABMP",
+        "Name": "staging.pankbase.org."
+    },
+    "vpc-provider:account=565393070554:filter.vpc-id=vpc-00fa47c61d146df8e:region=us-west-2:returnAsymmetricSubnets=true": {
+        "vpcId": "vpc-00fa47c61d146df8e",
+        "vpcCidrBlock": "10.6.0.0/16",
+        "availabilityZones": [],
+        "subnetGroups": [
+            {
+                "name": "public",
+                "type": "Public",
+                "subnets": [
+                    {
+                        "subnetId": "subnet-03f0c67aaa2f61618",
+                        "cidr": "10.6.0.0/20",
+                        "availabilityZone": "us-west-2a",
+                        "routeTableId": "rtb-0d04206a243ef5241"
+                    },
+                    {
+                        "subnetId": "subnet-05ee3581cf23ee07a",
+                        "cidr": "10.6.16.0/20",
+                        "availabilityZone": "us-west-2b",
+                        "routeTableId": "vpc-00fa47c61d146df8e"
+                    },
+                    {
+                        "subnetId": "subnet-0c8dc6ae3677e9192",
+                        "cidr": "10.6.32.0/20",
+                        "availabilityZone": "us-west-2c",
+                        "routeTableId": "vpc-00fa47c61d146df8e"
+                    }
+                ]
+            },
+            {
+                "name": "isolated",
+                "type": "Isolated",
+                "subnets": [
+                    {
+                        "subnetId": "subnet-024c0808c1ed054ae",
+                        "cidr": "10.6.48.0/20",
+                        "availabilityZone": "us-west-2a",
+                        "routeTableId": "rtb-0b91a052410666ae1"
+                    },
+                    {
+                        "subnetId": "subnet-033288bef8b270b4f",
+                        "cidr": "10.6.64.0/20",
+                        "availabilityZone": "us-west-2b",
+                        "routeTableId": "rtb-0c30693deb577be7a"
+                    },
+                    {
+                        "subnetId": "subnet-00606bb367d5b520e",
+                        "cidr": "10.6.80.0/20",
+                        "availabilityZone": "us-west-2c",
+                        "routeTableId": "rtb-09759af881a077683"
+                    }
+                ]
+            }
         ]
-      }
-    ]
-  },
-  "hosted-zone:account=565393070554:domainName=staging.pankbase.org:region=us-west-2": {
-    "Id": "/hostedzone/Z07816901RWFMG8AFABMP",
-    "Name": "staging.pankbase.org."
-  },
-  "vpc-provider:account=565393070554:filter.vpc-id=vpc-00fa47c61d146df8e:region=us-west-2:returnAsymmetricSubnets=true": {
-    "vpcId": "vpc-00fa47c61d146df8e",
-    "vpcCidrBlock": "10.6.0.0/16",
-    "availabilityZones": [],
-    "subnetGroups": [
-      {
-        "name": "public",
-        "type": "Public",
-        "subnets": [
-          {
-            "subnetId": "subnet-03f0c67aaa2f61618",
-            "cidr": "10.6.0.0/20",
-            "availabilityZone": "us-west-2a",
-            "routeTableId": "rtb-0d04206a243ef5241"
-          },
-          {
-            "subnetId": "subnet-05ee3581cf23ee07a",
-            "cidr": "10.6.16.0/20",
-            "availabilityZone": "us-west-2b",
-            "routeTableId": "vpc-00fa47c61d146df8e"
-          },
-          {
-            "subnetId": "subnet-0c8dc6ae3677e9192",
-            "cidr": "10.6.32.0/20",
-            "availabilityZone": "us-west-2c",
-            "routeTableId": "vpc-00fa47c61d146df8e"
-          }
+    },
+    "hosted-zone:account=565393070554:domainName=sandbox.pankbase.org:region=us-west-2": {
+        "Id": "/hostedzone/Z05522591Q97QX68OK17Q",
+        "Name": "sandbox.pankbase.org."
+    },
+    "vpc-provider:account=495599754696:filter.vpc-id=vpc-0de5a343c73c9082d:region=us-west-2:returnAsymmetricSubnets=true": {
+        "vpcId": "vpc-0de5a343c73c9082d",
+        "vpcCidrBlock": "10.7.0.0/16",
+        "availabilityZones": [],
+        "subnetGroups": [
+            {
+                "name": "public",
+                "type": "Public",
+                "subnets": [
+                    {
+                        "subnetId": "subnet-05f61185481f1fb50",
+                        "cidr": "10.7.0.0/20",
+                        "availabilityZone": "us-west-2a",
+                        "routeTableId": "rtb-0b2dd7eb1146bfabe"
+                    },
+                    {
+                        "subnetId": "subnet-02ba7823b3e31fec8",
+                        "cidr": "10.7.16.0/20",
+                        "availabilityZone": "us-west-2b",
+                        "routeTableId": "rtb-02fdbbbf5b7f76bed"
+                    },
+                    {
+                        "subnetId": "subnet-0f6512c064d46549d",
+                        "cidr": "10.7.32.0/20",
+                        "availabilityZone": "us-west-2c",
+                        "routeTableId": "rtb-05baa4e3dd71c7b06"
+                    }
+                ]
+            },
+            {
+                "name": "isolated",
+                "type": "Isolated",
+                "subnets": [
+                    {
+                        "subnetId": "subnet-0aeb229745f78d68b",
+                        "cidr": "10.7.48.0/20",
+                        "availabilityZone": "us-west-2a",
+                        "routeTableId": "rtb-06aad2b41dff9dbce"
+                    },
+                    {
+                        "subnetId": "subnet-053241f17075cfb5d",
+                        "cidr": "10.7.64.0/20",
+                        "availabilityZone": "us-west-2b",
+                        "routeTableId": "rtb-031f4503c3cb626e9"
+                    },
+                    {
+                        "subnetId": "subnet-033b6c1522ac51d03",
+                        "cidr": "10.7.80.0/20",
+                        "availabilityZone": "us-west-2c",
+                        "routeTableId": "rtb-0c8e04fce58480ecd"
+                    }
+                ]
+            }
         ]
-      },
-      {
-        "name": "isolated",
-        "type": "Isolated",
-        "subnets": [
-          {
-            "subnetId": "subnet-024c0808c1ed054ae",
-            "cidr": "10.6.48.0/20",
-            "availabilityZone": "us-west-2a",
-            "routeTableId": "rtb-0b91a052410666ae1"
-          },
-          {
-            "subnetId": "subnet-033288bef8b270b4f",
-            "cidr": "10.6.64.0/20",
-            "availabilityZone": "us-west-2b",
-            "routeTableId": "rtb-0c30693deb577be7a"
-          },
-          {
-            "subnetId": "subnet-00606bb367d5b520e",
-            "cidr": "10.6.80.0/20",
-            "availabilityZone": "us-west-2c",
-            "routeTableId": "rtb-09759af881a077683"
-          }
+    },
+    "hosted-zone:account=495599754696:domainName=data.pankbase.org:region=us-west-2": {
+        "Id": "/hostedzone/Z10196943GADQKBPW4M2F",
+        "Name": "data.pankbase.org."
+    },
+    "acknowledged-issue-numbers": [
+        25356
+    ],
+    "vpc-provider:account=654654139991:filter.vpc-id=vpc-04c8432aa0425779b:region=us-west-2:returnAsymmetricSubnets=true": {
+        "vpcId": "vpc-04c8432aa0425779b",
+        "vpcCidrBlock": "10.4.0.0/16",
+        "ownerAccountId": "654654139991",
+        "availabilityZones": [],
+        "subnetGroups": [
+            {
+                "name": "isolated",
+                "type": "Isolated",
+                "subnets": [
+                    {
+                        "subnetId": "subnet-040edfc17903fc6c0",
+                        "cidr": "10.4.48.0/20",
+                        "availabilityZone": "us-west-2a",
+                        "routeTableId": "rtb-0c7f5fa1155d9c2c9"
+                    },
+                    {
+                        "subnetId": "subnet-0296c65f7bed8a4af",
+                        "cidr": "10.4.64.0/20",
+                        "availabilityZone": "us-west-2b",
+                        "routeTableId": "rtb-0ef6b18e6c56181e3"
+                    },
+                    {
+                        "subnetId": "subnet-08a6311b537ad8bbf",
+                        "cidr": "10.4.80.0/20",
+                        "availabilityZone": "us-west-2c",
+                        "routeTableId": "rtb-08e3acc1665372709"
+                    }
+                ]
+            },
+            {
+                "name": "public",
+                "type": "Public",
+                "subnets": [
+                    {
+                        "subnetId": "subnet-0a2cc6dab9ebcdd53",
+                        "cidr": "10.4.0.0/20",
+                        "availabilityZone": "us-west-2a",
+                        "routeTableId": "rtb-0176acaae7bc047b1"
+                    },
+                    {
+                        "subnetId": "subnet-00939ccdecc716409",
+                        "cidr": "10.4.16.0/20",
+                        "availabilityZone": "us-west-2b",
+                        "routeTableId": "rtb-0b3732dcba657ea53"
+                    },
+                    {
+                        "subnetId": "subnet-031fc389bfbcfe2cb",
+                        "cidr": "10.4.32.0/20",
+                        "availabilityZone": "us-west-2c",
+                        "routeTableId": "rtb-003950ccb1620c9d5"
+                    }
+                ]
+            }
         ]
-      }
-    ]
-  },
-  "hosted-zone:account=565393070554:domainName=sandbox.pankbase.org:region=us-west-2": {
-    "Id": "/hostedzone/Z05522591Q97QX68OK17Q",
-    "Name": "sandbox.pankbase.org."
-  },
-  "vpc-provider:account=495599754696:filter.vpc-id=vpc-0de5a343c73c9082d:region=us-west-2:returnAsymmetricSubnets=true": {
-    "vpcId": "vpc-0de5a343c73c9082d",
-    "vpcCidrBlock": "10.7.0.0/16",
-    "availabilityZones": [],
-    "subnetGroups": [
-      {
-        "name": "public",
-        "type": "Public",
-        "subnets": [
-          {
-            "subnetId": "subnet-05f61185481f1fb50",
-            "cidr": "10.7.0.0/20",
-            "availabilityZone": "us-west-2a",
-            "routeTableId": "rtb-0b2dd7eb1146bfabe"
-          },
-          {
-            "subnetId": "subnet-02ba7823b3e31fec8",
-            "cidr": "10.7.16.0/20",
-            "availabilityZone": "us-west-2b",
-            "routeTableId": "rtb-02fdbbbf5b7f76bed"
-          },
-          {
-            "subnetId": "subnet-0f6512c064d46549d",
-            "cidr": "10.7.32.0/20",
-            "availabilityZone": "us-west-2c",
-            "routeTableId": "rtb-05baa4e3dd71c7b06"
-          }
-        ]
-      },
-      {
-        "name": "isolated",
-        "type": "Isolated",
-        "subnets": [
-          {
-            "subnetId": "subnet-0aeb229745f78d68b",
-            "cidr": "10.7.48.0/20",
-            "availabilityZone": "us-west-2a",
-            "routeTableId": "rtb-06aad2b41dff9dbce"
-          },
-          {
-            "subnetId": "subnet-053241f17075cfb5d",
-            "cidr": "10.7.64.0/20",
-            "availabilityZone": "us-west-2b",
-            "routeTableId": "rtb-031f4503c3cb626e9"
-          },
-          {
-            "subnetId": "subnet-033b6c1522ac51d03",
-            "cidr": "10.7.80.0/20",
-            "availabilityZone": "us-west-2c",
-            "routeTableId": "rtb-0c8e04fce58480ecd"
-          }
-        ]
-      }
-    ]
-  },
-  "hosted-zone:account=495599754696:domainName=data.pankbase.org:region=us-west-2": {
-    "Id": "/hostedzone/Z10196943GADQKBPW4M2F",
-    "Name": "data.pankbase.org."
-  },
-  "acknowledged-issue-numbers": [
-    25356
-  ],
-  "vpc-provider:account=654654139991:filter.vpc-id=vpc-04c8432aa0425779b:region=us-west-2:returnAsymmetricSubnets=true": {
-    "vpcId": "vpc-04c8432aa0425779b",
-    "vpcCidrBlock": "10.4.0.0/16",
-    "ownerAccountId": "654654139991",
-    "availabilityZones": [],
-    "subnetGroups": [
-      {
-        "name": "isolated",
-        "type": "Isolated",
-        "subnets": [
-          {
-            "subnetId": "subnet-040edfc17903fc6c0",
-            "cidr": "10.4.48.0/20",
-            "availabilityZone": "us-west-2a",
-            "routeTableId": "rtb-0c7f5fa1155d9c2c9"
-          },
-          {
-            "subnetId": "subnet-0296c65f7bed8a4af",
-            "cidr": "10.4.64.0/20",
-            "availabilityZone": "us-west-2b",
-            "routeTableId": "rtb-0ef6b18e6c56181e3"
-          },
-          {
-            "subnetId": "subnet-08a6311b537ad8bbf",
-            "cidr": "10.4.80.0/20",
-            "availabilityZone": "us-west-2c",
-            "routeTableId": "rtb-08e3acc1665372709"
-          }
-        ]
-      },
-      {
-        "name": "public",
-        "type": "Public",
-        "subnets": [
-          {
-            "subnetId": "subnet-0a2cc6dab9ebcdd53",
-            "cidr": "10.4.0.0/20",
-            "availabilityZone": "us-west-2a",
-            "routeTableId": "rtb-0176acaae7bc047b1"
-          },
-          {
-            "subnetId": "subnet-00939ccdecc716409",
-            "cidr": "10.4.16.0/20",
-            "availabilityZone": "us-west-2b",
-            "routeTableId": "rtb-0b3732dcba657ea53"
-          },
-          {
-            "subnetId": "subnet-031fc389bfbcfe2cb",
-            "cidr": "10.4.32.0/20",
-            "availabilityZone": "us-west-2c",
-            "routeTableId": "rtb-003950ccb1620c9d5"
-          }
-        ]
-      }
-    ]
-  }
+    }
 }

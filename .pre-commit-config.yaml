@@ -1,13 +1,18 @@
 repos:
-  - repo: https://github.com/hhatto/autopep8
-    rev: v2.3.0
-    hooks:
-      - id: autopep8
+  # Disabled: autopep8 wraps long f-strings into multiline forms that are a
+  # SyntaxError on Python 3.11 (valid only on 3.12+). Re-enable only with a
+  # max-line-length / version that does not rewrite f-strings that way.
+  # - repo: https://github.com/hhatto/autopep8
+  #   rev: v2.3.0
+  #   hooks:
+  #     - id: autopep8
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.2.3
     hooks:
-      - id: double-quote-string-fixer
+      # Disabled: breaks f-strings that nest quotes (e.g. f"...{x['k']}...").
+      # See formatting PR fallout; re-enable only with a safer quote policy.
+      # - id: double-quote-string-fixer
       - id: trailing-whitespace
       - id: end-of-file-fixer
         exclude: ^(cdk)/tests/unit/snapshots

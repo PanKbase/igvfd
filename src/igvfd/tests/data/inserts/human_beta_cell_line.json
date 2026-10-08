@@ -4,12 +4,20 @@
         "accession": "IGVFSMBCL0001",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": ["igvf:beta_cell_line_positive"],
+        "aliases": [
+            "igvf:beta_cell_line_positive"
+        ],
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
-        "donors": ["igvf:calc_donor_positive"],
-        "sources": ["/labs/j-michael-cherry/"],
-        "sample_terms": ["/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"],
+        "donors": [
+            "igvf:calc_donor_positive"
+        ],
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
+        "sample_terms": [
+            "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"
+        ],
         "sample_name": "EndoC-βH1",
         "excision_status": "excised",
         "passage_number": 15,
@@ -21,12 +29,20 @@
         "accession": "IGVFSMBCL0002",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": ["igvf:beta_cell_line_negative"],
+        "aliases": [
+            "igvf:beta_cell_line_negative"
+        ],
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
-        "donors": ["igvf:calc_donor_negative"],
-        "sources": ["/labs/j-michael-cherry/"],
-        "sample_terms": ["/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"],
+        "donors": [
+            "igvf:calc_donor_negative"
+        ],
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
+        "sample_terms": [
+            "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"
+        ],
         "sample_name": "Unknown-line",
         "excision_status": "unknown",
         "virtual": false

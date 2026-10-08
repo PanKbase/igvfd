@@ -1,5 +1,3 @@
-[![CircleCI](https://circleci.com/gh/IGVF-DACC/igvfd/tree/dev.svg?style=svg)](https://circleci.com/gh/IGVF-DACC/igvfd/tree/dev)
-[![Coverage Status](https://coveralls.io/repos/github/IGVF-DACC/igvfd/badge.svg?branch=dev)](https://coveralls.io/github/IGVF-DACC/igvfd?branch=dev)
 [![CodeBuild Status](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiK3gyS2EyeWtwU1JPUUh3ZHZKYjlzcU1qTENuREUzc3F4NGc2L0F3SXNUMUZpTkVGZ2lXWnB1SHJsdUlLNml5WEtFOUZhdkZqdzhvVktzdC9IRVFBbDZjPSIsIml2UGFyYW1ldGVyU3BlYyI6ImlJRFlrQWY2SWVxRC9tbTIiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=dev)](https://us-west-2.codebuild.aws.amazon.com/project/eyJlbmNyeXB0ZWREYXRhIjoibnN1SXV1Y0xWZVB1YTlIYlJTTnhjYkRGRTk2UmhzVHBYbG9OcjEyc1lib2htOGxIWlF1bXJIQ0V2RGxEbmxkNmkwU2xpRzExNHQ1VG5WZTNRa0I4aXFqNm5mZmR0VGpIblBrRTB2aVFEZUFlTndzU3JSUHVTRmF5Qm1BZWdEQTVRVUNFNGdxVnhFMGMiLCJpdlBhcmFtZXRlclNwZWMiOiJNdExjcWRadW9HcHhFajBSIiwibWF0ZXJpYWxTZXRTZXJpYWwiOjF9)
 # igvfD
 Metadata database for PanKbase project.
@@ -87,7 +85,7 @@ Now every time you run `git commit` the automatic checks are run to check the ch
 
 ## Generate Opensearch mappings
 
-The `igvfd-check-opensearch-mappings` test on CircleCI will fail if the mappings haven't been updated after changing schemas, calculated properties, or embedded fields.
+The `opensearch-mappings` GitHub Actions job will fail if the mappings haven't been updated after changing schemas, calculated properties, or embedded fields.
 
 ```bash
 $ docker compose down -v && docker compose build
@@ -103,3 +101,7 @@ $ echo '{"index_name": "", "item_type": ""}' > src/igvfd/mappings/new_type.json
 ```
 
 Once the JSON template exists the correct values will be filled in by the `generate-opensearch-mappings.sh` script.
+
+## Branch and deploy flow
+
+See [CONTRIBUTING.md](CONTRIBUTING.md): feature branches → PR to `dev` → staging verify → promote `dev` → `main` (production).

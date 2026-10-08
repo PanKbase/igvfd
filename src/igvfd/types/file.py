@@ -39,6 +39,7 @@ from igvfd.upload_credentials import UploadCredentials
 
 
 FILE_FORMAT_TO_FILE_EXTENSION = {
+    'bai': '.bai',
     'bam': '.bam',
     'bed': '.bed.gz',
     'bedpe': '.bedpe.gz',
@@ -79,6 +80,79 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'xml': '.xml.gz',
     'yaml': '.yaml.gz'
 }
+
+# Uncompressed / alias suffixes seen on submitted file_url objects that are
+# not the default FILE_FORMAT_TO_FILE_EXTENSION mapping (e.g. .tsv vs .tsv.gz).
+_FILE_URL_EXTENSION_ALIASES = (
+    '.bw',
+    '.bed',
+    '.bedpe',
+    '.csv',
+    '.dat',
+    '.fa',
+    '.fasta',
+    '.fastq',
+    '.gaf',
+    '.gds',
+    '.gff',
+    '.gtf',
+    '.obo',
+    '.owl',
+    '.pairs',
+    '.sam',
+    '.tagAlign',
+    '.tsv',
+    '.txt',
+    '.vcf',
+    '.xml',
+    '.yaml',
+)
+
+_KNOWN_DOWNLOAD_EXTENSIONS = tuple(
+    sorted(
+        set(FILE_FORMAT_TO_FILE_EXTENSION.values()) | set(_FILE_URL_EXTENSION_ALIASES),
+        key=len,
+        reverse=True,
+    )
+)
+
+# Prod upload bucket whose external-sheet keys often 404; prefer file_url instead.
+_BROKEN_UPLOAD_BUCKET = 'pankbase-files'
+
+
+def get_download_file_extension(file_format, file_url=None):
+    """Return href/download filename extension.
+
+    Prefer the real object suffix from file_url when present so .gz is only
+    used when the object is gzipped. Fall back to FILE_FORMAT_TO_FILE_EXTENSION.
+    """
+    if file_url:
+        basename = urlparse(file_url).path.rsplit('/', 1)[-1]
+        if basename:
+            lower = basename.lower()
+            for ext in _KNOWN_DOWNLOAD_EXTENSIONS:
+                if lower.endswith(ext.lower()):
+                    return basename[-len(ext):]
+    return FILE_FORMAT_TO_FILE_EXTENSION[file_format]
+
+
+def prefer_file_url_redirect(external, properties):
+    """Whether @@download should 307 to submitted file_url.
+
+    No S3 HEAD: if there is no external S3 sheet, or the sheet bucket is the
+    broken pankbase-files upload bucket (or key is empty), and file_url is
+    present, prefer file_url over signing a dead key.
+    """
+    file_url = properties.get('file_url')
+    if not file_url:
+        return False
+    if external.get('service') != 's3':
+        return True
+    bucket = external.get('bucket') or ''
+    key = external.get('key') or ''
+    if not key or bucket == _BROKEN_UPLOAD_BUCKET:
+        return True
+    return False
 
 
 def show_upload_credentials(request=None, context=None, upload_status=None):
@@ -198,8 +272,8 @@ class File(Item):
             'type': 'string',
         }
     )
-    def href(self, request, file_format, accession):
-        file_extension = FILE_FORMAT_TO_FILE_EXTENSION[file_format]
+    def href(self, request, file_format, accession, file_url=None):
+        file_extension = get_download_file_extension(file_format, file_url)
         filename = f'{accession}{file_extension}'
         return request.resource_path(
             self,
@@ -1008,7 +1082,10 @@ def download(context, request):
         raise HTTPForbidden(
             'Downloading Anvil file not allowed.'
         )
-    file_extension = FILE_FORMAT_TO_FILE_EXTENSION[properties['file_format']]
+    file_extension = get_download_file_extension(
+        properties['file_format'],
+        properties.get('file_url'),
+    )
     accession = properties['accession']
     filename = f'{accession}{file_extension}'
     if request.subpath:
@@ -1018,6 +1095,18 @@ def download(context, request):
                 _filename
             )
     external = context.propsheets.get('external', {})
+    # Prefer submitted file_url when there is no usable S3 sheet, or when the
+    # sheet targets the broken pankbase-files upload bucket / empty key
+    # (~43 prod cases). Avoid S3 HEAD in this view; use the bucket heuristic.
+    if prefer_file_url_redirect(external, properties):
+        file_url = properties['file_url']
+        if asbool(request.params.get('soft')):
+            return {
+                '@type': ['SoftRedirect'],
+                'location': file_url,
+                'expires': None,
+            }
+        raise HTTPTemporaryRedirect(location=file_url)
     if external.get('service') != 's3':
         raise HTTPNotFound(
             detail=f'External service {external.get("service")} not expected'

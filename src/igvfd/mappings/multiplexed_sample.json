@@ -1,6 +1,6 @@
 {
-    "hash": "59f4654bd95d7c4e0502cae311e3316c",
-    "index_name": "multiplexed_sample_59f4654b",
+    "hash": "47e5c7cd8e9abb0ae695417e0e470c2c",
+    "index_name": "multiplexed_sample_47e5c7cd",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -713,6 +713,9 @@
                             "base_media": {
                                 "type": "keyword"
                             },
+                            "cell_type": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -729,6 +732,21 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "de_comparison_class": {
+                                "type": "keyword"
+                            },
+                            "de_contrast": {
+                                "type": "keyword"
+                            },
+                            "de_method": {
+                                "type": "keyword"
+                            },
+                            "de_trait": {
+                                "type": "keyword"
+                            },
+                            "de_trait_description": {
                                 "type": "keyword"
                             },
                             "description": {
