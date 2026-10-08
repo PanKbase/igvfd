@@ -17,7 +17,8 @@ def test_analysis_set_de_facets_and_fuzzy_search(workbook, testapp):
     r = testapp.get('/search/?type=AnalysisSet&de_comparison_class=disease_status')
     assert r.json['total'] >= 1
 
-    r = testapp.get('/search/?type=AnalysisSet&searchTerm=INSIEQ')
+    # igvfd free-text param is `query` (not searchTerm).
+    r = testapp.get('/search/?type=AnalysisSet&query=INSIEQ')
     assert r.json['total'] >= 1
     assert any(
         'INSIEQ' in (item.get('de_trait') or '')
@@ -25,6 +26,6 @@ def test_analysis_set_de_facets_and_fuzzy_search(workbook, testapp):
         for item in r.json['@graph']
     )
 
-    r = testapp.get('/search/?type=AnalysisSet&searchTerm=%22T1D%20vs%20control%22')
+    r = testapp.get('/search/?type=AnalysisSet&query=%22T1D%20vs%20control%22')
     assert r.json['total'] >= 1
     assert any(item.get('de_contrast') == 'T1D vs control' for item in r.json['@graph'])

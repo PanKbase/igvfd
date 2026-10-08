@@ -7,7 +7,7 @@ from snovault.elasticsearch.searches.configs import search_config
 def analysis_set():
     return {
         'facets': {
-            # Defaults (DE fields omitted until backfill ships)
+            # Defaults (includes DE facets after backfill)
             'annotation_category': {
                 'title': 'Annotation Category',
                 'category': 'Analysis Set Details',
@@ -27,6 +27,21 @@ def analysis_set():
                 'title': 'Assay Title',
                 'category': 'Analysis Set Details',
                 'description': 'Assay titles relevant to this analysis set.',
+            },
+            'cell_type': {
+                'title': 'Cell Type',
+                'category': 'Analysis Set Details',
+                'description': 'Cell type the analysis was performed in.',
+            },
+            'de_comparison_class': {
+                'title': 'DE Comparison Class',
+                'category': 'Analysis Set Details',
+                'description': 'Kind of variable a differential expression analysis tests.',
+            },
+            'de_method': {
+                'title': 'DE Method',
+                'category': 'Analysis Set Details',
+                'description': 'Statistical design of the differential expression analysis.',
             },
             'samples.sample_terms.term_name': {
                 'title': 'Sample Term',

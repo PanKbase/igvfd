@@ -106,7 +106,6 @@ def primary_islet():
                 'category': 'Sample',
                 'optional': True,
             },
-            # Optional — Provenance
             'sources.title': {
                 'title': 'Sources',
                 'category': 'Provenance',
