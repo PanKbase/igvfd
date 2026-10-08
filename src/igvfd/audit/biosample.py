@@ -40,7 +40,7 @@ def audit_biosample_taxa_check(value, system):
         if len(taxa_dict) > 1:
             taxa_donors = []
             for k, v in taxa_dict.items():
-                taxa_donors.append(f'{k} ({', '.join(v)})')
+                taxa_donors.append(f'{k} ({", ".join(v)})')
             taxa_detail = ', '.join(taxa_donors)
             detail = f'{object_type} {audit_link(path_to_text(sample_id), sample_id)
                                       } has `donors` with `taxa` {taxa_detail}. '
@@ -82,21 +82,21 @@ def audit_desired_fields(value, system):
     """
     description = get_audit_description(audit_desired_fields)
     desired_fields = [
-        'rrid',
-        'organ_source',
-        'prep_viability',
-        'warm_ischaemia_duration',
-        'purity',
-        'hand_picked',
-        'pre_shipment_culture_time',
-        'islet_function_available'
+        "rrid",
+        "organ_source",
+        "prep_viability",
+        "warm_ischaemia_duration",
+        "purity",
+        "hand_picked",
+        "pre_shipment_culture_time",
+        "islet_function_available"
     ]
     missing_fields = [field for field in desired_fields if field not in value]
 
     if missing_fields:
         for field in missing_fields:
             detail = (
-                f'Human donor {audit_link(path_to_text(value['@id']), value['@id'])} is missing tier 2 field `{field}`.'
+                f'Human donor {audit_link(path_to_text(value["@id"]), value["@id"])} is missing tier 2 field `{field}`.'
             )
             yield AuditFailure('missing tier 2 field', f'{detail}', level='WARNING')
 

@@ -62,7 +62,7 @@ def engine_version():
 @pytest.fixture
 def postgres_engine_version():
     from aws_cdk.aws_rds import PostgresEngineVersion
-    return PostgresEngineVersion.of('14.19', '14')
+    return PostgresEngineVersion.of("14.19", "14")
 
 
 @pytest.fixture

@@ -401,7 +401,7 @@ def in_vitro_system_17_18(value, system):
         notes += (
             f' The following properties were removed in an upgrade '
             f'because they are invalid for a "cell line" in vitro '
-            f'system: {'; '.join(key_val_to_str)}.'
+            f'system: {"; ".join(key_val_to_str)}.'
         )
         value['notes'] = notes.strip()
 

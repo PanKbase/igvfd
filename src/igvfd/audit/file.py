@@ -36,7 +36,7 @@ def audit_upload_status(value, system):
             audit_level = 'ERROR'
             description = get_audit_description(audit_upload_status, index=0)
         detail = (
-            f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} has `upload_status` {upload_status}.'
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has `upload_status` {upload_status}.'
         )
         validation_error_detail = value.get('validation_error_detail')
         if upload_status == 'invalidated' and validation_error_detail:
@@ -67,11 +67,11 @@ def audit_file_format_specifications(value, system):
         if doc_type != 'file format specification':
             detail = (
                 f'{object_type} {audit_link(path_to_text(
-                    value['@id']), value['@id'])} has `file_format_specification` {audit_link(path_to_text(document), document)} '
+                    value["@id"]), value["@id"])} has `file_format_specification` {audit_link(path_to_text(document), document)} '
                 f'with `document_type` {doc_type}.'
             )
             yield AuditFailure('inconsistent document type', f'{detail} {description}', level='ERROR')
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get('audit_description', '')}', level=audit_message.get('audit_level', ''))
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('ModelFile', frame='object')
@@ -91,10 +91,10 @@ def audit_external_identifiers(value, system):
     if value.get('externally_hosted'):
         if 'dbxrefs' not in value:
             detail = (
-                f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} is externally hosted, '
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is externally hosted, '
                 f'but does not have identifier(s) from an external resource listed in `dbxrefs`.'
             )
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get('audit_description', '')}', level=audit_message.get('audit_level', ''))
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('ReferenceFile', frame='object')
@@ -113,7 +113,7 @@ def audit_external_reference_files(value, system):
     if value.get('external'):
         if 'dbxrefs' not in value:
             detail = (
-                f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} is an external file, '
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is an external file, '
                 f'but does not have identifier(s) from an external resource listed in `dbxrefs`.'
             )
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get('audit_description', '')}', level=audit_message.get('audit_level', ''))
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

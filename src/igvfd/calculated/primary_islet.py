@@ -33,10 +33,10 @@ def coalesce_post_shipment_viability(
 
 def islet_calc_bundle(properties: dict[str, Any]) -> dict[str, Any]:
     out: dict[str, Any] = {
-        'purity_value': parse_purity_value(properties.get('purity')),
-        'post_shipment_viability': coalesce_post_shipment_viability(
-            properties.get('post_shipment_viability_quantitative'),
-            properties.get('post_shipment_islet_viability'),
+        "purity_value": parse_purity_value(properties.get("purity")),
+        "post_shipment_viability": coalesce_post_shipment_viability(
+            properties.get("post_shipment_viability_quantitative"),
+            properties.get("post_shipment_islet_viability"),
         ),
     }
     return {k: v for k, v in out.items() if v is not None}

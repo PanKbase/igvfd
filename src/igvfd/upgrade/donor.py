@@ -214,8 +214,8 @@ def human_donor_15_16(value, system):
             # If ethnicity is a string, convert it to an object with 100% as the default percentage
             if isinstance(ethnicity, str):
                 updated_ethnicities.append({
-                    'ethnicity': ethnicity,
-                    'percentage': 100
+                    "ethnicity": ethnicity,
+                    "percentage": 100
                 })
             else:
                 # In case of unexpected data types, retain as is (or handle as needed)
@@ -231,12 +231,12 @@ def human_donor_16_17(value, system):
     # Update T1D stage enum values to include "level" terminology
     if 't1d_stage' in value:
         t1d_stage_mapping = {
-            'At-risk: Single or transient autoantibody, normal glucose':
-                'At-risk: Single or transient autoantibody, normal glucose level',
-            'Stage 1: Two or more autoantibodies, normal glucose metabolism':
-                'Stage 1: Two or more autoantibodies, normal glucose metabolism level',
-            'Stage 2: Two or more autoantibodies, dysglycemia (e.g. HbA1c ≥ 5.7%)':
-                'Stage 2: Two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)'
+            "At-risk: Single or transient autoantibody, normal glucose":
+                "At-risk: Single or transient autoantibody, normal glucose level",
+            "Stage 1: Two or more autoantibodies, normal glucose metabolism":
+                "Stage 1: Two or more autoantibodies, normal glucose metabolism level",
+            "Stage 2: Two or more autoantibodies, dysglycemia (e.g. HbA1c ≥ 5.7%)":
+                "Stage 2: Two or more autoantibodies, dysglycemia (e.g., HbA1c ≥ 5.7%)"
         }
 
         current_stage = value['t1d_stage']
@@ -246,9 +246,9 @@ def human_donor_16_17(value, system):
     # Update diabetes_status_description enum values
     if 'diabetes_status_description' in value:
         diabetes_status_mapping = {
-            'alström syndrome': 'Alström syndrome',
-            'cystic fibrosis diabetes': 'cystic fibrosis-related diabetes',
-            'non-diabetic': 'control without diabetes'
+            "alström syndrome": "Alström syndrome",
+            "cystic fibrosis diabetes": "cystic fibrosis-related diabetes",
+            "non-diabetic": "control without diabetes"
         }
 
         current_status = value['diabetes_status_description']
@@ -258,7 +258,7 @@ def human_donor_16_17(value, system):
     # Update ethnicities enum values
     if 'ethnicities' in value and isinstance(value['ethnicities'], list):
         ethnicities_mapping = {
-            'Caucasian': 'White'
+            "Caucasian": "White"
         }
         updated_ethnicities = []
         for ethnicity in value['ethnicities']:
@@ -271,10 +271,10 @@ def human_donor_16_17(value, system):
     # Update donation_type enum values from abbreviations to full descriptions
     if 'donation_type' in value:
         donation_type_mapping = {
-            'DCD': 'Donation after Circulatory Death',
-            'DBD': 'Donation after Brain Death',
-            'NDD': 'Natural Death Donation',
-            'MAD': 'Medical Assistance in Dying'
+            "DCD": "Donation after Circulatory Death",
+            "DBD": "Donation after Brain Death",
+            "NDD": "Natural Death Donation",
+            "MAD": "Medical Assistance in Dying"
         }
 
         current_type = value['donation_type']

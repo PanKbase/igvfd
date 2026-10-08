@@ -20,19 +20,19 @@ def audit_tier0_fields(value, system):
     """
     description = get_audit_description(audit_tier0_fields)
     critical_fields = [
-        'age',
-        'award',
-        'center_donor_id',
-        'lab',
-        'living_donor',
-        'taxa'
+        "age",
+        "award",
+        "center_donor_id",
+        "lab",
+        "living_donor",
+        "taxa"
     ]
     missing_fields = [field for field in critical_fields if field not in value]
 
     if missing_fields:
         for field in missing_fields:
             detail = (
-                f'Human donor {audit_link(path_to_text(value['@id']), value['@id'])} is missing tier 0 field `{field}`.'
+                f'Human donor {audit_link(path_to_text(value["@id"]), value["@id"])} is missing tier 0 field `{field}`.'
             )
             yield AuditFailure('missing tier 0 field', f'{detail}', level='ERROR')
 
@@ -48,16 +48,16 @@ def audit_tier1_fields(value, system):
     """
     description = get_audit_description(audit_tier1_fields)
     required_fields = [
-        'sex',
-        'bmi',
-        'diabetes_status_description'
+        "sex",
+        "bmi",
+        "diabetes_status_description"
     ]
     missing_fields = [field for field in required_fields if field not in value]
 
     if missing_fields:
         for field in missing_fields:
             detail = (
-                f'Human donor {audit_link(path_to_text(value['@id']), value['@id'])} is missing tier 1 field `{field}`.'
+                f'Human donor {audit_link(path_to_text(value["@id"]), value["@id"])} is missing tier 1 field `{field}`.'
             )
             yield AuditFailure('missing tier 1 field', f'{detail}', level='WARNING')
 
@@ -73,20 +73,20 @@ def audit_tier2_fields(value, system):
     """
     description = get_audit_description(audit_tier2_fields)
     desired_fields = [
-        'rrid',
-        'ethnicities',
-        'hba1c',
-        'glucose_loweing_theraphy',
-        'hospital_stay',
-        'donation_type',
-        'cause_of_death'
+        "rrid",
+        "ethnicities",
+        "hba1c",
+        "glucose_loweing_theraphy",
+        "hospital_stay",
+        "donation_type",
+        "cause_of_death"
     ]
     missing_fields = [field for field in desired_fields if field not in value]
 
     if missing_fields:
         for field in missing_fields:
             detail = (
-                f'Human donor {audit_link(path_to_text(value['@id']), value['@id'])} is missing tier 2 field `{field}`.'
+                f'Human donor {audit_link(path_to_text(value["@id"]), value["@id"])} is missing tier 2 field `{field}`.'
             )
             yield AuditFailure('missing tier 2 field', f'{detail}', level='WARNING')
 
@@ -102,49 +102,49 @@ def audit_tier3_fields(value, system):
     """
     description = get_audit_description(audit_tier3_fields)
     optional_fields = [
-        'dbxrefs',
-        'diabetes_status',
-        'phenotypic_features',
-        'virtual',
-        'family_history_of_diabetes',
-        'family_history_of_diabetes_relationship',
-        'genetic_ethnicities',
-        'genetic_sex',
-        'diabetes_duration',
-        'c_peptide',
-        'aab_gada',
-        'aab_gada_assay',
-        'aab_gada_value',
-        'aab_ia2',
-        'aab_ia2_assay',
-        'aab_ia2_value',
-        'aab_iaa',
-        'aab_iaa_assay',
-        'aab_iaa_value',
-        'aab_znt8',
-        'aab_znt8_assay',
-        'aab_znt8_value',
-        'hla_typing',
-        'other_tissues_available',
-        'other_therapy',
-        'publication_identifiers',
-        'collections',
-        'pancreas_tissue_available',
-        'documents',
-        'url',
-        't1d_stage',
-        'derived_diabetes_status',
-        'data_available',
-        'accession',
-        'aliases',
-        'related_donors'
+        "dbxrefs",
+        "diabetes_status",
+        "phenotypic_features",
+        "virtual",
+        "family_history_of_diabetes",
+        "family_history_of_diabetes_relationship",
+        "genetic_ethnicities",
+        "genetic_sex",
+        "diabetes_duration",
+        "c_peptide",
+        "aab_gada",
+        "aab_gada_assay",
+        "aab_gada_value",
+        "aab_ia2",
+        "aab_ia2_assay",
+        "aab_ia2_value",
+        "aab_iaa",
+        "aab_iaa_assay",
+        "aab_iaa_value",
+        "aab_znt8",
+        "aab_znt8_assay",
+        "aab_znt8_value",
+        "hla_typing",
+        "other_tissues_available",
+        "other_therapy",
+        "publication_identifiers",
+        "collections",
+        "pancreas_tissue_available",
+        "documents",
+        "url",
+        "t1d_stage",
+        "derived_diabetes_status",
+        "data_available",
+        "accession",
+        "aliases",
+        "related_donors"
     ]
     missing_fields = [field for field in optional_fields if field not in value]
 
     if missing_fields:
         for field in missing_fields:
             detail = (
-                f'Human donor {audit_link(path_to_text(value['@id']), value['@id'])} is missing tier 3 field `{field}`.'
+                f'Human donor {audit_link(path_to_text(value["@id"]), value["@id"])} is missing tier 3 field `{field}`.'
             )
             yield AuditFailure('missing tier 3 field', f'{detail}', level='WARNING')
 
@@ -171,7 +171,7 @@ def audit_related_donors(value, system):
         for unique_related_donor in set([related_donor['donor'] for related_donor in value['related_donors']]):
             if [related_donor['donor'] for related_donor in value['related_donors']].count(unique_related_donor) > 1:
                 detail = (
-                    f'Human donor {audit_link(path_to_text(value['@id']), value['@id'])} '
+                    f'Human donor {audit_link(path_to_text(value["@id"]), value["@id"])} '
                     f'has a duplicated related donor {audit_link(path_to_text(
                         unique_related_donor), unique_related_donor)} in `related_donors`.'
                 )
@@ -179,10 +179,10 @@ def audit_related_donors(value, system):
             related_donor_object = system.get('request').embed(unique_related_donor, '@@object?skip_calculated=true')
             if 'related_donors' not in related_donor_object or value['@id'] not in [related_donor['donor'] for related_donor in related_donor_object['related_donors']]:
                 detail = (
-                    f'Human donor {audit_link(path_to_text(value['@id']), value['@id'])} '
+                    f'Human donor {audit_link(path_to_text(value["@id"]), value["@id"])} '
                     f'has {audit_link(path_to_text(unique_related_donor), unique_related_donor)} '
                     f'as a related donor, but {audit_link(path_to_text(unique_related_donor), unique_related_donor)} '
                     f'does not mutually specify {audit_link(path_to_text(
-                        value['@id']), value['@id'])} as a related donor in `related_donors`.'
+                        value["@id"]), value["@id"])} as a related donor in `related_donors`.'
                 )
                 yield AuditFailure('inconsistent related donors', f'{detail} {description_mutual}', level='ERROR')

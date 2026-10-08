@@ -10,7 +10,7 @@ def open_reading_frame_1_2(value, system):
         value['lab'] = '/labs/j-michael-cherry'
         if 'notes' in value:
             value['notes'] = f'{value.get(
-                'notes')}. This object does not have award and lab specified previously, it was upgraded to have Cherry lab/award.'
+                "notes")}. This object does not have award and lab specified previously, it was upgraded to have Cherry lab/award.'
         else:
             value['notes'] = 'This object does not have award and lab specified previously, it was upgraded to have Cherry lab/award.'
     return

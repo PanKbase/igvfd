@@ -275,7 +275,7 @@ def test_file_summaries(
         }
     )
     res = testapp.get(configuration_file_seqspec['@id'])
-    assert res.json.get('summary', '') == f'seqspec of {res_sequence_file.json.get('accession')}'
+    assert res.json.get('summary', '') == f'seqspec of {res_sequence_file.json.get("accession")}'
 
     testapp.patch_json(
         signal_file['@id'],

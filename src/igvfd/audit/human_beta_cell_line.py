@@ -34,7 +34,7 @@ def audit_required_fields_check(value, system):
     if missing_fields:
         detail = (
             f'Human beta cell line {audit_link(path_to_text(value_id), value_id)} '
-            f'is missing required field(s): {', '.join(missing_fields)}.'
+            f'is missing required field(s): {", ".join(missing_fields)}.'
         )
         yield AuditFailure('missing required field', f'{detail} {description}', level='ERROR')
 
@@ -121,7 +121,7 @@ def audit_dependent_fields_check(value, system):
             detail = (
                 f'Human beta cell line {audit_link(path_to_text(value_id), value_id)} '
                 f'has `time_post_library_delivery` specified but is missing required field(s): {
-                    ', '.join(missing_deps)}.'
+                    ", ".join(missing_deps)}.'
             )
             yield AuditFailure('missing dependent field', f'{detail} {description}', level='ERROR')
 
@@ -137,7 +137,7 @@ def audit_dependent_fields_check(value, system):
             detail = (
                 f'Human beta cell line {audit_link(path_to_text(value_id), value_id)} '
                 f'has `time_post_library_delivery_units` specified but is missing required field(s): {
-                    ', '.join(missing_deps)}.'
+                    ", ".join(missing_deps)}.'
             )
             yield AuditFailure('missing dependent field', f'{detail} {description}', level='ERROR')
 
@@ -149,8 +149,8 @@ def audit_dependent_fields_check(value, system):
         missing_age_fields = [field for field in age_fields if field not in present_age_fields]
         detail = (
             f'Human beta cell line {audit_link(path_to_text(value_id), value_id)} '
-            f'has age field(s) {', '.join(present_age_fields)} specified but is missing required field(s): {
-                ', '.join(missing_age_fields)}.'
+            f'has age field(s) {", ".join(present_age_fields)} specified but is missing required field(s): {
+                ", ".join(missing_age_fields)}.'
         )
         yield AuditFailure('missing dependent field', f'{detail} {description}', level='ERROR')
 
@@ -181,7 +181,7 @@ def audit_status_release_timestamp_check(value, system):
         if 'release_timestamp' not in value or not value['release_timestamp']:
             detail = (
                 f'Human beta cell line {audit_link(path_to_text(value_id), value_id)} '
-                f'has status `{value['status']}` but is missing required `release_timestamp`.'
+                f'has status `{value["status"]}` but is missing required `release_timestamp`.'
             )
             yield AuditFailure('missing release timestamp', f'{detail} {description}', level='ERROR')
 
@@ -204,13 +204,13 @@ def audit_classifications_format_check(value, system):
         if not isinstance(value['classifications'], list):
             detail = (
                 f'Human beta cell line {audit_link(path_to_text(value_id), value_id)} '
-                f'has `classifications` as {type(value['classifications']).__name__} but it should be an array.'
+                f'has `classifications` as {type(value["classifications"]).__name__} but it should be an array.'
             )
             yield AuditFailure('incorrect classifications format', f'{detail} {description}', level='ERROR')
         elif len(value['classifications']) != 1 or value['classifications'][0] != 'cell line':
             detail = (
                 f'Human beta cell line {audit_link(path_to_text(value_id), value_id)} '
-                f'has `classifications` {value['classifications']} but should be ["cell line"].'
+                f'has `classifications` {value["classifications"]} but should be ["cell line"].'
             )
             yield AuditFailure('incorrect classifications format', f'{detail} {description}', level='WARNING')
 

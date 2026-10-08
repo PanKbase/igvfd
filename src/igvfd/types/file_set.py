@@ -639,9 +639,9 @@ class AuxiliarySet(FileSet):
                                       for measurement_set in measurement_sets[:2] if measurement_set]
         if len(measurement_sets) > 2:
             remainder = f'... and {len(measurement_sets) -
-                                   2} more measurement set{'s' if len(measurement_sets) - 2 != 1 else ''}'
+                                   2} more measurement set{"s" if len(measurement_sets) - 2 != 1 else ""}'
             measurement_sets_summaries = measurement_sets_summaries + [remainder]
-        return f'{file_set_type} for {', '.join(measurement_sets_summaries)}'
+        return f'{file_set_type} for {", ".join(measurement_sets_summaries)}'
 
     @calculated_property(
         condition='samples',

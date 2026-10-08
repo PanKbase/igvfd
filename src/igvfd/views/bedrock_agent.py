@@ -71,12 +71,12 @@ def validate_response(response_text: str) -> str:
     Returns validated response, truncated if necessary.
     """
     if not isinstance(response_text, str):
-        return ''
+        return ""
 
     # Limit response length
     if len(response_text) > MAX_RESPONSE_LENGTH:
         logger.warning(f"Response truncated from {len(response_text)} to {MAX_RESPONSE_LENGTH} characters")
-        return response_text[:MAX_RESPONSE_LENGTH] + '... (response truncated)'
+        return response_text[:MAX_RESPONSE_LENGTH] + "... (response truncated)"
 
     # Remove potential script tags
     response_text = re.sub(
@@ -173,11 +173,11 @@ def bedrock_agent_query(request):
         # Prepare messages
         messages = [
             {
-                'role': 'user',
-                'content': [
+                "role": "user",
+                "content": [
                     {
-                        'type': 'text',
-                        'text': user_query
+                        "type": "text",
+                        "text": user_query
                     }
                 ]
             }
@@ -200,14 +200,14 @@ def bedrock_agent_query(request):
             response = bedrock_runtime.invoke_model(
                 modelId=model_id,
                 body=json.dumps({
-                    'anthropic_version': 'bedrock-2023-05-31',
-                    'max_tokens': 4096,
-                    'system': system_prompt,
-                    'messages': messages,
+                    "anthropic_version": "bedrock-2023-05-31",
+                    "max_tokens": 4096,
+                    "system": system_prompt,
+                    "messages": messages,
                     **guardrail_config  # Include guardrails if configured
                 }),
-                contentType='application/json',
-                accept='application/json'
+                contentType="application/json",
+                accept="application/json"
             )
 
             # Check for guardrail blocks in response headers
@@ -217,7 +217,7 @@ def bedrock_agent_query(request):
 
             if guardrail_action == 'BLOCKED':
                 logger.warning(
-                    'Query blocked by guardrails',
+                    "Query blocked by guardrails",
                     extra={'query_preview': user_query[:100]}
                 )
                 raise HTTPBadRequest(
@@ -239,7 +239,7 @@ def bedrock_agent_query(request):
         response_body = json.loads(response['body'].read())
 
         # Extract assistant message
-        assistant_message = ''
+        assistant_message = ""
         for content_block in response_body.get('content', []):
             if content_block.get('type') == 'text':
                 assistant_message += content_block.get('text', '')

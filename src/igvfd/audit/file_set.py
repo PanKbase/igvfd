@@ -45,7 +45,7 @@ def audit_no_files(value, system):
                      'Variant FlowFISH']
     if not (value.get('files', '')) and assay_term not in CRISPR_assays and preferred_assay_title not in CRISPR_assays:
         detail = (
-            f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} '
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `files`.'
         )
         yield AuditFailure('missing files', f'{detail} {description}', level='WARNING')
@@ -75,7 +75,7 @@ def audit_missing_seqspec(value, system):
             no_seqspec = ', '.join([audit_link(path_to_text(file_no_seqspec), file_no_seqspec)
                                    for file_no_seqspec in no_seqspec])
             detail = (
-                f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} has sequence file(s): '
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file(s): '
                 f'{no_seqspec} which do not have any `seqspecs`.'
             )
             yield AuditFailure('missing sequence specification', f'{detail} {description}', level='NOT_COMPLIANT')
@@ -105,7 +105,7 @@ def audit_files_associated_with_incorrect_fileset(value, system):
                         if configuration_file not in value['files']:
                             detail = (
                                 f'{object_type} {audit_link(path_to_text(
-                                    value['@id']), value['@id'])} has sequence file '
+                                    value["@id"]), value["@id"])} has sequence file '
                                 f'{audit_link(path_to_text(file), file)} which links to seqspec '
                                 f'{audit_link(path_to_text(configuration_file), configuration_file)
                                    } which does not link to this file set.'
@@ -123,7 +123,7 @@ def audit_files_associated_with_incorrect_fileset(value, system):
                             [audit_link(path_to_text(sequence_file), sequence_file) for sequence_file in missing_sequence_files])
                         detail = (
                             f'{object_type} {audit_link(path_to_text(
-                                value['@id']), value['@id'])} has seqspec configuration file '
+                                value["@id"]), value["@id"])} has seqspec configuration file '
                             f'{audit_link(path_to_text(file), file)} which links to sequence file(s): {
                                 missing_sequence_files} which '
                             f'do not link to this file set.'
@@ -168,8 +168,8 @@ def audit_inconsistent_seqspec(value, system):
             if not (all(seqspec == first_seqspec for seqspec in file_dict.values())):
                 non_matching_files = [file for file, _ in file_dict.items()]
                 detail = (
-                    f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} has sequence files: '
-                    f'{', '.join([audit_link(path_to_text(non_matching_files), non_matching_files)
+                    f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
+                    f'{", ".join([audit_link(path_to_text(non_matching_files), non_matching_files)
                                  for non_matching_files in non_matching_files])} '
                     f'which belong to the same sequencing set, but do not have the same `seqspecs`.'
                 )
@@ -192,9 +192,9 @@ def audit_inconsistent_seqspec(value, system):
             if len(key_set) > 1:
                 seqspec_paths = [audit_link(path_to_text(x), x) for x in seqspec.split(':')]
                 detail = (
-                    f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} has sequence files: '
-                    f'{', '.join([audit_link(path_to_text(file), file) for _, file in sequence_files])} '
-                    f'which share the same `seqspecs` {', '.join(seqspec_paths)} '
+                    f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
+                    f'{", ".join([audit_link(path_to_text(file), file) for _, file in sequence_files])} '
+                    f'which share the same `seqspecs` {", ".join(seqspec_paths)} '
                     f'but belong to different sequencing sets.'
                 )
                 yield AuditFailure('inconsistent sequence specifications', f'{detail} {description}', level='ERROR')
@@ -229,7 +229,7 @@ def audit_loci_valid_chrom_sizes(value, system):
         if len(set([loci['assembly'] for loci in value['small_scale_loci_list']])) > 1:
             assemblies = ', '.join(set(loci['assembly'] for loci in value['small_scale_loci_list']))
             detail = (
-                f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} has loci '
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has loci '
                 f'from multiple assemblies: {assemblies} listed in its `small_scale_loci_list`.'
             )
             yield AuditFailure('inconsistent loci', f'{detail} {description_inconsistent_assembly}', level='ERROR')
@@ -242,14 +242,14 @@ def audit_loci_valid_chrom_sizes(value, system):
         if invalid_chroms:
             invalid_chroms = ', '.join(invalid_chroms)
             detail = (
-                f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} has unexpected '
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has unexpected '
                 f'chromosome(s): {invalid_chroms} listed in its `small_scale_loci_list`.'
             )
             yield AuditFailure('inconsistent loci', f'{detail} {description_inconsistent_loci}', level='ERROR')
         if invalid_loci:
             invalid_loci = ', '.join(str(invalid_locus) for invalid_locus in invalid_loci)
             detail = (
-                f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} has loci '
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has loci '
                 f'listed in `small_scale_loci_list`: {invalid_loci} which exceed '
                 f'the valid chromosome size for its respective chromosome.'
             )
@@ -298,17 +298,17 @@ def audit_inconsistent_sequencing_kit(value, system):
                 platform_object = system.get('request').embed(file_info[file]['platform'])
                 if file_info[file]['kit'] not in platform_object.get('sequencing_kits', []):
                     detail = (
-                        f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} has a sequence '
+                        f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has a sequence '
                         f'file {audit_link(path_to_text(file), file)} sequenced on a `sequencing_platform` '
-                        f'{audit_link(path_to_text(file_info[file]['platform']), file_info[file]['platform'])} '
-                        f'that is inconsistent with its `sequencing_kit` {file_info[file]['kit']}.'
+                        f'{audit_link(path_to_text(file_info[file]["platform"]), file_info[file]["platform"])} '
+                        f'that is inconsistent with its `sequencing_kit` {file_info[file]["kit"]}.'
                     )
                     yield AuditFailure('inconsistent sequencing kit', f'{detail} {description_inconsistent_kit}', level='ERROR')
 
     if missing_kit:
         detail = (
-            f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} has sequence '
-            f'file(s) {', '.join([audit_link(path_to_text(f), f) for f in missing_kit])} '
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence '
+            f'file(s) {", ".join([audit_link(path_to_text(f), f) for f in missing_kit])} '
             f'which lack specification of a `sequencing_kit`.'
         )
         yield AuditFailure('missing sequencing kit', f'{detail} {description_missing_kit}', level='WARNING')
@@ -331,10 +331,10 @@ def audit_inconsistent_sequencing_kit(value, system):
                 unspecified_kit_phrase = ' and unspecified kit(s)'
             filtered_kits = [kit for kit in run_to_kit[run]['kits'] if kit not in [None, '']]
             detail = (
-                f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} has sequence files '
-                f'{', '.join([audit_link(path_to_text(f), f) for f in run_to_kit[run]['files']])} '
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
+                f'{", ".join([audit_link(path_to_text(f), f) for f in run_to_kit[run]["files"]])} '
                 f'which are part of the same sequencing run, but do not specify the same `sequencing_kit`: '
-                f'{', '.join(filtered_kits)}{unspecified_kit_phrase}.'
+                f'{", ".join(filtered_kits)}{unspecified_kit_phrase}.'
             )
             yield AuditFailure('inconsistent sequencing kit', f'{detail} {description_inconsistent_kit}', level='ERROR')
 
@@ -358,7 +358,7 @@ def audit_auxiliary_set_construct_library_set_files(value, system):
     if non_sequence_files and value.get('file_set_type', '') != 'cell sorting':
         non_sequence_files = ', '.join(
             [audit_link(path_to_text(file), file) for file in non_sequence_files])
-        detail = (f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} links to '
+        detail = (f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} links to '
                   f'`files` that are not sequence or configuration files: {non_sequence_files}.')
         yield AuditFailure('unexpected files', f'{detail} {description}', level='WARNING')
 
@@ -388,7 +388,7 @@ def audit_unexpected_virtual_samples(value, system):
         sample_object = system.get('request').embed(sample)
         if sample_object.get('virtual'):
             detail = (
-                f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} links to virtual sample '
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} links to virtual sample '
                 f'{audit_link(path_to_text(sample), sample)} in `samples`.'
             )
             yield AuditFailure('unexpected sample', f'{detail} {description}', level='ERROR')
@@ -409,7 +409,7 @@ def audit_file_set_missing_description(value, system):
     description = get_audit_description(audit_file_set_missing_description)
     if value.get('file_set_type') != 'intermediate analysis' and not (value.get('description')):
         detail = (
-            f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} '
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `description`.'
         )
         yield AuditFailure('missing description', f'{detail} {description}', level='NOT_COMPLIANT')
@@ -432,7 +432,7 @@ def audit_input_file_set_for(value, system):
     description = get_audit_description(audit_input_file_set_for)
     if not value.get('input_file_set_for') and value.get('files'):
         detail = (
-            f'{object_type} {audit_link(path_to_text(value['@id']), value['@id'])} is a raw data set with files, '
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is a raw data set with files, '
             f'but is not listed in any `input_file_sets` for any analysis sets.'
         )
         yield AuditFailure('missing analysis', f'{detail} {description}', level='WARNING')

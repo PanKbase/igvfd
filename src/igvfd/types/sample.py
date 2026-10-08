@@ -497,23 +497,23 @@ class Biosample(Sample):
             for biomarker in biomarkers:
                 biomarker_object = request.embed(biomarker)
                 if biomarker_object['quantification'] in ['positive', 'negative']:
-                    biomarker_summary = f'{biomarker_object['quantification']} detection of {biomarker_object['name']}'
+                    biomarker_summary = f'{biomarker_object["quantification"]} detection of {biomarker_object["name"]}'
                 elif biomarker_object['quantification'] in ['high', 'intermediate', 'low']:
                     if biomarker_object.get('classification') == 'marker gene':
-                        biomarker_summary = f'{biomarker_object['quantification']
-                                               } expression of {biomarker_object['name']}'
+                        biomarker_summary = f'{biomarker_object["quantification"]
+                                               } expression of {biomarker_object["name"]}'
                     else:
-                        biomarker_summary = f'{biomarker_object['quantification']} level of {biomarker_object['name']}'
+                        biomarker_summary = f'{biomarker_object["quantification"]} level of {biomarker_object["name"]}'
                 biomarker_summaries.append(biomarker_summary)
                 biomarker_summaries = sorted(biomarker_summaries)
-            summary_terms += f' characterized by {', '.join(biomarker_summaries)},'
+            summary_terms += f' characterized by {", ".join(biomarker_summaries)},'
 
         # disease terms are appended to the end of the summary
         if (disease_terms and
                 biosample_type in ['primary_cell', 'primary_islet', 'in_vitro_system', 'tissue', 'whole_organism']):
             phenotype_term_names = sorted([request.embed(disease_term).get('term_name')
                                           for disease_term in disease_terms])
-            summary_terms += f' associated with {', '.join(phenotype_term_names)},'
+            summary_terms += f' associated with {", ".join(phenotype_term_names)},'
 
         # treatment summaries are appended to the end of the summary
         if (treatments and
@@ -524,9 +524,9 @@ class Biosample(Sample):
             perturbation_treatment_summaries = sorted([treatment.get('summary')[13:]
                                                       for treatment in treatment_objects if not treatment.get('depletion')])
             if depleted_treatment_summaries:
-                summary_terms += f' depleted of {', '.join(depleted_treatment_summaries)},'
+                summary_terms += f' depleted of {", ".join(depleted_treatment_summaries)},'
             if perturbation_treatment_summaries:
-                summary_terms += f' treated with {', '.join(perturbation_treatment_summaries)},'
+                summary_terms += f' treated with {", ".join(perturbation_treatment_summaries)},'
 
         # construct library set overview is appended to the end of the summary
         if (construct_library_sets and
@@ -1023,9 +1023,9 @@ class MultiplexedSample(Sample):
                 sample, '@@object').get('summary') for sample in multiplexed_samples[:2]]
             if len(multiplexed_samples) > 2:
                 remainder = f'... and {len(multiplexed_samples) -
-                                       2} more sample{'s' if len(multiplexed_samples) - 2 != 1 else ''}'
+                                       2} more sample{"s" if len(multiplexed_samples) - 2 != 1 else ""}'
                 sample_summaries += [remainder]
-            return f'multiplexed sample: {'; '.join(sample_summaries)}'
+            return f'multiplexed sample: {"; ".join(sample_summaries)}'
         else:
             return 'multiplexed sample'
 

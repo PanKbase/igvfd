@@ -216,7 +216,7 @@ def test_metadata_batch_download_build_params(dummy_request):
     dummy_request.json = {'elements': ['/experiments/ENCSR123ABC/']}
     bd = BatchDownload(dummy_request)
     bd._build_params()
-    assert len(bd.param_list['field']) == 5, f'{len(bd.param_list['field'])} not expected'
+    assert len(bd.param_list['field']) == 5, f'{len(bd.param_list["field"])} not expected'
     assert len(bd.param_list['@id']) == 1
 
 
