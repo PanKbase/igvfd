@@ -14,6 +14,9 @@ class MockSystem:
         self.path = path
         self.request = None
 
+    def get(self, key, default=None):
+        return getattr(self, key, default)
+
 
 def test_audit_required_fields_check_missing_fields():
     """Test that missing required fields trigger audit failures."""

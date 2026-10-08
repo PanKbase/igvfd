@@ -1,6 +1,6 @@
 {
-    "hash": "1aaffff0d3936a71fe8e94ebeb81399c",
-    "index_name": "technical_sample_1aaffff0",
+    "hash": "a7e09102beeef5475eb598ced84bf000",
+    "index_name": "technical_sample_a7e09102",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -396,6 +396,9 @@
                             "base_media": {
                                 "type": "keyword"
                             },
+                            "cell_type": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -412,6 +415,21 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "de_comparison_class": {
+                                "type": "keyword"
+                            },
+                            "de_contrast": {
+                                "type": "keyword"
+                            },
+                            "de_method": {
+                                "type": "keyword"
+                            },
+                            "de_trait": {
+                                "type": "keyword"
+                            },
+                            "de_trait_description": {
                                 "type": "keyword"
                             },
                             "description": {

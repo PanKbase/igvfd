@@ -1,6 +1,6 @@
 {
-    "hash": "802f09b62671669af08cfe500e426fd6",
-    "index_name": "human_beta_cell_line_802f09b6",
+    "hash": "339e285e4e4e26b0f24a7de3ceaaa74f",
+    "index_name": "human_beta_cell_line_339e285e",
     "item_type": "human_beta_cell_line",
     "mapping": {
         "dynamic_templates": [
@@ -1057,6 +1057,9 @@
                             "base_media": {
                                 "type": "keyword"
                             },
+                            "cell_type": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1073,6 +1076,21 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "de_comparison_class": {
+                                "type": "keyword"
+                            },
+                            "de_contrast": {
+                                "type": "keyword"
+                            },
+                            "de_method": {
+                                "type": "keyword"
+                            },
+                            "de_trait": {
+                                "type": "keyword"
+                            },
+                            "de_trait_description": {
                                 "type": "keyword"
                             },
                             "description": {

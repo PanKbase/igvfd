@@ -1,5 +1,9 @@
 name: CI
 
+# Cypress E2E intentionally omitted: upstream workflow cloned IGVF-DACC/igvfd.
+# Optional future: add a Cypress job targeting PanKbase/igvfd.
+# Coveralls omitted.
+
 on:
   pull_request:
     branches: [main, dev]

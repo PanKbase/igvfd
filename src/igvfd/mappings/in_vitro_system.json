@@ -1,6 +1,6 @@
 {
-    "hash": "5e3ace84213f6fbfda6fee43eee3859a",
-    "index_name": "in_vitro_system_5e3ace84",
+    "hash": "69c9fb039fa50205cbbf9cbf4775c260",
+    "index_name": "in_vitro_system_69c9fb03",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1190,6 +1190,9 @@
                             "base_media": {
                                 "type": "keyword"
                             },
+                            "cell_type": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1206,6 +1209,21 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "de_comparison_class": {
+                                "type": "keyword"
+                            },
+                            "de_contrast": {
+                                "type": "keyword"
+                            },
+                            "de_method": {
+                                "type": "keyword"
+                            },
+                            "de_trait": {
+                                "type": "keyword"
+                            },
+                            "de_trait_description": {
                                 "type": "keyword"
                             },
                             "description": {
