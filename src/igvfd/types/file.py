@@ -903,7 +903,7 @@ class IndexFile(File):
     def assembly(self, request, derived_from):
         parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
         if 'assembly' in parent_file_object:
-            return f'{parent_file_object['assembly']}'
+            return f'{parent_file_object["assembly"]}'
 
     @calculated_property(
         schema={
@@ -916,7 +916,7 @@ class IndexFile(File):
     def transcriptome_annotation(self, request, derived_from):
         parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
         if 'transcriptome_annotation' in parent_file_object:
-            return f'{parent_file_object['transcriptome_annotation']}'
+            return f'{parent_file_object["transcriptome_annotation"]}'
 
     @calculated_property(
         schema={
@@ -1008,7 +1008,7 @@ def post_upload(context, request):
     )
     if external.get('service') != 's3':
         raise HTTPNotFound(
-            detail=f'External service {external.get('service')} not expected'
+            detail=f'External service {external.get("service")} not expected'
         )
     bucket = external['bucket']
     key = external['key']
@@ -1109,7 +1109,7 @@ def download(context, request):
         raise HTTPTemporaryRedirect(location=file_url)
     if external.get('service') != 's3':
         raise HTTPNotFound(
-            detail=f'External service {external.get('service')} not expected'
+            detail=f'External service {external.get("service")} not expected'
         )
     bucket = external['bucket']
     key = external['key']
