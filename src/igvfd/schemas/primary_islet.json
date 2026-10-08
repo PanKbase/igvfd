@@ -121,7 +121,35 @@
             "uniqueItems": true,
             "items": {
                 "type": "string",
-                "enum": ["cryopreservation", "flash-freezing", "0", "UW", "Flushing:UW", "Storage:HTK", "HTK", "Flushing:Servator-B", "Flush-solution:UW-and-HTK", "-", "SPS", "SPS-1", "SPS-1:UW", "Fresh:HTK", "BTL", "Storage_Viaspan_SPS-1", "UW-Belzer-Cold", "HTK-for-Heart", "Viaspan_SPS-1", "initial-flush:UW", "storage-solution:HTK", "CSS", "Servator-H", "Flush-solution:SPS-1", "Storage-solution:KPS", "Heart-storage-solution:HTK", "KPS-1"]
+                "enum": [
+                    "cryopreservation",
+                    "flash-freezing",
+                    "0",
+                    "UW",
+                    "Flushing:UW",
+                    "Storage:HTK",
+                    "HTK",
+                    "Flushing:Servator-B",
+                    "Flush-solution:UW-and-HTK",
+                    "-",
+                    "SPS",
+                    "SPS-1",
+                    "SPS-1:UW",
+                    "Fresh:HTK",
+                    "BTL",
+                    "Storage_Viaspan_SPS-1",
+                    "UW-Belzer-Cold",
+                    "HTK-for-Heart",
+                    "Viaspan_SPS-1",
+                    "initial-flush:UW",
+                    "storage-solution:HTK",
+                    "CSS",
+                    "Servator-H",
+                    "Flush-solution:SPS-1",
+                    "Storage-solution:KPS",
+                    "Heart-storage-solution:HTK",
+                    "KPS-1"
+                ]
             },
             "submissionExample": {
                 "appscript": "flash-freezing",
@@ -132,7 +160,34 @@
             "title": "Isolation Center",
             "description": "Facility or location where the pancreas was isolated",
             "type": "string",
-            "enum": ["Network for Pancreatic Organ Donors with Diabetes(nPOD)", "Integrated Islet Distribution Program (IIDP)", "Islet Cell Resource Centers (ICR)", "Islet Isolation Core at the University of Alberta (Edmonton)", "ECIT Islet for Basic Research Program", "Human Pancreas Analysis Program (HPAP)", "University of Pennsylvania (Upenn)", "Wisconsin - University of Wisconsin-Madison", "Miami - University of Miami Sylvester Comprehensive Cancer Center", "UIC - University of Illinois Chicago", "Prodo", "ADI – Alberta Diabetes Institute", "Columbia – Columbia University", "Emory – Emory University", "Imagine-Pharma – Imagine Pharma", "Loyola – Loyola University Chicago", "MGH – Massachusetts General Hospital", "Minnesota – University of Minnesota", "Nationwide – Nationwide Children’s Hospital", "Northwestern – Northwestern University", "Pitt – University of Pittsburgh", "SC-ICRC – Southern California Islet Cell Resources Center", "UArizona – University of Arizona", "UCSF – University of California, San Francisco", "VCU – Virginia Commonwealth University", "WashU – Washington University in St. Louis"],
+            "enum": [
+                "Network for Pancreatic Organ Donors with Diabetes(nPOD)",
+                "Integrated Islet Distribution Program (IIDP)",
+                "Islet Cell Resource Centers (ICR)",
+                "Islet Isolation Core at the University of Alberta (Edmonton)",
+                "ECIT Islet for Basic Research Program",
+                "Human Pancreas Analysis Program (HPAP)",
+                "University of Pennsylvania (Upenn)",
+                "Wisconsin - University of Wisconsin-Madison",
+                "Miami - University of Miami Sylvester Comprehensive Cancer Center",
+                "UIC - University of Illinois Chicago",
+                "Prodo",
+                "ADI – Alberta Diabetes Institute",
+                "Columbia – Columbia University",
+                "Emory – Emory University",
+                "Imagine-Pharma – Imagine Pharma",
+                "Loyola – Loyola University Chicago",
+                "MGH – Massachusetts General Hospital",
+                "Minnesota – University of Minnesota",
+                "Nationwide – Nationwide Children’s Hospital",
+                "Northwestern – Northwestern University",
+                "Pitt – University of Pittsburgh",
+                "SC-ICRC – Southern California Islet Cell Resources Center",
+                "UArizona – University of Arizona",
+                "UCSF – University of California, San Francisco",
+                "VCU – Virginia Commonwealth University",
+                "WashU – Washington University in St. Louis"
+            ],
             "submissionExample": {
                 "appscript": "Network for Pancreatic Organ Donors with Diabetes(nPOD)",
                 "igvf_utils": "Network for Pancreatic Organ Donors with Diabetes(nPOD)"
@@ -142,7 +197,19 @@
             "title": "Resource",
             "description": "Facility or location where the pancreas procured",
             "type": "string",
-            "enum": ["Network for Pancreatic Organ Donors with Diabetes(nPOD)", "Integrated Islet Distribution Program (IIDP)", "Islet Cell Resource Centers (ICR)", "Islet Isolation Core at the University of Alberta (Edmonton)", "ECIT Islet for Basic Research Program", "Human Pancreas Analysis Program (HPAP)", "University of Pennsylvania (Upenn)", "Wisconsin - University of Wisconsin-Madison", "Miami - University of Miami Sylvester Comprehensive Cancer Center", "UIC - University of Illinois Chicago", "Prodo"],
+            "enum": [
+                "Network for Pancreatic Organ Donors with Diabetes(nPOD)",
+                "Integrated Islet Distribution Program (IIDP)",
+                "Islet Cell Resource Centers (ICR)",
+                "Islet Isolation Core at the University of Alberta (Edmonton)",
+                "ECIT Islet for Basic Research Program",
+                "Human Pancreas Analysis Program (HPAP)",
+                "University of Pennsylvania (Upenn)",
+                "Wisconsin - University of Wisconsin-Madison",
+                "Miami - University of Miami Sylvester Comprehensive Cancer Center",
+                "UIC - University of Illinois Chicago",
+                "Prodo"
+            ],
             "submissionExample": {
                 "appscript": "Network for Pancreatic Organ Donors with Diabetes(nPOD)",
                 "igvf_utils": "Network for Pancreatic Organ Donors with Diabetes(nPOD)"
@@ -161,7 +228,12 @@
             "title": "Organ Source",
             "description": "Type of donor from which the pancreas was obtained.",
             "type": "string",
-            "enum": ["deceased", "living", "other classifications", "unknown"],
+            "enum": [
+                "deceased",
+                "living",
+                "other classifications",
+                "unknown"
+            ],
             "submissionExample": {
                 "appscript": "other classifications",
                 "igvf_utils": "other classifications"
@@ -194,8 +266,12 @@
                 "type": "string"
             },
             "submissionExample": {
-                "appscript": ["12.47"],
-                "igvf_utils": ["12.47"]
+                "appscript": [
+                    "12.47"
+                ],
+                "igvf_utils": [
+                    "12.47"
+                ]
             }
         },
         "purity_assay": {

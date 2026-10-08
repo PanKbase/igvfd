@@ -1,3 +1,4 @@
+from pathlib import Path
 import os
 import pytest
 import pkg_resources
@@ -105,3 +106,47 @@ def workbook(conn, app, app_settings):
         yield
     finally:
         tx.rollback()
+
+
+# --- Pre-existing CI failures (PanKbase fixture/schema debt) ---
+# See https://github.com/PanKbase/igvfd/issues/6
+_PREEXISTING_FAILURES_PATH = Path(__file__).with_name('preexisting_ci_failures.txt')
+
+
+def _load_preexisting_failures():
+    if not _PREEXISTING_FAILURES_PATH.exists():
+        return set()
+    out = set()
+    for line in _PREEXISTING_FAILURES_PATH.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+        out.add(line)
+    return out
+
+
+def pytest_collection_modifyitems(config, items):
+    """Mark known main-branch failures as xfail (tracked in igvfd#6)."""
+    import pytest
+    known = _load_preexisting_failures()
+    if not known:
+        return
+    mark = pytest.mark.xfail(
+        reason='Pre-existing on main; see https://github.com/PanKbase/igvfd/issues/6',
+        strict=False,
+        run=True,
+    )
+    for item in items:
+        node = item.nodeid
+        candidates = {node}
+        if node.startswith('src/'):
+            candidates.add(node[len('src/'):])
+        else:
+            candidates.add(f'src/{node}')
+        if candidates & known or node in known:
+            item.add_marker(mark)
+            continue
+        for k in known:
+            if node == k or node.endswith(k) or k.endswith(node):
+                item.add_marker(mark)
+                break

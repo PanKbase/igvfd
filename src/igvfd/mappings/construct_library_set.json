@@ -1,6 +1,6 @@
 {
-    "hash": "c5641ca2977eacb87a949199d744aabc",
-    "index_name": "construct_library_set_c5641ca2",
+    "hash": "c145db758466c0cc1c95f7c51262a9a3",
+    "index_name": "construct_library_set_c145db75",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1096,6 +1096,9 @@
                             "base_media": {
                                 "type": "keyword"
                             },
+                            "cell_type": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1112,6 +1115,21 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "de_comparison_class": {
+                                "type": "keyword"
+                            },
+                            "de_contrast": {
+                                "type": "keyword"
+                            },
+                            "de_method": {
+                                "type": "keyword"
+                            },
+                            "de_trait": {
+                                "type": "keyword"
+                            },
+                            "de_trait_description": {
                                 "type": "keyword"
                             },
                             "description": {

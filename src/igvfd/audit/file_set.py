@@ -407,7 +407,7 @@ def audit_file_set_missing_description(value, system):
             f'has no `description`.'
         )
         yield AuditFailure('missing description', f'{detail} {description}', level='NOT_COMPLIANT')
-        
+
 @audit_checker('MeasurementSet', frame='object')
 @audit_checker('AuxiliarySet', frame='object')
 @audit_checker('ConstructLibrarySet', frame='object')

@@ -37,21 +37,21 @@ def get_bedrock_client(request):
 def sanitize_query(query: str) -> str:
     """
     Sanitize user query to prevent prompt injection attacks.
-    
+
     Returns sanitized query or raises HTTPBadRequest if suspicious.
     """
     if not isinstance(query, str):
         raise HTTPBadRequest(json_body={'error': 'Query must be a string'})
-    
+
     # Remove control characters (except newline, tab, carriage return)
     query = ''.join(char for char in query if ord(char) >= 32 or char in '\n\r\t')
-    
+
     # Limit length
     if len(query) > MAX_QUERY_LENGTH:
         raise HTTPBadRequest(
             json_body={'error': f'Query too long (max {MAX_QUERY_LENGTH} characters)'}
         )
-    
+
     # Check for suspicious patterns (log but don't block - let Guardrails handle)
     query_lower = query.lower()
     for pattern in SUSPICIOUS_PATTERNS:
@@ -60,24 +60,24 @@ def sanitize_query(query: str) -> str:
                 f"Suspicious query pattern detected: {pattern}",
                 extra={'query_preview': query[:100]}
             )
-    
+
     return query.strip()
 
 
 def validate_response(response_text: str) -> str:
     """
     Validate and sanitize AI response.
-    
+
     Returns validated response, truncated if necessary.
     """
     if not isinstance(response_text, str):
         return ""
-    
+
     # Limit response length
     if len(response_text) > MAX_RESPONSE_LENGTH:
         logger.warning(f"Response truncated from {len(response_text)} to {MAX_RESPONSE_LENGTH} characters")
         return response_text[:MAX_RESPONSE_LENGTH] + "... (response truncated)"
-    
+
     # Remove potential script tags
     response_text = re.sub(
         r'<script[^>]*>.*?</script>',
@@ -85,7 +85,7 @@ def validate_response(response_text: str) -> str:
         response_text,
         flags=re.DOTALL | re.IGNORECASE
     )
-    
+
     return response_text
 
 
@@ -133,10 +133,10 @@ Common use cases:
 def bedrock_agent_query(request):
     """
     Natural language query endpoint using AWS Bedrock.
-    
+
     POST /bedrock-agent/query
     Body: {"query": "How many files are in analysis set PKBDS1349YHGQ?"}
-    
+
     Returns:
     {
         "query": "user query",
@@ -148,28 +148,28 @@ def bedrock_agent_query(request):
         # Get query from request
         if not hasattr(request, 'json_body'):
             raise HTTPBadRequest(json_body={'error': 'Request body must be JSON'})
-        
+
         body = request.json_body
         user_query = body.get('query', '')
-        
+
         # Sanitize and validate input
         user_query = sanitize_query(user_query)
-        
+
         if not user_query:
             raise HTTPBadRequest(json_body={'error': 'Query parameter is required and cannot be empty'})
-        
+
         # Get configuration from settings
         model_id = request.registry.settings.get(
             'bedrock.model_id',
             'anthropic.claude-3-5-sonnet-20241022-v2:0'
         )
-        
+
         # Get Bedrock client
         bedrock_runtime = get_bedrock_client(request)
-        
+
         # Prepare the prompt
         system_prompt = get_system_prompt()
-        
+
         # Prepare messages
         messages = [
             {
@@ -182,7 +182,7 @@ def bedrock_agent_query(request):
                 ]
             }
         ]
-        
+
         # Get guardrail configuration if available
         guardrail_config = {}
         guardrail_id = request.registry.settings.get('bedrock.guardrail_id')
@@ -194,7 +194,7 @@ def bedrock_agent_query(request):
                     'DRAFT'
                 )
             }
-        
+
         # Call Bedrock
         try:
             response = bedrock_runtime.invoke_model(
@@ -209,12 +209,12 @@ def bedrock_agent_query(request):
                 contentType="application/json",
                 accept="application/json"
             )
-            
+
             # Check for guardrail blocks in response headers
             response_metadata = response.get('ResponseMetadata', {})
             headers = response_metadata.get('HTTPHeaders', {})
             guardrail_action = headers.get('x-amazon-bedrock-guardrail-action')
-            
+
             if guardrail_action == 'BLOCKED':
                 logger.warning(
                     "Query blocked by guardrails",
@@ -234,28 +234,28 @@ def bedrock_agent_query(request):
                     'detail': str(bedrock_error)
                 }
             )
-        
+
         # Parse response
         response_body = json.loads(response['body'].read())
-        
+
         # Extract assistant message
         assistant_message = ""
         for content_block in response_body.get('content', []):
             if content_block.get('type') == 'text':
                 assistant_message += content_block.get('text', '')
-        
+
         if not assistant_message:
             assistant_message = "I couldn't generate a response. Please try rephrasing your question."
-        
+
         # Validate and sanitize response
         assistant_message = validate_response(assistant_message)
-        
+
         return {
             'query': user_query,
             'response': assistant_message,
             'model': model_id
         }
-        
+
     except HTTPBadRequest:
         raise
     except HTTPInternalServerError:
@@ -274,14 +274,14 @@ def bedrock_agent_query(request):
 def bedrock_agent_info(request):
     """
     Get information about the Bedrock agent endpoint.
-    
+
     GET /bedrock-agent/query
     """
     model_id = request.registry.settings.get(
         'bedrock.model_id',
         'anthropic.claude-3-5-sonnet-20241022-v2:0'
     )
-    
+
     return {
         'endpoint': '/bedrock-agent/query',
         'method': 'POST',
