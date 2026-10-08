@@ -1,22 +1,17 @@
 from snovault import upgrade_step
 
 # Direct upgrades from empty to current version
-
-
 @upgrade_step('measurement_set', '', '17')
 def measurement_set_empty_17(value, system):
     pass
-
 
 @upgrade_step('curated_set', '', '8')
 def curated_set_empty_8(value, system):
     pass
 
-
 @upgrade_step('analysis_set', '', '8')
 def analysis_set_empty_8(value, system):
     pass
-
 
 @upgrade_step('analysis_set', '1', '2')
 @upgrade_step('curated_set', '1', '2')
@@ -58,8 +53,7 @@ def measurement_set_4_5(value, system):
     notes = value.get('notes', '')
     if 'seqspec' in value:
         seqspec = value['seqspec']
-        notes += f' This meausurement_set previously linked to {
-            seqspec}, but the property for submitting associated seqspec links has been moved to SequenceFile where it should be submitted as a link to the seqspec yaml file submitted as a ConfigurationFile instead.'
+        notes += f' This meausurement_set previously linked to {seqspec}, but the property for submitting associated seqspec links has been moved to SequenceFile where it should be submitted as a link to the seqspec yaml file submitted as a ConfigurationFile instead.'
         value['notes'] = notes.strip()
         del value['seqspec']
 
@@ -233,8 +227,7 @@ def construct_library_set_prediction_set_4_5(value, system):
             notes = value.get('notes', '')
             genes = ', '.join(value.get('genes', []))
             value['small_scale_gene_list'] = value['genes'][:100]
-            notes += f' This file set previously listed `genes`: {
-                genes}, which has more than 100 genes, please resubmit the genes in large_scale_gene_list.'
+            notes += f' This file set previously listed `genes`: {genes}, which has more than 100 genes, please resubmit the genes in large_scale_gene_list.'
             value['notes'] = notes.strip()
         del value['genes']
     elif 'loci' in value:
@@ -244,8 +237,7 @@ def construct_library_set_prediction_set_4_5(value, system):
             notes = value.get('notes', '')
             loci = ', '.join(value.get('loci', []))
             value['small_scale_loci_list'] = value['loci'][:100]
-            notes += f' This file set previously listed `loci`: {
-                loci}, which has more than 100 loci, please resubmit the loci in large_scale_loci_list.'
+            notes += f' This file set previously listed `loci`: {loci}, which has more than 100 loci, please resubmit the loci in large_scale_loci_list.'
             value['notes'] = notes.strip()
         del value['loci']
     return
@@ -258,14 +250,12 @@ def construct_library_set_prediction_set_5_6(value, system):
     for loci in value.get('small_scale_loci_list', []):
         if loci['assembly'] == 'hg19':
             notes = value.get('notes', '')
-            notes += f' This file set listed {
-                loci} as one of its loci but the assembly for this loci has been upgraded to GRCh38.'
+            notes += f' This file set listed {loci} as one of its loci but the assembly for this loci has been upgraded to GRCh38.'
             value['notes'] = notes.strip()
             loci['assembly'] = 'GRCh38'
         elif loci['assembly'] in ['mm9', 'mm10']:
             notes = value.get('notes', '')
-            notes += f' This file set listed {
-                loci} as one of its loci but the assembly for this loci has been upgraded to GRCm39.'
+            notes += f' This file set listed {loci} as one of its loci but the assembly for this loci has been upgraded to GRCm39.'
             value['notes'] = notes.strip()
             loci['assembly'] = 'GRCm39'
     return
@@ -286,11 +276,9 @@ def measurement_set_12_13(value, system):
         if old_assay_title in old_to_new:
             value['preferred_assay_title'] = old_to_new[old_assay_title]
             if 'notes' in value:
-                value['notes'] = f"{value['notes']}. Preferred_assay_titles enum {
-                    old_assay_title} has been renamed to be {old_to_new[old_assay_title]}."
+                value['notes'] = f"{value['notes']}. Preferred_assay_titles enum {old_assay_title} has been renamed to be {old_to_new[old_assay_title]}."
             else:
-                value['notes'] = f'Preferred_assay_titles enum {
-                    old_assay_title} has been renamed to be {old_to_new[old_assay_title]}.'
+                value['notes'] = f'Preferred_assay_titles enum {old_assay_title} has been renamed to be {old_to_new[old_assay_title]}.'
     return
 
 
@@ -340,8 +328,7 @@ def measurement_set_15_16(value, system):
         sample = value['samples'][0]
         other_samples = ', '.join(value['samples'][1:])
         notes = value.get('notes', '')
-        notes = f'{notes} This measurement set used to link to samples: {
-            other_samples}, but has since been upgraded to only link to {sample}.'
+        notes = f'{notes} This measurement set used to link to samples: {other_samples}, but has since been upgraded to only link to {sample}.'
         value['notes'] = notes
         value['samples'] = [sample]
 
@@ -366,12 +353,10 @@ def analysis_set_6_7(value, system):
         notes += f'This object\'s file_set_type was primary analysis and has been updated to be principal analysis.'
         value['notes'] = notes.strip()
 
-
 @upgrade_step('analysis_set', '7', '8')
 def analysis_set_7_8(value, system):
     # Handle items upgrading from version 7 to 8
     pass
-
 
 @upgrade_step('curated_set', '7', '8')
 def curated_set_7_8(value, system):

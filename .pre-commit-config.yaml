@@ -1,8 +1,11 @@
 repos:
-  - repo: https://github.com/hhatto/autopep8
-    rev: v2.3.0
-    hooks:
-      - id: autopep8
+  # Disabled: autopep8 wraps long f-strings into multiline forms that are a
+  # SyntaxError on Python 3.11 (valid only on 3.12+). Re-enable only with a
+  # max-line-length / version that does not rewrite f-strings that way.
+  # - repo: https://github.com/hhatto/autopep8
+  #   rev: v2.3.0
+  #   hooks:
+  #     - id: autopep8
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.2.3

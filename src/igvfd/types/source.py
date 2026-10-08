@@ -29,13 +29,13 @@ class Source(Item):
     set_status_down = []
 
     @calculated_property(condition='title',
-                         schema={
-                             'title': 'Summary',
-                             'type': 'string',
-                             'description': 'A summary of the source.',
-                             'notSubmittable': True,
-                         }
-                         )
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the source.',
+            'notSubmittable': True,
+        }
+    )
     def summary(self, title):
         if title:
             return title

@@ -104,11 +104,9 @@ def audit_files_associated_with_incorrect_fileset(value, system):
                     for configuration_file in sequence_file_object.get('seqspecs'):
                         if configuration_file not in value['files']:
                             detail = (
-                                f'{object_type} {audit_link(path_to_text(
-                                    value["@id"]), value["@id"])} has sequence file '
+                                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file '
                                 f'{audit_link(path_to_text(file), file)} which links to seqspec '
-                                f'{audit_link(path_to_text(configuration_file), configuration_file)
-                                   } which does not link to this file set.'
+                                f'{audit_link(path_to_text(configuration_file), configuration_file)} which does not link to this file set.'
                             )
                             yield AuditFailure('missing related files', f'{detail} {description}', level='ERROR')
 
@@ -122,10 +120,8 @@ def audit_files_associated_with_incorrect_fileset(value, system):
                         missing_sequence_files = ', '.join(
                             [audit_link(path_to_text(sequence_file), sequence_file) for sequence_file in missing_sequence_files])
                         detail = (
-                            f'{object_type} {audit_link(path_to_text(
-                                value["@id"]), value["@id"])} has seqspec configuration file '
-                            f'{audit_link(path_to_text(file), file)} which links to sequence file(s): {
-                                missing_sequence_files} which '
+                            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has seqspec configuration file '
+                            f'{audit_link(path_to_text(file), file)} which links to sequence file(s): {missing_sequence_files} which '
                             f'do not link to this file set.'
                         )
                         yield AuditFailure('missing related files', f'{detail} {description}', level='ERROR')
@@ -169,8 +165,7 @@ def audit_inconsistent_seqspec(value, system):
                 non_matching_files = [file for file, _ in file_dict.items()]
                 detail = (
                     f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
-                    f'{", ".join([audit_link(path_to_text(non_matching_files), non_matching_files)
-                                 for non_matching_files in non_matching_files])} '
+                    f'{", ".join([audit_link(path_to_text(non_matching_files), non_matching_files) for non_matching_files in non_matching_files])} '
                     f'which belong to the same sequencing set, but do not have the same `seqspecs`.'
                 )
                 yield AuditFailure('inconsistent sequence specifications', f'{detail} {description}', level='ERROR')
@@ -358,7 +353,7 @@ def audit_auxiliary_set_construct_library_set_files(value, system):
     if non_sequence_files and value.get('file_set_type', '') != 'cell sorting':
         non_sequence_files = ', '.join(
             [audit_link(path_to_text(file), file) for file in non_sequence_files])
-        detail = (f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} links to '
+        detail = (f'{object_type} {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
                   f'`files` that are not sequence or configuration files: {non_sequence_files}.')
         yield AuditFailure('unexpected files', f'{detail} {description}', level='WARNING')
 
@@ -393,7 +388,6 @@ def audit_unexpected_virtual_samples(value, system):
             )
             yield AuditFailure('unexpected sample', f'{detail} {description}', level='ERROR')
 
-
 @audit_checker('FileSet', frame='object')
 def audit_file_set_missing_description(value, system):
     '''
@@ -413,7 +407,6 @@ def audit_file_set_missing_description(value, system):
             f'has no `description`.'
         )
         yield AuditFailure('missing description', f'{detail} {description}', level='NOT_COMPLIANT')
-
 
 @audit_checker('MeasurementSet', frame='object')
 @audit_checker('AuxiliarySet', frame='object')

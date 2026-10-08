@@ -310,8 +310,7 @@ def file_13_14(value, system):
         notes += f'This object\'s property status was {value["status"]}, and has been changed to in progress.'
         value['status'] = 'in progress'
         if 'release_timestamp' in value:
-            notes += f'This object\'s property release_timestamp was {
-                value["release_timestamp"]}, and has been removed.'
+            notes += f'This object\'s property release_timestamp was {value["release_timestamp"]}, and has been removed.'
             del value['release_timestamp']
     if 'anvil_source_url' in value:
         notes += f'This object\'s property anvil_source_url was {value["anvil_source_url"]}.'
@@ -330,8 +329,6 @@ def tabular_file_10_11_signal_file_8_9(value, system):
     if value.get('content_type') == 'fold over change control':
         value['content_type'] = 'fold change over control'
     return
-
-
 @upgrade_step('tabular_file', '11', '12')
 def tabular_file_11_12(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1948
@@ -370,8 +367,7 @@ def reference_file_14_15(value, system):
     notes = value.get('notes', '')
     if 'external_id' in value:
         external_id = value['external_id']
-        notes += f' This file previously had {
-            external_id} submitted as external_id, but the property external_id has been now removed.'
+        notes += f' This file previously had {external_id} submitted as external_id, but the property external_id has been now removed.'
         del value['external_id']
     if notes.strip() != '':
         value['notes'] = notes.strip()

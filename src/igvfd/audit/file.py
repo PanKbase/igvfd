@@ -66,8 +66,7 @@ def audit_file_format_specifications(value, system):
         doc_type = document_object['document_type']
         if doc_type != 'file format specification':
             detail = (
-                f'{object_type} {audit_link(path_to_text(
-                    value["@id"]), value["@id"])} has `file_format_specification` {audit_link(path_to_text(document), document)} '
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has `file_format_specification` {audit_link(path_to_text(document), document)} '
                 f'with `document_type` {doc_type}.'
             )
             yield AuditFailure('inconsistent document type', f'{detail} {description}', level='ERROR')

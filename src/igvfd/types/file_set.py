@@ -234,12 +234,12 @@ class AnalysisSet(FileSet):
         return ANNOTATION_TYPE_TO_CATEGORY.get(annotation_type)
 
     @calculated_property(condition='request, file_set_type, measurement_sets',
-                         schema={
-                             'title': 'Summary',
-                             'type': 'string',
-                             'notSubmittable': True,
-                         }
-                         )
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
     def summary(self, request, file_set_type, input_file_sets=[]):
         sentence = f'{file_set_type}'
         inspected_filesets = set()
@@ -392,12 +392,12 @@ class CuratedSet(FileSet):
                 return sorted(list(annotation_values))
 
     @calculated_property(condition='file_set_type, assemblies, transcriptome_annotations, taxa',
-                         schema={
-                             'title': 'Summary',
-                             'type': 'string',
-                             'notSubmittable': True,
-                         }
-                         )
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
     def summary(self, file_set_type, assemblies=None, transcriptome_annotations=None, taxa=None):
         summary_message = ''
         if taxa:
@@ -481,12 +481,12 @@ class MeasurementSet(FileSet):
             return related_datasets
 
     @calculated_property(condition='request, assay_term, preferred_assay_title, samples',
-                         schema={
-                             'title': 'Summary',
-                             'type': 'string',
-                             'notSubmittable': True,
-                         }
-                         )
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
     def summary(self, request, assay_term, preferred_assay_title=None, samples=None):
         assay = request.embed(assay_term)['term_name']
         modality_set = set()
@@ -626,20 +626,19 @@ class AuxiliarySet(FileSet):
         return paths_filtered_by_status(request, measurement_sets)
 
     @calculated_property(condition='request, file_set_type, measurement_sets',
-                         schema={
-                             'title': 'Summary',
-                             'type': 'string',
-                             'notSubmittable': True,
-                         }
-                         )
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
     def summary(self, request, file_set_type, measurement_sets=None):
         if not measurement_sets:
             return f'{file_set_type}'
         measurement_sets_summaries = [request.embed(measurement_set, '@@object').get('summary')
                                       for measurement_set in measurement_sets[:2] if measurement_set]
         if len(measurement_sets) > 2:
-            remainder = f'... and {len(measurement_sets) -
-                                   2} more measurement set{"s" if len(measurement_sets) - 2 != 1 else ""}'
+            remainder = f'... and {len(measurement_sets) - 2} more measurement set{"s" if len(measurement_sets) - 2 != 1 else ""}'
             measurement_sets_summaries = measurement_sets_summaries + [remainder]
         return f'{file_set_type} for {", ".join(measurement_sets_summaries)}'
 
@@ -740,12 +739,12 @@ class ConstructLibrarySet(FileSet):
         return paths_filtered_by_status(request, applied_to_samples)
 
     @calculated_property(condition='request, file_set_type, measurement_sets',
-                         schema={
-                             'title': 'Summary',
-                             'type': 'string',
-                             'notSubmittable': True,
-                         }
-                         )
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
     def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, large_scale_gene_list=None, guide_type=None,
                 small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, orf_list=None, associated_phenotypes=None):
         library_type = ''

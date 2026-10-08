@@ -16,8 +16,7 @@ def software_version_2_3(value, system):
     if 'version' in value:
         version = value['version'].split('.')
         if len(version) != 3:
-            notes += f' Version property(previous content: {value["version"]
-                                                            }) is no longer valid, default value of v0.0.1 has been assigned.'
+            notes += f' Version property (previous content: {value["version"]}) is no longer valid, default value of v0.0.1 has been assigned.'
             value['version'] = 'v0.0.1'
         elif not (version[0].startswith('v')):
             version[0] = 'v'+version[0]

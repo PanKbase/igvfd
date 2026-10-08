@@ -500,8 +500,7 @@ class Biosample(Sample):
                     biomarker_summary = f'{biomarker_object["quantification"]} detection of {biomarker_object["name"]}'
                 elif biomarker_object['quantification'] in ['high', 'intermediate', 'low']:
                     if biomarker_object.get('classification') == 'marker gene':
-                        biomarker_summary = f'{biomarker_object["quantification"]
-                                               } expression of {biomarker_object["name"]}'
+                        biomarker_summary = f'{biomarker_object["quantification"]} expression of {biomarker_object["name"]}'
                     else:
                         biomarker_summary = f'{biomarker_object["quantification"]} level of {biomarker_object["name"]}'
                 biomarker_summaries.append(biomarker_summary)
@@ -556,7 +555,7 @@ class Biosample(Sample):
                     summary_terms += f' {verb} multiple libraries,'
 
         # growth media is appended to the end of the summary
-        # if (growth_medium and biosample_type in ['in_vitro_system']):
+        #if (growth_medium and biosample_type in ['in_vitro_system']):
         #    summary_terms += f' grown in {growth_medium}'
 
         return summary_terms.strip(',')
@@ -626,7 +625,6 @@ class PrimaryCell(Biosample):
     )
     def classifications(self):
         return [self.item_type.replace('_', ' ')]
-
 
 @collection(
     name='primary-islet',
@@ -841,6 +839,7 @@ class HumanBetaCellLines(Biosample):
     set_status_up = Biosample.set_status_up + []
     set_status_down = Biosample.set_status_down + []
 
+
     @calculated_property(
         schema={
             'title': 'Classifications',
@@ -857,7 +856,6 @@ class HumanBetaCellLines(Biosample):
     )
     def classifications(self):
         return [self.item_type.replace('_', ' ')]
-
 
 @collection(
     name='technical-samples',
@@ -1022,8 +1020,7 @@ class MultiplexedSample(Sample):
             sample_summaries = [request.embed(
                 sample, '@@object').get('summary') for sample in multiplexed_samples[:2]]
             if len(multiplexed_samples) > 2:
-                remainder = f'... and {len(multiplexed_samples) -
-                                       2} more sample{"s" if len(multiplexed_samples) - 2 != 1 else ""}'
+                remainder = f'... and {len(multiplexed_samples) - 2} more sample{"s" if len(multiplexed_samples) - 2 != 1 else ""}'
                 sample_summaries += [remainder]
             return f'multiplexed sample: {"; ".join(sample_summaries)}'
         else:

@@ -172,13 +172,11 @@ def donor_12_13(value, system):
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
 
-
 @upgrade_step('human_donor', '13', '14')
 def human_donor_13_14(value, system):
     # Bridge gap in upgrade path
     # No schema changes needed between v13 and v14
     pass
-
 
 @upgrade_step('human_donor', '14', '15')
 def human_donor_14_15(value, system):
@@ -203,8 +201,6 @@ def human_donor_14_15(value, system):
     # Ensure Diabetes Status defaults to an empty array if not present
     if 'diabetes_status' not in value or not isinstance(value['diabetes_status'], list):
         value['diabetes_status'] = []
-
-
 @upgrade_step('human_donor', '15', '16')
 def human_donor_15_16(value, system):
     # Update genetic_ethnicities to include percentage
@@ -221,7 +217,6 @@ def human_donor_15_16(value, system):
                 # In case of unexpected data types, retain as is (or handle as needed)
                 updated_ethnicities.append(ethnicity)
         value['genetic_ethnicities'] = updated_ethnicities
-
 
 @upgrade_step('human_donor', '16', '17')
 def human_donor_16_17(value, system):
@@ -318,14 +313,12 @@ def donor_sex_to_gender(value, system):
         value['gender'] = value['sex']
         del value['sex']
 
-
 @upgrade_step('human_donor', '19', '20')
 def human_donor_19_20(value, system):
     # Migrate 'biological_sex' field to 'genetic_sex'
     if 'biological_sex' in value:
         value['genetic_sex'] = value['biological_sex']
         del value['biological_sex']
-
 
 @upgrade_step('human_donor', '20', '21')
 def human_donor_20_21(value, system):

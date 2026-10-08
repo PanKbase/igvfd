@@ -74,8 +74,6 @@ def test_audit_file_format_specifications(testapp, matrix_file, experimental_pro
         audit['category'] != 'inconsistent document type'
         for audit in res.json['audit'].get('ERROR', {})
     )
-
-
 def test_audit_external_identifiers(testapp, model_file):
     testapp.patch_json(
         model_file['@id'],

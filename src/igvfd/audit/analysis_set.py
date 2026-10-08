@@ -67,7 +67,7 @@ def audit_input_file_sets_derived_from(value, system):
         missing_derived_from_file_sets = ', '.join(
             [audit_link(path_to_text(file_set), file_set) for file_set in missing_derived_from_file_sets])
         detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'Analysis set {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'links to file(s) {files_to_link} that are `derived_from` '
             f'file(s) {derived_from_files_to_link} from file set(s) {missing_derived_from_file_sets} '
             f'which are not in `input_file_sets`.'
@@ -76,7 +76,7 @@ def audit_input_file_sets_derived_from(value, system):
     if missing_derived_from:
         missing_derived_from = ', '.join([audit_link(path_to_text(file), file) for file in missing_derived_from])
         detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'Analysis set {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'links to file(s) {missing_derived_from} that have no `derived_from`.'
         )
         yield AuditFailure('missing derived from', f'{detail} {description_missing_derived_from}', level='WARNING')
@@ -85,7 +85,7 @@ def audit_input_file_sets_derived_from(value, system):
         unexpected_file_sets = ', '.join(
             [audit_link(path_to_text(file_set), file_set) for file_set in unexpected_file_sets])
         detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'Analysis set {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'links to file set(s): {unexpected_file_sets} in `input_file_sets` that are not represented in the '
             f'`derived_from` of the file sets of the files in this analysis.'
         )
@@ -129,7 +129,7 @@ def audit_analysis_set_samples(value, system):
                     missing_samples = ', '.join([audit_link(path_to_text(missing_sample), missing_sample)
                                                 for missing_sample in missing_samples])
                     detail = (
-                        f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                        f'Analysis set {audit_link(path_to_text(value["@id"]),value["@id"])} '
                         f'does not specify samples {missing_samples} associated with its `input_file_sets`. '
                     )
                     yield AuditFailure('missing samples', f'{detail} {missing_description}', level='WARNING')
@@ -138,13 +138,13 @@ def audit_analysis_set_samples(value, system):
                     unexpected_samples = ', '.join(
                         [audit_link(path_to_text(unexpected_sample), unexpected_sample) for unexpected_sample in unexpected_samples])
                     detail = (
-                        f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                        f'Analysis set {audit_link(path_to_text(value["@id"]),value["@id"])} '
                         f'specifies samples {unexpected_samples} not associated with its `input_file_sets`.'
                     )
                     yield AuditFailure('unexpected samples', f'{detail} {unexpected_description}', level='WARNING')
         else:
             detail = (
-                f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'Analysis set {audit_link(path_to_text(value["@id"]),value["@id"])} '
                 f'has `input_file_sets`, but no `samples`.'
             )
             yield AuditFailure('missing samples', f'{detail} {missing_description}', level='WARNING')

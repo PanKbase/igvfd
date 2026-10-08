@@ -204,12 +204,9 @@ class BackendDashboard(Construct):
         self._widgets.append(response_5xx_widget)
 
     def _define_dashboard(self) -> None:
-        name = self.props.config.common.project_name
-        cfg_name = self.props.config.name
-        branch = self.props.config.branch
         self.dashboard = Dashboard(
             self,
             'Dashboard',
-            dashboard_name=f'{name}-{cfg_name}-{branch}-backend',
+            dashboard_name=f'{self.props.config.common.project_name}-{self.props.config.name}-{self.props.config.branch}-backend',
         )
         self.dashboard.add_widgets(*self._widgets)

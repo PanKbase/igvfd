@@ -120,8 +120,7 @@ def audit_dependent_fields_check(value, system):
         if missing_deps:
             detail = (
                 f'Human beta cell line {audit_link(path_to_text(value_id), value_id)} '
-                f'has `time_post_library_delivery` specified but is missing required field(s): {
-                    ", ".join(missing_deps)}.'
+                f'has `time_post_library_delivery` specified but is missing required field(s): {", ".join(missing_deps)}.'
             )
             yield AuditFailure('missing dependent field', f'{detail} {description}', level='ERROR')
 
@@ -136,8 +135,7 @@ def audit_dependent_fields_check(value, system):
         if missing_deps:
             detail = (
                 f'Human beta cell line {audit_link(path_to_text(value_id), value_id)} '
-                f'has `time_post_library_delivery_units` specified but is missing required field(s): {
-                    ", ".join(missing_deps)}.'
+                f'has `time_post_library_delivery_units` specified but is missing required field(s): {", ".join(missing_deps)}.'
             )
             yield AuditFailure('missing dependent field', f'{detail} {description}', level='ERROR')
 
@@ -149,8 +147,7 @@ def audit_dependent_fields_check(value, system):
         missing_age_fields = [field for field in age_fields if field not in present_age_fields]
         detail = (
             f'Human beta cell line {audit_link(path_to_text(value_id), value_id)} '
-            f'has age field(s) {", ".join(present_age_fields)} specified but is missing required field(s): {
-                ", ".join(missing_age_fields)}.'
+            f'has age field(s) {", ".join(present_age_fields)} specified but is missing required field(s): {", ".join(missing_age_fields)}.'
         )
         yield AuditFailure('missing dependent field', f'{detail} {description}', level='ERROR')
 
