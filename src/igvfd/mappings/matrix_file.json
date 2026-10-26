@@ -1,6 +1,6 @@
 {
-    "hash": "d7416ecf5ccb52f73132f264bb49007d",
-    "index_name": "matrix_file_d7416ecf",
+    "hash": "b4ccd8d8f984c4d831a9b7803bb023db",
+    "index_name": "matrix_file_b4ccd8d8",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -314,6 +314,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

@@ -6,8 +6,19 @@
     "type": "object",
     "required": [
         "name",
-        "institute_label",
-        "pi"
+        "institute_label"
+    ],
+    "anyOf": [
+        {
+            "required": [
+                "pi"
+            ]
+        },
+        {
+            "required": [
+                "consortium_name"
+            ]
+        }
     ],
     "identifyingProperties": [
         "uuid",
@@ -32,7 +43,7 @@
         },
         "name": {
             "title": "Name",
-            "description": "A short unique name for the lab, current convention is lower cased and hyphen delimited of PI's first and last name (e.g. john-doe).",
+            "description": "A short unique name for the lab, current convention is lower cased and hyphen delimited of PI's first and last name (e.g. john-doe). For labs without a single PI, use the lower cased and hyphen delimited consortium name (e.g. example-consortium).",
             "type": "string",
             "pattern": "^[a-z0-9\\-]+$",
             "uniqueKey": "lab:name",
@@ -43,13 +54,23 @@
         },
         "pi": {
             "title": "P.I.",
-            "description": "Principle Investigator of the lab.",
+            "description": "Principle Investigator of the lab. Required unless a consortium_name is specified.",
             "comment": "See user.json for available identifiers.",
             "type": "string",
             "linkTo": "User",
             "submissionExample": {
                 "appscript": "/users/ffc520df-7ed9-4769-a30d-143f0633cf5g/",
                 "igvf_utils": "/users/ffc520df-7ed9-4769-a30d-143f0633cf5g/"
+            }
+        },
+        "consortium_name": {
+            "title": "Consortium Name",
+            "description": "Name of the consortium or program that leads the lab, for labs that do not have a single Principal Investigator. Required unless a pi is specified.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "submissionExample": {
+                "appscript": "Example Consortium",
+                "igvf_utils": "Example Consortium"
             }
         },
         "awards": {
@@ -84,6 +105,7 @@
     },
     "fuzzy_searchable_fields": [
         "name",
+        "consortium_name",
         "institute_label"
     ],
     "exact_searchable_fields": [

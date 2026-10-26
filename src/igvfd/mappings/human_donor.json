@@ -1,6 +1,6 @@
 {
-    "hash": "0a14e46e475848471e0e5a0fb1f451fe",
-    "index_name": "human_donor_0a14e46e",
+    "hash": "a55490fc018bb402b23b46e089291cfa",
+    "index_name": "human_donor_a55490fc",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -582,6 +582,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

@@ -1,6 +1,6 @@
 {
-    "hash": "f8e28a3e6f67de5222a6998e175ef7db",
-    "index_name": "signal_file_f8e28a3e",
+    "hash": "bdfeacbe3df2593f330289a4b9839879",
+    "index_name": "signal_file_bdfeacbe",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -320,6 +320,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

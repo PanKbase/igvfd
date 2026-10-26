@@ -1,6 +1,6 @@
 {
-    "hash": "c12d79b57f65d66532ed8ed22e2d4f7a",
-    "index_name": "rodent_donor_c12d79b5",
+    "hash": "c214ab8629e87e25325a99713d805893",
+    "index_name": "rodent_donor_c214ab86",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -277,6 +277,9 @@
                             "awards": {
                                 "type": "keyword"
                             },
+                            "consortium_name": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
@@ -493,6 +496,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

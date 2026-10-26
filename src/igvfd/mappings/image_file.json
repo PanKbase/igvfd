@@ -1,6 +1,6 @@
 {
-    "hash": "f60bb7d896b67c1373d63543c2a83201",
-    "index_name": "image_file_f60bb7d8",
+    "hash": "08b2be8fa126bb16663a8534603b807c",
+    "index_name": "image_file_08b2be8f",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -305,6 +305,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

@@ -1,6 +1,6 @@
 {
-    "hash": "954a6af42fd4b0aab9830f0ff08c42e4",
-    "index_name": "software_954a6af4",
+    "hash": "479cfe10ad1bf94bbb0d2cbd1dea951f",
+    "index_name": "software_479cfe10",
     "item_type": "software",
     "mapping": {
         "dynamic_templates": [
@@ -241,6 +241,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

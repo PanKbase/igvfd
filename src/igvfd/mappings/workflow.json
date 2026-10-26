@@ -1,6 +1,6 @@
 {
-    "hash": "a896baa6f895a96d431e650c36b3964b",
-    "index_name": "workflow_a896baa6",
+    "hash": "63af1879eb9420c38e0eb5dc44b11cfc",
+    "index_name": "workflow_63af1879",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -255,6 +255,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

@@ -1,6 +1,6 @@
 {
-    "hash": "f5e4b0fcc1cf4f70aebaffdd902cc64b",
-    "index_name": "software_version_f5e4b0fc",
+    "hash": "af3f75e469c60d0d6cd6a8562862c3e5",
+    "index_name": "software_version_af3f75e4",
     "item_type": "software_version",
     "mapping": {
         "dynamic_templates": [
@@ -246,6 +246,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

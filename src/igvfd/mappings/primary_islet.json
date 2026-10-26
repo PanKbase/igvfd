@@ -1,6 +1,6 @@
 {
-    "hash": "432691665ec4559765ebe8a8d7bd8c6a",
-    "index_name": "primary_islet_43269166",
+    "hash": "4928f3134133bce345cdaec19bbe3be1",
+    "index_name": "primary_islet_4928f313",
     "item_type": "primary_islet",
     "mapping": {
         "dynamic_templates": [
@@ -1198,6 +1198,9 @@
                                     "awards": {
                                         "type": "keyword"
                                     },
+                                    "consortium_name": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "keyword"
                                     },
@@ -1646,6 +1649,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -2856,6 +2862,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

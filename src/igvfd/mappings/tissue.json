@@ -1,6 +1,6 @@
 {
-    "hash": "b773ca5daaf93eb7858f600ea3a16ed4",
-    "index_name": "tissue_b773ca5d",
+    "hash": "9391fe606a3610705a50835e2dc91c59",
+    "index_name": "tissue_9391fe60",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1174,6 +1174,9 @@
                                     "awards": {
                                         "type": "keyword"
                                     },
+                                    "consortium_name": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "keyword"
                                     },
@@ -1574,6 +1577,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -2655,6 +2661,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

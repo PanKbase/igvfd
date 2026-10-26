@@ -1,6 +1,6 @@
 {
-    "hash": "d2521034b7bc9f7f55efbeff99ac433c",
-    "index_name": "lab_d2521034",
+    "hash": "cb2192cb6c40ade4c03f5d1ebecc1ab6",
+    "index_name": "lab_cb2192cb",
     "item_type": "lab",
     "mapping": {
         "dynamic_templates": [
@@ -221,6 +221,10 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "consortium_name": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
                     },
                     "creation_timestamp": {
                         "type": "keyword"

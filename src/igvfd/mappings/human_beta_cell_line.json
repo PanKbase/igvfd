@@ -1,6 +1,6 @@
 {
-    "hash": "339e285e4e4e26b0f24a7de3ceaaa74f",
-    "index_name": "human_beta_cell_line_339e285e",
+    "hash": "116877cf4e9da994f7e0ee77dec0f65d",
+    "index_name": "human_beta_cell_line_116877cf",
     "item_type": "human_beta_cell_line",
     "mapping": {
         "dynamic_templates": [
@@ -1191,6 +1191,9 @@
                                     "awards": {
                                         "type": "keyword"
                                     },
+                                    "consortium_name": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "keyword"
                                     },
@@ -1598,6 +1601,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -2671,6 +2677,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

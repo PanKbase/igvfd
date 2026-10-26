@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 3
 
+* Add `consortium_name` for labs that do not have a single Principal Investigator.
+* `pi` is no longer required on its own; either `pi` or `consortium_name` must be specified.
+* Update calculation of `title` to use `consortium_name` when `pi` is not specified.
 * Update calculation of `summary`.
 * Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 

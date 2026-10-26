@@ -1,6 +1,6 @@
 {
-    "hash": "e899512158440761329e27abae6ad450",
-    "index_name": "prediction_set_e8995121",
+    "hash": "1f5e0d869cd7feeb98831683dbf98ae4",
+    "index_name": "prediction_set_1f5e0d86",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1649,6 +1649,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

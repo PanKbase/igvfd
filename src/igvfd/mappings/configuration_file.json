@@ -1,6 +1,6 @@
 {
-    "hash": "9243b8ba877c9560cd0c978f0163f71a",
-    "index_name": "configuration_file_9243b8ba",
+    "hash": "3419400f3c3b4692b74f44ed2af37c08",
+    "index_name": "configuration_file_3419400f",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -305,6 +305,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

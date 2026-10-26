@@ -1,6 +1,6 @@
 {
-    "hash": "b3d3827894dc0266060152e842368857",
-    "index_name": "sequence_file_b3d38278",
+    "hash": "88856064781696d1f12b904ce75abe1f",
+    "index_name": "sequence_file_88856064",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -326,6 +326,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

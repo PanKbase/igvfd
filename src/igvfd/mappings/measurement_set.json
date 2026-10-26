@@ -1,6 +1,6 @@
 {
-    "hash": "f9504ca50dba6dcc8fd573addd434c7e",
-    "index_name": "measurement_set_f9504ca5",
+    "hash": "39a9eaed5507d41443be21db07dae671",
+    "index_name": "measurement_set_39a9eaed",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2418,6 +2418,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

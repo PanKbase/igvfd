@@ -48,6 +48,9 @@ def lab():
             'pi': {
                 'title': 'Principle Investigator'
             },
+            'consortium_name': {
+                'title': 'Consortium Name'
+            },
             'institute_label': {
                 'title': 'Institute Label'
             }

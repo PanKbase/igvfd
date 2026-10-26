@@ -1,6 +1,6 @@
 {
-    "hash": "3216a7344e689fd8c6c6990d627842b2",
-    "index_name": "phenotypic_feature_3216a734",
+    "hash": "b70574c16fe5a222af44ec940dc6dfc4",
+    "index_name": "phenotypic_feature_b70574c1",
     "item_type": "phenotypic_feature",
     "mapping": {
         "dynamic_templates": [
@@ -309,6 +309,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

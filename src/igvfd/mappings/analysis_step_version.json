@@ -1,6 +1,6 @@
 {
-    "hash": "0d822619486eda18ec13c9669547cee4",
-    "index_name": "analysis_step_version_0d822619",
+    "hash": "c787d16bf5e3c0350e159fabff6ff469",
+    "index_name": "analysis_step_version_c787d16b",
     "item_type": "analysis_step_version",
     "mapping": {
         "dynamic_templates": [
@@ -315,6 +315,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

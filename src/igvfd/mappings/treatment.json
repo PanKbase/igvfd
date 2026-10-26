@@ -1,6 +1,6 @@
 {
-    "hash": "73b7dcc14087972632f69872b76abf24",
-    "index_name": "treatment_73b7dcc1",
+    "hash": "657c1ae0d8977f4991b7e9a166becca5",
+    "index_name": "treatment_657c1ae0",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -282,6 +282,9 @@
                             "awards": {
                                 "type": "keyword"
                             },
+                            "consortium_name": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
@@ -380,6 +383,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

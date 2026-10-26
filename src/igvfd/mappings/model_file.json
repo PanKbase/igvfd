@@ -1,6 +1,6 @@
 {
-    "hash": "1c6fb1f0449f01da042e533085c42cf0",
-    "index_name": "model_file_1c6fb1f0",
+    "hash": "c0f33e61b47aaa6eb66ef7a3874eaf1f",
+    "index_name": "model_file_c0f33e61",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -317,6 +317,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

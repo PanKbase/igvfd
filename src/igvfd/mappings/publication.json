@@ -1,6 +1,6 @@
 {
-    "hash": "e2b6af4e9ecbb440e0dafe18f6da7690",
-    "index_name": "publication_e2b6af4e",
+    "hash": "6d1c0f52c66f3ec7eab23cf033353db4",
+    "index_name": "publication_6d1c0f52",
     "item_type": "publication",
     "mapping": {
         "dynamic_templates": [
@@ -302,6 +302,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

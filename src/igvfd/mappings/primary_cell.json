@@ -1,6 +1,6 @@
 {
-    "hash": "32503b95564dec350866593f95925c32",
-    "index_name": "primary_cell_32503b95",
+    "hash": "cdc08fef33bf81b088d48966af3926cd",
+    "index_name": "primary_cell_cdc08fef",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1171,6 +1171,9 @@
                                     "awards": {
                                         "type": "keyword"
                                     },
+                                    "consortium_name": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "keyword"
                                     },
@@ -1571,6 +1574,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -2646,6 +2652,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

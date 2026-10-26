@@ -1,6 +1,6 @@
 {
-    "hash": "50600839c919cca7708ad370deca6a9b",
-    "index_name": "genome_browser_annotation_file_50600839",
+    "hash": "8aab6b5167e0488fd3f349b71ab68a25",
+    "index_name": "genome_browser_annotation_file_8aab6b51",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -311,6 +311,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

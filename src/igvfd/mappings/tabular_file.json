@@ -1,6 +1,6 @@
 {
-    "hash": "5b43687c88f156c3015012bd065f1eb9",
-    "index_name": "tabular_file_5b43687c",
+    "hash": "51889519694faeef97982b697da193f2",
+    "index_name": "tabular_file_51889519",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -323,6 +323,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

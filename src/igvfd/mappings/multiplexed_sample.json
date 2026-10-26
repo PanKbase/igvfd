@@ -1,6 +1,6 @@
 {
-    "hash": "47e5c7cd8e9abb0ae695417e0e470c2c",
-    "index_name": "multiplexed_sample_47e5c7cd",
+    "hash": "20a8623635992c05433bd82b4394f099",
+    "index_name": "multiplexed_sample_20a86236",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -847,6 +847,9 @@
                                     "awards": {
                                         "type": "keyword"
                                     },
+                                    "consortium_name": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "keyword"
                                     },
@@ -1175,6 +1178,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -3459,6 +3465,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

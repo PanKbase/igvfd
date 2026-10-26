@@ -1,6 +1,6 @@
 {
-    "hash": "d5ee4b5bbc84854444cb821eaae1ade6",
-    "index_name": "reference_file_d5ee4b5b",
+    "hash": "acdb1428e7dec3853f5af221b8317693",
+    "index_name": "reference_file_acdb1428",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -332,6 +332,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

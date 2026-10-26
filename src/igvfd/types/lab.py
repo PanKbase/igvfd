@@ -34,17 +34,19 @@ class Lab(Item):
 
     @calculated_property(
         define=True,
-        condition='pi, institute_label',
         schema={
             'title': 'Title',
             'type': 'string',
             'notSubmittable': True,
         }
     )
-    def title(self, request, pi, institute_label):
-        pi_object = request.embed(pi, '@@object')
-        pi_name = pi_object.get('title')
-        return f'{pi_name}, {institute_label}'
+    def title(self, request, institute_label, pi=None, consortium_name=None):
+        if pi:
+            pi_object = request.embed(pi, '@@object')
+            leader_name = pi_object.get('title')
+        else:
+            leader_name = consortium_name
+        return f'{leader_name}, {institute_label}'
 
     @calculated_property(
         schema={

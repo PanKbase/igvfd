@@ -1,6 +1,6 @@
 {
-    "hash": "071204bfb7cc66b5cab304df89e2815e",
-    "index_name": "analysis_set_071204bf",
+    "hash": "907203c25b9f68adff0f9e59a457ef40",
+    "index_name": "analysis_set_907203c2",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -2137,6 +2137,9 @@
                                 "type": "keyword"
                             },
                             "awards": {
+                                "type": "keyword"
+                            },
+                            "consortium_name": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
