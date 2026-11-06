@@ -310,6 +310,7 @@
             "enum": [
                 "islet_function_trait",
                 "clinical_trait",
+                "demographic",
                 "disease_status",
                 "treatment",
                 "autoantibody",
@@ -317,7 +318,8 @@
             ],
             "enum_titles": {
                 "islet_function_trait": "Association with a perifusion secretion or content measure",
-                "clinical_trait": "Association with a donor clinical variable (age, BMI, sex, HbA1c, C-peptide)",
+                "clinical_trait": "Association with a donor clinical variable (BMI, HbA1c, C-peptide)",
+                "demographic": "Association with a donor demographic variable (age, sex)",
                 "disease_status": "Comparison or association by diagnosis group (ND, prediabetes, T1D, T2D)",
                 "treatment": "Treated vs control samples",
                 "autoantibody": "Autoantibody-positive vs negative, or association with autoantibody presence",
