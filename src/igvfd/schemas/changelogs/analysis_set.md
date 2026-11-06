@@ -6,6 +6,7 @@
 * Add calculated property `annotation_category`.
 * Add `cell_type`.
 * Add `de_comparison_class`, `de_contrast`, `de_trait`, `de_trait_description`, and `de_method` for differential expression analysis sets.
+* Add `demographic` to the `de_comparison_class` enum for age and sex analyses; `clinical_trait` now covers BMI, HbA1c and C-peptide.
 
 ### Schema version 7
 
