@@ -46,6 +46,20 @@ def test_de_fields_valid_trait(testapp, analysis_set_base):
     assert 'de_trait_description' in res.json['@graph'][0]
 
 
+def test_de_fields_valid_demographic(testapp, analysis_set_base):
+    res = testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'annotation_type': 'differential_expression',
+            'cell_type': 'beta',
+            'de_comparison_class': 'demographic',
+            'de_method': 'association',
+        }
+    )
+    assert res.status_code == 200
+    assert res.json['@graph'][0]['de_comparison_class'] == 'demographic'
+
+
 def test_de_fields_valid_cell_type_markers(testapp, analysis_set_base):
     res = testapp.patch_json(
         analysis_set_base['@id'],
