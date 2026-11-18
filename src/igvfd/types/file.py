@@ -186,6 +186,8 @@ class File(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
+        Path('analysis_step_version.analysis_step.workflow',
+             include=['@id', 'accession', 'name', 'analysis_step', 'workflow']),
     ]
     rev = {
         'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),

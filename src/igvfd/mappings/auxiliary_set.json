@@ -1,6 +1,6 @@
 {
-    "hash": "24b5b17fd02e8a3b78e267137ce3b3d9",
-    "index_name": "auxiliary_set_24b5b17f",
+    "hash": "f2a484b1e5f023dfaa89510bbd2956a2",
+    "index_name": "auxiliary_set_f2a484b1",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -750,6 +750,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

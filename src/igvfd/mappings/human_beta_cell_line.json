@@ -1,6 +1,6 @@
 {
-    "hash": "339e285e4e4e26b0f24a7de3ceaaa74f",
-    "index_name": "human_beta_cell_line_339e285e",
+    "hash": "5e73f7742c192bd0eb3620058c911d61",
+    "index_name": "human_beta_cell_line_5e73f774",
     "item_type": "human_beta_cell_line",
     "mapping": {
         "dynamic_templates": [
@@ -1499,6 +1499,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

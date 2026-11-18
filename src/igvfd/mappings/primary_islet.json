@@ -1,6 +1,6 @@
 {
-    "hash": "432691665ec4559765ebe8a8d7bd8c6a",
-    "index_name": "primary_islet_43269166",
+    "hash": "226b4bce6c871f3c8031abe4b9bdf533",
+    "index_name": "primary_islet_226b4bce",
     "item_type": "primary_islet",
     "mapping": {
         "dynamic_templates": [
@@ -1506,6 +1506,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },
