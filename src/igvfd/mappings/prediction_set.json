@@ -1,6 +1,6 @@
 {
-    "hash": "e899512158440761329e27abae6ad450",
-    "index_name": "prediction_set_e8995121",
+    "hash": "bd1c0f8de678e2eeebe19438c70386f3",
+    "index_name": "prediction_set_bd1c0f8d",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -750,6 +750,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

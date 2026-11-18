@@ -199,7 +199,8 @@ class AnalysisSet(FileSet):
     item_type = 'analysis_set'
     schema = load_schema('igvfd:schemas/analysis_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type'])
+        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type']),
+        Path('workflows', include=['@id', 'accession', 'name'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
@@ -323,6 +324,33 @@ class AnalysisSet(FileSet):
     )
     def donors(self, request, samples=None):
         return get_donors_from_samples(request, samples)
+
+    @calculated_property(
+        schema={
+            'title': 'Workflows',
+            'description': 'The workflows that produced the files in this analysis set, via each file\'s analysis step version.',
+            'type': 'array',
+            'uniqueItems': True,
+            'items': {
+                'title': 'Workflow',
+                'description': 'A workflow that produced a file in this analysis set.',
+                'type': 'string',
+                'linkTo': 'Workflow'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def workflows(self, request, files=None):
+        workflow_paths = set()
+        for current_file_path in files or []:
+            file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
+            step_version_path = file_object.get('analysis_step_version')
+            if not step_version_path:
+                continue
+            step_version = request.embed(step_version_path, '@@object?skip_calculated=true')
+            step = request.embed(step_version['analysis_step'], '@@object?skip_calculated=true')
+            workflow_paths.add(step['workflow'])
+        return sorted(workflow_paths)
 
 
 @collection(

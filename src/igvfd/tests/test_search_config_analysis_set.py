@@ -19,3 +19,10 @@ def test_analysis_set_fuzzy_searchable_de_fields(registry):
     fuzzy = schema.get('fuzzy_searchable_fields', [])
     for field in ('cell_type', 'de_contrast', 'de_trait', 'de_trait_description'):
         assert field in fuzzy
+
+
+def test_analysis_set_search_config_includes_workflows(registry):
+    config = registry[SEARCH_CONFIG].get('AnalysisSet')
+    assert 'workflows.name' in config.facets
+    assert not config.facets['workflows.name'].get('optional')
+    assert 'workflows' in config.columns

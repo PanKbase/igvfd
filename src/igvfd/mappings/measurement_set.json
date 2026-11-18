@@ -1,6 +1,6 @@
 {
-    "hash": "f9504ca50dba6dcc8fd573addd434c7e",
-    "index_name": "measurement_set_f9504ca5",
+    "hash": "f295f11bccfa3c99fe5f0f1ba3443753",
+    "index_name": "measurement_set_f295f11b",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -938,6 +938,9 @@
                             },
                             "uuid": {
                                 "type": "keyword"
+                            },
+                            "workflows": {
+                                "type": "keyword"
                             }
                         },
                         "type": "object"
@@ -1395,6 +1398,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

@@ -181,3 +181,42 @@ def test_annotation_type_enum(testapp, analysis_set_base):
         expect_errors=True,
     )
     assert res.status_code == 422
+
+
+def test_analysis_set_workflows_empty_without_step_versions(testapp, analysis_set_base, analysis_set_with_sample, tabular_file):
+    # No files at all
+    res = testapp.get(analysis_set_base['@id']).json
+    assert res.get('workflows') == []
+    # Has a file, but the file has no analysis_step_version
+    res = testapp.get(analysis_set_with_sample['@id']).json
+    assert res.get('workflows') == []
+
+
+def test_analysis_set_workflows_from_files(testapp, analysis_set_with_sample, tabular_file, analysis_step_version, base_workflow, lab, award):
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'analysis_step_version': analysis_step_version['@id']
+        }
+    )
+    # A second file from the same workflow is reported once
+    testapp.post_json(
+        '/tabular_file',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'md5sum': 'fb2ab5dbb7a8f0bb0b6d29a6bb3ab7a5',
+            'file_format': 'tsv',
+            'file_set': analysis_set_with_sample['@id'],
+            'content_type': 'peaks',
+            'controlled_access': False,
+            'analysis_step_version': analysis_step_version['@id']
+        },
+        status=201
+    )
+    res = testapp.get(analysis_set_with_sample['@id']).json
+    assert [workflow['@id'] for workflow in res.get('workflows')] == [base_workflow['@id']]
+    assert res['workflows'][0]['accession'] == base_workflow['accession']
+    assert res['workflows'][0]['name'] == base_workflow['name']
+    res = testapp.get(analysis_set_with_sample['@id'] + '@@object').json
+    assert res.get('workflows') == [base_workflow['@id']]

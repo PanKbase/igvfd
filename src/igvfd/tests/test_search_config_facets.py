@@ -70,6 +70,7 @@ def test_analysis_set_defaults_include_de_fields(registry):
         'cell_type',
         'de_comparison_class',
         'de_method',
+        'workflows.name',
         'samples.sample_terms.term_name',
         'files.file_format',
         'status',

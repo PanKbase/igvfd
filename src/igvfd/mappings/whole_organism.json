@@ -1,6 +1,6 @@
 {
-    "hash": "c8b700231584307b99c19d6b10f72e51",
-    "index_name": "whole_organism_c8b70023",
+    "hash": "9b9a02914d114c28a808b0cb222a38d5",
+    "index_name": "whole_organism_9b9a0291",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1479,6 +1479,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },
