@@ -1,6 +1,6 @@
 {
-    "hash": "16158ff5ab2522aeb89a27fccfeb906f",
-    "index_name": "construct_library_set_16158ff5",
+    "hash": "388eb63efa23efa1e45a3ed27b69e87f",
+    "index_name": "construct_library_set_388eb63e",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1482,6 +1482,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

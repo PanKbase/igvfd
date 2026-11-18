@@ -1,6 +1,6 @@
 {
-    "hash": "cdc08fef33bf81b088d48966af3926cd",
-    "index_name": "primary_cell_cdc08fef",
+    "hash": "8cd9ed86983eae163b4b70136fee624d",
+    "index_name": "primary_cell_8cd9ed86",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1482,6 +1482,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

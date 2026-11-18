@@ -297,3 +297,21 @@ def test_file_summaries(
     )
     res = testapp.get(tabular_file['@id'])
     assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 peaks'
+
+
+def test_types_file_embeds_workflow(testapp, tabular_file, analysis_step_version, analysis_step, base_workflow):
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'analysis_step_version': analysis_step_version['@id']
+        }
+    )
+    res = testapp.get(tabular_file['@id']).json
+    step_version = res['analysis_step_version']
+    assert step_version['@id'] == analysis_step_version['@id']
+    assert step_version['analysis_step']['@id'] == analysis_step['@id']
+    assert step_version['analysis_step']['workflow'] == {
+        '@id': base_workflow['@id'],
+        'accession': base_workflow['accession'],
+        'name': base_workflow['name'],
+    }

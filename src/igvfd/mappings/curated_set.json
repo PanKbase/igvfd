@@ -1,6 +1,6 @@
 {
-    "hash": "58950443f53d5e662df6091fa295af17",
-    "index_name": "curated_set_58950443",
+    "hash": "0dba247d19e14270921d3e84d1cbb10e",
+    "index_name": "curated_set_0dba247d",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -754,6 +754,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

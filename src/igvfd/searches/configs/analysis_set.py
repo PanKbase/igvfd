@@ -43,6 +43,11 @@ def analysis_set():
                 'category': 'Analysis Set Details',
                 'description': 'Statistical design of the differential expression analysis.',
             },
+            'workflows.name': {
+                'title': 'Workflow',
+                'category': 'Analysis Set Details',
+                'description': 'Workflow (pipeline) that produced the files in this analysis set.',
+            },
             'samples.sample_terms.term_name': {
                 'title': 'Sample Term',
                 'category': 'Sample',
@@ -147,6 +152,9 @@ def analysis_set():
             },
             'de_method': {
                 'title': 'DE Method'
+            },
+            'workflows': {
+                'title': 'Workflows'
             },
         },
     }
